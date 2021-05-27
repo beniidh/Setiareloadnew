@@ -60,7 +60,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="5dp"
-                android:buttonTint="@color/orange" />
+                android:buttonTint="@color/green" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -82,7 +82,7 @@
             android:foreground="?android:attr/selectableItemBackground"
             android:text="Masuk"
             android:textAllCaps="false"
-            android:textColor="@color/orange"
+            android:textColor="@color/green"
             android:textSize="20dp"
             android:textStyle="bold" />
 
@@ -109,7 +109,7 @@
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/poppins"
                 android:text="Daftar"
-                android:textColor="@color/orange"
+                android:textColor="@color/green"
                 android:textStyle="bold" />
 
         </LinearLayout>

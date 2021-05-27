@@ -1,5 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Pundi Abata</string>
     <string name="keteranganOTP">Untuk mendapatkan Kode OTP silahkan pilih salah satu metode dibawah ini :</string>
     <string name="otp">Kode telah dikirim ke Email, silahkan cek Email Anda</string>
 </resources>

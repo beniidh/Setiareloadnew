@@ -21,7 +21,7 @@
             android:fontFamily="sans-serif-condensed"
             android:gravity="center"
             android:text="Profil Konter"
-            android:textColor="@color/orange"
+            android:textColor="@color/green"
             android:textSize="21dp"
             android:textStyle="bold" />
 
@@ -32,7 +32,7 @@
             android:fontFamily="sans-serif-condensed"
             android:gravity="center"
             android:text="Foto"
-            android:textColor="@color/orange"
+            android:textColor="@color/green"
             android:textSize="21dp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -47,7 +47,7 @@
             android:layout_width="0dp"
             android:layout_height="3.5dp"
             android:layout_weight="1"
-            android:background="@color/orange"
+            android:background="@color/green"
             android:elevation="1dp"
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
@@ -81,7 +81,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:textSize="17dp"
+                android:textSize="14dp"
                 android:text=" Nama Pemilik"
                 />
             <EditText
@@ -94,7 +94,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:textSize="17dp"
+                android:textSize="14dp"
                 android:text=" Email"
                 />
             <EditText
@@ -107,7 +107,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:textSize="17dp"
+                android:textSize="14dp"
                 android:text=" Alamat"
                 />
             <EditText
@@ -120,46 +120,50 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:textSize="17dp"
+                android:textSize="14dp"
                 android:text=" Provinsi"
                 />
             <EditText
+                android:id="@+id/provinsi"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textSize="16dp"
-                android:hint="Masukan Provinsi "
+                android:hint="Pilih Provinsi "
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:textSize="17dp"
+                android:textSize="14dp"
                 android:text=" Kabupaten/Kota"
                 />
             <EditText
+                android:id="@+id/kabupaten"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textSize="16dp"
-                android:hint="Masukan Kabupaten / Kota "
+                android:hint="Pilih Kabupaten / Kota "
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:textSize="17dp"
+                android:textSize="14dp"
                 android:text=" Kecamatan"
                 />
+
             <EditText
+                android:id="@+id/kecamatan"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textSize="16dp"
-                android:hint="Masukan Kecamatan "
+                android:hint="Pilih Kecamatan "
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:textSize="17dp"
+                android:textSize="14dp"
                 android:text=" Nomor Hanphone"
                 />
             <TextView
@@ -167,8 +171,8 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:layout_marginTop="5dp"
-                android:textColor="@color/orange"
-                android:textSize="16dp"
+                android:textColor="@color/green"
+                android:textSize="14dp"
                 android:text=" Nomor yang dimasukan digunakan untuk login"
                 />
             <EditText
@@ -183,7 +187,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:textSize="17dp"
+                android:textSize="14dp"
                 android:text=" Kode Referal Sales"
                 />
             <EditText
@@ -202,7 +206,7 @@
                 android:foreground="?android:attr/selectableItemBackground"
                 android:text="Selanjutnya"
                 android:textAllCaps="false"
-                android:textColor="@color/orange"
+                android:textColor="@color/green"
                 android:textSize="20dp"
                />
 
