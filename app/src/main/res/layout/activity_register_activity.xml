@@ -8,64 +8,64 @@
     android:padding="18dp"
     tools:context=".Register_activity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:orientation="horizontal">
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="5dp"-->
+<!--        android:orientation="horizontal">-->
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="sans-serif-condensed"
-            android:gravity="center"
-            android:text="Profil Konter"
-            android:textColor="@color/green"
-            android:textSize="21dp"
-            android:textStyle="bold" />
+<!--        <TextView-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:fontFamily="sans-serif-condensed"-->
+<!--            android:gravity="center"-->
+<!--            android:text="Profil Konter"-->
+<!--            android:textColor="@color/green"-->
+<!--            android:textSize="21dp"-->
+<!--            android:textStyle="bold" />-->
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="sans-serif-condensed"
-            android:gravity="center"
-            android:text="Foto"
-            android:textColor="@color/green"
-            android:textSize="21dp"
-            android:textStyle="bold" />
-    </LinearLayout>
+<!--        <TextView-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:fontFamily="sans-serif-condensed"-->
+<!--            android:gravity="center"-->
+<!--            android:text="Foto"-->
+<!--            android:textColor="@color/green"-->
+<!--            android:textSize="21dp"-->
+<!--            android:textStyle="bold" />-->
+<!--    </LinearLayout>-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:orientation="horizontal">-->
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="3.5dp"
-            android:layout_weight="1"
-            android:background="@color/green"
-            android:elevation="1dp"
-            android:fontFamily="sans-serif-medium"
-            android:gravity="center"
-            android:textColor="@color/orange"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+<!--        <TextView-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="3.5dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@color/green"-->
+<!--            android:elevation="1dp"-->
+<!--            android:fontFamily="sans-serif-medium"-->
+<!--            android:gravity="center"-->
+<!--            android:textColor="@color/orange"-->
+<!--            android:textSize="20dp"-->
+<!--            android:textStyle="bold" />-->
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="2dp"
-            android:layout_weight="1"
-            android:background="@color/gray2"
-            android:fontFamily="sans-serif-medium"
-            android:gravity="center"
-            android:textColor="@color/orange"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-    </LinearLayout>
+<!--        <TextView-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="2dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@color/gray2"-->
+<!--            android:fontFamily="sans-serif-medium"-->
+<!--            android:gravity="center"-->
+<!--            android:textColor="@color/orange"-->
+<!--            android:textSize="20dp"-->
+<!--            android:textStyle="bold" />-->
+<!--    </LinearLayout>-->
 
     <ScrollView
         android:layout_width="match_parent"
@@ -85,6 +85,7 @@
                 android:text=" Nama Pemilik"
                 />
             <EditText
+                android:id="@+id/namapemilik"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textSize="16dp"
@@ -98,6 +99,7 @@
                 android:text=" Email"
                 />
             <EditText
+                android:id="@+id/emailRegis"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textSize="16dp"
@@ -111,6 +113,7 @@
                 android:text=" Alamat"
                 />
             <EditText
+                android:id="@+id/alamatRegis"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textSize="16dp"
@@ -176,6 +179,7 @@
                 android:text=" Nomor yang dimasukan digunakan untuk login"
                 />
             <EditText
+                android:id="@+id/PhoneRegis"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textSize="16dp"
@@ -191,6 +195,7 @@
                 android:text=" Kode Referal Sales"
                 />
             <EditText
+                android:id="@+id/referalcodeRegis"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textSize="16dp"
@@ -198,10 +203,11 @@
                 />
 
             <Button
-                android:id="@+id/login_button"
+                android:id="@+id/Register_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="9dp"
+                android:onClick="Register"
                 android:background="@drawable/bg_button_login"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:text="Selanjutnya"

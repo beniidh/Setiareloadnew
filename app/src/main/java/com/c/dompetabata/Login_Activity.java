@@ -100,7 +100,7 @@ public class Login_Activity extends AppCompatActivity {
 //        };
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api-mobile-staging.abatapulsa.com/")
+                .baseUrl(Value.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -113,7 +113,7 @@ public class Login_Activity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Value> call, Response<Value> response) {
 
-                String code = response.body().getData().getName();
+                String code = response.body().getMessage();
                 Toast.makeText(getApplicationContext(),code,Toast.LENGTH_SHORT).show();
 
 
