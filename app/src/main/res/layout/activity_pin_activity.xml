@@ -52,7 +52,6 @@
         app:itemRadius="4dp"
         app:itemSpacing="4dp"
         app:itemWidth="48dp"
-
         app:lineWidth="2dp"
         app:viewType="rectangle"
         app:layout_constraintBottom_toTopOf="@+id/pinEditText"

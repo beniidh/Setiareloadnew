@@ -3,13 +3,16 @@ package com.c.dompetabata;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +39,7 @@ public class Login_Activity extends AppCompatActivity {
     TextView register;
     ImageView logologin;
     Mlogin coba;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,7 @@ public class Login_Activity extends AppCompatActivity {
         login_button = findViewById(R.id.login_button);
         register = findViewById(R.id.register);
         logologin = findViewById(R.id.logologin);
+        progressBar = findViewById(R.id.progressbutton);
         setLogologin();
 
 
@@ -65,6 +70,7 @@ public class Login_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 validation(numberphone.getText().toString());
+
             }
         });
     }
@@ -73,7 +79,18 @@ public class Login_Activity extends AppCompatActivity {
         if (number.isEmpty()) {
             StyleableToast.makeText(getApplicationContext(), "Nomor tidak boleh kosong", Toast.LENGTH_SHORT, R.style.mytoast).show();
         } else {
-            Login(number,"dedy123");
+            progressBar.setVisibility(View.VISIBLE);
+            login_button.setText("");
+            if(isOnline()){
+
+                Login(number,"rahasia123");
+            }else {
+                progressBar.setVisibility(View.INVISIBLE);
+                login_button.setText("Masuk");
+
+                StyleableToast.makeText(getApplicationContext(), "Periksa sambungan internet", Toast.LENGTH_SHORT, R.style.mytoast).show();
+            }
+
 //
 //            Intent optionOTP = new Intent(Login_Activity.this,OTPsend.class);
 //            startActivity(optionOTP);
@@ -112,20 +129,30 @@ public class Login_Activity extends AppCompatActivity {
         call.enqueue(new Callback<Value>() {
             @Override
             public void onResponse(Call<Value> call, Response<Value> response) {
+                progressBar.setVisibility(View.INVISIBLE);
+                login_button.setText("Masuk");
 
                 String code = response.body().getMessage();
-                Toast.makeText(getApplicationContext(),code,Toast.LENGTH_SHORT).show();
+                StyleableToast.makeText(getApplicationContext(),code,Toast.LENGTH_SHORT, R.style.mytoast).show();
 
 
             }
 
             @Override
             public void onFailure(Call<Value> call, Throwable t) {
+                progressBar.setVisibility(View.INVISIBLE);
+                login_button.setText("Masuk");
+                StyleableToast.makeText(getApplicationContext(),"Periksa Sambungan internet",Toast.LENGTH_SHORT, R.style.mytoast).show();
 
             }
         });
 
 
+    }
+
+    public boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnectedOrConnecting();
     }
 
 

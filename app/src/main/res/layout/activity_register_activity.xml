@@ -70,6 +70,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:scrollbars="none"
         android:layout_marginTop="18dp">
 
         <LinearLayout
@@ -81,6 +82,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
+                android:fontFamily="@font/poppinsbold"
                 android:textSize="14dp"
                 android:text=" Nama Pemilik"
                 />
@@ -88,12 +90,14 @@
                 android:id="@+id/namapemilik"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:fontFamily="@font/poppins"
                 android:textSize="16dp"
                 android:hint="Masukan Nama Pemilik "
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsbold"
                 android:textStyle="bold"
                 android:textSize="14dp"
                 android:text=" Email"
@@ -103,12 +107,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textSize="16dp"
+                android:fontFamily="@font/poppins"
                 android:hint="Masukan Email "
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
+                android:fontFamily="@font/poppinsbold"
                 android:textSize="14dp"
                 android:text=" Alamat"
                 />
@@ -117,6 +123,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textSize="16dp"
+                android:fontFamily="@font/poppins"
                 android:hint="Masukan Alamat "
                 />
             <TextView
@@ -124,12 +131,14 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:textSize="14dp"
+                android:fontFamily="@font/poppinsbold"
                 android:text=" Provinsi"
                 />
             <EditText
                 android:id="@+id/provinsi"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:fontFamily="@font/poppins"
                 android:textSize="16dp"
                 android:hint="Pilih Provinsi "
                 />
@@ -138,20 +147,24 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:textSize="14dp"
+                android:fontFamily="@font/poppinsbold"
                 android:text=" Kabupaten/Kota"
                 />
             <EditText
                 android:id="@+id/kabupaten"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:enabled="false"
                 android:textSize="16dp"
+                android:fontFamily="@font/poppins"
                 android:hint="Pilih Kabupaten / Kota "
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
+
                 android:textSize="14dp"
+                android:fontFamily="@font/poppinsbold"
                 android:text=" Kecamatan"
                 />
 
@@ -160,12 +173,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textSize="16dp"
+                android:enabled="false"
+                android:fontFamily="@font/poppins"
                 android:hint="Pilih Kecamatan "
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
+                android:fontFamily="@font/poppinsbold"
                 android:textSize="14dp"
                 android:text=" Nomor Hanphone"
                 />
@@ -173,6 +189,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
+                android:fontFamily="@font/poppins"
                 android:layout_marginTop="5dp"
                 android:textColor="@color/green"
                 android:textSize="14dp"
@@ -183,6 +200,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textSize="16dp"
+                android:inputType="number"
+                android:fontFamily="@font/poppins"
                 android:layout_marginTop="4dp"
                 android:hint="Masukan Nomor "
                 />
@@ -191,6 +210,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
+                android:fontFamily="@font/poppinsbold"
                 android:textSize="14dp"
                 android:text=" Kode Referal Sales"
                 />
@@ -199,22 +219,39 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textSize="16dp"
+                android:enabled="false"
+                android:fontFamily="@font/poppins"
                 android:hint="Masukan Kecamatan "
                 />
 
-            <Button
-                android:id="@+id/Register_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="9dp"
-                android:onClick="Register"
-                android:background="@drawable/bg_button_login"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:text="Selanjutnya"
-                android:textAllCaps="false"
-                android:textColor="@color/green"
-                android:textSize="20dp"
-               />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ProgressBar
+                    android:id="@+id/progressRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:visibility="gone"
+                    android:layout_marginTop="23dp"
+                    />
+
+                <Button
+                    android:id="@+id/Register_Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="19dp"
+                    android:fontFamily="@font/mukta"
+                    android:onClick="Register"
+                    android:background="@drawable/bg_button_login"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:text="Selanjutnya"
+                    android:textAllCaps="false"
+                    android:textColor="@color/green"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
 
 
 

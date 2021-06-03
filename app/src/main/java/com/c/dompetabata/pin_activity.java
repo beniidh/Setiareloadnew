@@ -58,4 +58,15 @@ public class pin_activity extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

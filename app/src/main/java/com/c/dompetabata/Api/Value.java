@@ -1,5 +1,8 @@
 package com.c.dompetabata.Api;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+
 import com.c.dompetabata.Model.Mlogin;
 import com.c.dompetabata.Model.data;
 
@@ -45,4 +48,6 @@ public class Value {
     public void setPassword(String password) {
         this.password = password;
     }
+
+
 }
