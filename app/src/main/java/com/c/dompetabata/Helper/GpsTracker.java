@@ -175,7 +175,7 @@ public class GpsTracker extends Service implements LocationListener {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(mContext);
 
         // Setting Dialog Title
-        alertDialog.setTitle("GPS is settings");
+        alertDialog.setTitle("Atur GPS");
 
         // Setting Dialog Message
         alertDialog.setMessage("GPS tidak hidup. Tolong hidupkan pada menu setting");

@@ -6,10 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,13 +38,14 @@ public class ModalProvinsi extends BottomSheetDialogFragment {
     RecyclerView recyclerViewP;
     AdapterProvinsi adapterProvinsi;
     ArrayList<ModelProvinsi> modelProvinsis = new ArrayList<>();
-    Button tutup,pilih;
+    Button tutup, pilih;
+    SearchView searchprovinsi;
     private BottomSheetListener bottomSheetListener;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.modal_layout_provinsi,container,false);
+        View v = inflater.inflate(R.layout.modal_layout_provinsi, container, false);
         recyclerViewP = v.findViewById(R.id.ReyProvinsi);
 
         adapterProvinsi = new AdapterProvinsi(getContext(), modelProvinsis);
@@ -64,22 +68,39 @@ public class ModalProvinsi extends BottomSheetDialogFragment {
         pilih.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                List<ModelProvinsi> nameid = adapterProvinsi.getModelProvinsiList();
-                int k;
-                String name="";
+                List<ModelProvinsi> modelProvinsis = adapterProvinsi.getModelProvinsiList();
+                String name = "";
                 String id = "";
-                for ( k=0; k<nameid.size(); k++){
-                    if (nameid.get(k).getaBoolean()==true){
+                for (ModelProvinsi item : modelProvinsis) {
+                    if (item.getPilih() == 1) {
+                        name = item.getName();
+                        id = item.getId();
 
-                        name = nameid.get(k).getName();
-                        id = nameid.get(k).getId();
                     }
+
 
                 }
 
-               bottomSheetListener.onButtonClick(name,id);
+
+                bottomSheetListener.onButtonClick(name, id);
+
 
                 dismiss();
+            }
+        });
+
+        searchprovinsi = v.findViewById(R.id.search_provinsi);
+        searchprovinsi.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                adapterProvinsi.getFilter().filter(newText);
+                return false;
             }
         });
 
@@ -89,7 +110,7 @@ public class ModalProvinsi extends BottomSheetDialogFragment {
 
     }
 
-    private void getProvinsi(){
+    private void getProvinsi() {
 
         Api api = RetroClient.getApiServices();
         Call<Respon> call = api.getAllProvinsi();
@@ -112,8 +133,8 @@ public class ModalProvinsi extends BottomSheetDialogFragment {
 
     }
 
-    public interface BottomSheetListener{
-        void onButtonClick(String name,String id);
+    public interface BottomSheetListener {
+        void onButtonClick(String name, String id);
     }
 
     @Override
@@ -121,8 +142,8 @@ public class ModalProvinsi extends BottomSheetDialogFragment {
         super.onAttach(context);
         try {
             bottomSheetListener = (BottomSheetListener) context;
-        } catch (ClassCastException e){
-            throw  new ClassCastException(context.toString()+"must implement bottomsheet Listener");
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString() + "must implement bottomsheet Listener");
         }
     }
 }

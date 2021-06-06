@@ -13,6 +13,7 @@ import com.c.dompetabata.Api.Api;
 import com.c.dompetabata.Api.Value;
 import com.c.dompetabata.Modal.OTPinsert;
 import com.c.dompetabata.Model.MRegisData;
+import com.c.dompetabata.sharePreference.Preference;
 import com.muddzdev.styleabletoast.StyleableToast;
 
 import retrofit2.Call;
@@ -44,12 +45,13 @@ Button sendEmail;
 
     public void intentOTP(){
 
-        Bundle ekstra =getIntent().getExtras();
 
-        String user_id =ekstra.getString("user_id");
-        String user_code =ekstra.getString("user_code");
-        String phone = ekstra.getString("phone");
-        String otp_id =ekstra.getString("otp_id");
+        Preference.getSharedPreference(getBaseContext());
+        String user_id =Preference.getKeyUserId(getBaseContext());
+        String user_code =Preference.getKeyUserCode(getBaseContext());
+        String phone =   Preference.getKeyPhone(getBaseContext());
+        String otp_id =Preference.getKeyOtpId(getBaseContext());
+
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Value.BASE_URL)
@@ -63,12 +65,11 @@ Button sendEmail;
             public void onResponse(Call<MRegisData> call, Response<MRegisData> response) {
                 String code = response.body().getCode();
                 if(code.equals("200")){
-                    StyleableToast.makeText(getApplicationContext(),"OTP telah dikirim", Toast.LENGTH_SHORT).show();
-                    StyleableToast.makeText(getApplicationContext(),ekstra.getString("user_id"), Toast.LENGTH_SHORT).show();
-                    StyleableToast.makeText(getApplicationContext(),ekstra.getString("otp_id"), Toast.LENGTH_SHORT).show();
+                    StyleableToast.makeText(getApplicationContext(),"OTP Telah dikirim", Toast.LENGTH_SHORT, R.style.mytoast).show();
+
                 }else {
 
-                    StyleableToast.makeText(getApplicationContext(),"Belum dikirim", Toast.LENGTH_SHORT).show();
+                    StyleableToast.makeText(getApplicationContext(),"Belum dikirim", Toast.LENGTH_SHORT, R.style.mytoast).show();
                 }
 
             }

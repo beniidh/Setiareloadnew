@@ -3,6 +3,8 @@ package com.c.dompetabata.Api;
 import android.renderscript.Sampler;
 
 import com.c.dompetabata.Helper.Respon;
+import com.c.dompetabata.Helper.ResponK;
+import com.c.dompetabata.Helper.ResponKe;
 import com.c.dompetabata.Model.MOtpVerif;
 import com.c.dompetabata.Model.MRegisData;
 import com.c.dompetabata.Model.MRegister;
@@ -43,9 +45,23 @@ public interface Api {
     Call<MOtpVerif> verifOTP(@Body MOtpVerif mOtpVerif);
 
     @Multipart
+    @POST("ekyc-idcard")
+    Call<Responphoto> uploadImage(@Part MultipartBody.Part image,@Part("id") RequestBody id);
+
+    @Multipart
+    @POST("ekyc-selfie")
+    Call<Responphoto> uploadImageDiri(@Part MultipartBody.Part image,@Part("id") RequestBody id);
+
+    @Multipart
     @POST("ekyc-idcardselfie")
-    Call<Responphoto> uploadImage(@PartMap Map<String, RequestBody> map);
+    Call<Responphoto> uploadImageDiridanKTP(@Part MultipartBody.Part image,@Part("id") RequestBody id);
 
     @GET("all-province?next=39")
     Call<Respon> getAllProvinsi();
+
+    @GET("all-regencies")
+    Call<ResponK> getAllKabupaten();
+
+    @GET("all-districts")
+    Call<ResponKe> getAllKecamatan();
 }

@@ -6,29 +6,34 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.c.dompetabata.Model.ModelKabupaten;
 import com.c.dompetabata.Model.ModelProvinsi;
 import com.c.dompetabata.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdapterKabupaten extends RecyclerView.Adapter<AdapterKabupaten.ViewHolder> {
+public class AdapterKabupaten extends RecyclerView.Adapter<AdapterKabupaten.ViewHolder> implements Filterable {
 
     private Context context;
-    private List<ModelProvinsi> modelProvinsiList;
+    private List<ModelKabupaten> modelKabupatens;
+    private List<ModelKabupaten> modelKabupatensFull;
     private int selectedPosition = 0;
     private ArrayList<Integer> selectCheck = new ArrayList<>();
 
-    public AdapterKabupaten(Context context, List<ModelProvinsi> modelProvinsiList) {
+    public AdapterKabupaten(Context context, List<ModelKabupaten> modelKabupatens) {
         this.context = context;
-        this.modelProvinsiList = modelProvinsiList;
+        this.modelKabupatens = modelKabupatens;
+        modelKabupatensFull = new ArrayList<>(modelKabupatens);
 
-        for (int i = 0; i < modelProvinsiList.size(); i++) {
+        for (int i = 0; i < modelKabupatens.size(); i++) {
             selectCheck.add(0);
         }
     }
@@ -46,8 +51,9 @@ public class AdapterKabupaten extends RecyclerView.Adapter<AdapterKabupaten.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        ModelProvinsi modelProvinsi = modelProvinsiList.get(position);
-        holder.name.setText(modelProvinsi.getName());
+        ModelKabupaten modelKabupaten = modelKabupatens.get(position);
+        holder.name.setText(modelKabupaten.getName());
+
 
         if (selectCheck.get(position) == 1) {
             holder.chekP.setChecked(true);
@@ -74,7 +80,7 @@ public class AdapterKabupaten extends RecyclerView.Adapter<AdapterKabupaten.View
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                 if(isChecked==true){
-                   modelProvinsi.setaBoolean(true);
+                    modelKabupatens.get(holder.getAdapterPosition()).setPilihan(true);
                 }
             }
         });
@@ -83,8 +89,47 @@ public class AdapterKabupaten extends RecyclerView.Adapter<AdapterKabupaten.View
 
     @Override
     public int getItemCount() {
-        return modelProvinsiList.size();
+        return modelKabupatens.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return getFilterKabupaten;
+    }
+
+    private Filter getFilterKabupaten = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<ModelKabupaten> filterList = new ArrayList<>();
+
+            if(constraint == null || constraint.length() == 0){
+                filterList.addAll(modelKabupatensFull);
+
+            }else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for(ModelKabupaten item : modelKabupatensFull){
+                    if(item.getName().toLowerCase().contains(filterPattern)){
+                        filterList.add(item);
+
+                    }
+                }
+
+            }
+            FilterResults results = new FilterResults();
+            results.values = filterList;
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+
+            modelKabupatens.clear();
+            modelKabupatens.addAll((List)results.values);
+            notifyDataSetChanged();
+
+        }
+    };
 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -99,7 +144,7 @@ public class AdapterKabupaten extends RecyclerView.Adapter<AdapterKabupaten.View
         }
     }
 
-    public  List<ModelProvinsi> getModelProvinsiList() {
-        return modelProvinsiList;
+    public List<ModelKabupaten> getModelKabupatens() {
+        return modelKabupatens;
     }
 }

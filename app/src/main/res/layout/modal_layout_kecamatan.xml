@@ -22,9 +22,10 @@
         android:layout_marginTop="15dp"
         android:layout_marginBottom="20dp"
         />
-    <EditText
+    <SearchView
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:id="@+id/search_kecamatan"
         android:elevation="1dp"
         android:paddingStart="5dp"
         android:hint="Cari Kecamatan"
@@ -35,7 +36,7 @@
         android:id="@+id/ReyKecamatan"
         android:layout_width="match_parent"
         tools:listitem="@layout/list"
-        android:layout_height="220dp"
+        android:layout_height="250dp"
         android:layout_marginTop="16dp"/>
 
     <LinearLayout
@@ -45,6 +46,7 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/tutupKe"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
@@ -54,6 +56,7 @@
             />
 
         <Button
+            android:id="@+id/pilihKe"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"

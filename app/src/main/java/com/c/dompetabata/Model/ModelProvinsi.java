@@ -3,14 +3,14 @@ package com.c.dompetabata.Model;
 public class ModelProvinsi {
     String id,name,status,location_id;
 
-    Boolean aBoolean = false;
+    int pilih = 0;
 
-    public Boolean getaBoolean() {
-        return aBoolean;
+    public int getPilih() {
+        return pilih;
     }
 
-    public void setaBoolean(Boolean aBoolean) {
-        this.aBoolean = aBoolean;
+    public void setPilih(int pilih) {
+        this.pilih = pilih;
     }
 
     public String getId() {

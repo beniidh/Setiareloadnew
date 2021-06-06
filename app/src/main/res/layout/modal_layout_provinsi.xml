@@ -22,12 +22,13 @@
         android:layout_marginTop="15dp"
         android:layout_marginBottom="20dp"
         />
-    <EditText
+    <SearchView
+        android:id="@+id/search_provinsi"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:elevation="1dp"
         android:paddingStart="5dp"
-        android:hint="Cari Provinsi"
+       android:queryHint="Cari Provinsi"
         android:background="@drawable/bg_search_modal"
         />
 
@@ -35,7 +36,7 @@
         android:id="@+id/ReyProvinsi"
         tools:listitem="@layout/list"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="250dp"
         android:layout_marginTop="16dp"/>
 
     <LinearLayout

@@ -22,7 +22,8 @@
         android:layout_marginTop="15dp"
         android:layout_marginBottom="20dp"
         />
-    <EditText
+    <SearchView
+        android:id="@+id/search_kabupaten"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:elevation="1dp"
@@ -34,7 +35,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ReyKabupaten"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="250dp"
         tools:listitem="@layout/list"
         android:layout_marginTop="16dp"/>
 
@@ -45,6 +46,7 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/tutupK"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
@@ -54,6 +56,7 @@
             />
 
         <Button
+            android:id="@+id/pilihK"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"

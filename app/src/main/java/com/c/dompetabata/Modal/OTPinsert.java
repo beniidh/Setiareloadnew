@@ -62,9 +62,8 @@ public class OTPinsert extends AppCompatActivity {
                                 StyleableToast.makeText(getApplicationContext(),"Berhasil", Toast.LENGTH_SHORT, R.style.mytoast).show();
                             }else {
 
-                                StyleableToast.makeText(getApplicationContext(),code, Toast.LENGTH_SHORT, R.style.mytoast).show();
-                                StyleableToast.makeText(getApplicationContext(),ekstra.getString("user_id"), Toast.LENGTH_SHORT).show();
-                                StyleableToast.makeText(getApplicationContext(),ekstra.getString("otp_id"), Toast.LENGTH_SHORT).show();
+                                StyleableToast.makeText(getApplicationContext(),"OTP Salah", Toast.LENGTH_SHORT, R.style.mytoast).show();
+
                             }
                         }
 

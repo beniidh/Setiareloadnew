@@ -32,10 +32,6 @@ public class syaratdanketentuan_activity extends AppCompatActivity {
     public void SendOTP(View view){
         Bundle ekstra =getIntent().getExtras();
         Intent intent = new Intent(syaratdanketentuan_activity.this,OTPsend.class);
-        intent.putExtra("user_id",ekstra.getString("user_id"));
-        intent.putExtra("user_code",ekstra.getString("user_code"));
-        intent.putExtra("phone",ekstra.getString("phone"));
-        intent.putExtra("otp_id",ekstra.getString("otp_id"));
         startActivity(intent);
     }
 }

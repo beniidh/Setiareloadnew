@@ -1,14 +1,19 @@
 package com.c.dompetabata.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.c.dompetabata.Model.ModelProvinsi;
@@ -17,16 +22,20 @@ import com.c.dompetabata.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdapterProvinsi extends RecyclerView.Adapter<AdapterProvinsi.ViewHolder> {
+public class AdapterProvinsi extends RecyclerView.Adapter<AdapterProvinsi.ViewHolder> implements Filterable {
 
     private Context context;
     private List<ModelProvinsi> modelProvinsiList;
+    private List<ModelProvinsi> modelProvinsisfull;
     private int selectedPosition = 0;
     private ArrayList<Integer> selectCheck = new ArrayList<>();
+
+
 
     public AdapterProvinsi(Context context, List<ModelProvinsi> modelProvinsiList) {
         this.context = context;
         this.modelProvinsiList = modelProvinsiList;
+        modelProvinsisfull = new ArrayList<>(modelProvinsiList);
 
         for (int i = 0; i < modelProvinsiList.size(); i++) {
             selectCheck.add(0);
@@ -46,8 +55,6 @@ public class AdapterProvinsi extends RecyclerView.Adapter<AdapterProvinsi.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        ModelProvinsi modelProvinsi = modelProvinsiList.get(position);
-        holder.name.setText(modelProvinsi.getName());
 
         if (selectCheck.get(position) == 1) {
             holder.chekP.setChecked(true);
@@ -55,9 +62,11 @@ public class AdapterProvinsi extends RecyclerView.Adapter<AdapterProvinsi.ViewHo
             holder.chekP.setChecked(false);
         }
 
+
         holder.chekP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 for(int k=0; k<selectCheck.size(); k++) {
                     if(k==position) {
                         selectCheck.set(k,1);
@@ -67,14 +76,46 @@ public class AdapterProvinsi extends RecyclerView.Adapter<AdapterProvinsi.ViewHo
                 }
                 notifyDataSetChanged();
 
+
             }
+
         });
+
+
+        ModelProvinsi modelProvinsi = modelProvinsiList.get(position);
+        holder.name.setText(modelProvinsi.getName());
+
+
+
+
+
+//        if(selectedPosition == position){
+//
+//            holder.chekP.setChecked(true);
+//
+//        }else{
+//
+//            holder.chekP.setChecked(false);
+//        }
+
+
         holder.chekP.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                if(isChecked==true){
-                   modelProvinsi.setaBoolean(true);
+
+                if (isChecked ) {
+                    modelProvinsiList.get(holder.getAdapterPosition()).setPilih(1);
+
+//                    String name = modelProvinsiList.get(holder.getAdapterPosition()).getName();
+//                    String id = modelProvinsi.getId();
+//                    modelProvinsi.setPilih(1);
+//                    Toast.makeText(context,name,Toast.LENGTH_SHORT).show();
+
+                } else {
+
+
+
                 }
             }
         });
@@ -86,10 +127,49 @@ public class AdapterProvinsi extends RecyclerView.Adapter<AdapterProvinsi.ViewHo
         return modelProvinsiList.size();
     }
 
+    @Override
+    public Filter getFilter() {
+        return getFilterable;
+    }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-     TextView name;
-     CheckBox chekP;
+    private Filter getFilterable = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<ModelProvinsi> filterList = new ArrayList<>();
+
+            if (constraint == null || constraint.length() == 0) {
+                filterList.addAll(modelProvinsisfull);
+
+            } else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for (ModelProvinsi item : modelProvinsisfull) {
+                    if (item.getName().toLowerCase().contains(filterPattern)) {
+                        filterList.add(item);
+
+                    }
+                }
+
+            }
+            FilterResults results = new FilterResults();
+            results.values = filterList;
+
+            return results;
+
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            modelProvinsiList.clear();
+            modelProvinsiList.addAll((List) results.values);
+            notifyDataSetChanged();
+
+        }
+    };
+
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        TextView name;
+        CheckBox chekP;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -99,7 +179,7 @@ public class AdapterProvinsi extends RecyclerView.Adapter<AdapterProvinsi.ViewHo
         }
     }
 
-    public  List<ModelProvinsi> getModelProvinsiList() {
+    public List<ModelProvinsi> getModelProvinsiList() {
         return modelProvinsiList;
     }
 }

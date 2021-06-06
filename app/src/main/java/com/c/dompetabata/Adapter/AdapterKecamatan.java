@@ -6,29 +6,36 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.c.dompetabata.Modal.ModalKecamatan;
+import com.c.dompetabata.Model.ModelKabupaten;
+import com.c.dompetabata.Model.ModelKecamatan;
 import com.c.dompetabata.Model.ModelProvinsi;
 import com.c.dompetabata.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdapterKecamatan extends RecyclerView.Adapter<AdapterKecamatan.ViewHolder> {
+public class AdapterKecamatan extends RecyclerView.Adapter<AdapterKecamatan.ViewHolder> implements Filterable {
 
     private Context context;
-    private List<ModelProvinsi> modelProvinsiList;
+    private List<ModelKecamatan> modelKecamatanList;
+    private List<ModelKecamatan> modelKecamatanListFull;
     private int selectedPosition = 0;
     private ArrayList<Integer> selectCheck = new ArrayList<>();
 
-    public AdapterKecamatan(Context context, List<ModelProvinsi> modelProvinsiList) {
+    public AdapterKecamatan(Context context, List<ModelKecamatan> modelKecamatanList) {
         this.context = context;
-        this.modelProvinsiList = modelProvinsiList;
+        this.modelKecamatanList = modelKecamatanList;
+        modelKecamatanListFull = new ArrayList<>(modelKecamatanList);
 
-        for (int i = 0; i < modelProvinsiList.size(); i++) {
+        for (int i = 0; i < modelKecamatanList.size(); i++) {
             selectCheck.add(0);
         }
     }
@@ -46,8 +53,8 @@ public class AdapterKecamatan extends RecyclerView.Adapter<AdapterKecamatan.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        ModelProvinsi modelProvinsi = modelProvinsiList.get(position);
-        holder.name.setText(modelProvinsi.getName());
+        ModelKecamatan modalKecamatan = modelKecamatanList.get(position);
+        holder.name.setText(modalKecamatan.getName());
 
         if (selectCheck.get(position) == 1) {
             holder.chekP.setChecked(true);
@@ -74,7 +81,7 @@ public class AdapterKecamatan extends RecyclerView.Adapter<AdapterKecamatan.View
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                 if(isChecked==true){
-                   modelProvinsi.setaBoolean(true);
+                    modelKecamatanList.get(holder.getAdapterPosition()).setPilihan(true);
                 }
             }
         });
@@ -83,8 +90,47 @@ public class AdapterKecamatan extends RecyclerView.Adapter<AdapterKecamatan.View
 
     @Override
     public int getItemCount() {
-        return modelProvinsiList.size();
+        return modelKecamatanList.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return getFilterKecamatan;
+    }
+
+    private Filter getFilterKecamatan = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<ModelKecamatan> filterList = new ArrayList<>();
+
+            if(constraint == null || constraint.length() == 0){
+                filterList.addAll(modelKecamatanListFull);
+
+            }else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for(ModelKecamatan item : modelKecamatanListFull){
+                    if(item.getName().toLowerCase().contains(filterPattern)){
+                        filterList.add(item);
+
+                    }
+                }
+
+            }
+            FilterResults results = new FilterResults();
+            results.values = filterList;
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+
+            modelKecamatanList.clear();
+            modelKecamatanList.addAll((List)results.values);
+            notifyDataSetChanged();
+
+        }
+    };
 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -99,7 +145,7 @@ public class AdapterKecamatan extends RecyclerView.Adapter<AdapterKecamatan.View
         }
     }
 
-    public  List<ModelProvinsi> getModelProvinsiList() {
-        return modelProvinsiList;
+    public List<ModelKecamatan> getModelKecamatanList() {
+        return modelKecamatanList;
     }
 }
