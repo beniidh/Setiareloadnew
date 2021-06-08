@@ -2,6 +2,7 @@ package com.c.dompetabata.Modal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 
 import com.c.dompetabata.Api.Api;
 import com.c.dompetabata.Api.Value;
+import com.c.dompetabata.MainActivity;
 import com.c.dompetabata.Model.MOtpVerif;
 import com.c.dompetabata.R;
 import com.chaos.view.PinView;
@@ -60,6 +62,12 @@ public class OTPinsert extends AppCompatActivity {
                             String code = response.body().getCode();
                             if(code.equals("200")){
                                 StyleableToast.makeText(getApplicationContext(),"Berhasil", Toast.LENGTH_SHORT, R.style.mytoast).show();
+                                Intent intent = new Intent(OTPinsert.this, MainActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|
+                                        Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                                        Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+
                             }else {
 
                                 StyleableToast.makeText(getApplicationContext(),"OTP Salah", Toast.LENGTH_SHORT, R.style.mytoast).show();

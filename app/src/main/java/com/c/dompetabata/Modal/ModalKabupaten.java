@@ -22,6 +22,7 @@ import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.Model.ModelKabupaten;
 
 import com.c.dompetabata.R;
+import com.c.dompetabata.sharePreference.Preference;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.ArrayList;
@@ -59,6 +60,13 @@ public class ModalKabupaten extends BottomSheetDialogFragment {
 
         getKabupaten();
 
+        searchView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchView.onActionViewExpanded();
+            }
+        });
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -83,18 +91,10 @@ public class ModalKabupaten extends BottomSheetDialogFragment {
         pilih.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                List<ModelKabupaten> nameid = adapterKabupaten.getModelKabupatens();
-                int k;
-                String name="";
-                String id = "";
-                for ( k=0; k<nameid.size(); k++){
-                    if (nameid.get(k).getPilihan()==true){
 
-                        name = nameid.get(k).getName();
-                        id = nameid.get(k).getId();
-                    }
 
-                }
+              String id =  Preference.getID(getContext());
+               String name = Preference.getName(getContext());
 
                 bottomSheetListenerKabupaten.onButtonClickKabupaten(name,id);
                 dismiss();
@@ -106,8 +106,10 @@ public class ModalKabupaten extends BottomSheetDialogFragment {
 
     private void getKabupaten() {
 
+        long id = Long.valueOf(Preference.getIDProvinsi(getContext()));
+
         Api api = RetroClient.getApiServices();
-        Call<ResponK> call = api.getAllKabupaten();
+        Call<ResponK> call = api.getAllKabupaten(id);
       call.enqueue(new Callback<ResponK>() {
           @Override
           public void onResponse(Call<ResponK> call, Response<ResponK> response) {

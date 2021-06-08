@@ -94,6 +94,23 @@
                 android:textSize="16dp"
                 android:hint="Masukan Nama Pemilik "
                 />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppinsbold"
+                android:textSize="14dp"
+                android:text=" Nama Konter"
+                />
+            <EditText
+                android:id="@+id/namakonter"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:fontFamily="@font/poppins"
+                android:textSize="16dp"
+                android:hint="Masukan Nama Pemilik "
+                />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -161,7 +178,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:textSize="14dp"
                 android:fontFamily="@font/poppinsbold"
                 android:text=" Kecamatan"
@@ -174,6 +190,39 @@
                 android:textSize="16dp"
                 android:fontFamily="@font/poppins"
                 android:hint="Pilih Kecamatan "
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text=" Kelurahan"
+                />
+
+            <EditText
+                android:id="@+id/kelurahan"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textSize="16dp"
+                android:fontFamily="@font/poppins"
+                android:hint="Pilih Kelurahan "
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text=" Kode Pos"
+                />
+
+            <EditText
+                android:id="@+id/postCode"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textSize="16dp"
+                android:fontFamily="@font/poppins"
+                android:hint="Pilih Kode Pos "
                 />
             <TextView
                 android:layout_width="wrap_content"

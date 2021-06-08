@@ -18,6 +18,7 @@ import com.c.dompetabata.Model.ModelKabupaten;
 import com.c.dompetabata.Model.ModelKecamatan;
 import com.c.dompetabata.Model.ModelProvinsi;
 import com.c.dompetabata.R;
+import com.c.dompetabata.sharePreference.Preference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,6 +74,11 @@ public class AdapterKecamatan extends RecyclerView.Adapter<AdapterKecamatan.View
                     }
                 }
                 notifyDataSetChanged();
+
+                Preference.getSharedPreference(context);
+                Preference.setName(context,modalKecamatan.getName());
+                Preference.setID(context,modalKecamatan.getId());
+                Preference.setIDKecamatan(context,modalKecamatan.getId());
 
             }
         });

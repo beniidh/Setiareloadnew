@@ -23,6 +23,7 @@ import com.c.dompetabata.Helper.Respon;
 import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.Model.ModelProvinsi;
 import com.c.dompetabata.R;
+import com.c.dompetabata.sharePreference.Preference;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
@@ -68,28 +69,22 @@ public class ModalProvinsi extends BottomSheetDialogFragment {
         pilih.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                List<ModelProvinsi> modelProvinsis = adapterProvinsi.getModelProvinsiList();
-                String name = "";
-                String id = "";
-                for (ModelProvinsi item : modelProvinsis) {
-                    if (item.getPilih() == 1) {
-                        name = item.getName();
-                        id = item.getId();
-
-                    }
-
-
-                }
-
+                String id =  Preference.getID(getContext());
+                String name = Preference.getName(getContext());
 
                 bottomSheetListener.onButtonClick(name, id);
-
 
                 dismiss();
             }
         });
 
         searchprovinsi = v.findViewById(R.id.search_provinsi);
+        searchprovinsi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchprovinsi.onActionViewExpanded();
+            }
+        });
         searchprovinsi.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {

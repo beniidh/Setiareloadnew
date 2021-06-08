@@ -1,7 +1,6 @@
 package com.c.dompetabata.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +9,12 @@ import android.widget.CompoundButton;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.c.dompetabata.Modal.ModalKelurahan;
+import com.c.dompetabata.Model.ModelKelurahan;
 import com.c.dompetabata.Model.ModelProvinsi;
 import com.c.dompetabata.R;
 import com.c.dompetabata.sharePreference.Preference;
@@ -23,22 +22,22 @@ import com.c.dompetabata.sharePreference.Preference;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdapterProvinsi extends RecyclerView.Adapter<AdapterProvinsi.ViewHolder> implements Filterable {
+public class AdapterKelurahan extends RecyclerView.Adapter<AdapterKelurahan.ViewHolder> implements Filterable {
 
     private Context context;
-    private List<ModelProvinsi> modelProvinsiList;
-    private List<ModelProvinsi> modelProvinsisfull;
+    private List<ModelKelurahan> modelKelurahans;
+    private List<ModelKelurahan> modelKelurahansfull;
     private int selectedPosition = 0;
     private ArrayList<Integer> selectCheck = new ArrayList<>();
 
 
 
-    public AdapterProvinsi(Context context, List<ModelProvinsi> modelProvinsiList) {
+    public AdapterKelurahan(Context context, List<ModelKelurahan> modelKelurahans) {
         this.context = context;
-        this.modelProvinsiList = modelProvinsiList;
-        modelProvinsisfull = new ArrayList<>(modelProvinsiList);
+        this.modelKelurahans = modelKelurahans;
+        modelKelurahansfull = new ArrayList<>(modelKelurahans);
 
-        for (int i = 0; i < modelProvinsiList.size(); i++) {
+        for (int i = 0; i < modelKelurahans.size(); i++) {
             selectCheck.add(0);
         }
     }
@@ -57,14 +56,17 @@ public class AdapterProvinsi extends RecyclerView.Adapter<AdapterProvinsi.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
 
+        ModelKelurahan modelKelurahan = modelKelurahans.get(position);
+        holder.name.setText(modelKelurahan.getName());
+
+
         if (selectCheck.get(position) == 1) {
             holder.chekP.setChecked(true);
         } else {
             holder.chekP.setChecked(false);
         }
 
-        ModelProvinsi modelProvinsi = modelProvinsiList.get(position);
-        holder.name.setText(modelProvinsi.getName());
+
         holder.chekP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,10 +79,11 @@ public class AdapterProvinsi extends RecyclerView.Adapter<AdapterProvinsi.ViewHo
                     }
                 }
                 notifyDataSetChanged();
+
                 Preference.getSharedPreference(context);
-                Preference.setName(context,modelProvinsi.getName());
-                Preference.setID(context,modelProvinsi.getId());
-                Preference.setIDProvinsi(context,modelProvinsi.getId());
+                Preference.setName(context,modelKelurahan.getName());
+                Preference.setID(context,modelKelurahan.getId());
+                Preference.setIDKelurahan(context,modelKelurahan.getId());
 
 
             }
@@ -90,12 +93,11 @@ public class AdapterProvinsi extends RecyclerView.Adapter<AdapterProvinsi.ViewHo
 
 
 
-
     }
 
     @Override
     public int getItemCount() {
-        return modelProvinsiList.size();
+        return modelKelurahans.size();
     }
 
     @Override
@@ -106,14 +108,14 @@ public class AdapterProvinsi extends RecyclerView.Adapter<AdapterProvinsi.ViewHo
     private Filter getFilterable = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
-            List<ModelProvinsi> filterList = new ArrayList<>();
+            List<ModelKelurahan> filterList = new ArrayList<>();
 
             if (constraint == null || constraint.length() == 0) {
-                filterList.addAll(modelProvinsisfull);
+                filterList.addAll(modelKelurahansfull);
 
             } else {
                 String filterPattern = constraint.toString().toLowerCase().trim();
-                for (ModelProvinsi item : modelProvinsisfull) {
+                for (ModelKelurahan item : modelKelurahansfull) {
                     if (item.getName().toLowerCase().contains(filterPattern)) {
                         filterList.add(item);
 
@@ -130,8 +132,8 @@ public class AdapterProvinsi extends RecyclerView.Adapter<AdapterProvinsi.ViewHo
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-            modelProvinsiList.clear();
-            modelProvinsiList.addAll((List) results.values);
+            modelKelurahans.clear();
+            modelKelurahans.addAll((List) results.values);
             notifyDataSetChanged();
 
         }
@@ -150,7 +152,5 @@ public class AdapterProvinsi extends RecyclerView.Adapter<AdapterProvinsi.ViewHo
         }
     }
 
-    public List<ModelProvinsi> getModelProvinsiList() {
-        return modelProvinsiList;
-    }
+
 }

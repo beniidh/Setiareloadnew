@@ -14,13 +14,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.c.dompetabata.Adapter.AdapterKabupaten;
-import com.c.dompetabata.Adapter.AdapterKecamatan;
+import com.c.dompetabata.Adapter.AdapterKelurahan;
 import com.c.dompetabata.Api.Api;
 import com.c.dompetabata.Helper.ResponK;
-import com.c.dompetabata.Helper.ResponKe;
+import com.c.dompetabata.Helper.Responkel;
 import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.Model.ModelKabupaten;
-import com.c.dompetabata.Model.ModelKecamatan;
+import com.c.dompetabata.Model.ModelKelurahan;
 import com.c.dompetabata.R;
 import com.c.dompetabata.sharePreference.Preference;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
@@ -32,39 +32,41 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ModalKecamatan extends BottomSheetDialogFragment {
+public class ModalKelurahan extends BottomSheetDialogFragment {
 
 
-    RecyclerView recyclerViewKe;
-    AdapterKecamatan adapterKecamatan;
-    ArrayList<ModelKecamatan> modelKecamatans = new ArrayList<>();
+    RecyclerView recyclerViewKel;
+    AdapterKelurahan adapterKelurahan;
+    ArrayList<ModelKelurahan> modelKelurahans = new ArrayList<>();
     Button tutup, pilih;
-    private BottomSheetListenerKecamatan bottomSheetListenerKecamatan;
-    SearchView searchViewKe;
+    private BottomSheetListenerKelurahan bottomSheetListenerKelurahan;
+    SearchView searchView;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.modal_layout_kecamatan,container,false);
+        View v = inflater.inflate(R.layout.modal_layout_kelurahan, container, false);
 
-        recyclerViewKe = v.findViewById(R.id.ReyKecamatan);
-        tutup = v.findViewById(R.id.tutupKe);
-        pilih = v.findViewById(R.id.pilihKe);
+        recyclerViewKel = v.findViewById(R.id.ReyKelurahan);
+        tutup = v.findViewById(R.id.tutupKel);
+        pilih = v.findViewById(R.id.pilihKel);
+        searchView = v.findViewById(R.id.search_kelurahan);
 
-        adapterKecamatan = new AdapterKecamatan(getContext(), modelKecamatans);
+
+        adapterKelurahan = new AdapterKelurahan(getContext(), modelKelurahans);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
-        recyclerViewKe.setLayoutManager(mLayoutManager);
-        recyclerViewKe.setAdapter(adapterKecamatan);
+        recyclerViewKel.setLayoutManager(mLayoutManager);
+        recyclerViewKel.setAdapter(adapterKelurahan);
+        getKelurahan();
 
-        searchViewKe = v.findViewById(R.id.search_kecamatan);
-
-        searchViewKe.setOnClickListener(new View.OnClickListener() {
+        searchView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                searchViewKe.onActionViewExpanded();
+                searchView.onActionViewExpanded();
             }
         });
-        searchViewKe.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 return false;
@@ -73,11 +75,10 @@ public class ModalKecamatan extends BottomSheetDialogFragment {
             @Override
             public boolean onQueryTextChange(String newText) {
 
-                adapterKecamatan.getFilter().filter(newText);
+                adapterKelurahan.getFilter().filter(newText);
                 return false;
             }
         });
-
 
         tutup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,51 +94,51 @@ public class ModalKecamatan extends BottomSheetDialogFragment {
                 String id =  Preference.getID(getContext());
                 String name = Preference.getName(getContext());
 
-                bottomSheetListenerKecamatan.onButtonClickKecamatan(name,id);
+                bottomSheetListenerKelurahan.onButtonClickKelurahan(name, id);
                 dismiss();
             }
         });
 
-
-        getKecamatan();
         return v;
-
     }
 
-    private void getKecamatan() {
+    private void getKelurahan() {
 
-        long id = Long.valueOf(Preference.getIDKabupaten(getContext()));
+        long id = Long.valueOf(Preference.getIDKecamatan(getContext()));
 
         Api api = RetroClient.getApiServices();
-        Call<ResponKe> call = api.getAllKecamatan(id);
-        call.enqueue(new Callback<ResponKe>() {
+        Call<Responkel> call = api.getAllKelurahan(id);
+        call.enqueue(new Callback<Responkel>() {
             @Override
-            public void onResponse(Call<ResponKe> call, Response<ResponKe> response) {
+            public void onResponse(Call<Responkel> call, Response<Responkel> response) {
 
-                modelKecamatans = (ArrayList<ModelKecamatan>) response.body().getData();
-                adapterKecamatan = new AdapterKecamatan(getContext(), modelKecamatans);
-                recyclerViewKe.setAdapter(adapterKecamatan);
-
+                modelKelurahans = (ArrayList<ModelKelurahan>) response.body().getData();
+                adapterKelurahan = new AdapterKelurahan(getContext(), modelKelurahans);
+                recyclerViewKel.setAdapter(adapterKelurahan);
             }
 
             @Override
-            public void onFailure(Call<ResponKe> call, Throwable t) {
+            public void onFailure(Call<Responkel> call, Throwable t) {
 
             }
+
+
         });
+
     }
 
-    public interface BottomSheetListenerKecamatan {
-        void onButtonClickKecamatan(String name, String id);
+    public interface BottomSheetListenerKelurahan {
+        void onButtonClickKelurahan(String name, String id);
     }
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         try {
-            bottomSheetListenerKecamatan = (ModalKecamatan.BottomSheetListenerKecamatan) context;
+            bottomSheetListenerKelurahan = (BottomSheetListenerKelurahan) context;
         } catch (ClassCastException e) {
             throw new ClassCastException(context.toString() + "must implement bottomsheet Listener");
         }
     }
+
 }

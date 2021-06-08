@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.c.dompetabata.Model.ModelKabupaten;
 import com.c.dompetabata.Model.ModelProvinsi;
 import com.c.dompetabata.R;
+import com.c.dompetabata.sharePreference.Preference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,6 +65,9 @@ public class AdapterKabupaten extends RecyclerView.Adapter<AdapterKabupaten.View
         holder.chekP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
                 for(int k=0; k<selectCheck.size(); k++) {
                     if(k==position) {
                         selectCheck.set(k,1);
@@ -72,7 +76,10 @@ public class AdapterKabupaten extends RecyclerView.Adapter<AdapterKabupaten.View
                     }
                 }
                 notifyDataSetChanged();
-
+                Preference.getSharedPreference(context);
+                Preference.setName(context,modelKabupaten.getName());
+                Preference.setID(context,modelKabupaten.getId());
+                Preference.setIDKabupaten(context,modelKabupaten.getId());
             }
         });
         holder.chekP.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

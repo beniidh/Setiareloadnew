@@ -5,6 +5,8 @@ import android.renderscript.Sampler;
 import com.c.dompetabata.Helper.Respon;
 import com.c.dompetabata.Helper.ResponK;
 import com.c.dompetabata.Helper.ResponKe;
+import com.c.dompetabata.Helper.ResponPost;
+import com.c.dompetabata.Helper.Responkel;
 import com.c.dompetabata.Model.MOtpVerif;
 import com.c.dompetabata.Model.MRegisData;
 import com.c.dompetabata.Model.MRegister;
@@ -25,6 +27,7 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.PartMap;
+import retrofit2.http.Path;
 
 public interface Api {
 
@@ -59,9 +62,16 @@ public interface Api {
     @GET("all-province?next=39")
     Call<Respon> getAllProvinsi();
 
-    @GET("all-regencies")
-    Call<ResponK> getAllKabupaten();
+    @GET("regencies/province/{id}")
+    Call<ResponK> getAllKabupaten(@Path("id") long id);
 
-    @GET("all-districts")
-    Call<ResponKe> getAllKecamatan();
+    @GET("districts/regencies/{id}")
+    Call<ResponKe> getAllKecamatan(@Path("id") long id);
+
+    @GET("sub-districts/districts/{id}")
+    Call<Responkel> getAllKelurahan(@Path("id") long id);
+
+    @GET("postal-code/sub-districts/{id}")
+    Call<ResponPost> getAllPost(@Path("id") long id);
+
 }
