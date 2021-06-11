@@ -45,7 +45,6 @@
             android:background="@drawable/bg_edittextlogin"
             android:hint="Nomor Telepon"
             android:drawablePadding="10dp"
-            android:drawableLeft="@drawable/ic_baseline_person_24"
             android:inputType="number"
             android:paddingStart="12dp"
             android:textColor="@color/black" />

@@ -2,9 +2,11 @@ package com.c.dompetabata;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +26,7 @@ import com.muddzdev.styleabletoast.StyleableToast;
 import java.io.IOException;
 import java.util.HashMap;
 
+import info.androidhive.fontawesome.FontDrawable;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import retrofit2.Call;
@@ -47,6 +50,8 @@ public class Login_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_login_);
         getSupportActionBar().hide();
 
+
+
         //ID Define
         numberphone = findViewById(R.id.numberphone);
         login_button = findViewById(R.id.login_button);
@@ -55,6 +60,12 @@ public class Login_Activity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressbutton);
         setLogologin();
 
+        FontDrawable drawable = new FontDrawable(this,R.string.userabata,true,false);
+        Typeface type2 = ResourcesCompat.getFont(getApplicationContext(), R.font.abata);
+        drawable.setTypeface(type2);
+        drawable.setTextColor(getColor(R.color.black));
+        drawable.setTextSize(20);
+        numberphone.setCompoundDrawablesWithIntrinsicBounds(drawable,null,null,null);
 
         // Event Onclick for register activity
         register.setOnClickListener(new View.OnClickListener() {
@@ -72,6 +83,8 @@ public class Login_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 validation(numberphone.getText().toString());
+                Intent intent = new Intent(Login_Activity.this,drawer_activity.class);
+                startActivity(intent);
 
             }
         });
@@ -102,7 +115,7 @@ public class Login_Activity extends AppCompatActivity {
     }
 
     private void setLogologin() {
-        logologin.setImageDrawable(getDrawable(R.drawable.logoabata));
+        logologin.setImageDrawable(getDrawable(R.drawable.csoftware));
     }
 
     private void Login(String telepon,String password){

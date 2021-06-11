@@ -42,6 +42,7 @@ dependencies {
     implementation 'info.androidhive:fontawesome:0.0.5'
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
     implementation 'io.github.chaosleung:pinview:1.4.4'
+    implementation 'info.androidhive:fontawesome:0.0.5'
     implementation 'com.github.rygelouv:Android-LoadingButton:1.2.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.navigation:navigation-fragment:2.3.1'

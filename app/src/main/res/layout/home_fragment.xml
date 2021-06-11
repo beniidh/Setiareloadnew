@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
     android:padding="10dp"
     tools:context=".Fragment.HomeFragment">
-
 
     <ImageView
         android:layout_width="match_parent"
@@ -38,11 +38,13 @@
                 android:textSize="18sp" />
 
             <TextView
+                android:id="@+id/saldoku"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins"
+                android:textColor="@color/black"
                 android:text="RP. 30.000"
-                android:textSize="23sp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -70,14 +72,13 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins"
                 android:text="RP. 34.000"
-                android:textSize="23sp"
+                android:textColor="@color/black"
+                android:textSize="22sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
 
-
     </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -94,8 +95,8 @@
 
             <ImageView
                 android:id="@+id/iconpulsa"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:contentDescription="@string/pulsa"
                 android:src="@drawable/pulsa" />
 
@@ -116,15 +117,15 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/paketabata" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Paket Data"
-
+                android:textAlignment="center"
                 />
 
         </LinearLayout>
@@ -138,8 +139,8 @@
 
             <ImageView
 
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/pulsa" />
 
             <TextView
@@ -161,15 +162,14 @@
 
             <ImageView
 
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/listrik" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Listrik PLN"
-
                 />
 
         </LinearLayout>
@@ -182,9 +182,8 @@
             android:orientation="vertical">
 
             <ImageView
-
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/listrik" />
 
             <TextView
@@ -192,11 +191,9 @@
                 android:layout_height="wrap_content"
                 android:text="PLN Pasca Bayar"
                 android:textAlignment="center"
-
                 />
 
         </LinearLayout>
-
 
     </LinearLayout>
 
@@ -215,8 +212,8 @@
 
             <ImageView
 
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/iconwa" />
 
             <TextView
@@ -236,14 +233,15 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/ecard" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Uang Elektronik"
+                android:textAlignment="center"
 
                 />
 
@@ -258,8 +256,8 @@
 
             <ImageView
 
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/water" />
 
             <TextView
@@ -281,8 +279,8 @@
 
             <ImageView
 
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/wallet" />
 
             <TextView
@@ -302,9 +300,10 @@
             android:gravity="center"
             android:orientation="vertical">
             <ImageView
+                android:id="@+id/lainnya"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
 
-                android:layout_width="60dp"
-                android:layout_height="60dp"
                 android:src="@drawable/iconlainnya" />
 
             <TextView

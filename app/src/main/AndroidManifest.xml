@@ -15,12 +15,13 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/logoabata"
+        android:icon="@drawable/logoapkcsoft"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DompetAbata">
-        <activity android:name=".homelainnya"></activity>
+        <activity android:name=".topup_saldoku_activity"></activity>
+        <activity android:name=".homelainnya" />
         <activity android:name=".MainActivity" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
@@ -34,12 +35,14 @@
         <activity
             android:name=".Login_Activity"
             android:screenOrientation="portrait" />
-        <activity android:name=".splash_activity" />
+        <activity android:name=".drawer_activity"
+            android:theme="@style/Theme.DompetAbata2"
+            />
         <activity
-            android:name=".drawer_activity"
+            android:name=".splash_activity"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.DompetAbata2">
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Dompet Abata</string>
+    <string name="app_name">C-Software</string>
     <string name="keteranganOTP">Untuk mendapatkan Kode OTP silahkan pilih salah satu metode dibawah ini :</string>
     <string name="otp">Kode telah dikirim ke Email, silahkan cek Email Anda</string>
     <string name="syaratketentuan">Terima kasih Anda telah mengakses situs atau mengunduh, menggunakan layanan, produk dan/atau aplikasi (“Aplikasi”) DOMPET ABATA. Pada saat Anda mengakses, mengunduh atau menggunakan Aplikasi DOMPET ABATA maka Syarat dan Ketentuan ini berlaku terhadap Anda. Dengan melanjutkan mengakses, mengunduh atau menggunakan Aplikasi DOMPET ABATA, Anda mengakui dan menyetujui bahwa Anda telah membaca dengan teliti, memahami, menerima dan menyetujui seluruh Syarat dan Ketentuan ini yang akan berlaku sebagai perjanjian antara Anda dengan Kami. Syarat dan Ketentuan ini juga berlaku seap kali Anda melakukan transaksi menggunakan Aplikasi DOMPET ABATA melalui mitra penyedia plaorm lain yang menandatangani perjanjian kerjasama dengan Kami dan menggunakan Aplikasi DOMPET ABATA sebagai salah satu metode pembayaran (“Partner DOMPET ABATA”)</string>
@@ -7,6 +7,7 @@
     <string name="Close">tutup</string>
     <string name="open">open</string>
     <string name="close">close</string>
+    <string name="userabata">&#xea00;</string>
     <string name="navigation_drawer_open">open</string>
     <string name="navigation_drawer_close">close</string>
     <string name="saldoku">Saldoku</string>

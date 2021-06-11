@@ -34,6 +34,6 @@ public class splash_activity extends AppCompatActivity {
     }
 
     public void setLogo() {
-        logo.setImageDrawable(getDrawable(R.drawable.logoabata));
+        logo.setImageDrawable(getDrawable(R.drawable.csoftware));
     }
 }
