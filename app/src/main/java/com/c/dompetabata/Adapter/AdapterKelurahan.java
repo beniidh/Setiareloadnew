@@ -45,7 +45,6 @@ public class AdapterKelurahan extends RecyclerView.Adapter<AdapterKelurahan.View
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list, parent, false);
         ViewHolder holder = new ViewHolder(v);
         return holder;
@@ -66,7 +65,6 @@ public class AdapterKelurahan extends RecyclerView.Adapter<AdapterKelurahan.View
             holder.chekP.setChecked(false);
         }
 
-
         holder.chekP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,14 +83,9 @@ public class AdapterKelurahan extends RecyclerView.Adapter<AdapterKelurahan.View
                 Preference.setID(context,modelKelurahan.getId());
                 Preference.setIDKelurahan(context,modelKelurahan.getId());
 
-
             }
 
         });
-
-
-
-
     }
 
     @Override
@@ -151,6 +144,5 @@ public class AdapterKelurahan extends RecyclerView.Adapter<AdapterKelurahan.View
 
         }
     }
-
 
 }

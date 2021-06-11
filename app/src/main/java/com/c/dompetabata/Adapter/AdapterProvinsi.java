@@ -30,9 +30,6 @@ public class AdapterProvinsi extends RecyclerView.Adapter<AdapterProvinsi.ViewHo
     private List<ModelProvinsi> modelProvinsisfull;
     private int selectedPosition = 0;
     private ArrayList<Integer> selectCheck = new ArrayList<>();
-
-
-
     public AdapterProvinsi(Context context, List<ModelProvinsi> modelProvinsiList) {
         this.context = context;
         this.modelProvinsiList = modelProvinsiList;
@@ -50,13 +47,10 @@ public class AdapterProvinsi extends RecyclerView.Adapter<AdapterProvinsi.ViewHo
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list, parent, false);
         ViewHolder holder = new ViewHolder(v);
         return holder;
-
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
-
         if (selectCheck.get(position) == 1) {
             holder.chekP.setChecked(true);
         } else {
@@ -81,15 +75,9 @@ public class AdapterProvinsi extends RecyclerView.Adapter<AdapterProvinsi.ViewHo
                 Preference.setName(context,modelProvinsi.getName());
                 Preference.setID(context,modelProvinsi.getId());
                 Preference.setIDProvinsi(context,modelProvinsi.getId());
-
-
             }
 
         });
-
-
-
-
 
     }
 
@@ -150,7 +138,4 @@ public class AdapterProvinsi extends RecyclerView.Adapter<AdapterProvinsi.ViewHo
         }
     }
 
-    public List<ModelProvinsi> getModelProvinsiList() {
-        return modelProvinsiList;
-    }
 }

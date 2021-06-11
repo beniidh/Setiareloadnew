@@ -161,7 +161,6 @@ public class RegisterFoto_activity extends AppCompatActivity {
             }
         } else if(requestCode == INTENT_REQUEST_CODE_DIRI){
 
-
             if (resultCode == RESULT_OK) {
 
                 CropImage.ActivityResult result = CropImage.getActivityResult(data);

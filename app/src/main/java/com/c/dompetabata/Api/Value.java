@@ -27,7 +27,6 @@ public class Value {
         return data;
     }
 
-
     public Value(String credentials, String password) {
         this.credentials = credentials;
         this.password = password;

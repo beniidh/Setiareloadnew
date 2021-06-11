@@ -9,8 +9,6 @@ public class RetroClient {
 
     private static Retrofit retrofit = null;
     private static final String base_url = "https://api-mobile-staging.abatapulsa.com/" ;
-
-
     private static Retrofit getRetrofit(){
         if(retrofit == null){
             retrofit = new Retrofit.Builder()
@@ -21,8 +19,6 @@ public class RetroClient {
         }
 
             return retrofit;
-
-
 
     }
 

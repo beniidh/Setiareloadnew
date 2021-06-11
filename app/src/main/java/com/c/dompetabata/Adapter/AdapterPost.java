@@ -27,9 +27,6 @@ public class AdapterPost extends RecyclerView.Adapter<AdapterPost.ViewHolder>  {
     private List<ModelPost> modelPosts;
     private int selectedPosition = 0;
     private ArrayList<Integer> selectCheck = new ArrayList<>();
-
-
-
     public AdapterPost(Context context, List<ModelPost> modelPosts) {
         this.context = context;
         this.modelPosts = modelPosts;
@@ -93,8 +90,6 @@ public class AdapterPost extends RecyclerView.Adapter<AdapterPost.ViewHolder>  {
     public int getItemCount() {
         return modelPosts.size();
     }
-
-
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView name;

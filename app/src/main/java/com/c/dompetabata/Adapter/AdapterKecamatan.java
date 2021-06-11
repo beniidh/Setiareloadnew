@@ -151,7 +151,4 @@ public class AdapterKecamatan extends RecyclerView.Adapter<AdapterKecamatan.View
         }
     }
 
-    public List<ModelKecamatan> getModelKecamatanList() {
-        return modelKecamatanList;
-    }
 }

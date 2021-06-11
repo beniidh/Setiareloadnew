@@ -151,7 +151,4 @@ public class AdapterKabupaten extends RecyclerView.Adapter<AdapterKabupaten.View
         }
     }
 
-    public List<ModelKabupaten> getModelKabupatens() {
-        return modelKabupatens;
-    }
 }
