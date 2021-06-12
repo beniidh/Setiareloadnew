@@ -3,6 +3,7 @@ package com.c.dompetabata;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -13,6 +14,8 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -39,10 +42,13 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer_activity);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
 
 
         menu_bawah = findViewById(R.id.menu_bawah);
@@ -57,7 +63,7 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
         toggle.syncState();
 
 
-         fragment1 = new TransaksiFragment();
+        fragment1 = new TransaksiFragment();
         fragment2 = new ChatFragment();
         fragment3 = new HomeFragment();
 
@@ -66,14 +72,7 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
         fragmentTransaction.replace(R.id.fLayout, fragment3);
         fragmentTransaction.commit(); // save the changes
         menu_bawah.setOnNavigationItemSelectedListener(this::onOptionsItemSelected);
-//
-//        mAppBarConfiguration = new AppBarConfiguration.Builder(
-//                R.id.home, R.id.transaksi, R.id.chat)
-//                .setDrawerLayout(drawer_layout)
-//                .build();
-//        NavController navController = Navigation.findNavController(this, R.id.fragmentL);
-//        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-//        NavigationUI.setupWithNavController(menu_bawah, navController);
+
     }
 
     @Override

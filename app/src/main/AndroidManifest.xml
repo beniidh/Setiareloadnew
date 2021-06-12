@@ -20,7 +20,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DompetAbata">
-        <activity android:name=".topup_saldoku_activity"></activity>
+        <activity android:name=".InsertPIN_activity"></activity>
+        <activity android:name=".topup_saldoku_activity" />
         <activity android:name=".homelainnya" />
         <activity android:name=".MainActivity" />
         <activity
@@ -35,14 +36,13 @@
         <activity
             android:name=".Login_Activity"
             android:screenOrientation="portrait" />
-        <activity android:name=".drawer_activity"
-            android:theme="@style/Theme.DompetAbata2"
-            />
+        <activity
+            android:name=".drawer_activity"
+            android:theme="@style/Theme.DompetAbata2" />
         <activity
             android:name=".splash_activity"
             android:exported="true"
-            android:screenOrientation="portrait"
-            >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
