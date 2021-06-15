@@ -3,6 +3,11 @@ package com.c.dompetabata.Model;
 public class data {
 
     String id,code,name,email,phone;
+    String token;
+
+    public String getToken() {
+        return token;
+    }
 
     public String getId() {
         return id;

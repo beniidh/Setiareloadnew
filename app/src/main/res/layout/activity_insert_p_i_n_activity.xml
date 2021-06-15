@@ -41,7 +41,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.373"
-            app:pinNormalStateDrawable="@drawable/bg_search_otp" />
+            app:pinNormalStateDrawable="@drawable/bg_search_otp"
+            app:pinHighlightStateDrawable="@color/green"/>
 
 
     </LinearLayout>
@@ -81,12 +82,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.373"
+            app:pinHighlightStateDrawable="@color/green"
             app:pinNormalStateDrawable="@drawable/bg_search_otp" />
 
 
     </LinearLayout>
 
     <Button
+        android:id="@+id/selesaiInsertPIN"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Selesai"

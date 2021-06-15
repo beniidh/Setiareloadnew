@@ -11,7 +11,9 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
+import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -20,6 +22,9 @@ import android.widget.Toast;
 
 import com.c.dompetabata.Api.Api;
 import com.c.dompetabata.Api.Value;
+import com.c.dompetabata.Helper.GpsTracker;
+import com.c.dompetabata.Helper.RetroClient;
+import com.c.dompetabata.Helper.utils;
 import com.c.dompetabata.Model.Mlogin;
 import com.muddzdev.styleabletoast.StyleableToast;
 
@@ -41,8 +46,8 @@ public class Login_Activity extends AppCompatActivity {
     Button login_button;
     TextView register;
     ImageView logologin;
-    Mlogin coba;
     ProgressBar progressBar;
+    CheckBox checkBoxsave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,13 +56,15 @@ public class Login_Activity extends AppCompatActivity {
         getSupportActionBar().hide();
 
 
-
         //ID Define
         numberphone = findViewById(R.id.numberphone);
         login_button = findViewById(R.id.login_button);
         register = findViewById(R.id.register);
         logologin = findViewById(R.id.logologin);
         progressBar = findViewById(R.id.progressbutton);
+        checkBoxsave = findViewById(R.id.savecheck);
+
+
         setLogologin();
 
         FontDrawable drawable = new FontDrawable(this,R.string.userabata,true,false);
@@ -82,9 +89,9 @@ public class Login_Activity extends AppCompatActivity {
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                getLocation();
                 validation(numberphone.getText().toString());
-                Intent intent = new Intent(Login_Activity.this,drawer_activity.class);
-                startActivity(intent);
+
 
             }
         });
@@ -93,22 +100,11 @@ public class Login_Activity extends AppCompatActivity {
     private void validation(String number) {
         if (number.isEmpty()) {
             StyleableToast.makeText(getApplicationContext(), "Nomor tidak boleh kosong", Toast.LENGTH_SHORT, R.style.mytoast).show();
+
         } else {
-            progressBar.setVisibility(View.VISIBLE);
-            login_button.setText("");
-            if(isOnline()){
-
-                Login(number,"rahasia123");
-            }else {
-                progressBar.setVisibility(View.INVISIBLE);
-                login_button.setText("Masuk");
-
-                StyleableToast.makeText(getApplicationContext(), "Periksa sambungan internet", Toast.LENGTH_SHORT, R.style.mytoast).show();
-            }
-
-//
-//            Intent optionOTP = new Intent(Login_Activity.this,OTPsend.class);
-//            startActivity(optionOTP);
+            Intent intent = new Intent(Login_Activity.this,pin_activity.class);
+            intent.putExtra("number",number);
+            startActivity(intent);
 
         }
 
@@ -118,57 +114,19 @@ public class Login_Activity extends AppCompatActivity {
         logologin.setImageDrawable(getDrawable(R.drawable.csoftware));
     }
 
-    private void Login(String telepon,String password){
+    public void getLocation() {
+        GpsTracker gpsTracker = new GpsTracker(Login_Activity.this);
+        if (gpsTracker.canGetLocation()) {
+            double latitude = gpsTracker.getLatitude();
+            double longitude = gpsTracker.getLongitude();
 
-//        Interceptor interceptor = new Interceptor() {
-//            @Override
-//            public Response intercept(Chain chain) throws IOException {
-//                Request request = chain.request().newBuilder()
-//                        .addHeader("Accept", "application/json")
-//                        .addHeader("authorization", "oojiiii")
-//                        .build();
-//                return chain.proceed(request);
-//            }
-//        };
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Value.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-
-        Value value = new Value(telepon,password);
-
-        Api api = retrofit.create(Api.class);
-        Call<Value> call = api.Login(value);
-        call.enqueue(new Callback<Value>() {
-            @Override
-            public void onResponse(Call<Value> call, Response<Value> response) {
-                progressBar.setVisibility(View.INVISIBLE);
-                login_button.setText("Masuk");
-
-                String code = response.body().getMessage();
-                StyleableToast.makeText(getApplicationContext(),code,Toast.LENGTH_SHORT, R.style.mytoast).show();
-
-
-            }
-
-            @Override
-            public void onFailure(Call<Value> call, Throwable t) {
-                progressBar.setVisibility(View.INVISIBLE);
-                login_button.setText("Masuk");
-                StyleableToast.makeText(getApplicationContext(),"Periksa Sambungan internet",Toast.LENGTH_SHORT, R.style.mytoast).show();
-
-            }
-        });
-
-
+        } else {
+            gpsTracker.showSettingsAlert();
+        }
     }
 
-    public boolean isOnline() {
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnectedOrConnecting();
-    }
+
+
 
 
 }

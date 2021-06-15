@@ -14,10 +14,13 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.ClipData;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,8 +38,10 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
     ActionBarDrawerToggle toggle;
     NavigationView navigationView;
     Fragment fragment1,fragment2,fragment3;
+    MenuItem menuItem;
 
     private AppBarConfiguration mAppBarConfiguration;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,9 +63,9 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
         drawer_layout = findViewById(R.id.drawer_layout);
         navigationView.setNavigationItemSelectedListener(this::onNavigationItemSelected);
 
-
         toggle = new ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         toggle.syncState();
+
 
 
         fragment1 = new TransaksiFragment();
@@ -73,11 +78,23 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
         fragmentTransaction.commit(); // save the changes
         menu_bawah.setOnNavigationItemSelectedListener(this::onOptionsItemSelected);
 
+
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+
+    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+
         switch (item.getItemId()) {
+
 
 
             case R.id.home:
@@ -113,12 +130,18 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
+
             case R.id.daftarharga:
                 Toast.makeText(getApplicationContext(), "Daftar Harga", Toast.LENGTH_SHORT).show();
                 drawer_layout.closeDrawers();
                 break;
         }
         return false;
+    }
+
+    public void LinDaftarHarga(View view){
+        drawer_layout.closeDrawers();
+
     }
 
 

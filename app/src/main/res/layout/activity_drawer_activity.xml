@@ -24,7 +24,17 @@
                 android:background="?attr/colorPrimary"
                 android:theme="@style/Theme.AppCompat.DayNight.Dialog.Alert"
                 app:contentInsetStartWithNavigation="0dp"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" >
+                <ImageButton
+                    android:layout_width="70dp"
+                    android:scaleType="centerInside"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/csoftware"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+
+                    />
+
+            </androidx.appcompat.widget.Toolbar>
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -51,14 +61,27 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
+
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        app:itemTextColor="@color/green"
         android:layout_gravity="start"
+        app:itemIconTint="@color/green"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_main_drawer" />
+        >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+    <include layout="@layout/nav_header_main"/>
+    <include layout="@layout/nav_menu"/>
+
+
+
+</LinearLayout>
+    </com.google.android.material.navigation.NavigationView>
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

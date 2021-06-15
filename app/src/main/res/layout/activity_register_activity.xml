@@ -265,9 +265,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textSize="16dp"
-                android:enabled="false"
                 android:fontFamily="@font/poppins"
-                android:hint="Masukan Kecamatan "
+                android:hint="Masukan Kode Referal "
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppinsbold"
+                android:textSize="14dp"
+                android:text=" Server ID"
+                />
+            <EditText
+                android:id="@+id/serverID"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textSize="16dp"
+                android:fontFamily="@font/poppins"
+                android:hint="Pilih Server "
                 />
 
             <RelativeLayout

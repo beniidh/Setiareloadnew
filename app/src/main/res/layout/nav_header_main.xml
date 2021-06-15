@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp"
-    android:layout_marginTop="15dp"
+    android:layout_marginTop="20dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <LinearLayout
@@ -18,10 +18,9 @@
             android:id="@+id/imageView"
             android:layout_width="80dp"
             android:elevation="1dp"
-            android:background="@color/gray"
             android:layout_height="80dp"
             android:contentDescription="Konter Jaya"
-            android:src="@drawable/ic_baseline_person_242"
+            android:src="@drawable/defaultuser"
             />
 
         <LinearLayout
@@ -50,21 +49,32 @@
 
 
     </LinearLayout>
-  <Button
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="15dp"
-      android:background="@drawable/bg_profil"
-      android:drawableLeft="@drawable/ic_baseline_person_25"
-      android:paddingStart="10dp"
-      android:drawablePadding="-50dp"
-      android:textAllCaps="false"
-      android:textSize="20dp"
-      android:textStyle="bold"
-      android:textColor="@color/black"
-      android:text="Profil Saya"
+    <LinearLayout
+        android:foreground="?android:attr/selectableItemBackground"
+        android:layout_width="match_parent"
+       android:background="@drawable/bg_profil"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:orientation="horizontal">
 
-      />
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_baseline_person_25"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Profil Saya"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="17sp"
+            android:layout_marginLeft="10dp"
+            />
+
+    </LinearLayout>
 
 
  

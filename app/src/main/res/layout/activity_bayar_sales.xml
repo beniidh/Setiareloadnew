@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:padding="18dp"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    tools:context=".Transaksi.BayarSales">
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Bayar ke Sales"
+    android:textSize="23sp"
+    android:textColor="@color/green"
+    android:fontFamily="@font/mukta"
+    />
+
+    <View
+        android:layout_width="match_parent"
+        android:background="@color/gray3"
+        android:layout_marginTop="20dp"
+        android:layout_height="1dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total Top UP"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+
+        />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rp."
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="28dp"
+        android:layout_marginTop="10dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1.000.000"
+        android:fontFamily="@font/mukta"
+        android:textColor="@color/black"
+        android:textSize="28dp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        />
+
+
+</LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginVertical="10dp"
+        android:background="@color/gray3"
+        android:layout_height="1dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sales"
+        android:fontFamily="@font/poppins"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Budi Setiaone"
+        android:fontFamily="@font/mukta"
+        android:textColor="@color/black"
+        android:textSize="28dp"
+        android:textStyle="bold"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginVertical="10dp"
+        android:background="@color/gray3"
+        android:layout_height="1dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:background="@drawable/bgsalessaldoku"
+        android:padding="10dp"
+        android:text="@string/salessaldoku"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Petunjuk Bayar Sales"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:fontFamily="@font/poppins"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/mukta"
+        android:textSize="16dp"
+        android:layout_height="wrap_content"
+        android:text="@string/nom1"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_marginTop="1dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/mukta"
+        android:textSize="16dp"
+        android:layout_height="wrap_content"
+        android:text="@string/nomdua"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_marginTop="1dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/mukta"
+        android:textSize="16dp"
+        android:layout_height="wrap_content"
+        android:text="@string/nom3"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_marginTop="1dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/mukta"
+        android:textSize="16dp"
+        android:layout_height="wrap_content"
+        android:text="@string/nom4"
+        />
+    <Button
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_button_login2"
+        />
+
+</LinearLayout>

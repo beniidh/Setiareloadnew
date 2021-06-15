@@ -10,6 +10,8 @@ import com.c.dompetabata.Helper.Responkel;
 import com.c.dompetabata.Model.MOtpVerif;
 import com.c.dompetabata.Model.MRegisData;
 import com.c.dompetabata.Model.MRegister;
+import com.c.dompetabata.Model.Mlogin;
+import com.c.dompetabata.Model.MsetPIN;
 import com.c.dompetabata.Model.Responphoto;
 
 import java.util.HashMap;
@@ -22,6 +24,7 @@ import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
@@ -33,7 +36,7 @@ public interface Api {
 
     @Headers("Content-Type: application/json")
     @POST("signin")
-    Call<Value> Login(@Body Value value);
+    Call<Mlogin> Login(@Body Mlogin mlogin);
 
     @Headers("Content-Type: application/json")
     @POST("signup")
@@ -61,6 +64,9 @@ public interface Api {
 
     @GET("all-province?next=39")
     Call<Respon> getAllProvinsi();
+
+    @POST("set-pin")
+    Call<MsetPIN> SetPIN(@Header("X-Signature")String token, @Body MsetPIN msetPIN);
 
     @GET("regencies/province/{id}")
     Call<ResponK> getAllKabupaten(@Path("id") long id);

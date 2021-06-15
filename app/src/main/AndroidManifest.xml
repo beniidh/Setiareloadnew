@@ -20,7 +20,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DompetAbata">
-        <activity android:name=".InsertPIN_activity"></activity>
+        <activity android:name=".Transaksi.BayarViaBank"></activity>
+        <activity android:name=".Transaksi.BayarSales" />
+        <activity android:name=".InsertPIN_activity" />
         <activity android:name=".topup_saldoku_activity" />
         <activity android:name=".homelainnya" />
         <activity android:name=".MainActivity" />
@@ -38,9 +40,12 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".drawer_activity"
-            android:theme="@style/Theme.DompetAbata2" />
+            android:theme="@style/Theme.DompetAbata2"
+            />
         <activity
             android:name=".splash_activity"
+
+
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>

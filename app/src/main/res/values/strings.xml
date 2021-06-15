@@ -12,4 +12,9 @@
     <string name="navigation_drawer_close">close</string>
     <string name="saldoku">Saldoku</string>
     <string name="pulsa">pulsa</string>
+    <string name="salessaldoku">Silahkan melakukan pembayaran ke Sales anda, jika ada kendala ketika melakukan pembayaran silahkan menghubungi CS</string>
+    <string name="nomdua">2. Informasikan pada sales Nominal tagihan anda</string>
+    <string name="nom1">1. Hubungi Sales Anda</string>
+    <string name="nom3">3. Berikan uang tunai sesuai nominal Tagihan</string>
+    <string name="nom4">4. Anda akan menerima Notifikasi Tagihan saldo server telah dibayar</string>
 </resources>

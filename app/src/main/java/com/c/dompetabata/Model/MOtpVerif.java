@@ -3,11 +3,16 @@ package com.c.dompetabata.Model;
 public class MOtpVerif {
 
     String user_id,otp_id,otp,code;
+    data data;
 
     public MOtpVerif(String user_id, String otp_id, String otp) {
         this.user_id = user_id;
         this.otp_id = otp_id;
         this.otp = otp;
+    }
+
+    public com.c.dompetabata.Model.data getData() {
+        return data;
     }
 
     public String getUser_id() {

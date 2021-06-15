@@ -10,55 +10,42 @@
         android:id="@+id/pinEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:maxLength="6"
         android:inputType="number"
-        app:pinNormalStateDrawable="@drawable/bg_search_otp"
+        android:maxLength="6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.433"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.373" />
+        app:layout_constraintVertical_bias="0.461"
+        app:pinHeight="40dp"
+        app:pinHighlightStateDrawable="@color/green"
+        app:pinNormalStateDrawable="@drawable/bg_search_otp"
+        app:pinWidth="35dp" />
 
-    <Button
-        android:id="@+id/cobapin"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Kirim"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pinEditText"
-        app:layout_constraintVertical_bias="0.329" />
-
-    <com.chaos.view.PinView
-        android:id="@+id/firstPinView"
-        style="@style/PinWidget.PinView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:cursorVisible="true"
-       android:itemBackground="@drawable/bg_search_otp"
-        android:inputType="text"
-        android:textColor="@color/black"
-        android:textSize="18sp"
+        android:fontFamily="@font/mukta"
+        android:text="Masukan PIN"
+        android:textColor="@color/green"
+        android:textSize="25sp"
         android:textStyle="bold"
-        app:cursorColor="@color/green"
-        app:cursorWidth="2dp"
-        app:hideLineWhenFilled="true"
-        app:itemCount="5"
-        app:itemHeight="48dp"
-        app:itemRadius="4dp"
-        app:itemSpacing="4dp"
-        app:itemWidth="48dp"
-        app:lineWidth="2dp"
-        app:viewType="rectangle"
         app:layout_constraintBottom_toTopOf="@+id/pinEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.61" />
 
+    <ProgressBar
+        android:id="@+id/progressPIN"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pinEditText" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
