@@ -155,4 +155,14 @@ public class InsertPIN_activity extends AppCompatActivity {
             gpsTracker.showSettingsAlert();
         }
     }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

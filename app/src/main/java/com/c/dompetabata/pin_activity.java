@@ -21,6 +21,7 @@ import com.c.dompetabata.Helper.GpsTracker;
 import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.Helper.utils;
 import com.c.dompetabata.Model.Mlogin;
+import com.c.dompetabata.sharePreference.Preference;
 import com.chaos.view.PinView;
 import com.muddzdev.styleabletoast.StyleableToast;
 import com.oakkub.android.PinEditText;
@@ -95,6 +96,7 @@ ProgressBar progressBar;
         Intent tlp = getIntent();
         String telepon =tlp.getStringExtra("number");
 
+
         Mlogin mlogin = new Mlogin(telepon,pin,IP,useragent,longlitude,latitude);
 
         Api api = RetroClient.getApiServices();
@@ -105,12 +107,19 @@ ProgressBar progressBar;
 
 
                 String code = response.body().getCode();
-                String message = response.body().getMessage();
+
                 if (code.equals("200")){
                     progressBar.setVisibility(View.GONE);
-                    StyleableToast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT, R.style.mytoast).show();
                     Intent home = new Intent(pin_activity.this,drawer_activity.class);
                     startActivity(home);
+                    String longlitut = Double.toString(longlitude);
+                    String latitut = Double.toString(latitude);
+
+                    Preference.getSharedPreference(pin_activity.this);
+                    Preference.setkredentials(getApplicationContext(),telepon);
+                    Preference.setPIN(getApplicationContext(),pin);
+                    Preference.setLong(getApplicationContext(),longlitut);
+                    Preference.setLat(getApplicationContext(),latitut);
                     finish();
 
                 }else {

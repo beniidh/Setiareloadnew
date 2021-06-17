@@ -14,11 +14,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.c.dompetabata.Adapter.SliderAdapter;
 import com.c.dompetabata.Model.SliderItem;
 import com.c.dompetabata.R;
+import com.c.dompetabata.Transaksi.TopupSaldoServer;
 import com.c.dompetabata.homelainnya;
 import com.c.dompetabata.topup_saldoku_activity;
 import com.denzcoskun.imageslider.ImageSlider;
@@ -34,6 +36,7 @@ public class HomeFragment extends Fragment {
     private HomeViewModel mViewModel;
     ImageView lainnya;
     TextView saldoku;
+    LinearLayout linsaldoserver;
     ImageView pulsa,paketdata,pulsapasca,listrikpln,plnpascabayar,paketsmstelp,uangelektronik,pdam,vochergame;
 
 
@@ -90,6 +93,16 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        linsaldoserver = v.findViewById(R.id.LinSaldoServer);
+        linsaldoserver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), TopupSaldoServer.class);
+                startActivity(intent);
+
+            }
+        });
+
         return v;
 
 
@@ -101,6 +114,7 @@ public class HomeFragment extends Fragment {
         mViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         // TODO: Use the ViewModel
     }
+
 }
 
 

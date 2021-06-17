@@ -27,8 +27,11 @@
             android:textStyle="bold" />
 
         <LinearLayout
+            android:id="@+id/LinearBankBCA"
             android:layout_width="match_parent"
             android:layout_height="78dp"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
             android:layout_marginTop="20dp"
             android:background="@drawable/bgpembayaran"
             android:orientation="horizontal"
@@ -65,6 +68,9 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/LinearBankBRI"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
             android:layout_width="match_parent"
             android:layout_height="78dp"
             android:layout_marginTop="20dp"

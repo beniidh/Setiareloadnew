@@ -26,6 +26,7 @@ import com.c.dompetabata.Helper.GpsTracker;
 import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.Helper.utils;
 import com.c.dompetabata.Model.Mlogin;
+import com.c.dompetabata.Model.Mphone;
 import com.muddzdev.styleabletoast.StyleableToast;
 
 import java.io.IOException;
@@ -102,9 +103,33 @@ public class Login_Activity extends AppCompatActivity {
             StyleableToast.makeText(getApplicationContext(), "Nomor tidak boleh kosong", Toast.LENGTH_SHORT, R.style.mytoast).show();
 
         } else {
-            Intent intent = new Intent(Login_Activity.this,pin_activity.class);
-            intent.putExtra("number",number);
-            startActivity(intent);
+
+            Api api = RetroClient.getApiServices();
+            Mphone mphone = new Mphone(number);
+            Call<Mphone> call = api.ChekPhone(mphone);
+            call.enqueue(new Callback<Mphone>() {
+                @Override
+                public void onResponse(Call<Mphone> call, Response<Mphone> response) {
+                    String code = response.body().getCode();
+                    if (code.equals("200")){
+
+                        Intent intent = new Intent(Login_Activity.this,pin_activity.class);
+                        intent.putExtra("number",number);
+                        startActivity(intent);
+
+                    }else {
+
+                        StyleableToast.makeText(getApplicationContext(), "Nomor tidak belum terdaftar", Toast.LENGTH_SHORT, R.style.mytoast).show();
+
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Mphone> call, Throwable t) {
+
+                }
+            });
+
 
         }
 

@@ -11,6 +11,7 @@ import com.c.dompetabata.Model.MOtpVerif;
 import com.c.dompetabata.Model.MRegisData;
 import com.c.dompetabata.Model.MRegister;
 import com.c.dompetabata.Model.Mlogin;
+import com.c.dompetabata.Model.Mphone;
 import com.c.dompetabata.Model.MsetPIN;
 import com.c.dompetabata.Model.Responphoto;
 
@@ -68,6 +69,8 @@ public interface Api {
     @POST("set-pin")
     Call<MsetPIN> SetPIN(@Header("X-Signature")String token, @Body MsetPIN msetPIN);
 
+    @POST("auth-check")
+    Call<Mphone> ChekPhone(@Body Mphone mphone);
     @GET("regencies/province/{id}")
     Call<ResponK> getAllKabupaten(@Path("id") long id);
 

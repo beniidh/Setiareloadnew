@@ -17,4 +17,11 @@
     <string name="nom1">1. Hubungi Sales Anda</string>
     <string name="nom3">3. Berikan uang tunai sesuai nominal Tagihan</string>
     <string name="nom4">4. Anda akan menerima Notifikasi Tagihan saldo server telah dibayar</string>
+    <string name="bank">Silahkan melakukan pembayaran ke nomor rekening yang sudah tertera diatas. Kemudian selesaikan proses pembayaran dengan melakukan upload bukti transfer. Jika ada kendala silahkan hubungi CS.</string>
+    <string name="car1">1. Masukan kartu ATM dan PIN Rekening Anda</string>
+    <string name="car2">2. Pilih menu Transfer</string>
+    <string name="car3">3. Pilih bank BRI</string>
+    <string name="car4">4. Masukan nomor rekening 038701002403565</string>
+    <string name="car6">6. Ikuti instruksi untuk menyelesaikan transaksi</string>
+    <string name="car5">5. Masukan nominal Tagihan</string>
 </resources>

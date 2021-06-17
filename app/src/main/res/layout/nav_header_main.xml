@@ -4,8 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:layout_marginTop="20dp"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="16dp"
+    android:paddingTop="46dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <LinearLayout
@@ -16,9 +18,9 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="80dp"
+            android:layout_width="70dp"
             android:elevation="1dp"
-            android:layout_height="80dp"
+            android:layout_height="70dp"
             android:contentDescription="Konter Jaya"
             android:src="@drawable/defaultuser"
             />

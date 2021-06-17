@@ -7,17 +7,18 @@ import android.text.Html;
 
 import com.c.dompetabata.R;
 
-public class BayarSales extends AppCompatActivity {
+public class RincianTagihan extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bayar_sales);
-        getSupportActionBar().setTitle(Html.fromHtml("<font color='#4AB84E'><b>Pembayaran Saldoku <b></font>"));
+        setContentView(R.layout.activity_rincian_tagihan);
+        setContentView(R.layout.activity_topup_saldo_server);
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#4AB84E'><b>Rincian Tagihan <b></font>"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
-
     }
+
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();

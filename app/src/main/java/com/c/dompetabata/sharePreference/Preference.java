@@ -41,8 +41,6 @@ public class Preference {
         return getSharedPreference(context).getString("idM","");
     }
 
-
-
     //otp id
     public static void setKeyOtpId(Context context, String otpid){
         SharedPreferences.Editor editor = getSharedPreference(context).edit();
@@ -124,6 +122,52 @@ public class Preference {
         return getSharedPreference(context).getString("IDKelurahan","");
     }
 
+    public static void setkredentials(Context context, String credentials){
+        SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.putString("credentials", credentials);
+        editor.apply();
+    }
+    public static String getKredentials(Context context){
+        return getSharedPreference(context).getString("credentials","");
+    }
+    public static void setPIN(Context context, String pin){
+        SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.putString("PIN", pin);
+        editor.apply();
+    }
+    public static String getPIN(Context context){
+        return getSharedPreference(context).getString("PIN","");
+    }
+
+    public static void setLong(Context context, String longlitut){
+        SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.putString("longlitut", longlitut);
+        editor.apply();
+    }
+
+    public static String getLong(Context context){
+        return getSharedPreference(context).getString("longlitut","");
+    }
+
+    public static void setLat(Context context, String latitude){
+        SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.putString("latitude", latitude);
+        editor.apply();
+    }
+
+    public static String getLat(Context context){
+        return getSharedPreference(context).getString("latitude","");
+    }
+
+    public static void setToken(Context context, String token){
+        SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.putString("token", token);
+        editor.apply();
+    }
+
+    public static String getToken(Context context){
+        return getSharedPreference(context).getString("token","");
+    }
 
 
 }

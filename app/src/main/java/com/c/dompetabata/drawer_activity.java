@@ -49,7 +49,6 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
         setContentView(R.layout.activity_drawer_activity);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
-
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
