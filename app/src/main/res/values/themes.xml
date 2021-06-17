@@ -38,6 +38,13 @@
         <item name="stTextSize">14sp</item>
     </style>
 
+    <style name="mytoast2">
+        <item name="stTextBold">true</item>
+        <item name="stTextColor">@color/white</item>
+        <item name="stColorBackground">@color/orange2</item>
+        <item name="stTextSize">14sp</item>
+    </style>
+
     <style name="themetext">
         <item name="android:textStyle">bold</item>
 

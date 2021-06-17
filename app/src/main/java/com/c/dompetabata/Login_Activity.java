@@ -14,6 +14,7 @@ import android.view.animation.AlphaAnimation;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -27,6 +28,7 @@ import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.Helper.utils;
 import com.c.dompetabata.Model.Mlogin;
 import com.c.dompetabata.Model.Mphone;
+import com.c.dompetabata.sharePreference.Preference;
 import com.muddzdev.styleabletoast.StyleableToast;
 
 import java.io.IOException;
@@ -49,13 +51,14 @@ public class Login_Activity extends AppCompatActivity {
     ImageView logologin;
     ProgressBar progressBar;
     CheckBox checkBoxsave;
+    CheckBox savecheck;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_);
         getSupportActionBar().hide();
-
 
         //ID Define
         numberphone = findViewById(R.id.numberphone);
@@ -64,6 +67,7 @@ public class Login_Activity extends AppCompatActivity {
         logologin = findViewById(R.id.logologin);
         progressBar = findViewById(R.id.progressbutton);
         checkBoxsave = findViewById(R.id.savecheck);
+        savecheck = findViewById(R.id.savecheck);
 
 
         setLogologin();
@@ -79,6 +83,7 @@ public class Login_Activity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent register = new Intent(Login_Activity.this, Register_activity.class);
                 startActivity(register);
 
@@ -93,6 +98,20 @@ public class Login_Activity extends AppCompatActivity {
                 getLocation();
                 validation(numberphone.getText().toString());
 
+
+
+            }
+        });
+
+        savecheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked == true){
+
+                    Preference.getSharedPreference(getApplicationContext());
+                    Preference.setkredentials(getApplicationContext(),numberphone.getText().toString());
+
+                }
 
             }
         });
@@ -115,7 +134,10 @@ public class Login_Activity extends AppCompatActivity {
 
                         Intent intent = new Intent(Login_Activity.this,pin_activity.class);
                         intent.putExtra("number",number);
+                        Preference.getSharedPreference(getApplicationContext());
+                        Preference.setkredentials(getApplicationContext(),numberphone.getText().toString());
                         startActivity(intent);
+                        numberphone.setText("");
 
                     }else {
 

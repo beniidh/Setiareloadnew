@@ -15,6 +15,8 @@ import com.c.dompetabata.InsertPIN_activity;
 import com.c.dompetabata.MainActivity;
 import com.c.dompetabata.Model.MOtpVerif;
 import com.c.dompetabata.R;
+import com.c.dompetabata.RegisterFoto_activity;
+import com.c.dompetabata.sharePreference.Preference;
 import com.chaos.view.PinView;
 import com.muddzdev.styleabletoast.StyleableToast;
 
@@ -64,8 +66,11 @@ public class OTPinsert extends AppCompatActivity {
                             if(code.equals("200")){
                                 StyleableToast.makeText(getApplicationContext(),"Berhasil", Toast.LENGTH_SHORT, R.style.mytoast).show();
                                 String token = response.body().getData().getToken();
-                                Intent intent = new Intent(OTPinsert.this, InsertPIN_activity.class);
-                                intent.putExtra("token",token);
+
+                                Preference.getSharedPreference(getApplicationContext());
+                                Preference.setToken(getApplicationContext(),token);
+
+                                Intent intent = new Intent(OTPinsert.this, RegisterFoto_activity.class);
                                 startActivity(intent);
 
                             }else {

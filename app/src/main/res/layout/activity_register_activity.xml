@@ -109,7 +109,7 @@
                 android:layout_height="50dp"
                 android:fontFamily="@font/poppins"
                 android:textSize="16dp"
-                android:hint="Masukan Nama Pemilik "
+                android:hint="Masukan Nama Konter "
                 />
             <TextView
                 android:layout_width="wrap_content"

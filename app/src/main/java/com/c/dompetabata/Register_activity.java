@@ -299,7 +299,7 @@ postcode.setEnabled(true);
                         String user_code = response.body().getData().getUser_code();
                         String otp_id = response.body().getData().getOtp_id();
                         String phone = response.body().getData().getPhone();
-                        Intent intent = new Intent(Register_activity.this, RegisterFoto_activity.class);
+                        Intent intent = new Intent(Register_activity.this, OTPsend.class);
 
                         Preference.getSharedPreference(getBaseContext());
                         Preference.setKeyOtpId(getBaseContext(), otp_id);
@@ -351,7 +351,7 @@ postcode.setEnabled(true);
     }
 
     private String getMacAddress() {
-        String MAC = utils.getMACAddress("wlan0");//phone if pc use eth0 if phone wlan0
+        String MAC = utils.getMACAddress("eth0");//phone if pc use eth0 if phone wlan0
         return MAC;
 
     }

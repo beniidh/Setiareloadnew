@@ -24,4 +24,6 @@
     <string name="car4">4. Masukan nomor rekening 038701002403565</string>
     <string name="car6">6. Ikuti instruksi untuk menyelesaikan transaksi</string>
     <string name="car5">5. Masukan nominal Tagihan</string>
+    <string name="selamat_datang_di_dompet_abata">Selamat Datang di Dompet Abata !</string>
+    <string name="saya_menerima_dan_menyetujui_syarat_dan_ketentuan_aplikasi">Saya menerima dan menyetujui Syarat dan Ketentuan Aplikasi</string>
 </resources>

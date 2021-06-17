@@ -74,6 +74,9 @@ public class RegisterFoto_activity extends AppCompatActivity {
     private static final int INTENT_REQUEST_CODE_DIRI = 101;
     private static final int INTENT_REQUEST_CODE_DIRIKTP = 102;
     private Bitmap photo;
+    String foto1 = "0";
+    String foto2 = "0";
+    String foto3 = "0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -229,10 +232,17 @@ public class RegisterFoto_activity extends AppCompatActivity {
         call.enqueue(new Callback<Responphoto>() {
             @Override
             public void onResponse(Call<Responphoto> call, Response<Responphoto> response) {
-                String code = response.body().getMessage();
+                String code = response.body().getCode();
                 progresselfie.setVisibility(View.INVISIBLE);
-                StyleableToast.makeText(getApplicationContext(), "Foto Berhasil diupload", Toast.LENGTH_SHORT, R.style.mytoast).show();
-                uploadDiri.setImageDrawable(getDrawable(R.drawable.check));
+
+                if (code.equals("200")){
+
+                    foto1 ="1";
+                    StyleableToast.makeText(getApplicationContext(), "Foto Berhasil diupload", Toast.LENGTH_SHORT, R.style.mytoast).show();
+                    uploadDiri.setImageDrawable(getDrawable(R.drawable.check));
+                }
+
+
             }
 
             @Override
@@ -260,10 +270,15 @@ public class RegisterFoto_activity extends AppCompatActivity {
         call.enqueue(new Callback<Responphoto>() {
             @Override
             public void onResponse(Call<Responphoto> call, Response<Responphoto> response) {
-                String code = response.body().getMessage();
-                progresktpdanselfie.setVisibility(View.INVISIBLE);
-                StyleableToast.makeText(getApplicationContext(), "Foto Berhasil diupload", Toast.LENGTH_SHORT, R.style.mytoast).show();
-                uploadKTPdanDiri.setImageDrawable(getDrawable(R.drawable.check));
+                String code = response.body().getCode();
+                if(code.equals("200")){
+
+                    foto3 = "1";
+                    progresktpdanselfie.setVisibility(View.INVISIBLE);
+                    StyleableToast.makeText(getApplicationContext(), "Foto Berhasil diupload", Toast.LENGTH_SHORT, R.style.mytoast).show();
+                    uploadKTPdanDiri.setImageDrawable(getDrawable(R.drawable.check));
+                }
+
             }
 
             @Override
@@ -292,10 +307,15 @@ public class RegisterFoto_activity extends AppCompatActivity {
         call.enqueue(new Callback<Responphoto>() {
             @Override
             public void onResponse(Call<Responphoto> call, Response<Responphoto> response) {
-                String code = response.body().getMessage();
+                String code = response.body().getCode();
                 progresktp.setVisibility(View.INVISIBLE);
-                StyleableToast.makeText(getApplicationContext(), "Foto Berhasil diupload", Toast.LENGTH_SHORT, R.style.mytoast).show();
-                uploadKTP.setImageDrawable(getDrawable(R.drawable.check));
+                foto2 ="1";
+                if(code.equals("200")){
+                    StyleableToast.makeText(getApplicationContext(), "Foto Berhasil diupload", Toast.LENGTH_SHORT, R.style.mytoast).show();
+                    uploadKTP.setImageDrawable(getDrawable(R.drawable.check));
+                }
+
+
             }
 
             @Override
@@ -324,8 +344,17 @@ public class RegisterFoto_activity extends AppCompatActivity {
 
     public void SyaratKetentuan(View view) {
 
-        Intent intent = new Intent(RegisterFoto_activity.this, syaratdanketentuan_activity.class);
-        startActivity(intent);
+        if(foto1 =="1" && foto2 == "1" && foto3 == "1"){
+
+            Intent intent = new Intent(RegisterFoto_activity.this, syaratdanketentuan_activity.class);
+            startActivity(intent);
+        }else {
+
+            StyleableToast.makeText(getApplicationContext(), "Foto tidak boleh kosong", Toast.LENGTH_LONG,R.style.mytoast).show();
+
+        }
+
+
 
     }
 

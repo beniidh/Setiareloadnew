@@ -191,6 +191,7 @@
         android:foreground="?android:attr/selectableItemBackground"
         android:layout_width="match_parent"
         android:clickable="true"
+        android:onClick="LinKeluar"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <ImageView

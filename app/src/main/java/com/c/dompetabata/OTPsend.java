@@ -45,7 +45,6 @@ Button sendEmail;
 
     public void intentOTP(){
 
-
         Preference.getSharedPreference(getBaseContext());
         String user_id =Preference.getKeyUserId(getBaseContext());
         String user_code =Preference.getKeyUserCode(getBaseContext());

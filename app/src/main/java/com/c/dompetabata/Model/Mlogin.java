@@ -1,9 +1,11 @@
 package com.c.dompetabata.Model;
 
 public class Mlogin {
-    String id,code,name,email,phone,message;
+    String id,code,name,email,phone,message,token;
     String credentials,password,ip_address,user_agent;
     Double longitude,latitude;
+    data data;
+
 
     public Mlogin(String credentials, String password, String ip_address, String user_agent, Double longitude, Double latitude) {
         this.credentials = credentials;
@@ -12,6 +14,10 @@ public class Mlogin {
         this.user_agent = user_agent;
         this.longitude = longitude;
         this.latitude = latitude;
+    }
+
+    public String getToken() {
+        return token;
     }
 
     public String getMessage() {
@@ -56,5 +62,9 @@ public class Mlogin {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public com.c.dompetabata.Model.data getData() {
+        return data;
     }
 }

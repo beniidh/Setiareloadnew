@@ -17,6 +17,7 @@ import com.c.dompetabata.Helper.GpsTracker;
 import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.Helper.utils;
 import com.c.dompetabata.Model.MsetPIN;
+import com.c.dompetabata.sharePreference.Preference;
 import com.muddzdev.styleabletoast.StyleableToast;
 import com.oakkub.android.PinEditText;
 
@@ -75,9 +76,9 @@ public class InsertPIN_activity extends AppCompatActivity {
                                 double longlitut = gpsTracker.getLongitude();
                                 double latitude = gpsTracker.getLatitude();
                                 Intent intent = getIntent();
-                                String token = intent.getStringExtra("token");
+                                String token = Preference.getToken(getApplicationContext());
 
-
+                                
                                 Api api = RetroClient.getApiServices();
                                 MsetPIN msetPIN = new MsetPIN(pinsattu,pinddua,MacAddres,IP,UserAgent,longlitut,latitude);
                                 Call<MsetPIN> call = api.SetPIN("Bearer "+token,msetPIN);
@@ -85,6 +86,7 @@ public class InsertPIN_activity extends AppCompatActivity {
                                     @Override
                                     public void onResponse(Call<MsetPIN> call, Response<MsetPIN> response) {
                                         String code = response.body().getCode();
+                                        String error = response.body().getError();
                                       if(code.equals("200")){
 
                                           StyleableToast.makeText(getApplicationContext(),"Set PIN Berhasil ",Toast.LENGTH_SHORT,R.style.mytoast).show();
@@ -94,6 +96,9 @@ public class InsertPIN_activity extends AppCompatActivity {
                                                   Intent.FLAG_ACTIVITY_NEW_TASK);
                                           startActivity(home);
 
+
+                                      }else {
+                                          StyleableToast.makeText(getApplicationContext(),error,Toast.LENGTH_SHORT,R.style.mytoast).show();
 
                                       }
 
@@ -140,7 +145,7 @@ public class InsertPIN_activity extends AppCompatActivity {
     }
 
     private String getMacAddress() {
-        String MAC = utils.getMACAddress("wlan0");//phone if pc use eth0 if phone wlan0
+        String MAC = utils.getMACAddress("eth0");//phone if pc use eth0 if phone wlan0
         return MAC;
 
     }

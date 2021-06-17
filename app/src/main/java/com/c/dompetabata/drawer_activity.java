@@ -2,6 +2,7 @@ package com.c.dompetabata;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
@@ -15,6 +16,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import android.content.ClipData;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -27,6 +29,7 @@ import android.widget.Toast;
 import com.c.dompetabata.Fragment.ChatFragment;
 import com.c.dompetabata.Fragment.HomeFragment;
 import com.c.dompetabata.Fragment.TransaksiFragment;
+import com.c.dompetabata.sharePreference.Preference;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
@@ -41,8 +44,6 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
     MenuItem menuItem;
 
     private AppBarConfiguration mAppBarConfiguration;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -140,6 +141,38 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
 
     public void LinDaftarHarga(View view){
         drawer_layout.closeDrawers();
+
+    }
+
+    public void LinKeluar (View view){
+
+
+
+        AlertDialog.Builder alertdialog = new AlertDialog.Builder(drawer_activity.this);
+        alertdialog.setTitle("Keluar");
+        alertdialog.setMessage("Apakah anda yakin ingin keluar ?");
+        alertdialog.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Preference.getSharedPreference(getApplicationContext());
+                Preference.setkredentials(getApplicationContext(),"");
+                Preference.setPIN(getApplicationContext(),"");
+                Preference.setToken(getApplicationContext(),"");
+                finish();
+            }
+        });
+
+        alertdialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+
+            }
+        });
+
+
+        AlertDialog alertDialog = alertdialog.create();
+        alertDialog.show();
 
     }
 

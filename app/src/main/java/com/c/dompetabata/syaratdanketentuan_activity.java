@@ -6,8 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 public class syaratdanketentuan_activity extends AppCompatActivity {
+
+    CheckBox setuju;
+    Button setujui;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +22,26 @@ public class syaratdanketentuan_activity extends AppCompatActivity {
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#4AB84E'><b>Syarat & Ketentuan <b></font>"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
+
+        setujui = findViewById(R.id.setuju);
+        setujui.setEnabled(false);
+        setujui.setTextColor(getColor(R.color.gray2));
+        setuju = findViewById(R.id.checksetuju);
+        setuju.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+
+                    setujui.setEnabled(true);
+                    setujui.setTextColor(getColor(R.color.green));
+                }else {
+
+                    setujui.setEnabled(false);
+                    setujui.setTextColor(getColor(R.color.gray2));
+                }
+
+            }
+        });
 
     }
     @Override
@@ -31,7 +57,7 @@ public class syaratdanketentuan_activity extends AppCompatActivity {
 
     public void SendOTP(View view){
         Bundle ekstra =getIntent().getExtras();
-        Intent intent = new Intent(syaratdanketentuan_activity.this,OTPsend.class);
+        Intent intent = new Intent(syaratdanketentuan_activity.this,InsertPIN_activity.class);
         startActivity(intent);
     }
 }

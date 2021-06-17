@@ -17,11 +17,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.c.dompetabata.Adapter.SliderAdapter;
+import com.c.dompetabata.Api.Api;
+import com.c.dompetabata.Helper.ResponMenu;
+import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.Model.SliderItem;
 import com.c.dompetabata.R;
 import com.c.dompetabata.Transaksi.TopupSaldoServer;
 import com.c.dompetabata.homelainnya;
+import com.c.dompetabata.sharePreference.Preference;
 import com.c.dompetabata.topup_saldoku_activity;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
@@ -30,6 +35,10 @@ import com.smarteist.autoimageslider.SliderView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
 
@@ -55,6 +64,9 @@ public class HomeFragment extends Fragment {
         uangelektronik = v.findViewById(R.id.iconuangelektronik);
         pdam = v.findViewById(R.id.iconairpdam);
         vochergame = v.findViewById(R.id.iconvouchergame);
+
+       // Method for load Icon menu
+       getIconVoucherGame();
 
         final SliderView sliderView = v.findViewById(R.id.imageSlider);
 
@@ -113,6 +125,27 @@ public class HomeFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         // TODO: Use the ViewModel
+    }
+
+    public void getIconVoucherGame(){
+
+        Api api = RetroClient.getApiServices();
+        Call<ResponMenu> call = api.getIconVoucherGame("Bearer "+ Preference.getToken(getContext()));
+        call.enqueue(new Callback<ResponMenu>() {
+            @Override
+            public void onResponse(Call<ResponMenu> call, Response<ResponMenu> response) {
+                String code = response.body().getCode();
+                if(code.equals("200")){
+                    Glide.with(getView()).load(response.body().getData().getIcon()).into(vochergame);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponMenu> call, Throwable t) {
+
+            }
+        });
+
     }
 
 }

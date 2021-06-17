@@ -32,8 +32,10 @@ import retrofit2.Response;
 
 public class pin_activity extends AppCompatActivity {
 
-ProgressBar progressBar;
+    ProgressBar progressBar;
     PinEditText pin1;
+    String telepon;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,9 +47,7 @@ ProgressBar progressBar;
 
         progressBar = findViewById(R.id.progressPIN);
 
-      pin1 = findViewById(R.id.pinEditText);
-
-
+        pin1 = findViewById(R.id.pinEditText);
         pin1.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -57,11 +57,10 @@ ProgressBar progressBar;
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if (pin1.length()==6){
+                if (pin1.length() == 6) {
                     progressBar.setVisibility(View.VISIBLE);
                     String pinn = pin1.getText().toString();
                     Login(pinn);
-
                 }
             }
 
@@ -70,8 +69,6 @@ ProgressBar progressBar;
 
             }
         });
-
-
 
     }
 
@@ -86,18 +83,25 @@ ProgressBar progressBar;
         super.onBackPressed();
     }
 
-    private void Login(String pin){
+    private void Login(String pin) {
 
         GpsTracker gpsTracker = new GpsTracker(pin_activity.this);
         double longlitude = gpsTracker.getLongitude();
         double latitude = gpsTracker.getLatitude();
         String useragent = getUserAgent();
-        String IP  = getIPaddress();
+        String IP = getIPaddress();
         Intent tlp = getIntent();
-        String telepon =tlp.getStringExtra("number");
+
+        Preference.getSharedPreference(getApplicationContext());
+        telepon = Preference.getKredentials(getApplicationContext());
+
+        if (telepon.equals("")) {
+
+            telepon = tlp.getStringExtra("number");
+        }
 
 
-        Mlogin mlogin = new Mlogin(telepon,pin,IP,useragent,longlitude,latitude);
+        Mlogin mlogin = new Mlogin(telepon, pin, IP, useragent, longlitude, latitude);
 
         Api api = RetroClient.getApiServices();
         Call<Mlogin> call = api.Login(mlogin);
@@ -105,30 +109,26 @@ ProgressBar progressBar;
             @Override
             public void onResponse(Call<Mlogin> call, Response<Mlogin> response) {
 
-
                 String code = response.body().getCode();
 
-                if (code.equals("200")){
+                if (code.equals("200")) {
                     progressBar.setVisibility(View.GONE);
-                    Intent home = new Intent(pin_activity.this,drawer_activity.class);
+                    Intent home = new Intent(pin_activity.this, drawer_activity.class);
                     startActivity(home);
-                    String longlitut = Double.toString(longlitude);
-                    String latitut = Double.toString(latitude);
+                  String token = response.body().getData().getToken();
 
                     Preference.getSharedPreference(pin_activity.this);
-                    Preference.setkredentials(getApplicationContext(),telepon);
-                    Preference.setPIN(getApplicationContext(),pin);
-                    Preference.setLong(getApplicationContext(),longlitut);
-                    Preference.setLat(getApplicationContext(),latitut);
+                    Preference.setToken(getApplicationContext(),token);
+
+
                     finish();
 
-                }else {
+                } else {
                     progressBar.setVisibility(View.GONE);
                     pin1.setText("");
 
-                    StyleableToast.makeText(getApplicationContext(),"Nomor atau PIN salah",Toast.LENGTH_SHORT, R.style.mytoast).show();
+                    StyleableToast.makeText(getApplicationContext(), "Nomor atau PIN salah", Toast.LENGTH_SHORT, R.style.mytoast).show();
                 }
-
 
 
             }
@@ -137,7 +137,7 @@ ProgressBar progressBar;
             public void onFailure(Call<Mlogin> call, Throwable t) {
 //                progressBar.setVisibility(View.INVISIBLE);
 
-                StyleableToast.makeText(getApplicationContext(),"Periksa Sambungan internet",Toast.LENGTH_SHORT, R.style.mytoast).show();
+                StyleableToast.makeText(getApplicationContext(), "Periksa Sambungan internet", Toast.LENGTH_SHORT, R.style.mytoast).show();
 
             }
         });

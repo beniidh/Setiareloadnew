@@ -5,6 +5,7 @@ import android.renderscript.Sampler;
 import com.c.dompetabata.Helper.Respon;
 import com.c.dompetabata.Helper.ResponK;
 import com.c.dompetabata.Helper.ResponKe;
+import com.c.dompetabata.Helper.ResponMenu;
 import com.c.dompetabata.Helper.ResponPost;
 import com.c.dompetabata.Helper.Responkel;
 import com.c.dompetabata.Model.MOtpVerif;
@@ -65,6 +66,12 @@ public interface Api {
 
     @GET("all-province?next=39")
     Call<Respon> getAllProvinsi();
+
+    @GET("profile")
+    Call<Mlogin> getProfile(@Header("X-Signature")String token);
+
+    @GET("product-category/CATID060802100000003")
+    Call<ResponMenu> getIconVoucherGame(@Header("X-Signature")String token);
 
     @POST("set-pin")
     Call<MsetPIN> SetPIN(@Header("X-Signature")String token, @Body MsetPIN msetPIN);
