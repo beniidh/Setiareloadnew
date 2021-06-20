@@ -41,7 +41,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Register_activity extends AppCompatActivity implements ModalProvinsi.BottomSheetListener, ModalKabupaten.BottomSheetListenerKabupaten, ModalKecamatan.BottomSheetListenerKecamatan, ModalKelurahan.BottomSheetListenerKelurahan,ModalKodePos.BottomSheetListenerPost {
-    EditText provinsi, kecamatan, kabupaten,kelurahan,postcode, namapemilik, email, phone, alamatregis,namakonter;
+    EditText provinsi, kecamatan, kabupaten,kelurahan,postcode, namapemilik, email, phone, alamatregis,namakonter,referal,serverid;
     ProgressBar progressBar;
     Button regis;
     GpsTracker gpsTracker;
@@ -81,6 +81,8 @@ public class Register_activity extends AppCompatActivity implements ModalProvins
         provinsi = findViewById(R.id.provinsi);
         kabupaten = findViewById(R.id.kabupaten);
         kecamatan = findViewById(R.id.kecamatan);
+        referal = findViewById(R.id.referalcodeRegis);
+        serverid = findViewById(R.id.serverID);
 
 provinsi.addTextChangedListener(new TextWatcher() {
     @Override
@@ -255,7 +257,7 @@ postcode.setEnabled(true);
         String Phone = phone.getText().toString();
         String Email = email.getText().toString();
         String alamat = alamatregis.getText().toString();
-        String parent = "DA00001";
+        String parent = referal.getText().toString();
 
         String IpAddres = getIPaddress();
         String MacAddres = getMacAddress();
@@ -283,13 +285,7 @@ postcode.setEnabled(true);
             MRegister register = new MRegister(name, Email, Phone, Store_name, MacAddres, IpAddres, alamat, parent, useragent, province, Regencie, district, subdistrict, postalCode, longlitude, latitude);
             Api api = retrofit.create(Api.class);
             Call<MRegister> call = api.Register(register);
-            namapemilik.setText("");
-            phone.setText("");
-            email.setText("");
-            alamatregis.setText("");
-            provinsi.setText("");
-            kabupaten.setText("");
-            kecamatan.setText("");
+
             call.enqueue(new Callback<MRegister>() {
                 @Override
                 public void onResponse(Call<MRegister> call, Response<MRegister> response) {
@@ -298,12 +294,12 @@ postcode.setEnabled(true);
                         String user_id = response.body().getData().getUser_id();
                         String user_code = response.body().getData().getUser_code();
                         String otp_id = response.body().getData().getOtp_id();
-                        String phone = response.body().getData().getPhone();
+                        String phonee = response.body().getData().getPhone();
                         Intent intent = new Intent(Register_activity.this, OTPsend.class);
 
                         Preference.getSharedPreference(getBaseContext());
                         Preference.setKeyOtpId(getBaseContext(), otp_id);
-                        Preference.setKeyPhone(getBaseContext(), phone);
+                        Preference.setKeyPhone(getBaseContext(), phonee);
                         Preference.setKeyUserCode(getBaseContext(), user_code);
                         Preference.setKeyUserId(getBaseContext(), user_id);
 //
@@ -313,6 +309,21 @@ postcode.setEnabled(true);
 //                        intent.putExtra("otp_id",otp_id);
                         progressBar.setVisibility(View.GONE);
                         regis.setText("Selanjutnya");
+
+                        namapemilik.setText("");
+                        namakonter.setText("");
+                        phone.setText("");
+                        email.setText("");
+                        alamatregis.setText("");
+                        provinsi.setText("");
+                        kabupaten.setText("");
+                        kecamatan.setText("");
+                        kelurahan.setText("");
+                        postcode.setText("");
+                        referal.setText("");
+                        serverid.setText("");
+
+
 
 
                         startActivity(intent);

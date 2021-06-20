@@ -3,10 +3,12 @@ package com.c.dompetabata.Api;
 import android.renderscript.Sampler;
 
 import com.c.dompetabata.Helper.Respon;
+import com.c.dompetabata.Helper.ResponBanner;
 import com.c.dompetabata.Helper.ResponK;
 import com.c.dompetabata.Helper.ResponKe;
 import com.c.dompetabata.Helper.ResponMenu;
 import com.c.dompetabata.Helper.ResponPost;
+import com.c.dompetabata.Helper.ResponProfil;
 import com.c.dompetabata.Helper.Responkel;
 import com.c.dompetabata.Model.MOtpVerif;
 import com.c.dompetabata.Model.MRegisData;
@@ -16,15 +18,11 @@ import com.c.dompetabata.Model.Mphone;
 import com.c.dompetabata.Model.MsetPIN;
 import com.c.dompetabata.Model.Responphoto;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
+
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
@@ -70,8 +68,23 @@ public interface Api {
     @GET("profile")
     Call<Mlogin> getProfile(@Header("X-Signature")String token);
 
-    @GET("product-category/CATID060802100000003")
-    Call<ResponMenu> getIconVoucherGame(@Header("X-Signature")String token);
+    @GET("banner/user/052f96d0-78a2-4df7-a9df-134484ca1446")
+    Call<ResponBanner> getBanner(@Header("X-Signature")String token);
+
+    @GET("profile")
+    Call<ResponProfil> getProfileDas(@Header("X-Signature")String token);
+
+    @GET("all-product-category")
+    Call<ResponMenu> getAllProduct(@Header("X-Signature")String token);
+
+    @GET("product-category/CATID061602100000004")
+    Call<ResponMenu> getIconPulsaPasca(@Header("X-Signature")String token);
+
+    @GET("product-category/CATID060802100000002")
+    Call<ResponMenu> getIconPaketData(@Header("X-Signature")String token);
+
+    @GET("product-category/CATID052702100000001")
+    Call<ResponMenu> getIconPulsaPra(@Header("X-Signature")String token);
 
     @POST("set-pin")
     Call<MsetPIN> SetPIN(@Header("X-Signature")String token, @Body MsetPIN msetPIN);

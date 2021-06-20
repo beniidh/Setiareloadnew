@@ -13,6 +13,7 @@
         android:id="@+id/imageSlider"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:layout_marginBottom="10dp"
         app:sliderAnimationDuration="600"
         app:sliderAutoCycleDirection="back_and_forth"
         app:sliderIndicatorAnimationDuration="600"
@@ -21,9 +22,6 @@
         app:sliderIndicatorOrientation="horizontal"
         app:sliderIndicatorPadding="3dp"
         app:sliderIndicatorRadius="1.5dp"
-        android:layout_marginBottom="10dp"
-        app:sliderIndicatorSelectedColor="#5A5A5A"
-        app:sliderIndicatorUnselectedColor="#4AB84E"
         app:sliderScrollTimeInSec="1" />
 
     <LinearLayout

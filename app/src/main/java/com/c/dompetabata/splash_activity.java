@@ -32,6 +32,7 @@ public class splash_activity extends AppCompatActivity {
         getSupportActionBar().hide();
         setLogo();
 
+
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -46,7 +47,6 @@ public class splash_activity extends AppCompatActivity {
                     call.enqueue(new Callback<Mlogin>() {
                         @Override
                         public void onResponse(Call<Mlogin> call, Response<Mlogin> response) {
-
                             String code = response.body().getCode();
                             if(code.equals("200")){
                                 Intent home = new Intent(splash_activity.this,drawer_activity.class);

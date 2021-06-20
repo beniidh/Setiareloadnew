@@ -33,7 +33,6 @@
                     style="@style/Widget.AppCompat.Button.Borderless"
 
                     />
-
             </androidx.appcompat.widget.Toolbar>
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -77,7 +76,6 @@
     android:layout_height="wrap_content">
     <include layout="@layout/nav_header_main"/>
     <include layout="@layout/nav_menu"/>
-
 
 
 </LinearLayout>

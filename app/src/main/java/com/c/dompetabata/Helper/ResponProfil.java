@@ -1,13 +1,10 @@
 package com.c.dompetabata.Helper;
 
-import com.c.dompetabata.Model.Micon;
-import com.c.dompetabata.Model.ModelKabupaten;
+import com.c.dompetabata.Model.data;
 
-import java.util.List;
-
-public class ResponMenu {
+public class ResponProfil {
     String code,error,message;
-    List<Micon> data;
+  data data;
 
     public String getCode() {
         return code;
@@ -21,7 +18,7 @@ public class ResponMenu {
         return message;
     }
 
-    public List<Micon> getData() {
+    public com.c.dompetabata.Model.data getData() {
         return data;
     }
 }

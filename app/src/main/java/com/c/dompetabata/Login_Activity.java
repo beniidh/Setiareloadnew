@@ -95,10 +95,7 @@ public class Login_Activity extends AppCompatActivity {
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getLocation();
                 validation(numberphone.getText().toString());
-
-
 
             }
         });

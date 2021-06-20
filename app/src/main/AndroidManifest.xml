@@ -44,6 +44,7 @@
             android:name=".Login_Activity"
             android:screenOrientation="portrait" />
         <activity android:name=".drawer_activity"
+            android:launchMode="singleTask"
             android:theme="@style/Theme.DompetAbata2"/>
         <activity
             android:name=".splash_activity"

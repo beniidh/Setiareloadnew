@@ -8,10 +8,7 @@ public class SliderItem {
         this.description = description;
         this.imageUrl = imageUrl;
     }
-    public SliderItem( String imageUrl) {
 
-        this.imageUrl = imageUrl;
-    }
 
     public String getDescription() {
         return description;

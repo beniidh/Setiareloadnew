@@ -10,12 +10,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import android.content.ClipData;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -26,24 +29,43 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.c.dompetabata.Api.Api;
 import com.c.dompetabata.Fragment.ChatFragment;
 import com.c.dompetabata.Fragment.HomeFragment;
+import com.c.dompetabata.Fragment.HomeViewModel;
 import com.c.dompetabata.Fragment.TransaksiFragment;
+import com.c.dompetabata.Helper.ResponBanner;
+import com.c.dompetabata.Helper.ResponMenu;
+import com.c.dompetabata.Helper.ResponProfil;
+import com.c.dompetabata.Helper.RetroClient;
+import com.c.dompetabata.Model.MBanner;
+import com.c.dompetabata.Model.Micon;
 import com.c.dompetabata.sharePreference.Preference;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class drawer_activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     BottomNavigationView menu_bawah;
     Toolbar toolbar;
-    TextView tulisan;
+    TextView tulisan, navheadernamakonter;
     DrawerLayout drawer_layout;
     ActionBarDrawerToggle toggle;
     NavigationView navigationView;
-    Fragment fragment1,fragment2,fragment3;
+    Fragment fragment1, fragment2, fragment3;
     MenuItem menuItem;
+    ArrayList<Micon> micons = new ArrayList<>();
+    ArrayList<MBanner> mBanners = new ArrayList<>();
+    HomeViewModel myViewModel;
 
     private AppBarConfiguration mAppBarConfiguration;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,9 +77,14 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
 
-
         menu_bawah = findViewById(R.id.menu_bawah);
         tulisan = findViewById(R.id.tulisan);
+        navheadernamakonter = findViewById(R.id.navheadernamakonter);
+        getMicons();
+        getContentProfil();
+        getIconBanner();
+        myViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
+        myViewModel.init();
 
         navigationView = findViewById(R.id.nav_view);
         drawer_layout = findViewById(R.id.drawer_layout);
@@ -65,7 +92,6 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
 
         toggle = new ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         toggle.syncState();
-
 
 
         fragment1 = new TransaksiFragment();
@@ -76,6 +102,8 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.replace(R.id.fLayout, fragment3);
         fragmentTransaction.commit(); // save the changes
+
+
         menu_bawah.setOnNavigationItemSelectedListener(this::onOptionsItemSelected);
 
 
@@ -94,7 +122,6 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
 
 
         switch (item.getItemId()) {
-
 
 
             case R.id.home:
@@ -139,13 +166,12 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
         return false;
     }
 
-    public void LinDaftarHarga(View view){
+    public void LinDaftarHarga(View view) {
         drawer_layout.closeDrawers();
 
     }
 
-    public void LinKeluar (View view){
-
+    public void LinKeluar(View view) {
 
 
         AlertDialog.Builder alertdialog = new AlertDialog.Builder(drawer_activity.this);
@@ -155,9 +181,9 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Preference.getSharedPreference(getApplicationContext());
-                Preference.setkredentials(getApplicationContext(),"");
-                Preference.setPIN(getApplicationContext(),"");
-                Preference.setToken(getApplicationContext(),"");
+                Preference.setkredentials(getApplicationContext(), "");
+                Preference.setPIN(getApplicationContext(), "");
+                Preference.setToken(getApplicationContext(), "");
                 finish();
             }
         });
@@ -166,13 +192,89 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-
             }
         });
 
 
         AlertDialog alertDialog = alertdialog.create();
         alertDialog.show();
+
+    }
+
+    public void getContentProfil() {
+
+
+        Api api = RetroClient.getApiServices();
+        Call<ResponProfil> call = api.getProfileDas("Bearer " + Preference.getToken(getApplicationContext()));
+        call.enqueue(new Callback<ResponProfil>() {
+            @Override
+            public void onResponse(Call<ResponProfil> call, Response<ResponProfil> response) {
+                navheadernamakonter.setText(response.body().getData().getStore_name());
+
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponProfil> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public ArrayList<Micon> getMicons() {
+        Api api = RetroClient.getApiServices();
+        Call<ResponMenu> call = api.getAllProduct("Bearer " + Preference.getToken(getApplicationContext()));
+        call.enqueue(new Callback<ResponMenu>() {
+            @Override
+            public void onResponse(Call<ResponMenu> call, Response<ResponMenu> response) {
+                String code = response.body().getCode();
+
+
+                if (code.equals("200")) {
+
+                    micons = (ArrayList<Micon>) response.body().getData();
+                    String jumlah = String.valueOf(micons.size());
+
+
+                    myViewModel.sendDataIcon(micons);
+
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponMenu> call, Throwable t) {
+
+            }
+        });
+
+        return micons;
+    }
+
+    public ArrayList<MBanner> getIconBanner() {
+
+        Api api = RetroClient.getApiServices();
+        Call<ResponBanner> call = api.getBanner("Bearer " + Preference.getToken(getApplicationContext()));
+        call.enqueue(new Callback<ResponBanner>() {
+            @Override
+            public void onResponse(Call<ResponBanner> call, Response<ResponBanner> response) {
+                String code = response.body().getCode();
+                if (code.equals("200")) {
+
+                    mBanners = response.body().getData();
+                    String jumlah = String.valueOf(mBanners.size());
+                    myViewModel.sendDataIconBanner(mBanners);
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponBanner> call, Throwable t) {
+
+            }
+        });
+        return mBanners;
 
     }
 

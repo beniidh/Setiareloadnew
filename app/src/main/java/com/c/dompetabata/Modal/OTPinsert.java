@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.text.Html;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.c.dompetabata.Api.Api;
@@ -14,6 +16,8 @@ import com.c.dompetabata.Api.Value;
 import com.c.dompetabata.InsertPIN_activity;
 import com.c.dompetabata.MainActivity;
 import com.c.dompetabata.Model.MOtpVerif;
+import com.c.dompetabata.Model.MRegisData;
+import com.c.dompetabata.OTPsend;
 import com.c.dompetabata.R;
 import com.c.dompetabata.RegisterFoto_activity;
 import com.c.dompetabata.sharePreference.Preference;
@@ -41,6 +45,7 @@ public class OTPinsert extends AppCompatActivity {
 
         otp = findViewById(R.id.otpid);
         verif = findViewById(R.id.VerifikasiOTP);
+        otp.setPasswordHidden(true);
         verif.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,6 +99,65 @@ public class OTPinsert extends AppCompatActivity {
         });
 
 
+        TextView timer = findViewById(R.id.timer);
+        new CountDownTimer(59000,1000){
+
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+                timer.setText("Kirim Ulang setelah: " + millisUntilFinished / 1000);
+            }
+
+            @Override
+            public void onFinish() {
+                timer.setText("Kirim Ulang");
+                timer.setTextColor(getColor(R.color.green));
+                timer.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        intentOTP();
+                    }
+                });
+
+            }
+        }.start();
+    }
+
+    public void intentOTP(){
+
+        Preference.getSharedPreference(getBaseContext());
+        String user_id =Preference.getKeyUserId(getBaseContext());
+        String user_code =Preference.getKeyUserCode(getBaseContext());
+        String phone =   Preference.getKeyPhone(getBaseContext());
+        String otp_id =Preference.getKeyOtpId(getBaseContext());
+
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Value.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        Api api = retrofit.create(Api.class);
+        MRegisData mRegisData = new MRegisData(user_id,user_code,phone,otp_id);
+        Call<MRegisData> call = api.SendOTP(mRegisData);
+        call.enqueue(new Callback<MRegisData>() {
+            @Override
+            public void onResponse(Call<MRegisData> call, Response<MRegisData> response) {
+                String code = response.body().getCode();
+                if(code.equals("200")){
+                    StyleableToast.makeText(getApplicationContext(),"OTP Telah dikirim", Toast.LENGTH_SHORT, R.style.mytoast).show();
+
+                }else {
+
+                    StyleableToast.makeText(getApplicationContext(),"Belum dikirim", Toast.LENGTH_SHORT, R.style.mytoast).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<MRegisData> call, Throwable t) {
+
+            }
+        });
 
     }
 }

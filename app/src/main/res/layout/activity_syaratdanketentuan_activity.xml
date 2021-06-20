@@ -58,13 +58,14 @@
                     android:id="@+id/checksetuju"
                     android:layout_width="wrap_content"
                     android:textStyle="bold"
+                    android:checked="true"
                     android:text="@string/saya_menerima_dan_menyetujui_syarat_dan_ketentuan_aplikasi"
                     android:layout_height="wrap_content" />
 
             </LinearLayout>
 
             <Button
-                android:id="@+id/setuju"
+                android:id="@+id/setujuu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
