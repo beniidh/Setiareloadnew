@@ -284,6 +284,7 @@
             android:layout_width="match_parent"
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
+            android:onClick="BayarTagihan"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:layout_height="wrap_content">

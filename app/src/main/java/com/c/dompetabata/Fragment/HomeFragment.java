@@ -1,10 +1,7 @@
 package com.c.dompetabata.Fragment;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -20,34 +17,20 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.c.dompetabata.Adapter.SliderAdapter;
-import com.c.dompetabata.Api.Api;
-import com.c.dompetabata.Helper.Load;
-import com.c.dompetabata.Helper.ResponMenu;
-import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.Model.MBanner;
 import com.c.dompetabata.Model.Micon;
 import com.c.dompetabata.Model.SliderItem;
 import com.c.dompetabata.R;
 import com.c.dompetabata.Transaksi.TopupSaldoServer;
 import com.c.dompetabata.homelainnya;
-import com.c.dompetabata.sharePreference.Preference;
 import com.c.dompetabata.topup_saldoku_activity;
-import com.denzcoskun.imageslider.ImageSlider;
-import com.denzcoskun.imageslider.models.SlideModel;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
 

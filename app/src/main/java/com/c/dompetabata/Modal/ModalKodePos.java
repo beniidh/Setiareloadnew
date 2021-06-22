@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.c.dompetabata.Adapter.AdapterPost;
 import com.c.dompetabata.Api.Api;
-import com.c.dompetabata.Helper.ResponPost;
+import com.c.dompetabata.Respon.ResponPost;
 import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.Model.ModelPost;
 import com.c.dompetabata.R;

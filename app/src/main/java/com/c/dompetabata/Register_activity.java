@@ -362,7 +362,7 @@ postcode.setEnabled(true);
     }
 
     private String getMacAddress() {
-        String MAC = utils.getMACAddress("eth0");//phone if pc use eth0 if phone wlan0
+        String MAC = utils.getMACAddress("wlan0");//phone if pc use eth0 if phone wlan0
         return MAC;
 
     }

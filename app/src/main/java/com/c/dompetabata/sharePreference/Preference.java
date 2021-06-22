@@ -169,5 +169,17 @@ public class Preference {
         return getSharedPreference(context).getString("token","");
     }
 
+    // Set Roles ID
+
+    public static void setRoles(Context context, String roles){
+        SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.putString("Roles", roles);
+        editor.apply();
+    }
+
+    public static String getRoles(Context context){
+        return getSharedPreference(context).getString("Roles","");
+    }
+
 
 }

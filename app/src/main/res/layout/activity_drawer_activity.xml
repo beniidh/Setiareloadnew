@@ -16,24 +16,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+            <include layout="@layout/nav_header"/>
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                android:theme="@style/Theme.AppCompat.DayNight.Dialog.Alert"
-                app:contentInsetStartWithNavigation="0dp"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" >
-                <ImageButton
-                    android:layout_width="70dp"
-                    android:scaleType="centerInside"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/csoftware"
-                    style="@style/Widget.AppCompat.Button.Borderless"
+<!--            <androidx.appcompat.widget.Toolbar-->
+<!--                android:id="@+id/toolbar"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="?attr/actionBarSize"-->
+<!--                android:background="?attr/colorPrimary"-->
+<!--                android:theme="@style/Theme.AppCompat.DayNight.Dialog.Alert"-->
+<!--                app:contentInsetStartWithNavigation="0dp"-->
+<!--                app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" >-->
+<!--                <ImageButton-->
+<!--                    android:layout_width="70dp"-->
+<!--                    android:scaleType="centerInside"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:src="@drawable/csoftware"-->
+<!--                    style="@style/Widget.AppCompat.Button.Borderless"-->
 
-                    />
-            </androidx.appcompat.widget.Toolbar>
+<!--                    />-->
+<!--            </androidx.appcompat.widget.Toolbar>-->
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -53,6 +54,7 @@
                 app:itemBackground="@color/white"
                 app:itemIconTint="@color/bottomnav_color"
                 app:itemTextAppearanceActive="@style/themetext"
+                app:itemTextAppearanceInactive="@style/themetext"
                 app:itemTextColor="@color/bottomnav_color"
                 app:menu="@menu/menu_xml" />
 

@@ -21,16 +21,47 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DompetAbata">
-        <activity android:name=".Transaksi.RincianTagihan"></activity>
-        <activity android:name=".Transaksi.RiwayatTagihan" />
-        <activity android:name=".Transaksi.TopupSaldoServer" />
-        <activity android:name=".Transaksi.TrasferBank" />
-        <activity android:name=".Transaksi.BayarViaBank" />
-        <activity android:name=".Transaksi.BayarSales" />
-        <activity android:name=".InsertPIN_activity" />
-        <activity android:name=".topup_saldoku_activity" />
-        <activity android:name=".homelainnya" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".PulsaPrabayar.PulsaPrabayar_activity"></activity>
+        <activity android:name=".PulsaPascaBayar.subCategory_activity" />
+        <activity android:name=".Kodeproduk" />
+        <activity android:name=".Transaksi.BayarSalesServer" />
+        <activity android:name=".Profil.Device" />
+        <activity android:name=".Profil.Point" />
+        <activity android:name=".Profil.ubah_pin" />
+        <activity android:name=".Profil.ubah_profil" />
+        <activity
+            android:name=".Profil.Profil"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Transaksi.RincianTagihan"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Transaksi.RiwayatTagihan"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Transaksi.TopupSaldoServer"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Transaksi.TrasferBank"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Transaksi.BayarViaBank"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Transaksi.BayarSales"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".InsertPIN_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".topup_saldoku_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".homelainnya"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
@@ -43,14 +74,15 @@
         <activity
             android:name=".Login_Activity"
             android:screenOrientation="portrait" />
-        <activity android:name=".drawer_activity"
+        <activity
+            android:name=".drawer_activity"
             android:launchMode="singleTask"
-            android:theme="@style/Theme.DompetAbata2"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.DompetAbata2" />
         <activity
             android:name=".splash_activity"
             android:exported="true"
-            android:screenOrientation="portrait"
-         >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

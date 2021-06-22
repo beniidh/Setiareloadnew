@@ -1,10 +1,18 @@
 package com.c.dompetabata.Model;
 
+import java.util.ArrayList;
+
 public class data {
 
     String id,code,name,email,phone;
     String token,icon;
     String store_name,address,status,roles,parent,province_id,regencies_id,districts_id,sub_districts_id,postal_code_id,mac_address,ip_address,user_agent,refresh_token,longitude,latitude,paylater_status,referal_code,server_code,server_id,avatar,logo,login_at,id_card,selfie,id_card_selfie,is_deleted,created_at,updated_at;
+
+    ArrayList<MSubMenu> menu;
+
+    public ArrayList<MSubMenu> getMenu() {
+        return menu;
+    }
 
     public String getStore_name() {
         return store_name;

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 
+import com.c.dompetabata.Modal.ModalMetodePemayaran;
 import com.c.dompetabata.R;
 
 public class TopupSaldoServer extends AppCompatActivity {
@@ -34,5 +35,9 @@ public class TopupSaldoServer extends AppCompatActivity {
     public void RiwayatTagihan(View view){
         Intent intent = new Intent(TopupSaldoServer.this,RiwayatTagihan.class);
         startActivity(intent);
+    }
+    public void BayarTagihan(View view){
+        ModalMetodePemayaran modalPembayaran = new ModalMetodePemayaran();
+        modalPembayaran.show(getSupportFragmentManager(), "ModalPebayaran");
     }
 }

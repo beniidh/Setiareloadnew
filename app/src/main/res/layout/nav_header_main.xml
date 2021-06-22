@@ -57,6 +57,7 @@
         android:layout_width="match_parent"
        android:background="@drawable/bg_profil"
         android:padding="10dp"
+       android:id="@+id/LinearProfil"
         android:layout_marginTop="20dp"
         android:layout_height="wrap_content"
         android:clickable="true"

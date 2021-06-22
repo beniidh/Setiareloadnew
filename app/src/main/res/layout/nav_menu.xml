@@ -1,185 +1,191 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:padding="18dp"
-    >
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="10dp"
-        android:background="@color/gray2"
-        />
-    <LinearLayout
-        android:foreground="?android:attr/selectableItemBackground"
-        android:layout_width="match_parent"
-        android:onClick="LinDaftarHarga"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:orientation="horizontal">
+    android:padding="18dp">
 
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/list"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Daftar Harga"
-            android:textColor="@color/green"
-            android:gravity="center"
-            android:fontFamily="sans-serif-medium"
-            android:textSize="16sp"
-            android:layout_marginLeft="10dp"
-            />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ReySubMenu"
+        tools:listitem="@layout/listmenu_sidebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:background="@color/gray2"-->
+<!--        />-->
+<!--    <LinearLayout-->
+<!--        android:foreground="?android:attr/selectableItemBackground"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:onClick="LinDaftarHarga"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:clickable="true"-->
+<!--        android:orientation="horizontal">-->
 
-    </LinearLayout>
-    <View
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="10dp"
-        android:background="@color/gray2"
-        />
-    <LinearLayout
-        android:foreground="?android:attr/selectableItemBackground"
-        android:layout_width="match_parent"
-        android:clickable="true"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/currency"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Pengajuan Saldo Server"
-            android:fontFamily="sans-serif-medium"
-            android:textSize="16sp"
-            android:textColor="@color/green"
-            android:gravity="center"
-            android:layout_marginLeft="10dp"
-            />
+<!--        <ImageView-->
+<!--            android:layout_width="25dp"-->
+<!--            android:layout_height="25dp"-->
+<!--            android:src="@drawable/list"/>-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:text="Daftar Harga"-->
+<!--            android:textColor="@color/green"-->
+<!--            android:gravity="center"-->
+<!--            android:fontFamily="sans-serif-medium"-->
+<!--            android:textSize="16sp"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            />-->
 
-    </LinearLayout>
-    <View
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="10dp"
-        android:background="@color/gray2"
-        />
-    <LinearLayout
-        android:foreground="?android:attr/selectableItemBackground"
-        android:layout_width="match_parent"
-        android:clickable="true"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/printer"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Cetak Struk"
-            android:fontFamily="sans-serif-medium"
-            android:textSize="16sp"
-            android:textColor="@color/green"
-            android:gravity="center"
-            android:layout_marginLeft="10dp"
-            />
+<!--    </LinearLayout>-->
+<!--    <View-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:background="@color/gray2"-->
+<!--        />-->
+<!--    <LinearLayout-->
+<!--        android:foreground="?android:attr/selectableItemBackground"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:clickable="true"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal">-->
+<!--        <ImageView-->
+<!--            android:layout_width="25dp"-->
+<!--            android:layout_height="25dp"-->
+<!--            android:src="@drawable/currency"/>-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:text="Pengajuan Saldo Server"-->
+<!--            android:fontFamily="sans-serif-medium"-->
+<!--            android:textSize="16sp"-->
+<!--            android:textColor="@color/green"-->
+<!--            android:gravity="center"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            />-->
 
-    </LinearLayout>
-    <View
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="10dp"
-        android:background="@color/gray2"
-        />
-    <LinearLayout
-        android:foreground="?android:attr/selectableItemBackground"
-        android:layout_width="match_parent"
-        android:clickable="true"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/code"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Kode Produk"
-            android:fontFamily="sans-serif-medium"
-            android:textSize="16sp"
-            android:textColor="@color/green"
-            android:gravity="center"
-            android:layout_marginLeft="10dp"
-            />
+<!--    </LinearLayout>-->
+<!--    <View-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:background="@color/gray2"-->
+<!--        />-->
+<!--    <LinearLayout-->
+<!--        android:foreground="?android:attr/selectableItemBackground"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:clickable="true"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal">-->
+<!--        <ImageView-->
+<!--            android:layout_width="25dp"-->
+<!--            android:layout_height="25dp"-->
+<!--            android:src="@drawable/printer"/>-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:text="Cetak Struk"-->
+<!--            android:fontFamily="sans-serif-medium"-->
+<!--            android:textSize="16sp"-->
+<!--            android:textColor="@color/green"-->
+<!--            android:gravity="center"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            />-->
 
-    </LinearLayout>
-    <View
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="10dp"
-        android:background="@color/gray2"
-        />
-    <LinearLayout
-        android:foreground="?android:attr/selectableItemBackground"
-        android:layout_width="match_parent"
-        android:clickable="true"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/info"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Tentang Kami"
-            android:fontFamily="sans-serif-medium"
-            android:textSize="16sp"
-            android:textColor="@color/green"
-            android:gravity="center"
-            android:layout_marginLeft="10dp"
-            />
+<!--    </LinearLayout>-->
+<!--    <View-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:background="@color/gray2"-->
+<!--        />-->
+<!--    <LinearLayout-->
+<!--        android:foreground="?android:attr/selectableItemBackground"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:clickable="true"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal">-->
+<!--        <ImageView-->
+<!--            android:layout_width="25dp"-->
+<!--            android:layout_height="25dp"-->
+<!--            android:src="@drawable/code"/>-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:text="Kode Produk"-->
+<!--            android:fontFamily="sans-serif-medium"-->
+<!--            android:textSize="16sp"-->
+<!--            android:textColor="@color/green"-->
+<!--            android:gravity="center"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            />-->
 
-    </LinearLayout>
-    <View
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="10dp"
-        android:background="@color/gray2"
-        />
-    <LinearLayout
-        android:foreground="?android:attr/selectableItemBackground"
-        android:layout_width="match_parent"
-        android:clickable="true"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/question"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Syarat dan Ketentuan"
-            android:fontFamily="sans-serif-medium"
-            android:textSize="16sp"
-            android:textColor="@color/green"
-            android:gravity="center"
-            android:layout_marginLeft="10dp"
-            />
+<!--    </LinearLayout>-->
+<!--    <View-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:background="@color/gray2"-->
+<!--        />-->
+<!--    <LinearLayout-->
+<!--        android:foreground="?android:attr/selectableItemBackground"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:clickable="true"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal">-->
+<!--        <ImageView-->
+<!--            android:layout_width="25dp"-->
+<!--            android:layout_height="25dp"-->
+<!--            android:src="@drawable/info"/>-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:text="Tentang Kami"-->
+<!--            android:fontFamily="sans-serif-medium"-->
+<!--            android:textSize="16sp"-->
+<!--            android:textColor="@color/green"-->
+<!--            android:gravity="center"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            />-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
+<!--    <View-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:background="@color/gray2"-->
+<!--        />-->
+<!--    <LinearLayout-->
+<!--        android:foreground="?android:attr/selectableItemBackground"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:clickable="true"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal">-->
+<!--        <ImageView-->
+<!--            android:layout_width="25dp"-->
+<!--            android:layout_height="25dp"-->
+<!--            android:src="@drawable/question"/>-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:text="Syarat dan Ketentuan"-->
+<!--            android:fontFamily="sans-serif-medium"-->
+<!--            android:textSize="16sp"-->
+<!--            android:textColor="@color/green"-->
+<!--            android:gravity="center"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            />-->
+
+<!--    </LinearLayout>-->
     <View
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
@@ -192,6 +198,7 @@
         android:layout_width="match_parent"
         android:clickable="true"
         android:onClick="LinKeluar"
+        android:padding="5dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <ImageView
@@ -210,13 +217,13 @@
             />
 
     </LinearLayout>
-    <View
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="10dp"
-        android:background="@color/gray2"
-        />
+<!--    <View-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:background="@color/gray2"-->
+<!--        />-->
 
 
 </LinearLayout>

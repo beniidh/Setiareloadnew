@@ -10,40 +10,41 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.ClipData;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.c.dompetabata.Adapter.AdapterKabupaten;
+import com.c.dompetabata.Adapter.AdapterSubMenuSide;
 import com.c.dompetabata.Api.Api;
 import com.c.dompetabata.Fragment.ChatFragment;
 import com.c.dompetabata.Fragment.HomeFragment;
 import com.c.dompetabata.Fragment.HomeViewModel;
 import com.c.dompetabata.Fragment.TransaksiFragment;
-import com.c.dompetabata.Helper.ResponBanner;
-import com.c.dompetabata.Helper.ResponMenu;
-import com.c.dompetabata.Helper.ResponProfil;
+import com.c.dompetabata.Model.MSubMenu;
+import com.c.dompetabata.Model.ModelKabupaten;
+import com.c.dompetabata.Respon.ResponBanner;
+import com.c.dompetabata.Respon.ResponMenu;
+import com.c.dompetabata.Respon.ResponProfil;
 import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.Model.MBanner;
 import com.c.dompetabata.Model.Micon;
+import com.c.dompetabata.Profil.Profil;
 import com.c.dompetabata.sharePreference.Preference;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -60,11 +61,14 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
     NavigationView navigationView;
     Fragment fragment1, fragment2, fragment3;
     MenuItem menuItem;
+    LinearLayout profil;
     ArrayList<Micon> micons = new ArrayList<>();
     ArrayList<MBanner> mBanners = new ArrayList<>();
     HomeViewModel myViewModel;
 
-    private AppBarConfiguration mAppBarConfiguration;
+    AdapterSubMenuSide adapterSubMenuSide;
+    ArrayList<MSubMenu> mSubMenus = new ArrayList<>();
+    RecyclerView submenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,22 +76,44 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
         setContentView(R.layout.activity_drawer_activity);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+//        toolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        ImageView togglenav = findViewById(R.id.togglenavheader);
+        getContentProfil();
+        submenu = findViewById(R.id.ReySubMenu);
+        adapterSubMenuSide = new AdapterSubMenuSide(getApplicationContext(), mSubMenus);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        submenu.setLayoutManager(mLayoutManager);
+        submenu.setAdapter(adapterSubMenuSide);
 
 
         menu_bawah = findViewById(R.id.menu_bawah);
         tulisan = findViewById(R.id.tulisan);
         navheadernamakonter = findViewById(R.id.navheadernamakonter);
         getMicons();
-        getContentProfil();
+
         getIconBanner();
         myViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
         myViewModel.init();
 
+        profil = findViewById(R.id.LinearProfil);
+        profil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(drawer_activity.this, Profil.class);
+                startActivity(intent);
+            }
+        });
         navigationView = findViewById(R.id.nav_view);
         drawer_layout = findViewById(R.id.drawer_layout);
+        togglenav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawer_layout.open();
+            }
+        });
         navigationView.setNavigationItemSelectedListener(this::onNavigationItemSelected);
 
         toggle = new ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -210,7 +236,10 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
             @Override
             public void onResponse(Call<ResponProfil> call, Response<ResponProfil> response) {
                 navheadernamakonter.setText(response.body().getData().getStore_name());
-
+//                Toast.makeText(getApplicationContext(),response.body().getMenu().get(0).getName(),Toast.LENGTH_SHORT).show();
+                mSubMenus = (ArrayList<MSubMenu>) response.body().getData().getMenu();
+                adapterSubMenuSide = new AdapterSubMenuSide(getApplicationContext(), mSubMenus);
+                submenu.setAdapter(adapterSubMenuSide);
 
             }
 

@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:padding="18dp"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".Profil.ubah_profil">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:elevation="1dp"
+            android:src="@drawable/defaultuser" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/namaprofil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Perbarui Foto Profil"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginLeft="18dp"
+                android:textSize="18dp"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_ubahpin"
+        android:scrollbars="none"
+        android:padding="10dp"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nama Konter"
+            android:textColor="@color/green"
+            android:fontFamily="@font/poppinsbold"
+            android:textSize="16sp"
+            />
+        <EditText
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:textColor="@color/black"
+            android:paddingStart="10sp"
+            android:background="@drawable/bg_saldo"
+            android:hint="Nama Konter"
+            />
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nomor Telepon"
+            android:textColor="@color/green"
+            android:fontFamily="@font/poppinsbold"
+            android:textSize="16sp"
+            />
+        <EditText
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:textColor="@color/black"
+            android:paddingStart="10sp"
+            android:background="@drawable/bg_saldo"
+            android:hint="Nomor Telepon"
+            />
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textColor="@color/green"
+            android:fontFamily="@font/poppinsbold"
+            android:textSize="16sp"
+            />
+        <EditText
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:textColor="@color/black"
+            android:paddingStart="10sp"
+            android:background="@drawable/bg_saldo"
+            android:hint="Email"
+            />
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Alamat"
+            android:textColor="@color/green"
+            android:fontFamily="@font/poppinsbold"
+            android:textSize="16sp"
+            />
+        <EditText
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:textColor="@color/black"
+            android:paddingStart="10sp"
+            android:background="@drawable/bg_saldo"
+            android:hint="Alamat"
+            />
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Provinsi"
+            android:textColor="@color/green"
+            android:fontFamily="@font/poppinsbold"
+            android:textSize="16sp"
+            />
+        <EditText
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:textColor="@color/black"
+            android:paddingStart="10sp"
+            android:background="@drawable/bg_saldo"
+            android:hint="Provinsi"
+            />
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kabupaten/Kota"
+            android:textColor="@color/green"
+            android:fontFamily="@font/poppinsbold"
+            android:textSize="16sp"
+            />
+        <EditText
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:textColor="@color/black"
+            android:paddingStart="10sp"
+            android:background="@drawable/bg_saldo"
+            android:hint="Kaupaten / Kota"
+            />
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kecamatan"
+            android:textColor="@color/green"
+            android:fontFamily="@font/poppinsbold"
+            android:textSize="16sp"
+            />
+        <EditText
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:textColor="@color/black"
+            android:paddingStart="10sp"
+            android:background="@drawable/bg_saldo"
+            android:hint="Kecamatan"
+            />
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kelurahan"
+            android:textColor="@color/green"
+            android:fontFamily="@font/poppinsbold"
+            android:textSize="16sp"
+            />
+        <EditText
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:textColor="@color/black"
+            android:paddingStart="10sp"
+            android:background="@drawable/bg_saldo"
+            android:hint="Kelurahan"
+            />
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kode Pos"
+            android:textColor="@color/green"
+            android:fontFamily="@font/poppinsbold"
+            android:textSize="16sp"
+            />
+        <EditText
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:textColor="@color/black"
+            android:paddingStart="10sp"
+            android:background="@drawable/bg_saldo"
+            android:hint="Kode Pos"
+            />
+        <Button
+            android:layout_marginTop="20sp"
+            android:layout_marginBottom="50sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Simpan"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:background="@drawable/bg_button_login2"
+            />
+
+
+        </LinearLayout>
+    </ScrollView>
+    </LinearLayout>

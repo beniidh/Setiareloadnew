@@ -13,20 +13,16 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.c.dompetabata.Adapter.AdapterKabupaten;
 import com.c.dompetabata.Adapter.AdapterKecamatan;
 import com.c.dompetabata.Api.Api;
-import com.c.dompetabata.Helper.ResponK;
-import com.c.dompetabata.Helper.ResponKe;
+import com.c.dompetabata.Respon.ResponKe;
 import com.c.dompetabata.Helper.RetroClient;
-import com.c.dompetabata.Model.ModelKabupaten;
 import com.c.dompetabata.Model.ModelKecamatan;
 import com.c.dompetabata.R;
 import com.c.dompetabata.sharePreference.Preference;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;

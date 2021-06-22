@@ -47,6 +47,7 @@
 
     <style name="themetext">
         <item name="android:textStyle">bold</item>
+       <item name="android:itemTextAppearance">@font/poppinsbold</item>
 
 
     </style>

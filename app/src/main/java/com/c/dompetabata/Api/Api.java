@@ -1,15 +1,13 @@
 package com.c.dompetabata.Api;
 
-import android.renderscript.Sampler;
-
-import com.c.dompetabata.Helper.Respon;
-import com.c.dompetabata.Helper.ResponBanner;
-import com.c.dompetabata.Helper.ResponK;
-import com.c.dompetabata.Helper.ResponKe;
-import com.c.dompetabata.Helper.ResponMenu;
-import com.c.dompetabata.Helper.ResponPost;
-import com.c.dompetabata.Helper.ResponProfil;
-import com.c.dompetabata.Helper.Responkel;
+import com.c.dompetabata.Respon.Respon;
+import com.c.dompetabata.Respon.ResponBanner;
+import com.c.dompetabata.Respon.ResponK;
+import com.c.dompetabata.Respon.ResponKe;
+import com.c.dompetabata.Respon.ResponMenu;
+import com.c.dompetabata.Respon.ResponPost;
+import com.c.dompetabata.Respon.ResponProfil;
+import com.c.dompetabata.Respon.Responkel;
 import com.c.dompetabata.Model.MOtpVerif;
 import com.c.dompetabata.Model.MRegisData;
 import com.c.dompetabata.Model.MRegister;
@@ -29,7 +27,6 @@ import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
-import retrofit2.http.PartMap;
 import retrofit2.http.Path;
 
 public interface Api {

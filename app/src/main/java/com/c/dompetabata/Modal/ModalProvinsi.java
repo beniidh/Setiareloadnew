@@ -6,29 +6,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.SearchView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.c.dompetabata.Adapter.AdapterProvinsi;
 import com.c.dompetabata.Api.Api;
-import com.c.dompetabata.Helper.Respon;
+import com.c.dompetabata.Respon.Respon;
 import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.Model.ModelProvinsi;
 import com.c.dompetabata.R;
 import com.c.dompetabata.sharePreference.Preference;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
