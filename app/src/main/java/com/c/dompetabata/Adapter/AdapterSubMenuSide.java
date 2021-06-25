@@ -1,6 +1,7 @@
 package com.c.dompetabata.Adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,8 +41,12 @@ Context context;
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         MSubMenu mSubMenu = subMenus.get(position);
         holder.namesub.setText(mSubMenu.getName());
-        Picasso.get().load(mSubMenu.getIcon()).into(holder.iconsub);
 
+        if(mSubMenu.getIcon().equals("")){
+            Picasso.get().load("http").into(holder.iconsub);
+        }else {
+            Picasso.get().load(mSubMenu.getIcon()).into(holder.iconsub);
+        }
 
     }
 

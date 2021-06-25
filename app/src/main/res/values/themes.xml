@@ -48,9 +48,15 @@
     <style name="themetext">
         <item name="android:textStyle">bold</item>
        <item name="android:itemTextAppearance">@font/poppinsbold</item>
-
-
     </style>
+
+    <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slideout_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/slideout_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slidein_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/slidein_right</item>
+    </style>
+
 
     <style name="MyTheme.ActionBar.TitleTextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
 
@@ -59,4 +65,11 @@
     <style name="Theme.Appdrawer.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Appdrawer.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="MyProgressBar" >
+        <item name="colorPrimaryVariant">@color/gray3</item>
+        <item name="android:progressBackgroundTint">@color/gray3</item>
+        <item name="android:progressTint">@color/gray3</item>
+    </style>
+
 </resources>

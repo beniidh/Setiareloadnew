@@ -21,7 +21,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DompetAbata">
-        <activity android:name=".PulsaPrabayar.PulsaPrabayar_activity"></activity>
+        <activity android:name=".splash_activity"></activity>
+        <activity android:name=".PulsaPrabayar.KonfirmasiPembayaran" />
+        <activity android:name=".PulsaPrabayar.PulsaPrabayar_activity" />
         <activity android:name=".PulsaPascaBayar.subCategory_activity" />
         <activity android:name=".Kodeproduk" />
         <activity android:name=".Transaksi.BayarSalesServer" />
@@ -80,7 +82,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.DompetAbata2" />
         <activity
-            android:name=".splash_activity"
+            android:name=".PulsaPrabayar.TransaksiPending"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>

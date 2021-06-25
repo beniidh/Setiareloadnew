@@ -171,14 +171,14 @@ public class Preference {
 
     // Set Roles ID
 
-    public static void setRoles(Context context, String roles){
+    public static void setURLicon(Context context, String url){
         SharedPreferences.Editor editor = getSharedPreference(context).edit();
-        editor.putString("Roles", roles);
+        editor.putString("url", url);
         editor.apply();
     }
 
-    public static String getRoles(Context context){
-        return getSharedPreference(context).getString("Roles","");
+    public static String getUrlIcon(Context context){
+        return getSharedPreference(context).getString("url","");
     }
 
 

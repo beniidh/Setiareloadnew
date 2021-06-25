@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.webkit.WebView;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.c.dompetabata.Api.Api;
@@ -16,6 +17,10 @@ import com.c.dompetabata.Helper.utils;
 import com.c.dompetabata.Model.Mlogin;
 import com.c.dompetabata.sharePreference.Preference;
 import com.muddzdev.styleabletoast.StyleableToast;
+
+import java.util.Observable;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,6 +36,8 @@ public class splash_activity extends AppCompatActivity {
         logo = findViewById(R.id.logosplash);
         getSupportActionBar().hide();
         setLogo();
+        ProgressBar progressBar = findViewById(R.id.myprogress);
+      int delay = 2000;
 
 
         Handler handler = new Handler();
@@ -51,6 +58,7 @@ public class splash_activity extends AppCompatActivity {
                             if(code.equals("200")){
                                 Intent home = new Intent(splash_activity.this,drawer_activity.class);
                                 startActivity(home);
+
                                 finish();
 
                             } else {
@@ -81,8 +89,9 @@ public class splash_activity extends AppCompatActivity {
 
                 }
 
+
             }
-        }, 2000);
+        }, delay);
     }
 
     public void setLogo() {

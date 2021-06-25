@@ -6,8 +6,10 @@ import java.util.ArrayList;
 
 public class ResponSubCategory {
 
-    ArrayList<MsubCategory> data;
+
     String code,success,message;
+
+    MsubCategory data;
 
     public String getCode() {
         return code;
@@ -21,7 +23,7 @@ public class ResponSubCategory {
         return message;
     }
 
-    public ArrayList<MsubCategory> getData() {
+    public MsubCategory getData() {
         return data;
     }
 }

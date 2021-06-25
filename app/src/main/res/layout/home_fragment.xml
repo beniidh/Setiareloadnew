@@ -6,12 +6,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:orientation="vertical"
+    android:scrollbars="none"
     android:padding="10dp"
     tools:context=".Fragment.HomeFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
+        android:padding="6dp"
         android:layout_height="wrap_content">
     <com.smarteist.autoimageslider.SliderView
         android:id="@+id/imageSlider"
@@ -150,289 +152,66 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:baselineAligned="false"
-        android:orientation="horizontal">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/ReyMenuUtama"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
+
+</RelativeLayout>
+
+
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/iconpulsa"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:contentDescription="@string/pulsa"
-                android:src="@drawable/pulsa" />
-
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="30dp"
+            android:layout_height="wrap_content">
             <TextView
-                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
-                android:textAlignment="center"
                 android:layout_height="wrap_content"
-                android:text="Pulsa"
-                android:textColor="@color/black"
+                android:text="Info Covid 19"
+                android:textColor="@color/green"
+                android:textStyle="bold"
 
+                android:fontFamily="@font/poppins"
+                android:textSize="17sp"
                 />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/iconpaketdata"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/paketabata" />
-
-            <TextView
-                android:layout_marginTop="5dp"
-                android:layout_width="match_parent"
-                android:textAlignment="center"
-                android:layout_height="wrap_content"
-                android:text="Paket Data"
-                android:textColor="@color/black"
-          />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/iconpulsapascabayar"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/pulsa" />
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pulsa Pasca Bayar"
-                android:textAlignment="center"
-                android:layout_marginTop="5dp"
+                android:text="Waspada Covid 19 Belum mereda"
                 android:textColor="@color/black"
-
+                android:fontFamily="@font/mukta"
+                android:textSize="16sp"
                 />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/iconlistrikpln"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/listrik" />
-
             <TextView
-                android:layout_marginTop="5dp"
-                android:layout_width="wrap_content"
-                android:textAlignment="center"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:text="Listrik PLN" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/iconplnpascabayar"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/listrik" />
-
-            <TextView
-                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="PLN Pasca Bayar"
+                android:text="Budayakan wajib memakai masker dan menjaga jarak aman, rajin mencuci tangan"
                 android:textColor="@color/black"
-                android:textAlignment="center" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/iconpaketsmsdantelpon"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/iconwa" />
-
-            <TextView
-                android:layout_marginTop="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:text="Paket SMS &amp; telepon"
-
+                android:textSize="13sp"
+                android:fontFamily="@font/bennreguler"
+                android:layout_marginBottom="10sp"
                 />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/iconuangelektronik"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ecard" />
-
-            <TextView
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Uang Elektronik"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:layout_marginTop="5dp"
+                app:cardCornerRadius="5dp"
+                android:layout_marginBottom="55dp"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:background="@drawable/bannerabata"
+                    />
 
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/iconairpdam"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/water" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Air PDAM"
-                android:textColor="@color/black"
-                android:layout_marginTop="5dp"
-                android:textAlignment="center"
-
-                />
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/iconvouchergame"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                 />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Voucher Game"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:layout_marginTop="5dp"
-
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/lainnya"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/iconlainnya" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Lainnya"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:layout_marginTop="5dp"
-
-                />
-
-        </LinearLayout>
-
-
-    </LinearLayout>
     </LinearLayout>
 
 

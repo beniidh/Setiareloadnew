@@ -35,6 +35,7 @@ public class pin_activity extends AppCompatActivity {
     ProgressBar progressBar;
     PinEditText pin1;
     String telepon;
+    GpsTracker gpsTracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,8 @@ public class pin_activity extends AppCompatActivity {
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#4AB84E'><b>Insert PIN<b></font>"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
+
+       getLocation();
 
         progressBar = findViewById(R.id.progressPIN);
 
@@ -85,7 +88,7 @@ public class pin_activity extends AppCompatActivity {
 
     private void Login(String pin) {
 
-        GpsTracker gpsTracker = new GpsTracker(pin_activity.this);
+
         double longlitude = gpsTracker.getLongitude();
         double latitude = gpsTracker.getLatitude();
         String useragent = getUserAgent();
@@ -127,7 +130,7 @@ public class pin_activity extends AppCompatActivity {
                     progressBar.setVisibility(View.GONE);
                     pin1.setText("");
 
-                    StyleableToast.makeText(getApplicationContext(), "Nomor atau PIN salah", Toast.LENGTH_SHORT, R.style.mytoast).show();
+                    StyleableToast.makeText(getApplicationContext(), "PIN salah", Toast.LENGTH_SHORT, R.style.mytoast).show();
                 }
 
 
@@ -160,6 +163,17 @@ public class pin_activity extends AppCompatActivity {
 
         String IP = utils.getIPAddress(true);
         return IP;
+    }
+
+    public void getLocation() {
+        gpsTracker = new GpsTracker(pin_activity.this);
+        if (gpsTracker.canGetLocation()) {
+            double latitude = gpsTracker.getLatitude();
+            double longitude = gpsTracker.getLongitude();
+
+        } else {
+            gpsTracker.showSettingsAlert();
+        }
     }
 
 }

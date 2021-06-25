@@ -1,10 +1,14 @@
 package com.c.dompetabata.Model;
 
 public class MsubCategory {
-    String id,name,description,icon,product_category_id,status;
+    String id,name,description,icon,product_category_id,status,prefix;
 
     public String getId() {
         return id;
+    }
+
+    public String getPrefix() {
+        return prefix;
     }
 
     public String getName() {

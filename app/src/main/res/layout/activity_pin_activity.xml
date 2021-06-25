@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.461"
         app:pinHeight="40dp"
-        app:pinHighlightStateDrawable="@color/green"
+        app:pinHighlightStateDrawable="@drawable/bg_search_otppin"
         app:pinNormalStateDrawable="@drawable/bg_search_otp"
         app:pinWidth="35dp" />
 

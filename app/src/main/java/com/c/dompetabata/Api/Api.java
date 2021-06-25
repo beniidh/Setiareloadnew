@@ -5,8 +5,10 @@ import com.c.dompetabata.Respon.ResponBanner;
 import com.c.dompetabata.Respon.ResponK;
 import com.c.dompetabata.Respon.ResponKe;
 import com.c.dompetabata.Respon.ResponMenu;
+import com.c.dompetabata.Respon.ResponMenuUtama;
 import com.c.dompetabata.Respon.ResponPost;
 import com.c.dompetabata.Respon.ResponProfil;
+import com.c.dompetabata.Respon.ResponSubCategory;
 import com.c.dompetabata.Respon.Responkel;
 import com.c.dompetabata.Model.MOtpVerif;
 import com.c.dompetabata.Model.MRegisData;
@@ -94,10 +96,16 @@ public interface Api {
     @GET("districts/regencies/{id}")
     Call<ResponKe> getAllKecamatan(@Path("id") long id);
 
+    @GET("product-subcategory/prefix/{id}/{prefix}")
+    Call<ResponSubCategory> getSubPrdoductByPrefix(@Header("X-Signature")String token,@Path("prefix") String prefix,@Path("id") String id);
+
     @GET("sub-districts/districts/{id}")
     Call<Responkel> getAllKelurahan(@Path("id") long id);
 
     @GET("postal-code/sub-districts/{id}")
     Call<ResponPost> getAllPost(@Path("id") long id);
+
+    @GET("all-product-category")
+    Call<ResponMenuUtama> getAllMenu(@Header("X-Signature")String token);
 
 }

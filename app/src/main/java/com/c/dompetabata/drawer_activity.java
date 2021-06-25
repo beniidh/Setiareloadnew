@@ -79,6 +79,7 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
 //        toolbar = findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 //        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         ImageView togglenav = findViewById(R.id.togglenavheader);
         getContentProfil();
         submenu = findViewById(R.id.ReySubMenu);
@@ -237,6 +238,11 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
             public void onResponse(Call<ResponProfil> call, Response<ResponProfil> response) {
                 navheadernamakonter.setText(response.body().getData().getStore_name());
 //                Toast.makeText(getApplicationContext(),response.body().getMenu().get(0).getName(),Toast.LENGTH_SHORT).show();
+                myViewModel.sendPayLater(response.body().getData().getPaylater_status());
+                myViewModel.sendSaldoku(response.body().getData().getWallet().getSaldoku());
+
+
+
                 mSubMenus = (ArrayList<MSubMenu>) response.body().getData().getMenu();
                 adapterSubMenuSide = new AdapterSubMenuSide(getApplicationContext(), mSubMenus);
                 submenu.setAdapter(adapterSubMenuSide);
