@@ -53,7 +53,6 @@ public class HomeFragment extends Fragment {
     ImageView lainnya;
     TextView saldoku,saldoserver;
     LinearLayout linsaldoserver;
-    ImageView pulsa, paketdata, pulsapasca, listrikpln, plnpascabayar, paketsmstelp, uangelektronik, pdam, vochergame;
     String icon;
     HomeViewModel homeViewModel;
     SliderView sliderView;
@@ -69,6 +68,7 @@ public class HomeFragment extends Fragment {
 
         reymenu = v.findViewById(R.id.ReyMenuUtama);
         getAllmenu();
+
         int numberOfColumns = 6;
         reymenu.setLayoutManager(new GridLayoutManager(getActivity(), numberOfColumns,GridLayoutManager.VERTICAL,false));
         adapterMenuUtama = new AdapterMenuUtama(getActivity(), menuUtamas);
@@ -83,6 +83,7 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
 
                 Intent intent = new Intent(getActivity(), topup_saldoku_activity.class);
+                intent.putExtra("saldoku",saldoku.getText().toString());
                 startActivity(intent);
             }
         });
@@ -91,7 +92,9 @@ public class HomeFragment extends Fragment {
         linsaldoserver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(getActivity(), TopupSaldoServer.class);
+                intent.putExtra("saldoku",saldoku.getText().toString());
                 startActivity(intent);
 
             }
@@ -165,7 +168,7 @@ public class HomeFragment extends Fragment {
 
                 String statusPaylater = s;
                 if(statusPaylater.equals("0")){
-                    saldoserver.setText("-");
+                    saldoserver.setText("0");
                     linsaldoserver.setEnabled(false);
 
                 }
@@ -196,23 +199,11 @@ public class HomeFragment extends Fragment {
 
                    menuUtamas = (ArrayList<ModelMenuUtama>) response.body().getData();
 
-                   ArrayList<ModelMenuUtama> arrayList = new ArrayList<>();
-                   int panjang =menuUtamas.size();
+                   ModelMenuUtama  menuUtama = new ModelMenuUtama("lainnya","https://res.cloudinary.com/diagsydjq/image/upload/v1624616125/c-software/icon_homemenu/iconlainnya_ybvupx.png","lainnya");
 
-                   for(int i =0; i<panjang; i++){
+                   menuUtamas.add(menuUtama);
 
-                       if(menuUtamas.get(i).getStatus().equals("0")){
-                           menuUtamas.remove(i);
-
-                       } else {
-
-                           arrayList.add(menuUtamas.get(i));
-
-                       }
-
-                   }
-
-                   adapterMenuUtama = new AdapterMenuUtama(getContext(), arrayList);
+                   adapterMenuUtama = new AdapterMenuUtama(getContext(), menuUtamas);
                    reymenu.setAdapter(adapterMenuUtama);
 
 

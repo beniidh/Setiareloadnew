@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -16,17 +15,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.c.dompetabata.Model.ModelMenuUtama;
 import com.c.dompetabata.PulsaPrabayar.PulsaPrabayar_activity;
 import com.c.dompetabata.R;
-import com.c.dompetabata.homelainnya;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class AdapterMenuUtama extends RecyclerView.Adapter<AdapterMenuUtama.ViewHolder> {
+public class AdapterMenuUtamaLain extends RecyclerView.Adapter<AdapterMenuUtamaLain.ViewHolder> {
 
     Context context;
-    ArrayList<ModelMenuUtama> menuUtamas ;
+    ArrayList<ModelMenuUtama> menuUtamas;
 
-    public AdapterMenuUtama(Context context, ArrayList<ModelMenuUtama> menuUtamas) {
+    public AdapterMenuUtamaLain(Context context, ArrayList<ModelMenuUtama> menuUtamas) {
         this.context = context;
         this.menuUtamas = menuUtamas;
     }
@@ -35,7 +33,7 @@ public class AdapterMenuUtama extends RecyclerView.Adapter<AdapterMenuUtama.View
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.listmenu_utama, parent, false);
-        AdapterMenuUtama.ViewHolder holder = new AdapterMenuUtama.ViewHolder(v);
+        AdapterMenuUtamaLain.ViewHolder holder = new AdapterMenuUtamaLain.ViewHolder(v);
         return holder;
     }
 
@@ -43,36 +41,30 @@ public class AdapterMenuUtama extends RecyclerView.Adapter<AdapterMenuUtama.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         ModelMenuUtama modelMenuUtama = menuUtamas.get(position);
-            Picasso.get().load(modelMenuUtama.getIcon()).into(holder.iconmenu);
-            holder.titlemenu.setText(modelMenuUtama.getName());
+        Picasso.get().load(modelMenuUtama.getIcon()).into(holder.iconmenu);
+        holder.titlemenu.setText(modelMenuUtama.getName());
 
-            holder.linlistmenu.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+        holder.linlistmenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                    if(modelMenuUtama.getUrl().equals("pulsa_prabayar")){
+                if (modelMenuUtama.getUrl().equals("pulsa_prabayar")) {
 
-                        Intent intent = new Intent(context, PulsaPrabayar_activity.class);
-                        intent.putExtra("id",modelMenuUtama.getId());
-                        context.startActivity(intent);
-                    } else if(modelMenuUtama.getUrl().equals("lainnya")){
-
-                        Intent intent = new Intent(context, homelainnya.class);
-                        context.startActivity(intent);
-
-                    }
-
+                    Intent intent = new Intent(context, PulsaPrabayar_activity.class);
+                    intent.putExtra("id", modelMenuUtama.getId());
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
                 }
-            });
+
+            }
+        });
 
     }
 
+
     @Override
-    public int getItemCount()
-    {     return menuUtamas.size();
-
-
-
+    public int getItemCount() {
+        return menuUtamas.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

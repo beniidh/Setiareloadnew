@@ -19,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:textSize="10sp"
         android:text="Uang Elektronik"
         android:textAlignment="center"
         android:textColor="@color/black"

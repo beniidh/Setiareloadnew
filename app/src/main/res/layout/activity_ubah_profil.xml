@@ -30,7 +30,7 @@
                 android:id="@+id/namaprofil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Perbarui Foto Profil"
+                android:text="Perbarui Profil"
                 android:fontFamily="@font/poppins"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -45,29 +45,51 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_marginTop="20dp"
-        android:background="@drawable/bg_ubahpin"
+        android:background="@drawable/bg_putih"
         android:scrollbars="none"
-        android:padding="10dp"
+        android:elevation="2dp"
+        android:padding="15dp"
         android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nama"
+                android:textColor="@color/green"
+                android:fontFamily="@font/poppinsbold"
+                android:textSize="14sp"
+                />
+            <EditText
+                android:id="@+id/editnamaprofil"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:paddingStart="10sp"
+                android:background="@drawable/bg_edittextlogin"
+                android:hint="Nama"
+                />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Nama Konter"
             android:textColor="@color/green"
             android:fontFamily="@font/poppinsbold"
-            android:textSize="16sp"
+            android:textSize="14sp"
             />
         <EditText
+            android:id="@+id/editnamakonter"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="40sp"
+            android:textSize="16sp"
             android:textColor="@color/black"
             android:paddingStart="10sp"
-            android:background="@drawable/bg_saldo"
+            android:background="@drawable/bg_edittextlogin"
             android:hint="Nama Konter"
             />
         <TextView
@@ -77,15 +99,17 @@
             android:text="Nomor Telepon"
             android:textColor="@color/green"
             android:fontFamily="@font/poppinsbold"
-            android:textSize="16sp"
+            android:textSize="14sp"
             />
         <EditText
+            android:id="@+id/editnomortelpon"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="40sp"
+            android:textSize="16sp"
             android:textColor="@color/black"
             android:paddingStart="10sp"
-            android:background="@drawable/bg_saldo"
+            android:background="@drawable/bg_edittextlogin"
             android:hint="Nomor Telepon"
             />
         <TextView
@@ -95,15 +119,17 @@
             android:text="Email"
             android:textColor="@color/green"
             android:fontFamily="@font/poppinsbold"
-            android:textSize="16sp"
+            android:textSize="14sp"
             />
         <EditText
+            android:id="@+id/editemail"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="40sp"
             android:textColor="@color/black"
             android:paddingStart="10sp"
-            android:background="@drawable/bg_saldo"
+            android:textSize="16sp"
+            android:background="@drawable/bg_edittextlogin"
             android:hint="Email"
             />
         <TextView
@@ -113,15 +139,17 @@
             android:text="Alamat"
             android:textColor="@color/green"
             android:fontFamily="@font/poppinsbold"
-            android:textSize="16sp"
+            android:textSize="14sp"
             />
         <EditText
+            android:id="@+id/editalamat"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="40sp"
             android:textColor="@color/black"
             android:paddingStart="10sp"
-            android:background="@drawable/bg_saldo"
+            android:textSize="16sp"
+            android:background="@drawable/bg_edittextlogin"
             android:hint="Alamat"
             />
         <TextView
@@ -131,15 +159,17 @@
             android:text="Provinsi"
             android:textColor="@color/green"
             android:fontFamily="@font/poppinsbold"
-            android:textSize="16sp"
+            android:textSize="14sp"
             />
         <EditText
+            android:id="@+id/editprovinsi"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="40sp"
             android:textColor="@color/black"
             android:paddingStart="10sp"
-            android:background="@drawable/bg_saldo"
+            android:textSize="16sp"
+            android:background="@drawable/bg_edittextlogin"
             android:hint="Provinsi"
             />
         <TextView
@@ -149,15 +179,17 @@
             android:text="Kabupaten/Kota"
             android:textColor="@color/green"
             android:fontFamily="@font/poppinsbold"
-            android:textSize="16sp"
+            android:textSize="14sp"
             />
         <EditText
+            android:id="@+id/editkabupaten"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="40sp"
             android:textColor="@color/black"
             android:paddingStart="10sp"
-            android:background="@drawable/bg_saldo"
+            android:textSize="16sp"
+            android:background="@drawable/bg_edittextlogin"
             android:hint="Kaupaten / Kota"
             />
         <TextView
@@ -167,15 +199,17 @@
             android:text="Kecamatan"
             android:textColor="@color/green"
             android:fontFamily="@font/poppinsbold"
-            android:textSize="16sp"
+            android:textSize="14sp"
             />
         <EditText
+            android:id="@+id/editkecamatan"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="40sp"
             android:textColor="@color/black"
             android:paddingStart="10sp"
-            android:background="@drawable/bg_saldo"
+            android:textSize="16sp"
+            android:background="@drawable/bg_edittextlogin"
             android:hint="Kecamatan"
             />
 
@@ -186,15 +220,17 @@
             android:text="Kelurahan"
             android:textColor="@color/green"
             android:fontFamily="@font/poppinsbold"
-            android:textSize="16sp"
+            android:textSize="14sp"
             />
         <EditText
+            android:id="@+id/editkelurahan"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="40sp"
             android:textColor="@color/black"
             android:paddingStart="10sp"
-            android:background="@drawable/bg_saldo"
+            android:textSize="16sp"
+            android:background="@drawable/bg_edittextlogin"
             android:hint="Kelurahan"
             />
 
@@ -205,20 +241,22 @@
             android:text="Kode Pos"
             android:textColor="@color/green"
             android:fontFamily="@font/poppinsbold"
-            android:textSize="16sp"
+            android:textSize="14sp"
             />
         <EditText
+            android:id="@+id/editkodepos"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="40sp"
             android:textColor="@color/black"
             android:paddingStart="10sp"
-            android:background="@drawable/bg_saldo"
+            android:textSize="16sp"
+            android:background="@drawable/bg_edittextlogin"
             android:hint="Kode Pos"
             />
         <Button
             android:layout_marginTop="20sp"
-            android:layout_marginBottom="50sp"
+            android:layout_marginBottom="30sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Simpan"

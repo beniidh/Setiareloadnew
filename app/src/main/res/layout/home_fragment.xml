@@ -82,7 +82,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
-                    android:text="300.000"
+                    android:text="0"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -141,7 +141,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
-                    android:text="300.000"
+                    android:text="0"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -162,8 +162,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"/>
 
-</RelativeLayout>
 
+
+</RelativeLayout>
 
 
         <LinearLayout

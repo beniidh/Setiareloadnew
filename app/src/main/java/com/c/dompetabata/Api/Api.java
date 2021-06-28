@@ -2,7 +2,12 @@ package com.c.dompetabata.Api;
 
 import com.c.dompetabata.Respon.Respon;
 import com.c.dompetabata.Respon.ResponBanner;
+import com.c.dompetabata.Respon.ResponEditKec;
+import com.c.dompetabata.Respon.ResponEditLokasi;
+import com.c.dompetabata.Respon.ResponEditPost;
+import com.c.dompetabata.Respon.ResponEditkel;
 import com.c.dompetabata.Respon.ResponK;
+import com.c.dompetabata.Respon.ResponKEditKab;
 import com.c.dompetabata.Respon.ResponKe;
 import com.c.dompetabata.Respon.ResponMenu;
 import com.c.dompetabata.Respon.ResponMenuUtama;
@@ -76,14 +81,6 @@ public interface Api {
     @GET("all-product-category")
     Call<ResponMenu> getAllProduct(@Header("X-Signature")String token);
 
-    @GET("product-category/CATID061602100000004")
-    Call<ResponMenu> getIconPulsaPasca(@Header("X-Signature")String token);
-
-    @GET("product-category/CATID060802100000002")
-    Call<ResponMenu> getIconPaketData(@Header("X-Signature")String token);
-
-    @GET("product-category/CATID052702100000001")
-    Call<ResponMenu> getIconPulsaPra(@Header("X-Signature")String token);
 
     @POST("set-pin")
     Call<MsetPIN> SetPIN(@Header("X-Signature")String token, @Body MsetPIN msetPIN);
@@ -96,6 +93,23 @@ public interface Api {
     @GET("districts/regencies/{id}")
     Call<ResponKe> getAllKecamatan(@Path("id") long id);
 
+    @Headers("Content-Type: application/json")
+    @GET("province/{id}")
+    Call<ResponEditLokasi> getProvinsiByIdd(@Path("id") long id);
+
+    @GET("regencies/{id}")
+    Call<ResponKEditKab> getKabupatenById(@Path("id") long id);
+
+    @GET("districts/{id}")
+    Call<ResponEditKec> getKecamatanById(@Path("id") long id);
+
+    @GET("sub-districts/{id}")
+    Call<ResponEditkel> getKelurahanById(@Path("id") long id);
+
+    @GET("postal-code/{id}")
+    Call<ResponEditPost> getPostById(@Path("id") long id);
+
+
     @GET("product-subcategory/prefix/{id}/{prefix}")
     Call<ResponSubCategory> getSubPrdoductByPrefix(@Header("X-Signature")String token,@Path("prefix") String prefix,@Path("id") String id);
 
@@ -105,7 +119,9 @@ public interface Api {
     @GET("postal-code/sub-districts/{id}")
     Call<ResponPost> getAllPost(@Path("id") long id);
 
-    @GET("all-product-category")
+    @GET("all-product-category?$limit=11&$order=urutan&status=1")
     Call<ResponMenuUtama> getAllMenu(@Header("X-Signature")String token);
+    @GET("all-product-category?$limit=&$order=urutan&status=1")
+    Call<ResponMenuUtama> getAllMenu2(@Header("X-Signature")String token);
 
 }

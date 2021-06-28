@@ -80,8 +80,6 @@ public class PulsaPrabayar_activity extends AppCompatActivity {
                     getSubCategory(provider,id);
 
 
-
-
             }
 
 //                    getSubCategory(provider);
@@ -105,25 +103,13 @@ public class PulsaPrabayar_activity extends AppCompatActivity {
 //                        nomorbelipulsa.setCompoundDrawablesWithIntrinsicBounds(null, null, d, null);
 
 
-
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
-
-                String iconurl = getUrl();
-
-                if(iconurl == null){
-                    iconproduk.setImageDrawable(getDrawable(R.drawable.ic_baseline_assignment_ind_24));
-                }else {
-
                     Picasso.get().load(getUrl()).into(iconproduk);
-                }
-
 
                     }
-
 
         });
 
@@ -141,20 +127,6 @@ public class PulsaPrabayar_activity extends AppCompatActivity {
         super.onBackPressed();
     }
 
-    Bitmap drawable_from_url(String url) throws java.net.MalformedURLException, java.io.IOException {
-
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-                .permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-
-        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
-        connection.setRequestProperty("User-agent", "Mozilla/4.0");
-
-        connection.connect();
-        InputStream input = connection.getInputStream();
-
-        return BitmapFactory.decodeStream(input);
-    }
 
 
 
@@ -166,13 +138,7 @@ public class PulsaPrabayar_activity extends AppCompatActivity {
         this.url = url;
     }
 
-    private static Activity unwrap(Context context) {
-        while (!(context instanceof Activity) && context instanceof ContextWrapper) {
-            context = ((ContextWrapper) context).getBaseContext();
-        }
 
-        return (Activity) context;
-    }
 
     public void getSubCategory(String prefix,String id) {
 

@@ -242,7 +242,6 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
                 myViewModel.sendSaldoku(response.body().getData().getWallet().getSaldoku());
 
 
-
                 mSubMenus = (ArrayList<MSubMenu>) response.body().getData().getMenu();
                 adapterSubMenuSide = new AdapterSubMenuSide(getApplicationContext(), mSubMenus);
                 submenu.setAdapter(adapterSubMenuSide);

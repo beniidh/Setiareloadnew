@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.Html;
+import android.widget.TextView;
 
 import com.c.dompetabata.R;
+import com.c.dompetabata.sharePreference.Preference;
 
 public class BayarSales extends AppCompatActivity {
+    TextView saldokusales;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +19,9 @@ public class BayarSales extends AppCompatActivity {
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#4AB84E'><b>Pembayaran Saldoku <b></font>"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
+
+        saldokusales = findViewById(R.id.saldokusales);
+        saldokusales.setText(Preference.getSaldoku(getApplicationContext()));
 
     }
     @Override
