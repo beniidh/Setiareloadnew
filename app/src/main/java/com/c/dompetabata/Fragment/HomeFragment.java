@@ -20,26 +20,20 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.c.dompetabata.Adapter.AdapterKabupaten;
 import com.c.dompetabata.Adapter.AdapterMenuUtama;
 import com.c.dompetabata.Adapter.SliderAdapter;
 import com.c.dompetabata.Api.Api;
 import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.Model.MBanner;
-import com.c.dompetabata.Model.Micon;
-import com.c.dompetabata.Model.ModelKabupaten;
 import com.c.dompetabata.Model.ModelMenuUtama;
 import com.c.dompetabata.Model.SliderItem;
-import com.c.dompetabata.PulsaPrabayar.PulsaPrabayar_activity;
 import com.c.dompetabata.R;
 import com.c.dompetabata.Respon.ResponMenuUtama;
 import com.c.dompetabata.Transaksi.TopupSaldoServer;
-import com.c.dompetabata.homelainnya;
 import com.c.dompetabata.sharePreference.Preference;
 import com.c.dompetabata.topup_saldoku_activity;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 

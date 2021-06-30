@@ -5,10 +5,52 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="18dp"
-    tools:context=".PulsaPascaBayar.subCategory_activity">
-
-    
+    tools:context=".menuUtama.PaketData.PulsaPascaBayar.subCategory_activity">
 
 
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_putih"
+        android:elevation="2dp"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:text=" Masukan Nomor"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/iconprodukPasca"
+            android:layout_width="65dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10sp"/>
+        <!--            android:src="@drawable/ic_baseline_assignment_ind_24" -->
+
+        <EditText
+            android:id="@+id/nomorbelipulsaPasca"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="10sp"
+            android:background="@drawable/bg_edittextlogin"
+            android:hint="Masukan nomor"
+            android:drawableEnd="@drawable/ic_baseline_assignment_ind_24"
+            android:inputType="number"
+            android:paddingEnd="8sp"
+            android:paddingStart="7dp"
+            android:textSize="17dp" />
+
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

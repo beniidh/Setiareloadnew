@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:scrollbars="none"
     android:padding="18dp"
-    tools:context=".PulsaPrabayar.TransaksiPending">
+    tools:context=".menuUtama.PaketData.PulsaPrabayar.TransaksiPending">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -27,4 +27,10 @@
     <string name="selamat_datang_di_dompet_abata">Selamat Datang di Dompet Abata !</string>
     <string name="saya_menerima_dan_menyetujui_syarat_dan_ketentuan_aplikasi">Saya menerima dan menyetujui Syarat dan Ketentuan Aplikasi</string>
     <string name="silahkan_hubungi_cs_jika_dalam_1x24_jam_pembelian_belum_diterima">Silahkan Hubungi CS jika dalam 1x24 jam pembelian belum diterima</string>
+    <string name="produk">Produk</string>
+    <string name="pilih_produk">Pilih Produk</string>
+    <string name="masukan_nomor">Masukan Nomor</string>
+    <string name="masukan_nomors">Masukan nomor</string>
+    <string name="nomor_pelanggan_minimal_7_karakter">Nomor Pelanggan minimal 7 karakter</string>
+    <string name="nomor_pelanggan">Nomor Pelanggan</string>
 </resources>

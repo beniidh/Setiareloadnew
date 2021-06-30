@@ -22,6 +22,7 @@ import com.c.dompetabata.Model.Mlogin;
 import com.c.dompetabata.Model.Mphone;
 import com.c.dompetabata.Model.MsetPIN;
 import com.c.dompetabata.Model.Responphoto;
+import com.c.dompetabata.menuUtama.PaketData.PulsaPrabayar.ResponPulsaPra;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -99,6 +100,9 @@ public interface Api {
 
     @GET("regencies/{id}")
     Call<ResponKEditKab> getKabupatenById(@Path("id") long id);
+
+    @GET("product/sub-category/{id}")
+    Call<ResponPulsaPra> getProdukPulsaPraById(@Header("X-Signature")String token,@Path("id") String id);
 
     @GET("districts/{id}")
     Call<ResponEditKec> getKecamatanById(@Path("id") long id);
