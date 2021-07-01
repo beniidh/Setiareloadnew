@@ -44,7 +44,6 @@ import retrofit2.Response;
 public class HomeFragment extends Fragment {
 
     private HomeViewModel mViewModel;
-    ImageView lainnya;
     TextView saldoku,saldoserver;
     LinearLayout linsaldoserver;
     String icon;
@@ -94,14 +93,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-//        pulsa.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                Intent intent = new Intent(getActivity(), PulsaPrabayar_activity.class);
-//                startActivity(intent);
-//            }
-//        });
 
         return v;
 
@@ -112,30 +103,6 @@ public class HomeFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
-//        ViewModelProviders.of(getActivity()).get(HomeViewModel.class).getIcon().observe(getViewLifecycleOwner(), new Observer<ArrayList<Micon>>() {
-//            @Override
-//            public void onChanged(ArrayList<Micon> arrayList) {
-//
-//                for (int i = 0; i < arrayList.size(); i++) {
-//
-//                    if (arrayList.get(i).getId().equals("CATID061602100000004")) {
-//
-//                        Picasso.get().load(arrayList.get(i).getIcon()).into(pulsapasca);
-//
-//                    } else if (arrayList.get(i).getId().equals("CATID060802100000003")) {
-//
-//                        Picasso.get().load(arrayList.get(i).getIcon()).into(vochergame);
-//                    } else if (arrayList.get(i).getId().equals("CATID060802100000002")) {
-//                        Picasso.get().load(arrayList.get(i).getIcon()).into(paketdata);
-//                    } else if (arrayList.get(i).getId().equals("CATID052702100000001")) {
-//                        Picasso.get().load(arrayList.get(i).getIcon()).into(pulsa);
-//
-//                    }
-//                }
-//
-//
-//            }
-//        });
 
         ViewModelProviders.of(getActivity()).get(HomeViewModel.class).getIconBanner().observe(getViewLifecycleOwner(), new Observer<ArrayList<MBanner>>() {
             @Override
@@ -170,6 +137,15 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        ViewModelProviders.of(getActivity()).get(HomeViewModel.class).getPayyLetter().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+
+                saldoserver.setText(s);
+
+            }
+        });
+
         ViewModelProviders.of(getActivity()).get(HomeViewModel.class).getSaldoku().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
@@ -189,7 +165,6 @@ public class HomeFragment extends Fragment {
            public void onResponse(Call<ResponMenuUtama> call, Response<ResponMenuUtama> response) {
                String code = response.body().getCode();
                if(code.equals("200")){
-
 
                    menuUtamas = (ArrayList<ModelMenuUtama>) response.body().getData();
 

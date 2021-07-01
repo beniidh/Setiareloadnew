@@ -1,8 +1,8 @@
-package com.c.dompetabata.menuUtama.PaketData.VoucherGame;
+package com.c.dompetabata.Model;
 
-public class MVoucherGame {
+public class MSubPLN {
 
-    String id,name,description,icon,product_category_id,status;
+    String id,name,description,icon,product_category_id,prefix,status;
 
     public String getId() {
         return id;
@@ -22,6 +22,10 @@ public class MVoucherGame {
 
     public String getProduct_category_id() {
         return product_category_id;
+    }
+
+    public String getPrefix() {
+        return prefix;
     }
 
     public String getStatus() {

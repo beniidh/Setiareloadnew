@@ -35,6 +35,7 @@ import com.c.dompetabata.Fragment.HomeViewModel;
 import com.c.dompetabata.Fragment.TransaksiFragment;
 import com.c.dompetabata.Model.MSubMenu;
 import com.c.dompetabata.Model.ModelKabupaten;
+import com.c.dompetabata.Notifikasi.Notifikasi_Activity;
 import com.c.dompetabata.Respon.ResponBanner;
 import com.c.dompetabata.Respon.ResponMenu;
 import com.c.dompetabata.Respon.ResponProfil;
@@ -69,6 +70,7 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
     AdapterSubMenuSide adapterSubMenuSide;
     ArrayList<MSubMenu> mSubMenus = new ArrayList<>();
     RecyclerView submenu;
+    ImageView notifikasi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +81,15 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
 //        toolbar = findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 //        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        notifikasi = findViewById(R.id.notifikasiID);
+
+        notifikasi.setOnClickListener(v -> {
+
+            Intent intent = new Intent(drawer_activity.this, Notifikasi_Activity.class);
+            startActivity(intent);
+
+        });
 
         ImageView togglenav = findViewById(R.id.togglenavheader);
         getContentProfil();
@@ -99,22 +110,14 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
         myViewModel.init();
 
         profil = findViewById(R.id.LinearProfil);
-        profil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        profil.setOnClickListener(v -> {
 
-                Intent intent = new Intent(drawer_activity.this, Profil.class);
-                startActivity(intent);
-            }
+            Intent intent = new Intent(drawer_activity.this, Profil.class);
+            startActivity(intent);
         });
         navigationView = findViewById(R.id.nav_view);
         drawer_layout = findViewById(R.id.drawer_layout);
-        togglenav.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawer_layout.open();
-            }
-        });
+        togglenav.setOnClickListener(v -> drawer_layout.open());
         navigationView.setNavigationItemSelectedListener(this::onNavigationItemSelected);
 
         toggle = new ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -204,15 +207,12 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
         AlertDialog.Builder alertdialog = new AlertDialog.Builder(drawer_activity.this);
         alertdialog.setTitle("Keluar");
         alertdialog.setMessage("Apakah anda yakin ingin keluar ?");
-        alertdialog.setPositiveButton("yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Preference.getSharedPreference(getApplicationContext());
-                Preference.setkredentials(getApplicationContext(), "");
-                Preference.setPIN(getApplicationContext(), "");
-                Preference.setToken(getApplicationContext(), "");
-                finish();
-            }
+        alertdialog.setPositiveButton("yes", (dialog, which) -> {
+            Preference.getSharedPreference(getApplicationContext());
+            Preference.setkredentials(getApplicationContext(), "");
+            Preference.setPIN(getApplicationContext(), "");
+            Preference.setToken(getApplicationContext(), "");
+            finish();
         });
 
         alertdialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -230,7 +230,6 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
 
     public void getContentProfil() {
 
-
         Api api = RetroClient.getApiServices();
         Call<ResponProfil> call = api.getProfileDas("Bearer " + Preference.getToken(getApplicationContext()));
         call.enqueue(new Callback<ResponProfil>() {
@@ -240,7 +239,7 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
 //                Toast.makeText(getApplicationContext(),response.body().getMenu().get(0).getName(),Toast.LENGTH_SHORT).show();
                 myViewModel.sendPayLater(response.body().getData().getPaylater_status());
                 myViewModel.sendSaldoku(response.body().getData().getWallet().getSaldoku());
-
+                myViewModel.sendPayyLetter(response.body().getData().getWallet().getPaylatter());
 
                 mSubMenus = (ArrayList<MSubMenu>) response.body().getData().getMenu();
                 adapterSubMenuSide = new AdapterSubMenuSide(getApplicationContext(), mSubMenus);

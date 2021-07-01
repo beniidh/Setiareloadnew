@@ -14,6 +14,8 @@ import com.c.dompetabata.Respon.ResponMenuUtama;
 import com.c.dompetabata.Respon.ResponPost;
 import com.c.dompetabata.Respon.ResponProfil;
 import com.c.dompetabata.Respon.ResponSubCategory;
+import com.c.dompetabata.Respon.ResponSubCategoryPln;
+import com.c.dompetabata.Respon.ResponSubP;
 import com.c.dompetabata.Respon.Responkel;
 import com.c.dompetabata.Model.MOtpVerif;
 import com.c.dompetabata.Model.MRegisData;
@@ -22,7 +24,9 @@ import com.c.dompetabata.Model.Mlogin;
 import com.c.dompetabata.Model.Mphone;
 import com.c.dompetabata.Model.MsetPIN;
 import com.c.dompetabata.Model.Responphoto;
+import com.c.dompetabata.menuUtama.PaketData.ListrikPLN.ResponListrikPln;
 import com.c.dompetabata.menuUtama.PaketData.PulsaPrabayar.ResponPulsaPra;
+import com.c.dompetabata.menuUtama.PaketData.VoucherGame.ResponVoucherGame;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -127,5 +131,15 @@ public interface Api {
     Call<ResponMenuUtama> getAllMenu(@Header("X-Signature")String token);
     @GET("all-product-category?$limit=&$order=urutan&status=1")
     Call<ResponMenuUtama> getAllMenu2(@Header("X-Signature")String token);
+
+    @GET("product-subcategory/category/{id}")
+    Call<ResponSubP> getSubCategoryPLN(@Header("X-Signature")String token, @Path("id") String id);
+
+    @GET("product/sub-category/{id}")
+    Call<ResponListrikPln> getProdukPLNListrik(@Header("X-Signature")String token, @Path("id") String id);
+
+    @GET("product-subcategory/category/{id}")
+    Call<ResponVoucherGame> getProdukVoucherGame(@Header("X-Signature")String token, @Path("id") String id);
+
 
 }

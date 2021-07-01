@@ -21,7 +21,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DompetAbata">
-        <activity android:name=".menuUtama.PaketData.WarungAbata.produkWarungAbata"></activity>
+        <activity android:name=".CetakStruk.DetailTransaksiTruk"></activity>
+        <activity android:name=".CetakStruk.Cetakstruk" />
+        <activity android:name=".DaftarHarga.DaftarHarga_activity" />
+        <activity android:name=".PengajuanLimit.PengajuanDompet" />
+        <activity android:name=".menuUtama.PaketData.WarungAbata.produkWarungAbata" />
         <activity android:name=".menuUtama.PaketData.PajakPBB.produkPajakPBB" />
         <activity android:name=".menuUtama.PaketData.GasNegara.produkGasnegara" />
         <activity android:name=".menuUtama.PaketData.AngsuranKredit.ProdukAngsuranKredit" />

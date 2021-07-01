@@ -54,7 +54,8 @@
 
         <TextView
             android:id="@+id/detaildeskripsifragment"
-            android:layout_width="wrap_content"
+            android:layout_width="270sp"
+            android:textAlignment="textEnd"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:text="Pulsa Telkomsel Rp.5000" />

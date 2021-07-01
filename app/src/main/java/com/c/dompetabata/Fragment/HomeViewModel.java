@@ -14,6 +14,7 @@ public class HomeViewModel extends ViewModel {
     private MutableLiveData<ArrayList<MBanner>> iconbanner;
     private MutableLiveData<ArrayList<Micon>> iconarray;
     private MutableLiveData<String> paylater;
+    private MutableLiveData<String> payyletter;
     private MutableLiveData<String> saldoku;
 
     public void init()
@@ -22,6 +23,7 @@ public class HomeViewModel extends ViewModel {
         iconarray = new MutableLiveData<>();
         paylater = new MutableLiveData<>();
         saldoku = new MutableLiveData<>();
+        payyletter = new MutableLiveData<>();
     }
 
     public void sendDataIcon(ArrayList<Micon> iconn)
@@ -60,5 +62,15 @@ public class HomeViewModel extends ViewModel {
     {
         return saldoku;
     }
+
+    public void sendPayyLetter(String value)
+    {
+        payyletter.setValue(value);
+    }
+    public LiveData<String> getPayyLetter()
+    {
+        return payyletter;
+    }
+
 
 }

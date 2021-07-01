@@ -1,319 +1,319 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gray"
     tools:context=".Transaksi.TopupSaldoServer">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:background="@color/white"
-        android:padding="18dp"
-        android:layout_height="wrap_content">
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Total Tagihan"
-            android:textSize="19sp"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginTop="5dp"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="25sp"
-                android:fontFamily="@font/mukta"
-                android:text="Rp."
-                android:layout_marginRight="10dp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="25sp"
-                android:fontFamily="@font/mukta"
-                android:text="200.000"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                />
-
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginTop="5dp"
-            android:layout_height="wrap_content">
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="18dp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tagihan anda jatuh tempo pada tanggal "
-                android:textSize="13sp"
+                android:text="Total Tagihan"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:fontFamily="@font/mukta"
-                android:text="18-06-2021"
-                android:textColor="@color/red"
-                />
+                android:textSize="19sp" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:fontFamily="@font/mukta"
+                    android:text="Rp."
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/mukta"
+                    android:text="200.000"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tagihan anda jatuh tempo pada tanggal "
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/mukta"
+                    android:text="18-06-2021"
+                    android:textColor="@color/red"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/silahkan_lakukan_pembayaran_sebelum_tanggal_tersebut"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
 
         </LinearLayout>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Silahkan lakukan pembayaran sebelum tanggal tersebut"
-            android:textSize="13sp"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_marginTop="20dp"
-        android:background="@color/white"
-        android:padding="18dp"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Detail Tagihan"
-            android:fontFamily="@font/mukta"
-            android:textSize="16sp"
-            android:textColor="@color/green"
-            />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="horizontal"
+            android:layout_height="match_parent"
             android:layout_marginTop="20dp"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Limit Saldo Server"
-                android:layout_weight="4.5"
-                android:textSize="13sp"
-                android:textColor="@color/black"
-                />
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Rp. "
-                android:layout_weight="1"
-                android:textSize="13sp"
-                android:textAlignment="viewEnd"
-                android:textColor="@color/black"
-                />
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="100.000"
-                android:layout_weight="2"
-                android:textSize="13sp"
-                android:textColor="@color/black"
-                />
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="18dp">
 
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginTop="15sp"
-            android:layout_height="wrap_content">
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Sisa Saldo Server"
-                android:layout_weight="4.5"
-                android:textSize="13sp"
-                android:textColor="@color/black"
-                />
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Rp. "
-                android:layout_weight="1"
-                android:textSize="13sp"
-                android:textAlignment="viewEnd"
-                android:textColor="@color/black"
-                />
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="50.000"
-                android:layout_weight="2"
-                android:textSize="13sp"
-                android:textColor="@color/black"
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginTop="15sp"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Pengembalian Saldo Server"
-                android:layout_weight="4.5"
-                android:textSize="13sp"
-                android:textColor="@color/black"
-                />
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Rp. "
-                android:layout_weight="1"
-                android:textSize="13sp"
-                android:textAlignment="viewEnd"
-                android:textColor="@color/black"
-                />
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="50.000"
-                android:layout_weight="2"
-                android:textSize="13sp"
-                android:textColor="@color/black"
-                />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginTop="15sp"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Total Pemayaran"
-                android:textStyle="bold"
-                android:layout_weight="4.5"
-                android:textSize="15sp"
-                android:textColor="@color/black"
-                />
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Rp. "
-                android:textStyle="bold"
-                android:layout_weight="1"
-                android:textSize="15sp"
-                android:textAlignment="viewEnd"
-                android:textColor="@color/red"
-                />
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="200.000"
-                android:textStyle="bold"
-                android:layout_weight="2"
-                android:textSize="15sp"
-                android:textColor="@color/red"
-                />
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:background="@color/gray2"
-            android:layout_marginTop="30dp"
-            android:layout_height="1dp"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:onClick="RiwayatTagihan"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Riwayat Tagihan"
                 android:fontFamily="@font/mukta"
-                android:layout_weight="4.5"
-                android:textAlignment="textStart"
-                android:textSize="17sp"
-                android:textColor="@color/black"
-                />
+                android:text="Detail Tagihan"
+                android:textColor="@color/green"
+                android:textSize="16sp" />
 
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_baseline_navigate_next_24"
-                android:layout_weight="2"
-
-                />
-
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:background="@color/gray2"
-            android:layout_marginTop="10dp"
-            android:layout_height="1dp"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:onClick="BayarTagihan"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Bayar Tagihan"
-                android:fontFamily="@font/mukta"
-                android:layout_weight="4.5"
-                android:textAlignment="textStart"
-                android:textSize="17sp"
-                android:textColor="@color/black"
-                />
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_baseline_navigate_next_24"
-                android:layout_weight="2"
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.5"
+                    android:text="Limit Saldo Server"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
 
-                />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Rp. "
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="100.000"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15sp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.5"
+                    android:text="Sisa Saldo Server"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Rp. "
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="50.000"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15sp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.5"
+                    android:text="Pengembalian Saldo Server"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Rp. "
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="50.000"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15sp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.5"
+                    android:text="Total Pemayaran"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Rp. "
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/red"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="200.000"
+                    android:textColor="@color/red"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="30dp"
+                android:background="@color/gray2" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:onClick="RiwayatTagihan">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_weight="4.5"
+                    android:fontFamily="@font/mukta"
+                    android:text="Riwayat Tagihan"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/ic_baseline_navigate_next_24"
+
+                    />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/gray2" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:onClick="BayarTagihan">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:fontFamily="@font/mukta"
+                    android:text="Bayar Tagihan"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/ic_baseline_navigate_next_24" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/gray2" />
 
         </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:background="@color/gray2"
-            android:layout_marginTop="10dp"
-            android:layout_height="1dp"/>
     </LinearLayout>
-    </LinearLayout>
-
 </ScrollView>

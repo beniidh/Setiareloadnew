@@ -2,6 +2,7 @@ package com.c.dompetabata.menuUtama.PaketData.VoucherGame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Html;
@@ -31,7 +32,11 @@ public class produkVoucherGame extends AppCompatActivity {
         tujukaraktervouchergame = findViewById(R.id.tujukaraktervouchergame);
 
         inputprodukvouchergame.setOnClickListener(v -> {
-            ModalVoucherGame modalVoucherGame = new ModalVoucherGame();
+
+            Intent intent = getIntent();
+            String id = intent.getStringExtra("id");
+
+            ModalVoucherGame modalVoucherGame = new ModalVoucherGame(id);
             modalVoucherGame.show(getSupportFragmentManager(),"Modal Voucher");
 
         });

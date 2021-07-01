@@ -138,7 +138,7 @@ public class Login_Activity extends AppCompatActivity {
 
                     }else {
 
-                        StyleableToast.makeText(getApplicationContext(), "Nomor tidak belum terdaftar", Toast.LENGTH_SHORT, R.style.mytoast).show();
+                        StyleableToast.makeText(getApplicationContext(), "Nomor belum terdaftar", Toast.LENGTH_SHORT, R.style.mytoast).show();
 
                     }
                 }

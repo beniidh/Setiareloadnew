@@ -51,7 +51,7 @@ public class PulsaPrabayar_activity extends AppCompatActivity {
         reyPulsaPra = findViewById(R.id.reyprodukPulsaPra);
 
         nomorbelipulsa = findViewById(R.id.nomorbelipulsa);
-        adapterPulsaPrabayar = new AdapterPulsaPrabayar(getApplicationContext(), mPulsaPras,nomorbelipulsa.getText().toString(),getUrl());
+        adapterPulsaPrabayar = new AdapterPulsaPrabayar(getApplicationContext(), mPulsaPras, nomorbelipulsa.getText().toString(), getUrl());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         reyPulsaPra.setLayoutManager(mLayoutManager);
         reyPulsaPra.setAdapter(adapterPulsaPrabayar);
@@ -71,18 +71,16 @@ public class PulsaPrabayar_activity extends AppCompatActivity {
                     String id = intent.getStringExtra("id");
                     getSubCategory(provider, id);
 
-
                 }
-
 
             }
 
             @Override
             public void afterTextChanged(Editable s) {
                 Picasso.get().load(getUrl()).into(iconproduk);
-                if(nomorbelipulsa.length() >=4){
+                if (nomorbelipulsa.length() >= 4) {
 
-                    getProdukBysubID(getIdproduk(),nomorbelipulsa.getText().toString(),getUrl());
+                    getProdukBysubID(getIdproduk(), nomorbelipulsa.getText().toString(), getUrl());
                 }
 
             }
@@ -154,7 +152,7 @@ public class PulsaPrabayar_activity extends AppCompatActivity {
 
     }
 
-    public void getProdukBysubID(String id,String nomor,String url) {
+    public void getProdukBysubID(String id, String nomor, String url) {
 
 
         Api api = RetroClient.getApiServices();
@@ -166,7 +164,7 @@ public class PulsaPrabayar_activity extends AppCompatActivity {
                 String code = response.body().getCode();
                 if (code.equals("200")) {
                     mPulsaPras = (ArrayList<MPulsaPra>) response.body().getData();
-                    adapterPulsaPrabayar = new AdapterPulsaPrabayar(getApplicationContext(), mPulsaPras,nomor,url);
+                    adapterPulsaPrabayar = new AdapterPulsaPrabayar(getApplicationContext(), mPulsaPras, nomor, url);
                     reyPulsaPra.setAdapter(adapterPulsaPrabayar);
 
                 }

@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/DialogStyle"
     android:orientation="vertical"
     android:padding="17dp">
 
@@ -33,11 +34,11 @@
         />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/ReyKabupaten"
+        android:id="@+id/ReyProdukGame"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        tools:listitem="@layout/list"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        tools:listitem="@layout/list" />
 
     <LinearLayout
         android:layout_marginTop="10dp"

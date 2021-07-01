@@ -1,6 +1,8 @@
 package com.c.dompetabata.Notifikasi;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.text.Html;
@@ -25,7 +27,11 @@ public class Notifikasi_Activity extends AppCompatActivity {
 
         framelayoutnotifikasi = (FrameLayout) findViewById(R.id.framelayoutnotifikasi);
         tablayoutnotifikasi = (TabLayout) findViewById(R.id.tablayoutnotifikasi);
-        
+        FragmentTransaksi transaksi = new FragmentTransaksi();
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        fragmentTransaction.replace(R.id.framelayoutnotifikasi, transaksi);
+        fragmentTransaction.commit(); // save the changes
 
         tablayoutnotifikasi.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -34,10 +40,20 @@ public class Notifikasi_Activity extends AppCompatActivity {
                 switch (tab.getPosition()){
 
                     case 0 :
-                        Toast.makeText(getApplicationContext(),"Fragment 1",Toast.LENGTH_SHORT).show();
+
+                        FragmentTransaksi transaksi = new FragmentTransaksi();
+                        FragmentManager fm = getSupportFragmentManager();
+                        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                        fragmentTransaction.replace(R.id.framelayoutnotifikasi, transaksi);
+                        fragmentTransaction.commit(); // save the changes
                         break;
+
                     case 1:
-                        Toast.makeText(getApplicationContext(),"Fragment 2",Toast.LENGTH_SHORT).show();
+                        FragmentPesan pesan = new FragmentPesan();
+                        FragmentManager fmm = getSupportFragmentManager();
+                        FragmentTransaction fragmentTransactionn = fmm.beginTransaction();
+                        fragmentTransactionn.replace(R.id.framelayoutnotifikasi, pesan);
+                        fragmentTransactionn.commit(); // save the changes
                         break;
 
 
@@ -55,5 +71,16 @@ public class Notifikasi_Activity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

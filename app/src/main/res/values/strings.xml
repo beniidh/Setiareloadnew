@@ -33,4 +33,6 @@
     <string name="masukan_nomors">Masukan nomor</string>
     <string name="nomor_pelanggan_minimal_7_karakter">Nomor Pelanggan minimal 7 karakter</string>
     <string name="nomor_pelanggan">Nomor Pelanggan</string>
+    <string name="silahkan_lakukan_pembayaran_sebelum_tanggal_tersebut">Silahkan lakukan pembayaran sebelum tanggal tersebut</string>
+    <string name="nominal_diatas_adalah_nominal_untuk_pengajuan_limit_baru">Nominal diatas adalah nominal untuk pengajuan limit baru dan mengganti limit yang sudah aktif</string>
 </resources>
