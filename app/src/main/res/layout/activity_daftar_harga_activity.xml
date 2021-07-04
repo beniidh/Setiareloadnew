@@ -27,7 +27,7 @@
             android:textSize="15dp" />
 
         <EditText
-            android:id="@+id/isisaldok"
+            android:id="@+id/idprodukDaftarHarga"
             android:background="@drawable/bg_edittextlogin"
             android:layout_width="match_parent"
             android:layout_height="34dp"
@@ -51,7 +51,7 @@
             android:textSize="15dp" />
 
         <EditText
-            android:id="@+id/isisaldoku"
+            android:id="@+id/idProviderDaftarHarga"
             android:layout_width="match_parent"
             android:layout_height="34dp"
             android:background="@drawable/bg_edittextlogin"
@@ -77,6 +77,12 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="3dp"
         android:background="@color/gray3" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:id="@+id/idRecycleDaftarHarga"
+        android:visibility="gone"
+        android:layout_height="match_parent"/>
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -1,5 +1,7 @@
 package com.c.dompetabata.Api;
 
+import com.c.dompetabata.PengajuanLimit.ResponPengajuan;
+import com.c.dompetabata.PengajuanLimit.SendPengajuan;
 import com.c.dompetabata.Respon.Respon;
 import com.c.dompetabata.Respon.ResponBanner;
 import com.c.dompetabata.Respon.ResponEditKec;
@@ -89,6 +91,12 @@ public interface Api {
 
     @POST("set-pin")
     Call<MsetPIN> SetPIN(@Header("X-Signature")String token, @Body MsetPIN msetPIN);
+
+    @POST("pengajuan-dompet")
+    Call<SendPengajuan> SetPengajuanLimit(@Header("X-Signature")String token, @Body SendPengajuan pengajuan);
+
+    @GET("pengajuan-dompet")
+    Call<ResponPengajuan> getPengajuanDompet(@Header("X-Signature")String token);
 
     @POST("auth-check")
     Call<Mphone> ChekPhone(@Body Mphone mphone);

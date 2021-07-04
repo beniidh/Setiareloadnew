@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:scrollbars="none"
     android:padding="18dp"
-    tools:context=".CetakStruk.DetailTransaksiTruk">
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -158,7 +158,7 @@
                     android:fontFamily="@font/mukta"
                     android:text="Tanggal"
                     android:textSize="16sp"
-             />
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -181,7 +181,7 @@
                     android:fontFamily="@font/mukta"
                     android:text="Waktu"
                     android:textSize="16sp"
-                   />
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -207,7 +207,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                android:layout_alignParentEnd="true"
+                    android:layout_alignParentEnd="true"
                     android:text="0887765442567899" />
 
 
@@ -228,7 +228,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                   android:layout_alignParentEnd="true"
+                    android:layout_alignParentEnd="true"
                     android:text="TRX7765442567899" />
 
             </RelativeLayout>
@@ -290,16 +290,7 @@
             android:layout_marginTop="20sp"
             android:layout_marginBottom="30dp"
             android:orientation="horizontal">
-            <Button
-                android:id="@+id/tutuppending"
-                android:layout_width="0dp"
-                android:layout_margin="6dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_button_login3"
-                android:layout_height="36dp"
-                android:text="Set Harga Jual"
-                android:textColor="@color/white"
-                android:textAllCaps="false"/>
+
             <Button
                 android:id="@+id/konfirmasidetail"
                 android:layout_width="0dp"
@@ -307,7 +298,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/bg_button_login2"
                 android:layout_height="36dp"
-                android:text="Cetak"
+                android:text="OK"
                 android:textColor="@color/white"
                 android:textAllCaps="false"/>
 

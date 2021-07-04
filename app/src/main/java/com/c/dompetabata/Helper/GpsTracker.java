@@ -176,6 +176,8 @@ public class GpsTracker extends Service implements LocationListener {
 
         // Setting Dialog Title
         alertDialog.setTitle("Atur GPS");
+        alertDialog.setCancelable(false);
+
 
         // Setting Dialog Message
         alertDialog.setMessage("GPS tidak hidup. Tolong hidupkan pada menu setting");
@@ -189,11 +191,11 @@ public class GpsTracker extends Service implements LocationListener {
         });
 
         // on pressing cancel button
-        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
+//        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//            public void onClick(DialogInterface dialog, int which) {
+//                dialog.cancel();
+//            }
+//        });
         alertDialog.show();
     }
 

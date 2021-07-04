@@ -1,4 +1,4 @@
-package com.c.dompetabata.Notifikasi;
+package com.c.dompetabata.Fragment.RiwayatTransaksi;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -17,32 +17,34 @@ import android.widget.LinearLayout;
 import com.c.dompetabata.CetakStruk.DetailTransaksiTruk;
 import com.c.dompetabata.R;
 
-public class FragmentTransaksi extends Fragment {
+public class FragmentSaldoServer extends Fragment {
 
-    private FragmentTransaksiViewModel mViewModel;
+    private FragmentSaldoServerViewModel mViewModel;
 
-    public static FragmentTransaksi newInstance() {
-        return new FragmentTransaksi();
+    public static FragmentSaldoServer newInstance() {
+        return new FragmentSaldoServer();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_transaksi_fragment, container, false);
+        View v= inflater.inflate(R.layout.fragment_saldo_server_fragment, container, false);
 
-        LinearLayout lintesst = v.findViewById(R.id.linearnotifikasi);
+
+        LinearLayout lintesst = v.findViewById(R.id.lintesst);
         lintesst.setOnClickListener(v1 -> {
 
-            Intent intent = new Intent(getActivity(), DetailNotifikasi.class);
+            Intent intent = new Intent(getActivity(), HistoryTransaksi.class);
             startActivity(intent);
         });
+
         return v;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(FragmentTransaksiViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(FragmentSaldoServerViewModel.class);
         // TODO: Use the ViewModel
     }
 

@@ -1,4 +1,4 @@
-package com.c.dompetabata.Transaksi;
+package com.c.dompetabata.Fragment.RiwayatTransaksi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,15 +7,16 @@ import android.text.Html;
 
 import com.c.dompetabata.R;
 
-public class RincianTagihan extends AppCompatActivity {
+public class HistoryTransaksi extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rincian_tagihan);
-        getSupportActionBar().setTitle(Html.fromHtml("<font color='#4AB84E'><b>Rincian Tagihan <b></font>"));
+        setContentView(R.layout.activity_history_transaksi);
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#4AB84E'><b>Histori Transaksi <b></font>"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
+
     }
 
     @Override

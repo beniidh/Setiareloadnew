@@ -21,7 +21,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DompetAbata">
-        <activity android:name=".CetakStruk.DetailTransaksiTruk"></activity>
+        <activity android:name=".Fragment.RiwayatTransaksi.HistoryTransaksi"></activity>
+        <activity android:name=".Notifikasi.DetailNotifikasi" />
+        <activity android:name=".TentangKami.TentangKamiAct" />
+        <activity android:name=".KodeProduk.Kodeprodukact" />
+        <activity android:name=".CetakStruk.DetailTransaksiTruk" />
         <activity android:name=".CetakStruk.Cetakstruk" />
         <activity android:name=".DaftarHarga.DaftarHarga_activity" />
         <activity android:name=".PengajuanLimit.PengajuanDompet" />

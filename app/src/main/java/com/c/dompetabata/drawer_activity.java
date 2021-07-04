@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.navigation.ui.AppBarConfiguration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,7 +25,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.c.dompetabata.Adapter.AdapterKabupaten;
 import com.c.dompetabata.Adapter.AdapterSubMenuSide;
 import com.c.dompetabata.Api.Api;
 import com.c.dompetabata.Fragment.ChatFragment;
@@ -34,7 +32,6 @@ import com.c.dompetabata.Fragment.HomeFragment;
 import com.c.dompetabata.Fragment.HomeViewModel;
 import com.c.dompetabata.Fragment.TransaksiFragment;
 import com.c.dompetabata.Model.MSubMenu;
-import com.c.dompetabata.Model.ModelKabupaten;
 import com.c.dompetabata.Notifikasi.Notifikasi_Activity;
 import com.c.dompetabata.Respon.ResponBanner;
 import com.c.dompetabata.Respon.ResponMenu;
@@ -46,6 +43,7 @@ import com.c.dompetabata.Profil.Profil;
 import com.c.dompetabata.sharePreference.Preference;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -70,7 +68,8 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
     AdapterSubMenuSide adapterSubMenuSide;
     ArrayList<MSubMenu> mSubMenus = new ArrayList<>();
     RecyclerView submenu;
-    ImageView notifikasi;
+    ImageView notifikasi,iconprofilsidebar;
+    TextView parent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +80,9 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
 //        toolbar = findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 //        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        iconprofilsidebar = findViewById(R.id.iconprofilsidebar);
+        parent = findViewById(R.id.parent);
 
         notifikasi = findViewById(R.id.notifikasiID);
 
@@ -94,7 +96,7 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
         ImageView togglenav = findViewById(R.id.togglenavheader);
         getContentProfil();
         submenu = findViewById(R.id.ReySubMenu);
-        adapterSubMenuSide = new AdapterSubMenuSide(getApplicationContext(), mSubMenus);
+        adapterSubMenuSide = new AdapterSubMenuSide(getApplicationContext(), mSubMenus,drawer_activity.this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         submenu.setLayoutManager(mLayoutManager);
         submenu.setAdapter(adapterSubMenuSide);
@@ -196,7 +198,7 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
         return false;
     }
 
-    public void LinDaftarHarga(View view) {
+    public void LinDaftarHarga() {
         drawer_layout.closeDrawers();
 
     }
@@ -240,9 +242,11 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
                 myViewModel.sendPayLater(response.body().getData().getPaylater_status());
                 myViewModel.sendSaldoku(response.body().getData().getWallet().getSaldoku());
                 myViewModel.sendPayyLetter(response.body().getData().getWallet().getPaylatter());
+                Picasso.get().load(response.body().getData().getAvatar()).into(iconprofilsidebar);
+                parent.setText(response.body().getData().getParent());
 
                 mSubMenus = (ArrayList<MSubMenu>) response.body().getData().getMenu();
-                adapterSubMenuSide = new AdapterSubMenuSide(getApplicationContext(), mSubMenus);
+                adapterSubMenuSide = new AdapterSubMenuSide(getApplicationContext(), mSubMenus, drawer_activity.this);
                 submenu.setAdapter(adapterSubMenuSide);
 
             }

@@ -6,20 +6,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.c.dompetabata.Api.Api;
 import com.c.dompetabata.Respon.ResponProfil;
 import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.R;
+import com.c.dompetabata.Transaksi.TopupSaldoServer;
 import com.c.dompetabata.sharePreference.Preference;
+import com.c.dompetabata.topup_saldoku_activity;
+import com.squareup.picasso.Picasso;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Profil extends AppCompatActivity {
-    TextView namaprofil, phone;
+    TextView namaprofil, phone,saldokuprofil,saldoserverprofil;
+    ImageView iconprofile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +35,25 @@ public class Profil extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
         namaprofil = findViewById(R.id.namaprofil);
         phone = findViewById(R.id.nomorprofil);
+        iconprofile = findViewById(R.id.iconprofile);
+        saldokuprofil = findViewById(R.id.saldokuprofil);
+        saldoserverprofil = findViewById(R.id.saldoserverprofil);
         getContentProfil();
+
+        saldokuprofil.setOnClickListener(v -> {
+
+            Intent intent = new Intent(getApplicationContext(), topup_saldoku_activity.class);
+            intent.putExtra("saldoku",saldokuprofil.getText().toString());
+            startActivity(intent);
+        });
+
+        saldoserverprofil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), TopupSaldoServer.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -54,6 +77,16 @@ public class Profil extends AppCompatActivity {
             public void onResponse(Call<ResponProfil> call, Response<ResponProfil> response) {
                 namaprofil.setText(response.body().getData().getName());
                 phone.setText(response.body().getData().getPhone());
+                Picasso.get().load(response.body().getData().getAvatar()).into(iconprofile);
+                saldokuprofil.setText(response.body().getData().getWallet().getSaldoku());
+                saldoserverprofil.setText(response.body().getData().getWallet().getPaylatter());
+                String statuspayletter = response.body().getData().getPaylater_status();
+
+                if(statuspayletter.equals("0")){
+                    saldoserverprofil.setEnabled(false);
+                    saldoserverprofil.setText("0");
+                }
+
             }
 
             @Override

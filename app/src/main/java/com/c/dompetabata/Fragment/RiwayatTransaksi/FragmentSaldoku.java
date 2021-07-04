@@ -1,4 +1,4 @@
-package com.c.dompetabata.Notifikasi;
+package com.c.dompetabata.Fragment.RiwayatTransaksi;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -14,36 +14,44 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.c.dompetabata.CetakStruk.Cetakstruk;
 import com.c.dompetabata.CetakStruk.DetailTransaksiTruk;
 import com.c.dompetabata.R;
 
-public class FragmentTransaksi extends Fragment {
+public class FragmentSaldoku extends Fragment {
 
-    private FragmentTransaksiViewModel mViewModel;
+    private FragmentSaldokuViewModel mViewModel;
 
-    public static FragmentTransaksi newInstance() {
-        return new FragmentTransaksi();
+    public static FragmentSaldoku newInstance() {
+        return new FragmentSaldoku();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_transaksi_fragment, container, false);
+        View v = inflater.inflate(R.layout.fragment_saldoku_fragment, container, false);
 
-        LinearLayout lintesst = v.findViewById(R.id.linearnotifikasi);
-        lintesst.setOnClickListener(v1 -> {
-
-            Intent intent = new Intent(getActivity(), DetailNotifikasi.class);
+        LinearLayout lintest = v.findViewById(R.id.lintest);
+        lintest.setOnClickListener(v1 -> {
+            Intent intent = new Intent(getActivity(), HistoryTransaksi.class);
             startActivity(intent);
+
         });
+
         return v;
+
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(FragmentTransaksiViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(FragmentSaldokuViewModel.class);
         // TODO: Use the ViewModel
+    }
+
+    public void getCetakDetaill(View v){
+
+
     }
 
 }
