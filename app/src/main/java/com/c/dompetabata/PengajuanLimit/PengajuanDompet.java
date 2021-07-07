@@ -5,15 +5,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.Html;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.c.dompetabata.Adapter.AdapterKelurahan;
 import com.c.dompetabata.Api.Api;
 import com.c.dompetabata.Helper.RetroClient;
+import com.c.dompetabata.Helper.utils;
 import com.c.dompetabata.R;
 import com.c.dompetabata.sharePreference.Preference;
 import com.muddzdev.styleabletoast.StyleableToast;
@@ -31,6 +35,8 @@ public class PengajuanDompet extends AppCompatActivity {
     RecyclerView idRecyclePengajuanDompet;
     AdapterPengajuanLimit adapterPengajuanLimit;
     ArrayList<MPengajuanLimit> mPengajuanLimits = new ArrayList<>();
+    TextView saldoServerSaatini;
+    double saldopengajuann;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,32 +49,63 @@ public class PengajuanDompet extends AppCompatActivity {
         idPengajuanLimitEditText = findViewById(R.id.idPengajuanLimitEditText);
         idajukanlimitButton = findViewById(R.id.idAjukanLimitButton);
         idRecyclePengajuanDompet = findViewById(R.id.idRecyclePengajuanDompet);
+        saldoServerSaatini = findViewById(R.id.saldoServerSaatini);
+        String saldoserverlimit = "100000";
+        saldoServerSaatini.setText(utils.ConvertRP(saldoserverlimit));
+        double saldokuserverlimitt = Double.valueOf(saldoserverlimit);
+
 
         adapterPengajuanLimit = new AdapterPengajuanLimit(getApplicationContext(), mPengajuanLimits);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         idRecyclePengajuanDompet.setLayoutManager(mLayoutManager);
         idRecyclePengajuanDompet.setAdapter(adapterPengajuanLimit);
         getPengajuanDompet();
+        idPengajuanLimitEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (idPengajuanLimitEditText.length() >=1){
+                    String saldoPengajuan = idPengajuanLimitEditText.getText().toString();
+                    saldopengajuann = Double.parseDouble(saldoPengajuan);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+
+            }
+        });
+
 
         idajukanlimitButton.setOnClickListener(v -> {
 
-            if(idPengajuanLimitEditText.getText().toString().isEmpty()){
+            if (idPengajuanLimitEditText.getText().toString().isEmpty()) {
+                StyleableToast.makeText(getApplicationContext(), "Jumlah Tidak Boleh kosong", Toast.LENGTH_SHORT, R.style.mytoast2).show();
 
-                StyleableToast.makeText(getApplicationContext(),"Jumlah Tidak Boleh kosong", Toast.LENGTH_SHORT,R.style.mytoast2).show();
+            } else if (saldopengajuann > saldokuserverlimitt) {
+
+                StyleableToast.makeText(getApplicationContext(), "Pengajuan Tidak Boleh melebihi limit", Toast.LENGTH_SHORT, R.style.mytoast2).show();
+
             } else {
                 Bundle bundle = new Bundle();
-                bundle.putString("jumlahpengajuan",idPengajuanLimitEditText.getText().toString());
+                bundle.putString("jumlahpengajuan", idPengajuanLimitEditText.getText().toString());
                 ModalPinPengajuan modalPinPengajuan = new ModalPinPengajuan(PengajuanDompet.this);
                 modalPinPengajuan.setArguments(bundle);
-                modalPinPengajuan.show(getSupportFragmentManager(),"modalpengajuan");
+                modalPinPengajuan.show(getSupportFragmentManager(), "modalpengajuan");
 
             }
 
         });
 
-
-
     }
+
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
@@ -80,7 +117,7 @@ public class PengajuanDompet extends AppCompatActivity {
         super.onBackPressed();
     }
 
-    private void getPengajuanDompet(){
+    public void getPengajuanDompet() {
         String token = "Bearer " + Preference.getToken(getApplicationContext());
         Api api = RetroClient.getApiServices();
         Call<ResponPengajuan> call = api.getPengajuanDompet(token);
@@ -89,7 +126,7 @@ public class PengajuanDompet extends AppCompatActivity {
             public void onResponse(Call<ResponPengajuan> call, Response<ResponPengajuan> response) {
 
                 String code = response.body().getCode();
-                if(code.equals("200")){
+                if (code.equals("200")) {
 
                     mPengajuanLimits = response.body().getData();
                     adapterPengajuanLimit = new AdapterPengajuanLimit(getApplicationContext(), mPengajuanLimits);

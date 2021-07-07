@@ -68,19 +68,19 @@
             android:name=".Transaksi.TopupSaldoServer"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Transaksi.TrasferBank"
+            android:name=".TopUpSaldoku.TrasferBank"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Transaksi.BayarViaBank"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Transaksi.BayarSales"
+            android:name=".TopUpSaldoku.BayarSales"
             android:screenOrientation="portrait" />
         <activity
             android:name=".InsertPIN_activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".topup_saldoku_activity"
+            android:name=".TopUpSaldoku.topup_saldoku_activity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".homelainnya"

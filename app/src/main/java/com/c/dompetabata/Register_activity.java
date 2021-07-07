@@ -382,6 +382,7 @@ postcode.setEnabled(true);
     public void onButtonClick(String name, String id) {
         provinsi.setText(name);
         province = Integer.parseInt(id);
+        Preference.setIDProvinsi(getApplicationContext(),id);
 
     }
 

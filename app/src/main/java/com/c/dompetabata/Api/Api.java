@@ -2,6 +2,7 @@ package com.c.dompetabata.Api;
 
 import com.c.dompetabata.PengajuanLimit.ResponPengajuan;
 import com.c.dompetabata.PengajuanLimit.SendPengajuan;
+import com.c.dompetabata.Profil.MPin;
 import com.c.dompetabata.Respon.Respon;
 import com.c.dompetabata.Respon.ResponBanner;
 import com.c.dompetabata.Respon.ResponEditKec;
@@ -26,7 +27,9 @@ import com.c.dompetabata.Model.Mlogin;
 import com.c.dompetabata.Model.Mphone;
 import com.c.dompetabata.Model.MsetPIN;
 import com.c.dompetabata.Model.Responphoto;
+import com.c.dompetabata.TopUpSaldoku.ReqSaldoku;
 import com.c.dompetabata.menuUtama.PaketData.ListrikPLN.ResponListrikPln;
+import com.c.dompetabata.menuUtama.PaketData.ListrikPLNPasca.ResponListrikPlnPasca;
 import com.c.dompetabata.menuUtama.PaketData.PulsaPrabayar.ResponPulsaPra;
 import com.c.dompetabata.menuUtama.PaketData.VoucherGame.ResponVoucherGame;
 
@@ -146,8 +149,19 @@ public interface Api {
     @GET("product/sub-category/{id}")
     Call<ResponListrikPln> getProdukPLNListrik(@Header("X-Signature")String token, @Path("id") String id);
 
+
+    @GET("product/sub-category/{id}")
+    Call<ResponListrikPlnPasca> getProdukPLNListrikPasca(@Header("X-Signature")String token, @Path("id") String id);
+
     @GET("product-subcategory/category/{id}")
     Call<ResponVoucherGame> getProdukVoucherGame(@Header("X-Signature")String token, @Path("id") String id);
+
+    @POST("request-saldoku")
+    Call<ReqSaldoku> AddRequestSaldoku(@Header("X-Signature")String token,  @Body ReqSaldoku saldoku);
+
+    @POST("set-pin")
+    Call<MPin> UbahPin(@Header("X-Signature")String token, @Body MPin mPin);
+
 
 
 }

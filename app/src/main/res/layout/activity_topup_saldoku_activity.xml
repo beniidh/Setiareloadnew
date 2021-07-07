@@ -6,7 +6,7 @@
     android:background="@color/white"
     android:orientation="vertical"
     android:padding="19dp"
-    tools:context=".topup_saldoku_activity">
+    tools:context=".TopUpSaldoku.topup_saldoku_activity">
 
     <TextView
         android:layout_width="match_parent"

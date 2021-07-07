@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.c.dompetabata.R;
 
-public class produkVoucherGame extends AppCompatActivity {
+public class produkVoucherGame extends AppCompatActivity implements ModalVoucherGame.BottomSheetListenerVoucherGame {
 
     EditText inputprodukvouchergame,inputnomorvouchergame;
     TextView tujukaraktervouchergame;
@@ -72,5 +72,10 @@ public class produkVoucherGame extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+    @Override
+    public void onButtonClickKabupaten(String name, String id) {
+        inputprodukvouchergame.setText(name);
     }
 }

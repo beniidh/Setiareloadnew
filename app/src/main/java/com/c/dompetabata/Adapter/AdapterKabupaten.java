@@ -29,7 +29,6 @@ public class AdapterKabupaten extends RecyclerView.Adapter<AdapterKabupaten.View
     private List<ModelKabupaten> modelKabupatensFull;
     private int selectedPosition = 0;
     private ArrayList<Integer> selectCheck = new ArrayList<>();
-    Fragment fragment;
 
     public AdapterKabupaten(Context context, List<ModelKabupaten> modelKabupatens) {
         this.context = context;

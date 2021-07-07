@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.c.dompetabata.R;
 
-public class produkair extends AppCompatActivity {
+public class produkair extends AppCompatActivity implements ModalAir.BottomSheetListenerProduksms{
 
     EditText inputprodukair, inputnomorair;
     TextView tujukarakterair;
@@ -69,5 +69,11 @@ public class produkair extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+    @Override
+    public void onButtonClick(String name, String id) {
+        inputprodukair.setText(name);
+
     }
 }

@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import com.c.dompetabata.menuUtama.PaketData.VoucherGame.MVoucherGame;
+import com.google.gson.Gson;
+
 public class Preference {
 
     static final String KEY_USER_ID ="user_id";
@@ -77,7 +80,6 @@ public class Preference {
     }
 
 
-
     //ID provinsi
 
     public static void setIDProvinsi(Context context, String id){
@@ -149,14 +151,19 @@ public class Preference {
         return getSharedPreference(context).getString("longlitut","");
     }
 
-    public static void setLat(Context context, String latitude){
+    public static void SetVoucherGame(Context context, MVoucherGame voucherGame){
         SharedPreferences.Editor editor = getSharedPreference(context).edit();
-        editor.putString("latitude", latitude);
+        Gson gson = new Gson();
+        String json = gson.toJson(voucherGame);
+        editor.putString("vouchergame", json);
         editor.apply();
     }
 
-    public static String getLat(Context context){
-        return getSharedPreference(context).getString("latitude","");
+    public static MVoucherGame getVoucherGame(Context context){
+        Gson gson = new Gson();
+        String json = getSharedPreference(context).getString("vouchergame","");
+        MVoucherGame obj = gson.fromJson(json,MVoucherGame.class);
+        return obj;
     }
 
     public static void setToken(Context context, String token){

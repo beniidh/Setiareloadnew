@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.c.dompetabata.R;
 
-public class ProdukUangElektronik extends AppCompatActivity {
+public class ProdukUangElektronik extends AppCompatActivity implements ModalUangElektronik.BottomSheetListenerProduksms {
 
     EditText inputprodukuangelektronik,inputnomoruangelektronik;
     TextView tujukarakteruangelektronik;
@@ -71,5 +71,10 @@ public class ProdukUangElektronik extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+    @Override
+    public void onButtonClick(String name, String id) {
+        inputprodukuangelektronik.setText(name);
     }
 }

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.c.dompetabata.R;
+import com.c.dompetabata.TopUpSaldoku.TrasferBank;
 
 public class BayarViaBank extends AppCompatActivity {
 
@@ -24,7 +25,7 @@ public class BayarViaBank extends AppCompatActivity {
         linearLayoutbankBRI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(BayarViaBank.this,TrasferBank.class);
+                Intent intent = new Intent(BayarViaBank.this, TrasferBank.class);
                 startActivity(intent);
             }
         });

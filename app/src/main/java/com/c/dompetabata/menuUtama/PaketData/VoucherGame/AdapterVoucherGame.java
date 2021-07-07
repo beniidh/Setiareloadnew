@@ -20,6 +20,7 @@ public class AdapterVoucherGame extends RecyclerView.Adapter<AdapterVoucherGame.
     Context context;
     ArrayList<MVoucherGame> mVoucherGames;
     private int selectedPosition = 0;
+    public static   String nameid[][] = new String[1][2];
     ModalVoucherGame voucher;
     private ArrayList<Integer> selectCheck = new ArrayList<>();
     public AdapterVoucherGame(Context context, ArrayList<MVoucherGame> mVoucherGames,ModalVoucherGame modalVoucherGame) {
@@ -74,10 +75,10 @@ public class AdapterVoucherGame extends RecyclerView.Adapter<AdapterVoucherGame.
                     }
                 }
                 notifyDataSetChanged();
-                Preference.getSharedPreference(context);
-//                Preference.setName(context,modelKabupaten.getName());
-//                Preference.setID(context,modelKabupaten.getId());
-//                Preference.setIDKabupaten(context,modelKabupaten.getId());
+                nameid[0][0] = modalVoucherGame.getName();
+                nameid[0][1] = modalVoucherGame.getId();
+
+
             }
         });
 
@@ -111,5 +112,9 @@ public class AdapterVoucherGame extends RecyclerView.Adapter<AdapterVoucherGame.
 //            linklik = itemView.findViewById(R.id.linklik);
 
         }
+    }
+
+    public static String[][] getNameid() {
+        return nameid;
     }
 }

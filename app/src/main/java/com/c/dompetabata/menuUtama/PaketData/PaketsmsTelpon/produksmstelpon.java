@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.c.dompetabata.R;
 
-public class produksmstelpon extends AppCompatActivity {
+public class produksmstelpon extends AppCompatActivity implements ModalProdukSmsTelpon.BottomSheetListenerProduksms {
 
     EditText inputproduksmspulsa, inputnomorsmspulsa;
     TextView tujukaraktersmspulsa;
@@ -71,5 +71,10 @@ public class produksmstelpon extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+    @Override
+    public void onButtonClick(String name, String id) {
+        inputproduksmspulsa.setText(name);
     }
 }

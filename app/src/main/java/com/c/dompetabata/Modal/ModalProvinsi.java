@@ -63,10 +63,15 @@ public class ModalProvinsi extends BottomSheetDialogFragment {
         pilih.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String id =  Preference.getID(getContext());
-                String name = Preference.getName(getContext());
 
-                bottomSheetListener.onButtonClick(name, id);
+
+                String nameid[][] = adapterProvinsi.getNameid();
+
+                String namee = nameid[0][0];
+                String id = nameid[0][1];
+
+                bottomSheetListener.onButtonClick(namee, id);
+                Preference.setName(getContext(), "");
 
                 dismiss();
             }
@@ -79,6 +84,7 @@ public class ModalProvinsi extends BottomSheetDialogFragment {
                 searchprovinsi.onActionViewExpanded();
             }
         });
+
         searchprovinsi.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {

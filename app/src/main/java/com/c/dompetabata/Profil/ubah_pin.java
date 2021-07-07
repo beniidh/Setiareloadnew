@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
+import android.webkit.WebView;
 
+import com.c.dompetabata.Helper.GpsTracker;
+import com.c.dompetabata.Helper.utils;
 import com.c.dompetabata.Modal.ModalPinBaru;
 import com.c.dompetabata.R;
 import com.chaos.view.PinView;
@@ -15,6 +18,7 @@ import com.oakkub.android.PinEditText;
 public class ubah_pin extends AppCompatActivity {
 
     PinEditText ubahpin;
+    GpsTracker gpsTracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +43,10 @@ public class ubah_pin extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 if(ubahpin.length() == 6){
-                    
+                    Bundle bundle = new Bundle();
                     ModalPinBaru modalPinBaru = new ModalPinBaru();
+                    bundle.putString("PINedit",ubahpin.getText().toString());
+                    modalPinBaru.setArguments(bundle);
                     modalPinBaru.show(getSupportFragmentManager(),"pin baru");
                 }
 
@@ -59,4 +65,6 @@ public class ubah_pin extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
     }
+
+
 }

@@ -14,56 +14,55 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Limit Saldo Server Saat ini"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="18dp" />
-
-    <TextView
-        android:id="@+id/saldosaatini"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="RP 100.000"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="35dp"
-        android:textStyle="bold" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/bg_saldo"
-        android:orientation="vertical"
-        android:padding="10dp">
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:text="Isi pengajuan Limit Baru "
-            android:textSize="15dp" />
-
-        <EditText
-            android:id="@+id/idPengajuanLimitEditText"
-            android:layout_width="match_parent"
-            android:inputType="number"
-            android:layout_height="wrap_content"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:text="@string/nominal_diatas_adalah_nominal_untuk_pengajuan_limit_baru"
+            android:text="Limit Saldo Server Saat ini"
             android:textAlignment="center"
-            android:textSize="13sp" />
+            android:textColor="@color/black"
+            android:textSize="18dp" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/saldoServerSaatini"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="RP 100.000"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="35dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_saldo"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Isi pengajuan Limit Baru "
+                android:textSize="15dp" />
+
+            <EditText
+                android:id="@+id/idPengajuanLimitEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="@string/nominal_diatas_adalah_nominal_untuk_pengajuan_limit_baru"
+                android:textAlignment="center"
+                android:textSize="13sp" />
+
+        </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
@@ -83,21 +82,21 @@
     </LinearLayout>
 
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/idRecyclePengajuanDompet"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/idAjukanLimitButton"
         android:layout_below="@id/linn"
         android:layout_marginTop="10dp"
-        tools:listitem="@layout/list_pengajuandompet"
-        android:layout_height="match_parent" />
+        tools:listitem="@layout/list_pengajuandompet" />
 
     <Button
         android:id="@+id/idAjukanLimitButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_alignParentBottom="true"
+        android:layout_marginTop="20dp"
         android:background="@drawable/bg_button_login2"
         android:text="Ajukan"
         android:textAllCaps="false"

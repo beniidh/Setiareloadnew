@@ -27,9 +27,12 @@ public class AdapterProvinsi extends RecyclerView.Adapter<AdapterProvinsi.ViewHo
 
     private Context context;
     private List<ModelProvinsi> modelProvinsiList;
+    private List<ModelProvinsi> modelProvinsiList2;
+    public static String nameid[][] = new String[1][2];
     private List<ModelProvinsi> modelProvinsisfull;
     private int selectedPosition = 0;
     private ArrayList<Integer> selectCheck = new ArrayList<>();
+
     public AdapterProvinsi(Context context, List<ModelProvinsi> modelProvinsiList) {
         this.context = context;
         this.modelProvinsiList = modelProvinsiList;
@@ -38,6 +41,10 @@ public class AdapterProvinsi extends RecyclerView.Adapter<AdapterProvinsi.ViewHo
         for (int i = 0; i < modelProvinsiList.size(); i++) {
             selectCheck.add(0);
         }
+    }
+
+    public AdapterProvinsi(Context context) {
+        this.context = context;
     }
 
     @NonNull
@@ -63,18 +70,23 @@ public class AdapterProvinsi extends RecyclerView.Adapter<AdapterProvinsi.ViewHo
             @Override
             public void onClick(View v) {
 
-                for(int k=0; k<selectCheck.size(); k++) {
-                    if(k==position) {
-                        selectCheck.set(k,1);
+                for (int k = 0; k < selectCheck.size(); k++) {
+                    if (k == position) {
+                        selectCheck.set(k, 1);
                     } else {
-                        selectCheck.set(k,0);
+                        selectCheck.set(k, 0);
                     }
                 }
                 notifyDataSetChanged();
-                Preference.getSharedPreference(context);
-                Preference.setName(context,modelProvinsi.getName());
-                Preference.setID(context,modelProvinsi.getId());
-                Preference.setIDProvinsi(context,modelProvinsi.getId());
+//                obj[0].setData("hallo","h");
+                nameid[0][0] = modelProvinsi.getName();
+                nameid[0][1] = modelProvinsi.getId();
+
+
+//                Preference.getSharedPreference(context);
+//                Preference.setName(context,modelProvinsi.getName());
+//                Preference.setID(context,modelProvinsi.getId());
+//                Preference.setIDProvinsi(context,modelProvinsi.getId());
             }
 
         });
@@ -138,4 +150,11 @@ public class AdapterProvinsi extends RecyclerView.Adapter<AdapterProvinsi.ViewHo
         }
     }
 
+    public List<ModelProvinsi> getModelProvinsiList() {
+        return modelProvinsiList2;
+    }
+
+    public static String[][] getNameid() {
+        return nameid;
+    }
 }

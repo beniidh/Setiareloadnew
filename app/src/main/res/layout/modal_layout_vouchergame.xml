@@ -47,7 +47,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/tutupK"
+            android:id="@+id/tutupVoucherGame"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
@@ -57,7 +57,7 @@
             />
 
         <Button
-            android:id="@+id/pilihK"
+            android:id="@+id/pilihVoucherGame"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"

@@ -2,7 +2,6 @@ package com.c.dompetabata.Modal;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.c.dompetabata.R;
-import com.c.dompetabata.Transaksi.BayarSales;
+import com.c.dompetabata.TopUpSaldoku.BayarSales;
 import com.c.dompetabata.Transaksi.BayarViaBank;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 

@@ -38,6 +38,13 @@
         <item name="stTextSize">14sp</item>
     </style>
 
+    <style name="mytoast3">
+        <item name="stTextBold">true</item>
+        <item name="stTextColor">@color/white</item>
+        <item name="stColorBackground">@color/biruabu</item>
+        <item name="stTextSize">14sp</item>
+    </style>
+
     <style name="mytoast2">
         <item name="stTextBold">true</item>
         <item name="stTextColor">@color/white</item>

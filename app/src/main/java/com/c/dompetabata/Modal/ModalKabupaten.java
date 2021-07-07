@@ -15,7 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.c.dompetabata.Adapter.AdapterKabupaten;
 
+import com.c.dompetabata.Adapter.AdapterProvinsi;
 import com.c.dompetabata.Api.Api;
+import com.c.dompetabata.Model.ModelProvinsi;
 import com.c.dompetabata.Respon.ResponK;
 import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.Model.ModelKabupaten;
@@ -37,6 +39,7 @@ public class ModalKabupaten extends BottomSheetDialogFragment {
     AdapterKabupaten adapterKabupaten;
     ArrayList<ModelKabupaten> modelKabupatens = new ArrayList<>();
     Button tutup, pilih;
+    AdapterProvinsi adapterProvinsi;
     private BottomSheetListenerKabupaten bottomSheetListenerKabupaten;
     SearchView searchView;
 
@@ -91,10 +94,11 @@ public class ModalKabupaten extends BottomSheetDialogFragment {
             public void onClick(View v) {
 
 
-              String id =  Preference.getID(getContext());
-               String name = Preference.getName(getContext());
+                String id = Preference.getID(getContext());
+                String name = Preference.getName(getContext());
 
-                bottomSheetListenerKabupaten.onButtonClickKabupaten(name,id);
+                bottomSheetListenerKabupaten.onButtonClickKabupaten(name, id);
+                Preference.setName(getContext(),"");
                 dismiss();
             }
         });
@@ -104,24 +108,29 @@ public class ModalKabupaten extends BottomSheetDialogFragment {
 
     private void getKabupaten() {
 
+
+        String nameid[][] = AdapterProvinsi.getNameid();
+
+        String namee = nameid[0][0];
+        String idd =  nameid[0][1];
         long id = Long.valueOf(Preference.getIDProvinsi(getContext()));
 
         Api api = RetroClient.getApiServices();
         Call<ResponK> call = api.getAllKabupaten(id);
-      call.enqueue(new Callback<ResponK>() {
-          @Override
-          public void onResponse(Call<ResponK> call, Response<ResponK> response) {
+        call.enqueue(new Callback<ResponK>() {
+            @Override
+            public void onResponse(Call<ResponK> call, Response<ResponK> response) {
 
-              modelKabupatens = (ArrayList<ModelKabupaten>) response.body().getData();
-              adapterKabupaten = new AdapterKabupaten(getContext(), modelKabupatens);
-              recyclerViewK.setAdapter(adapterKabupaten);
-          }
+                modelKabupatens = (ArrayList<ModelKabupaten>) response.body().getData();
+                adapterKabupaten = new AdapterKabupaten(getContext(), modelKabupatens);
+                recyclerViewK.setAdapter(adapterKabupaten);
+            }
 
-          @Override
-          public void onFailure(Call<ResponK> call, Throwable t) {
+            @Override
+            public void onFailure(Call<ResponK> call, Throwable t) {
 
-          }
-      });
+            }
+        });
 
     }
 

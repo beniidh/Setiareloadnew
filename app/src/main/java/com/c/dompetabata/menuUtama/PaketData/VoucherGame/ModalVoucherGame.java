@@ -1,9 +1,11 @@
 package com.c.dompetabata.menuUtama.PaketData.VoucherGame;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -14,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.c.dompetabata.Adapter.AdapterKecamatan;
 import com.c.dompetabata.Api.Api;
 import com.c.dompetabata.Helper.RetroClient;
+import com.c.dompetabata.Modal.ModalKabupaten;
 import com.c.dompetabata.R;
 import com.c.dompetabata.sharePreference.Preference;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
@@ -30,6 +33,8 @@ public class ModalVoucherGame extends BottomSheetDialogFragment {
     AdapterVoucherGame adapterVoucherGame;
     ArrayList<MVoucherGame> mVoucherGames = new ArrayList<>();
     String id;
+    Button pilih,tutup;
+    private BottomSheetListenerVoucherGame bottomSheetListenerVoucherGame;
 
     public ModalVoucherGame(String id) {
         this.id = id;
@@ -46,6 +51,27 @@ public class ModalVoucherGame extends BottomSheetDialogFragment {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(adapterVoucherGame);
+        pilih = v.findViewById(R.id.pilihVoucherGame);
+        tutup = v.findViewById(R.id.tutupVoucherGame);
+
+        pilih.setOnClickListener(v1 -> {
+
+
+            String nameid[][] = adapterVoucherGame.getNameid();
+
+            String namee = nameid[0][0];
+            String id = nameid[0][1];
+
+            bottomSheetListenerVoucherGame.onButtonClickKabupaten(namee,id);
+            dismiss();
+        });
+
+        tutup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+             dismiss();
+            }
+        });
 
         return  v;
 
@@ -73,5 +99,20 @@ public class ModalVoucherGame extends BottomSheetDialogFragment {
             }
         });
 
+    }
+
+
+    public interface BottomSheetListenerVoucherGame {
+        void onButtonClickKabupaten(String name, String id);
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        try {
+            bottomSheetListenerVoucherGame = (ModalVoucherGame.BottomSheetListenerVoucherGame) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString() + "must implement bottomsheet Listener");
+        }
     }
 }

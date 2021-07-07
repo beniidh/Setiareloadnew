@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/mukta"
-            android:text="Masukan PIN anda yang baru :"
+            android:text="Confirm PIN baru :"
             android:textAlignment="center"
             android:textColor="@color/green"
             android:textSize="22sp" />
@@ -32,7 +32,7 @@
             android:textSize="18sp" />
 
         <com.oakkub.android.PinEditText
-            android:id="@+id/pinsatu"
+            android:id="@+id/pinsatuuu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -46,18 +46,18 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.373"
             app:pinNormalStateDrawable="@drawable/bg_search_otp"
-            app:pinHighlightStateDrawable="@color/green"/>
+            app:pinHighlightStateDrawable="@drawable/bg_search_otppin"/>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_button_login2"
-            android:text="Selesai"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="19sp"
-            android:layout_marginTop="60sp"
-            />
+<!--        <Button-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/bg_button_login2"-->
+<!--            android:text="Selesai"-->
+<!--            android:textAllCaps="false"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="19sp"-->
+<!--            android:layout_marginTop="60sp"-->
+<!--            />-->
 
 
     </LinearLayout>

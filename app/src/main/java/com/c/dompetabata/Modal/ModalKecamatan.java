@@ -90,6 +90,7 @@ public class ModalKecamatan extends BottomSheetDialogFragment {
                 String name = Preference.getName(getContext());
 
                 bottomSheetListenerKecamatan.onButtonClickKecamatan(name,id);
+                Preference.setName(getContext(),"");
                 dismiss();
             }
         });

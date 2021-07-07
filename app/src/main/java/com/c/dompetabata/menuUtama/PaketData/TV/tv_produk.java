@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.c.dompetabata.R;
 
-public class tv_produk extends AppCompatActivity {
+public class tv_produk extends AppCompatActivity implements ModalTV.BottomSheetListenerProduksms {
     EditText inputproduktv,inputnomortv;
     TextView tujukaraktertv;
 
@@ -67,5 +67,10 @@ public class tv_produk extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+    @Override
+    public void onButtonClick(String name, String id) {
+        inputproduktv.setText(name);
     }
 }

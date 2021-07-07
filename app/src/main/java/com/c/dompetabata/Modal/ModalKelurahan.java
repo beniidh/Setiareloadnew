@@ -91,6 +91,7 @@ public class ModalKelurahan extends BottomSheetDialogFragment {
                 String name = Preference.getName(getContext());
 
                 bottomSheetListenerKelurahan.onButtonClickKelurahan(name, id);
+                Preference.setName(getContext(),"");
                 dismiss();
             }
         });

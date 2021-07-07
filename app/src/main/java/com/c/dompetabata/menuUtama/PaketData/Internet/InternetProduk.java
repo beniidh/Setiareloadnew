@@ -11,8 +11,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.c.dompetabata.R;
+import com.c.dompetabata.menuUtama.PaketData.air.ModalAir;
 
-public class InternetProduk extends AppCompatActivity {
+public class InternetProduk extends AppCompatActivity implements ModalInternet.BottomSheetListenerProduksms {
     EditText inputprodukinternet,inputnomorinternet;
     TextView tujukarakterinternet;
 
@@ -66,5 +67,10 @@ public class InternetProduk extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+    @Override
+    public void onButtonClick(String name, String id) {
+        inputprodukinternet.setText(name);
     }
 }

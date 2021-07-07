@@ -6,8 +6,10 @@ import java.io.FileInputStream;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
+import java.text.NumberFormat;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 public class utils {
 
@@ -122,5 +124,13 @@ public class utils {
             }
         } catch (Exception ex) { } // for now eat exceptions
         return "";
+    }
+
+    public static String  ConvertRP(String value){
+        double harga = Double.valueOf(value);
+        Locale localeid = new Locale("in","ID");
+        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeid);
+
+        return formatRupiah.format(harga);
     }
 }
