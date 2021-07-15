@@ -20,9 +20,9 @@ import com.c.dompetabata.menuUtama.PaketData.Internet.InternetProduk;
 import com.c.dompetabata.menuUtama.PaketData.ListrikPLN.Pln_Produk;
 import com.c.dompetabata.menuUtama.PaketData.ListrikPLNPasca.Pln_produk_pasca;
 import com.c.dompetabata.menuUtama.PaketData.PajakPBB.produkPajakPBB;
-import com.c.dompetabata.menuUtama.PaketData.PaketData_Activity;
+import com.c.dompetabata.menuUtama.PaketData.Paket.PaketData_Activity;
 import com.c.dompetabata.menuUtama.PaketData.PaketsmsTelpon.produksmstelpon;
-import com.c.dompetabata.menuUtama.PaketData.PulsaPascaBayar.subCategory_activity;
+import com.c.dompetabata.menuUtama.PaketData.PulsaPascaBayar.PulsaPascaBayar_activity;
 import com.c.dompetabata.menuUtama.PaketData.PulsaPrabayar.PulsaPrabayar_activity;
 import com.c.dompetabata.R;
 import com.c.dompetabata.menuUtama.PaketData.TV.tv_produk;
@@ -70,19 +70,23 @@ public class AdapterMenuUtamaLain extends RecyclerView.Adapter<AdapterMenuUtamaL
 
                         Intent intent = new Intent(context, PulsaPrabayar_activity.class);
                         intent.putExtra("id", modelMenuUtama.getId());
+                        intent.putExtra("type", modelMenuUtama.getType());
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
                         context.startActivity(intent);
                         break;
                     }case "paket_data": {
                         Intent intent = new Intent(context, PaketData_Activity.class);
                         intent.putExtra("id", modelMenuUtama.getId());
+                        intent.putExtra("type", modelMenuUtama.getType());
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
                         break;
                     }
                     case "pulsa_pascabayar": {
-                        Intent intent = new Intent(context, subCategory_activity.class);
+                        Intent intent = new Intent(context, PulsaPascaBayar_activity.class);
                         intent.putExtra("id", modelMenuUtama.getId());
+                        intent.putExtra("type", modelMenuUtama.getType());
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
                         break;
@@ -90,6 +94,7 @@ public class AdapterMenuUtamaLain extends RecyclerView.Adapter<AdapterMenuUtamaL
                     case "pln_prabayar": {
                         Intent intent = new Intent(context, Pln_Produk.class);
                         intent.putExtra("id", modelMenuUtama.getId());
+                        intent.putExtra("type", modelMenuUtama.getType());
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
                         break;
@@ -97,6 +102,7 @@ public class AdapterMenuUtamaLain extends RecyclerView.Adapter<AdapterMenuUtamaL
                     case "pln_pascabayar": {
                         Intent intent = new Intent(context, Pln_produk_pasca.class);
                         intent.putExtra("id", modelMenuUtama.getId());
+                        intent.putExtra("type", modelMenuUtama.getType());
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
                         break;
@@ -104,6 +110,7 @@ public class AdapterMenuUtamaLain extends RecyclerView.Adapter<AdapterMenuUtamaL
                     case "paket_sms_telepon": {
                         Intent intent = new Intent(context, produksmstelpon.class);
                         intent.putExtra("id", modelMenuUtama.getId());
+                        intent.putExtra("type", modelMenuUtama.getType());
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
                         break;
@@ -111,6 +118,7 @@ public class AdapterMenuUtamaLain extends RecyclerView.Adapter<AdapterMenuUtamaL
                     case "uang_elektronik": {
                         Intent intent = new Intent(context, ProdukUangElektronik.class);
                         intent.putExtra("id", modelMenuUtama.getId());
+                        intent.putExtra("type", modelMenuUtama.getType());
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
                         break;
@@ -118,6 +126,7 @@ public class AdapterMenuUtamaLain extends RecyclerView.Adapter<AdapterMenuUtamaL
                     case "air_pdam": {
                         Intent intent = new Intent(context, produkair.class);
                         intent.putExtra("id", modelMenuUtama.getId());
+                        intent.putExtra("type", modelMenuUtama.getType());
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
                         break;
@@ -125,6 +134,7 @@ public class AdapterMenuUtamaLain extends RecyclerView.Adapter<AdapterMenuUtamaL
                     case "voucher_game": {
                         Intent intent = new Intent(context, produkVoucherGame.class);
                         intent.putExtra("id", modelMenuUtama.getId());
+                        intent.putExtra("type", modelMenuUtama.getType());
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
                         break;
@@ -132,6 +142,7 @@ public class AdapterMenuUtamaLain extends RecyclerView.Adapter<AdapterMenuUtamaL
                     case "internet": {
                         Intent intent = new Intent(context, InternetProduk.class);
                         intent.putExtra("id", modelMenuUtama.getId());
+                        intent.putExtra("type", modelMenuUtama.getType());
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
                         break;
@@ -139,6 +150,7 @@ public class AdapterMenuUtamaLain extends RecyclerView.Adapter<AdapterMenuUtamaL
                     case "tv": {
                         Intent intent = new Intent(context, tv_produk.class);
                         intent.putExtra("id", modelMenuUtama.getId());
+                        intent.putExtra("type", modelMenuUtama.getType());
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
                         break;
@@ -146,6 +158,7 @@ public class AdapterMenuUtamaLain extends RecyclerView.Adapter<AdapterMenuUtamaL
                     case "voucher": {
                         Intent intent = new Intent(context, produkVoucher.class);
                         intent.putExtra("id", modelMenuUtama.getId());
+                        intent.putExtra("type", modelMenuUtama.getType());
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
                         break;
@@ -153,6 +166,7 @@ public class AdapterMenuUtamaLain extends RecyclerView.Adapter<AdapterMenuUtamaL
                     case "bpjs_kesehatan": {
                         Intent intent = new Intent(context, produkBPJS.class);
                         intent.putExtra("id", modelMenuUtama.getId());
+                        intent.putExtra("type", modelMenuUtama.getType());
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
                         break;
@@ -160,6 +174,7 @@ public class AdapterMenuUtamaLain extends RecyclerView.Adapter<AdapterMenuUtamaL
                     case "angsuran_krefit": {
                         Intent intent = new Intent(context, ProdukAngsuranKredit.class);
                         intent.putExtra("id", modelMenuUtama.getId());
+                        intent.putExtra("type", modelMenuUtama.getType());
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
                         break;
@@ -167,6 +182,7 @@ public class AdapterMenuUtamaLain extends RecyclerView.Adapter<AdapterMenuUtamaL
                     case "pajak_pbb": {
                         Intent intent = new Intent(context, produkPajakPBB.class);
                         intent.putExtra("id", modelMenuUtama.getId());
+                        intent.putExtra("type", modelMenuUtama.getType());
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
                         break;
@@ -174,12 +190,14 @@ public class AdapterMenuUtamaLain extends RecyclerView.Adapter<AdapterMenuUtamaL
                     case "gas_negara": {
                         Intent intent = new Intent(context, produkGasnegara.class);
                         intent.putExtra("id", modelMenuUtama.getId());
+                        intent.putExtra("type", modelMenuUtama.getType());
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
                         break;
                     } case "https://shopee": {
                         Intent intent = new Intent(context, produkWarungAbata.class);
                         intent.putExtra("id", modelMenuUtama.getId());
+                        intent.putExtra("type", modelMenuUtama.getType());
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
                         break;

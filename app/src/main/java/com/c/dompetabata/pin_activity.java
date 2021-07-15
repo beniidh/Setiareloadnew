@@ -13,6 +13,7 @@ import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.c.dompetabata.Api.Api;
@@ -36,6 +37,8 @@ public class pin_activity extends AppCompatActivity {
     PinEditText pin1;
     String telepon;
     GpsTracker gpsTracker;
+    int salah=0;
+    TextView warningpinsalah;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +48,9 @@ public class pin_activity extends AppCompatActivity {
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#4AB84E'><b>Insert PIN<b></font>"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
+        warningpinsalah = findViewById(R.id.warningpinsalah);
 
-       getLocation();
+        getLocation();
 
         progressBar = findViewById(R.id.progressPIN);
 
@@ -54,7 +58,6 @@ public class pin_activity extends AppCompatActivity {
         pin1.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
@@ -87,8 +90,6 @@ public class pin_activity extends AppCompatActivity {
     }
 
     private void Login(String pin) {
-
-
         double longlitude = gpsTracker.getLongitude();
         double latitude = gpsTracker.getLatitude();
         String useragent = getUserAgent();
@@ -103,8 +104,7 @@ public class pin_activity extends AppCompatActivity {
             telepon = tlp.getStringExtra("number");
         }
 
-
-        Mlogin mlogin = new Mlogin(telepon, pin, IP, useragent, longlitude, latitude);
+        Mlogin mlogin = new Mlogin(telepon, pin, IP, Value.getMacAddress(), useragent, longlitude, latitude);
 
         Api api = RetroClient.getApiServices();
         Call<Mlogin> call = api.Login(mlogin);
@@ -118,19 +118,21 @@ public class pin_activity extends AppCompatActivity {
                     progressBar.setVisibility(View.GONE);
                     Intent home = new Intent(pin_activity.this, drawer_activity.class);
                     startActivity(home);
-                  String token = response.body().getData().getToken();
-
-                    Preference.getSharedPreference(pin_activity.this);
-                    Preference.setToken(getApplicationContext(),token);
-
-
+                    String token = response.body().getData().getToken();
+                    Preference.getSharedPreference(getApplicationContext());
+                    Preference.setToken(getApplicationContext(), token);
                     finish();
 
                 } else {
                     progressBar.setVisibility(View.GONE);
                     pin1.setText("");
-
                     StyleableToast.makeText(getApplicationContext(), "PIN salah", Toast.LENGTH_SHORT, R.style.mytoast).show();
+                  salah+=1;
+
+                    if (salah == 3) {
+                        warningpinsalah.setVisibility(View.VISIBLE);
+
+                    }
                 }
 
 
@@ -139,7 +141,6 @@ public class pin_activity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Mlogin> call, Throwable t) {
 //                progressBar.setVisibility(View.INVISIBLE);
-
                 StyleableToast.makeText(getApplicationContext(), "Periksa Sambungan internet", Toast.LENGTH_SHORT, R.style.mytoast).show();
 
             }
@@ -175,5 +176,6 @@ public class pin_activity extends AppCompatActivity {
             gpsTracker.showSettingsAlert();
         }
     }
+
 
 }

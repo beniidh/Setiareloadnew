@@ -38,6 +38,7 @@ public class PulsaPrabayar_activity extends AppCompatActivity {
     RecyclerView reyPulsaPra;
     ArrayList<MPulsaPra> mPulsaPras = new ArrayList<>();
     AdapterPulsaPrabayar adapterPulsaPrabayar;
+    String type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +50,11 @@ public class PulsaPrabayar_activity extends AppCompatActivity {
         iconproduk = findViewById(R.id.iconproduk);
         modelPascaa = new modelPasca();
         reyPulsaPra = findViewById(R.id.reyprodukPulsaPra);
+        Intent intent = getIntent();
+         type = intent.getStringExtra("type");
 
         nomorbelipulsa = findViewById(R.id.nomorbelipulsa);
-        adapterPulsaPrabayar = new AdapterPulsaPrabayar(getApplicationContext(), mPulsaPras, nomorbelipulsa.getText().toString(), getUrl());
+        adapterPulsaPrabayar = new AdapterPulsaPrabayar(getApplicationContext(), mPulsaPras, nomorbelipulsa.getText().toString(), getUrl(),type);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         reyPulsaPra.setLayoutManager(mLayoutManager);
         reyPulsaPra.setAdapter(adapterPulsaPrabayar);
@@ -164,7 +167,7 @@ public class PulsaPrabayar_activity extends AppCompatActivity {
                 String code = response.body().getCode();
                 if (code.equals("200")) {
                     mPulsaPras = (ArrayList<MPulsaPra>) response.body().getData();
-                    adapterPulsaPrabayar = new AdapterPulsaPrabayar(getApplicationContext(), mPulsaPras, nomor, url);
+                    adapterPulsaPrabayar = new AdapterPulsaPrabayar(getApplicationContext(), mPulsaPras, nomor, url,type);
                     reyPulsaPra.setAdapter(adapterPulsaPrabayar);
 
                 }

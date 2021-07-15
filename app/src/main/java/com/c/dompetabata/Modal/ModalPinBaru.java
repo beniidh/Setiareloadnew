@@ -17,6 +17,7 @@ import com.c.dompetabata.Helper.GpsTracker;
 import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.Helper.utils;
 import com.c.dompetabata.Profil.MPin;
+import com.c.dompetabata.Profil.ubah_pin;
 import com.c.dompetabata.R;
 import com.c.dompetabata.sharePreference.Preference;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
@@ -78,6 +79,7 @@ public class ModalPinBaru extends BottomSheetDialogFragment {
                 String code = response.body().getCode();
                 if(code.equals("200")){
                     StyleableToast.makeText(getContext(),"PIN berhasil diubah", Toast.LENGTH_SHORT,R.style.mytoast3).show();
+                    ubah_pin.pin.finish();
                     dismiss();
                 }
             }

@@ -29,7 +29,10 @@ public class TrasferBank extends AppCompatActivity {
         oktransaksi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("kode","bank");
                 ModalPinTopUpSaldoku modalPinTopUpSaldoku = new ModalPinTopUpSaldoku();
+                modalPinTopUpSaldoku.setArguments(bundle);
                 modalPinTopUpSaldoku.show(getSupportFragmentManager(),"topupsaldoku");
             }
         });

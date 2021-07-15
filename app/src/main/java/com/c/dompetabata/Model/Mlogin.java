@@ -1,18 +1,19 @@
 package com.c.dompetabata.Model;
 
 public class Mlogin {
-    String id,code,name,email,phone,message,token;
-    String credentials,password,ip_address,user_agent;
+    String id,code,name,email,phone,message,token,error;
+    String credentials,password,ip_address,user_agent,mac_address;
     Double longitude,latitude;
     data data;
 
 
-    public Mlogin(String credentials, String password, String ip_address, String user_agent, Double longitude, Double latitude) {
+    public Mlogin(String credentials, String password, String ip_address,String mac_address, String user_agent, Double longitude, Double latitude) {
         this.credentials = credentials;
         this.password = password;
         this.ip_address = ip_address;
         this.user_agent = user_agent;
         this.longitude = longitude;
+        this.mac_address =mac_address;
         this.latitude = latitude;
     }
 
@@ -66,5 +67,9 @@ public class Mlogin {
 
     public com.c.dompetabata.Model.data getData() {
         return data;
+    }
+
+    public String getError() {
+        return error;
     }
 }

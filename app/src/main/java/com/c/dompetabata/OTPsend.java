@@ -34,13 +34,7 @@ Button sendEmail;
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
 
         sendEmail = findViewById(R.id.sendEmailOtp);
-        sendEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                intentOTP();
-
-            }
-        });
+        sendEmail.setOnClickListener(v -> intentOTP());
     }
 
     public void intentOTP(){
@@ -65,24 +59,25 @@ Button sendEmail;
                 String code = response.body().getCode();
                 if(code.equals("200")){
                     StyleableToast.makeText(getApplicationContext(),"OTP Telah dikirim", Toast.LENGTH_SHORT, R.style.mytoast).show();
+                    Intent otpInsert = new Intent(OTPsend.this, OTPinsert.class);
+                    otpInsert.putExtra("user_id",user_id);
+                    otpInsert.putExtra("otp_id",otp_id);
+                    startActivity(otpInsert);
 
                 }else {
 
-                    StyleableToast.makeText(getApplicationContext(),"Belum dikirim", Toast.LENGTH_SHORT, R.style.mytoast).show();
+                    StyleableToast.makeText(getApplicationContext(),"Belum dikirim coba lagi", Toast.LENGTH_SHORT, R.style.mytoast).show();
                 }
 
             }
 
             @Override
             public void onFailure(Call<MRegisData> call, Throwable t) {
+                StyleableToast.makeText(getApplicationContext(),"Jaringan Bermasalah", Toast.LENGTH_SHORT, R.style.mytoast).show();
 
             }
         });
 
-        Intent otpInsert = new Intent(OTPsend.this, OTPinsert.class);
-        otpInsert.putExtra("user_id",user_id);
-        otpInsert.putExtra("otp_id",otp_id);
-        startActivity(otpInsert);
 
     }
 
@@ -96,7 +91,5 @@ Button sendEmail;
     public void onBackPressed() {
         super.onBackPressed();
     }
-
-
 
 }

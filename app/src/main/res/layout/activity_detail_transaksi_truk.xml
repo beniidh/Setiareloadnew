@@ -71,6 +71,7 @@
             android:padding="10sp">
 
             <TextView
+                android:id="@+id/titlestruk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -94,6 +95,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/idNomorStruk"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -117,6 +119,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/idProdukStruk"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -138,6 +141,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/idSaldokuStruk"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_alignParentRight="true"
@@ -161,6 +165,7 @@
              />
 
                 <TextView
+                    android:id="@+id/idTanggalStruk"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -184,6 +189,7 @@
                    />
 
                 <TextView
+                    android:id="@+id/idWaktuStruk"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -205,6 +211,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/idNomorSNStruk"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
@@ -226,6 +233,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/idNomorTransaksiStruk"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                    android:layout_alignParentEnd="true"
@@ -253,6 +261,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:textColor="@color/black"
+                    android:id="@+id/idTotalPembelianStruk"
                     android:layout_alignParentRight="true"
                     android:text="Rp.11.000"
 
@@ -273,6 +282,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/idStatusStruk"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_alignParentRight="true"
@@ -291,7 +301,7 @@
             android:layout_marginBottom="30dp"
             android:orientation="horizontal">
             <Button
-                android:id="@+id/tutuppending"
+                android:id="@+id/setHargaJual"
                 android:layout_width="0dp"
                 android:layout_margin="6dp"
                 android:layout_weight="1"
@@ -301,7 +311,7 @@
                 android:textColor="@color/white"
                 android:textAllCaps="false"/>
             <Button
-                android:id="@+id/konfirmasidetail"
+                android:id="@+id/cetakPDF"
                 android:layout_width="0dp"
                 android:layout_margin="6dp"
                 android:layout_weight="1"

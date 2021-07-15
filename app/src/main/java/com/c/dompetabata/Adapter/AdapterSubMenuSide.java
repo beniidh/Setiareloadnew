@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,8 +25,11 @@ import com.c.dompetabata.Kodeproduk;
 import com.c.dompetabata.Model.MSubMenu;
 import com.c.dompetabata.Notifikasi.Notifikasi_Activity;
 import com.c.dompetabata.PengajuanLimit.PengajuanDompet;
+import com.c.dompetabata.PersetujuanSaldoSales.ModalPinPersetujuan;
+import com.c.dompetabata.PersetujuanSaldoSales.PersetujuanSaldoSales;
 import com.c.dompetabata.Profil.Point;
 import com.c.dompetabata.R;
+import com.c.dompetabata.TambahKonter.addKonter;
 import com.c.dompetabata.drawer_activity;
 import com.squareup.picasso.Picasso;
 
@@ -111,6 +115,24 @@ public class AdapterSubMenuSide extends RecyclerView.Adapter<AdapterSubMenuSide.
                 case "kode_semua_produk": {
 
                     Intent intent = new Intent(context, Kodeprodukact.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                    drawer_activity.LinDaftarHarga();
+
+                    break;
+                }
+                case "persetujuan_saldo_server": {
+
+                    Intent intent = new Intent(context, PersetujuanSaldoSales.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                    drawer_activity.LinDaftarHarga();
+
+                    break;
+                }
+                case "konter_tambah": {
+
+                    Intent intent = new Intent(context, addKonter.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                     drawer_activity.LinDaftarHarga();

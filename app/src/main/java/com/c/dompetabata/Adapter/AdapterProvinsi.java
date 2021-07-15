@@ -70,6 +70,7 @@ public class AdapterProvinsi extends RecyclerView.Adapter<AdapterProvinsi.ViewHo
             @Override
             public void onClick(View v) {
 
+
                 for (int k = 0; k < selectCheck.size(); k++) {
                     if (k == position) {
                         selectCheck.set(k, 1);
@@ -83,10 +84,6 @@ public class AdapterProvinsi extends RecyclerView.Adapter<AdapterProvinsi.ViewHo
                 nameid[0][1] = modelProvinsi.getId();
 
 
-//                Preference.getSharedPreference(context);
-//                Preference.setName(context,modelProvinsi.getName());
-//                Preference.setID(context,modelProvinsi.getId());
-//                Preference.setIDProvinsi(context,modelProvinsi.getId());
             }
 
         });

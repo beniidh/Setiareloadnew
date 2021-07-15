@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.c.dompetabata.Api.Api;
 import com.c.dompetabata.Api.Value;
+import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.InsertPIN_activity;
 import com.c.dompetabata.MainActivity;
 import com.c.dompetabata.Model.MOtpVerif;
@@ -46,61 +47,52 @@ public class OTPinsert extends AppCompatActivity {
         otp = findViewById(R.id.otpid);
         verif = findViewById(R.id.VerifikasiOTP);
         otp.setPasswordHidden(true);
-        verif.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        verif.setOnClickListener(v -> {
 
-                if(otp.length()<6){
-                    StyleableToast.makeText(getApplicationContext(),"Lengkapi OTP", Toast.LENGTH_SHORT).show();
-                }else {
-                    String otpid = otp.getText().toString();
-                    Retrofit retrofit = new Retrofit.Builder()
-                            .baseUrl(Value.BASE_URL)
-                            .addConverterFactory(GsonConverterFactory.create())
-                            .build();
+            if (otp.length() < 6) {
+                StyleableToast.makeText(getApplicationContext(), "Lengkapi OTP", Toast.LENGTH_SHORT).show();
+            } else {
+                String otpid = otp.getText().toString();
 
-                    Bundle ekstra = getIntent().getExtras();
-                    MOtpVerif mOtpVerif = new MOtpVerif(ekstra.getString("user_id"),ekstra.getString("otp_id"),otpid);
+                Bundle ekstra = getIntent().getExtras();
+                MOtpVerif mOtpVerif = new MOtpVerif(ekstra.getString("user_id"), ekstra.getString("otp_id"), otpid);
 
-                    Api api = retrofit.create(Api.class);
-                    Call<MOtpVerif> call = api.verifOTP(mOtpVerif);
-                    call.enqueue(new Callback<MOtpVerif>() {
-                        @Override
-                        public void onResponse(Call<MOtpVerif> call, Response<MOtpVerif> response) {
-                            String code = response.body().getCode();
-                            if(code.equals("200")){
-                                StyleableToast.makeText(getApplicationContext(),"Berhasil", Toast.LENGTH_SHORT, R.style.mytoast).show();
-                                String token = response.body().getData().getToken();
+                Api api = RetroClient.getApiServices();
+                Call<MOtpVerif> call = api.verifOTP(mOtpVerif);
+                call.enqueue(new Callback<MOtpVerif>() {
+                    @Override
+                    public void onResponse(Call<MOtpVerif> call, Response<MOtpVerif> response) {
+                        String code = response.body().getCode();
+                        if (code.equals("200")) {
+                            StyleableToast.makeText(getApplicationContext(), "Berhasil", Toast.LENGTH_SHORT, R.style.mytoast).show();
+                            String token = response.body().getData().getToken();
 
-                                Preference.getSharedPreference(getApplicationContext());
-                                Preference.setToken(getApplicationContext(),token);
+                            Preference.getSharedPreference(getApplicationContext());
+                            Preference.setToken(getApplicationContext(), token);
 
-                                Intent intent = new Intent(OTPinsert.this, RegisterFoto_activity.class);
-                                startActivity(intent);
+                            Intent intent = new Intent(OTPinsert.this, RegisterFoto_activity.class);
+                            startActivity(intent);
 
-                            }else {
+                        } else {
 
-                                StyleableToast.makeText(getApplicationContext(),"OTP Salah", Toast.LENGTH_SHORT, R.style.mytoast).show();
-
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<MOtpVerif> call, Throwable t) {
+                            StyleableToast.makeText(getApplicationContext(), "OTP Salah", Toast.LENGTH_SHORT, R.style.mytoast).show();
 
                         }
-                    });
+                    }
+
+                    @Override
+                    public void onFailure(Call<MOtpVerif> call, Throwable t) {
+
+                    }
+                });
 
 
-
-
-                }
             }
         });
 
 
         TextView timer = findViewById(R.id.timer);
-        new CountDownTimer(59000,1000){
+        new CountDownTimer(59000, 1000) {
 
 
             @Override
@@ -123,32 +115,27 @@ public class OTPinsert extends AppCompatActivity {
         }.start();
     }
 
-    public void intentOTP(){
+    public void intentOTP() {
 
         Preference.getSharedPreference(getBaseContext());
-        String user_id =Preference.getKeyUserId(getBaseContext());
-        String user_code =Preference.getKeyUserCode(getBaseContext());
-        String phone =   Preference.getKeyPhone(getBaseContext());
-        String otp_id =Preference.getKeyOtpId(getBaseContext());
+        String user_id = Preference.getKeyUserId(getBaseContext());
+        String user_code = Preference.getKeyUserCode(getBaseContext());
+        String phone = Preference.getKeyPhone(getBaseContext());
+        String otp_id = Preference.getKeyOtpId(getBaseContext());
 
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Value.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        Api api = retrofit.create(Api.class);
-        MRegisData mRegisData = new MRegisData(user_id,user_code,phone,otp_id);
+        Api api = RetroClient.getApiServices();
+        MRegisData mRegisData = new MRegisData(user_id, user_code, phone, otp_id);
         Call<MRegisData> call = api.SendOTP(mRegisData);
         call.enqueue(new Callback<MRegisData>() {
             @Override
             public void onResponse(Call<MRegisData> call, Response<MRegisData> response) {
                 String code = response.body().getCode();
-                if(code.equals("200")){
-                    StyleableToast.makeText(getApplicationContext(),"OTP Telah dikirim", Toast.LENGTH_SHORT, R.style.mytoast).show();
+                if (code.equals("200")) {
+                    StyleableToast.makeText(getApplicationContext(), "OTP Telah dikirim", Toast.LENGTH_SHORT, R.style.mytoast).show();
 
-                }else {
+                } else {
 
-                    StyleableToast.makeText(getApplicationContext(),"Belum dikirim", Toast.LENGTH_SHORT, R.style.mytoast).show();
+                    StyleableToast.makeText(getApplicationContext(), "Belum dikirim", Toast.LENGTH_SHORT, R.style.mytoast).show();
                 }
 
             }

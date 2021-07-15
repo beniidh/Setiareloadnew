@@ -8,64 +8,6 @@
     android:padding="18dp"
     tools:context=".Register_activity">
 
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="5dp"-->
-<!--        android:orientation="horizontal">-->
-
-<!--        <TextView-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1"-->
-<!--            android:fontFamily="sans-serif-condensed"-->
-<!--            android:gravity="center"-->
-<!--            android:text="Profil Konter"-->
-<!--            android:textColor="@color/green"-->
-<!--            android:textSize="21dp"-->
-<!--            android:textStyle="bold" />-->
-
-<!--        <TextView-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1"-->
-<!--            android:fontFamily="sans-serif-condensed"-->
-<!--            android:gravity="center"-->
-<!--            android:text="Foto"-->
-<!--            android:textColor="@color/green"-->
-<!--            android:textSize="21dp"-->
-<!--            android:textStyle="bold" />-->
-<!--    </LinearLayout>-->
-
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:orientation="horizontal">-->
-
-<!--        <TextView-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="3.5dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:background="@color/green"-->
-<!--            android:elevation="1dp"-->
-<!--            android:fontFamily="sans-serif-medium"-->
-<!--            android:gravity="center"-->
-<!--            android:textColor="@color/orange"-->
-<!--            android:textSize="20dp"-->
-<!--            android:textStyle="bold" />-->
-
-<!--        <TextView-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="2dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:background="@color/gray2"-->
-<!--            android:fontFamily="sans-serif-medium"-->
-<!--            android:gravity="center"-->
-<!--            android:textColor="@color/orange"-->
-<!--            android:textSize="20dp"-->
-<!--            android:textStyle="bold" />-->
-<!--    </LinearLayout>-->
 
     <ScrollView
         android:layout_width="match_parent"

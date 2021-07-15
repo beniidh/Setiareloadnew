@@ -77,9 +77,6 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
         setContentView(R.layout.activity_drawer_activity);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
-//        toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         iconprofilsidebar = findViewById(R.id.iconprofilsidebar);
         parent = findViewById(R.id.parent);
@@ -205,7 +202,6 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
 
     public void LinKeluar(View view) {
 
-
         AlertDialog.Builder alertdialog = new AlertDialog.Builder(drawer_activity.this);
         alertdialog.setTitle("Keluar");
         alertdialog.setMessage("Apakah anda yakin ingin keluar ?");
@@ -266,13 +262,9 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
             public void onResponse(Call<ResponMenu> call, Response<ResponMenu> response) {
                 String code = response.body().getCode();
 
-
                 if (code.equals("200")) {
 
                     micons = (ArrayList<Micon>) response.body().getData();
-                    String jumlah = String.valueOf(micons.size());
-
-
                     myViewModel.sendDataIcon(micons);
 
 
@@ -299,7 +291,6 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
                 if (code.equals("200")) {
 
                     mBanners = response.body().getData();
-                    String jumlah = String.valueOf(mBanners.size());
                     myViewModel.sendDataIconBanner(mBanners);
 
                 }

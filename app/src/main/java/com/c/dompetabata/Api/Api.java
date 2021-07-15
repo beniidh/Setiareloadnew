@@ -2,6 +2,9 @@ package com.c.dompetabata.Api;
 
 import com.c.dompetabata.PengajuanLimit.ResponPengajuan;
 import com.c.dompetabata.PengajuanLimit.SendPengajuan;
+import com.c.dompetabata.PersetujuanSaldoSales.ResponPersetujuan;
+import com.c.dompetabata.PersetujuanSaldoSales.ResponPersetujuanSaldo;
+import com.c.dompetabata.PersetujuanSaldoSales.SendDataPersetujuan;
 import com.c.dompetabata.Profil.MPin;
 import com.c.dompetabata.Respon.Respon;
 import com.c.dompetabata.Respon.ResponBanner;
@@ -27,7 +30,13 @@ import com.c.dompetabata.Model.Mlogin;
 import com.c.dompetabata.Model.Mphone;
 import com.c.dompetabata.Model.MsetPIN;
 import com.c.dompetabata.Model.Responphoto;
+import com.c.dompetabata.SaldoServer.ResponPayletter;
+import com.c.dompetabata.SaldoServer.Responn;
+import com.c.dompetabata.TambahKonter.ResponTambahKonter;
+import com.c.dompetabata.TambahKonter.SendDataKonter;
 import com.c.dompetabata.TopUpSaldoku.ReqSaldoku;
+import com.c.dompetabata.Transaksi.MInquiry;
+import com.c.dompetabata.Transaksi.ResponInquiry;
 import com.c.dompetabata.menuUtama.PaketData.ListrikPLN.ResponListrikPln;
 import com.c.dompetabata.menuUtama.PaketData.ListrikPLNPasca.ResponListrikPlnPasca;
 import com.c.dompetabata.menuUtama.PaketData.PulsaPrabayar.ResponPulsaPra;
@@ -91,12 +100,18 @@ public interface Api {
     @GET("all-product-category")
     Call<ResponMenu> getAllProduct(@Header("X-Signature")String token);
 
-
     @POST("set-pin")
     Call<MsetPIN> SetPIN(@Header("X-Signature")String token, @Body MsetPIN msetPIN);
 
     @POST("pengajuan-dompet")
     Call<SendPengajuan> SetPengajuanLimit(@Header("X-Signature")String token, @Body SendPengajuan pengajuan);
+
+
+    @POST("request-paylater")
+    Call<SendPengajuan> SetPayLetter(@Header("X-Signature")String token, @Body SendPengajuan pengajuan);
+
+    @GET("request-paylater")
+    Call<Responn> GetPayLetter(@Header("X-Signature")String token);
 
     @GET("pengajuan-dompet")
     Call<ResponPengajuan> getPengajuanDompet(@Header("X-Signature")String token);
@@ -149,7 +164,6 @@ public interface Api {
     @GET("product/sub-category/{id}")
     Call<ResponListrikPln> getProdukPLNListrik(@Header("X-Signature")String token, @Path("id") String id);
 
-
     @GET("product/sub-category/{id}")
     Call<ResponListrikPlnPasca> getProdukPLNListrikPasca(@Header("X-Signature")String token, @Path("id") String id);
 
@@ -161,6 +175,19 @@ public interface Api {
 
     @POST("set-pin")
     Call<MPin> UbahPin(@Header("X-Signature")String token, @Body MPin mPin);
+
+    @POST("inquiry")
+    Call<ResponInquiry> CekInquiry(@Header("X-Signature")String token, @Body MInquiry mInquiry);
+
+    @POST("approve-paylater")
+    Call<ResponPersetujuan> sendDataPersetujuan(@Header("X-Signature")String token, @Body SendDataPersetujuan sendDataPersetujuan);
+
+    @GET("approve-paylater")
+    Call<ResponPersetujuanSaldo> getDataAprroval(@Header("X-Signature")String token);
+
+    @POST("register-konter")
+    Call<ResponTambahKonter> registerKonter(@Header("X-Signature")String token, @Body SendDataKonter sendDataKonter);
+
 
 
 

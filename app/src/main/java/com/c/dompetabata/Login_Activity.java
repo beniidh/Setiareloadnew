@@ -50,8 +50,7 @@ public class Login_Activity extends AppCompatActivity {
     TextView register;
     ImageView logologin;
     ProgressBar progressBar;
-    CheckBox checkBoxsave;
-    CheckBox savecheck;
+    CheckBox checkBoxsave,savecheck;
 
 
     @Override
@@ -66,12 +65,15 @@ public class Login_Activity extends AppCompatActivity {
         register = findViewById(R.id.register);
         logologin = findViewById(R.id.logologin);
         progressBar = findViewById(R.id.progressbutton);
-        checkBoxsave = findViewById(R.id.savecheck);
         savecheck = findViewById(R.id.savecheck);
 
-
+        // set Logo in login
         setLogologin();
 
+        //get informasi lokasi login
+        getLocation();
+
+        // set drawable end to editText Login
         FontDrawable drawable = new FontDrawable(this,R.string.userabata,true,false);
         Typeface type2 = ResourcesCompat.getFont(getApplicationContext(), R.font.abata);
         drawable.setTypeface(type2);
@@ -83,11 +85,8 @@ public class Login_Activity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent register = new Intent(Login_Activity.this, Register_activity.class);
                 startActivity(register);
-
-
             }
         });
 
@@ -96,7 +95,6 @@ public class Login_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 validation(numberphone.getText().toString());
-
             }
         });
 
@@ -116,10 +114,8 @@ public class Login_Activity extends AppCompatActivity {
 
     private void validation(String number) {
         if (number.isEmpty()) {
-            StyleableToast.makeText(getApplicationContext(), "Nomor tidak boleh kosong", Toast.LENGTH_SHORT, R.style.mytoast).show();
-
+            StyleableToast.makeText(getApplicationContext(), "Nomor tidak boleh kosong", Toast.LENGTH_SHORT, R.style.mytoast2).show();
         } else {
-
             Api api = RetroClient.getApiServices();
             Mphone mphone = new Mphone(number);
             Call<Mphone> call = api.ChekPhone(mphone);
@@ -128,18 +124,14 @@ public class Login_Activity extends AppCompatActivity {
                 public void onResponse(Call<Mphone> call, Response<Mphone> response) {
                     String code = response.body().getCode();
                     if (code.equals("200")){
-
                         Intent intent = new Intent(Login_Activity.this,pin_activity.class);
                         intent.putExtra("number",number);
                         Preference.getSharedPreference(getApplicationContext());
                         Preference.setkredentials(getApplicationContext(),numberphone.getText().toString());
                         startActivity(intent);
                         numberphone.setText("");
-
                     }else {
-
                         StyleableToast.makeText(getApplicationContext(), "Nomor belum terdaftar", Toast.LENGTH_SHORT, R.style.mytoast).show();
-
                     }
                 }
 

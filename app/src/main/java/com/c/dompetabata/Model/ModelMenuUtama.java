@@ -2,12 +2,16 @@ package com.c.dompetabata.Model;
 
 public class ModelMenuUtama {
 
-    String id,name,description,status,icon,url;
+    String id,name,description,status,icon,url,type;
 
     public ModelMenuUtama(String name, String icon, String url) {
         this.name = name;
         this.icon = icon;
         this.url = url;
+    }
+
+    public String getType() {
+        return type;
     }
 
     public String getUrl() {

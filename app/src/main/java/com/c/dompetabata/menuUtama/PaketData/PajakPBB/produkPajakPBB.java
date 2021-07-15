@@ -12,9 +12,9 @@ import android.widget.TextView;
 
 import com.c.dompetabata.R;
 
-public class produkPajakPBB extends AppCompatActivity {
+public class produkPajakPBB extends AppCompatActivity implements ModalPajak.BottomSheetListenerProduksms {
 
-    EditText inputprodukpajak,inputnomorpajak;
+    EditText inputprodukpajak, inputnomorpajak;
     TextView tujukarakterpajak;
 
     @Override
@@ -26,12 +26,14 @@ public class produkPajakPBB extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
 
         inputprodukpajak = findViewById(R.id.inputprodukpajak);
+        inputprodukpajak.setFocusable(false);
         inputnomorpajak = findViewById(R.id.inputnomorpajak);
         tujukarakterpajak = findViewById(R.id.tujukarakterpajak);
 
-        inputprodukpajak.setOnClickListener( v -> {
-       ModalPajak modalPajak = new ModalPajak();
-       modalPajak.show(getSupportFragmentManager(),"Modal pajak");
+
+        inputprodukpajak.setOnClickListener(v -> {
+            ModalPajak modalPajak = new ModalPajak();
+            modalPajak.show(getSupportFragmentManager(), "Modal pajak");
         });
 
         inputnomorpajak.addTextChangedListener(new TextWatcher() {
@@ -42,10 +44,10 @@ public class produkPajakPBB extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(inputnomorpajak.length() >= 7){
+                if (inputnomorpajak.length() >= 7) {
 
                     tujukarakterpajak.setVisibility(View.INVISIBLE);
-                }else {
+                } else {
 
                     tujukarakterpajak.setVisibility(View.VISIBLE);
                 }
@@ -58,13 +60,20 @@ public class produkPajakPBB extends AppCompatActivity {
             }
         });
     }
+
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
     }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+    @Override
+    public void onButtonClick(String name, String id) {
+        inputprodukpajak.setText(name);
     }
 }

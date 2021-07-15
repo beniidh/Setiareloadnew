@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import com.c.dompetabata.menuUtama.PaketData.PulsaPrabayar.modelPasca;
 import com.c.dompetabata.R;
 
-public class subCategory_activity extends AppCompatActivity {
+public class PulsaPascaBayar_activity extends AppCompatActivity {
 
     EditText nomorbelipulsa;
     private String url;

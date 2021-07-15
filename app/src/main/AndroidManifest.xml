@@ -21,7 +21,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DompetAbata">
-        <activity android:name=".Fragment.RiwayatTransaksi.HistoryTransaksi"></activity>
+        <activity android:name=".PersetujuanSaldoSales.DetailPersetujuan"></activity>
+        <activity android:name=".TambahKonter.addKonter" />
+        <activity android:name=".PersetujuanSaldoSales.PersetujuanSaldoSales" />
+        <activity android:name=".SaldoServer.AjukanLimit" />
+        <activity android:name=".Fragment.RiwayatTransaksi.HistoryTransaksi" />
         <activity android:name=".Notifikasi.DetailNotifikasi" />
         <activity android:name=".TentangKami.TentangKamiAct" />
         <activity android:name=".KodeProduk.Kodeprodukact" />
@@ -43,12 +47,12 @@
         <activity android:name=".menuUtama.PaketData.PaketsmsTelpon.produksmstelpon" />
         <activity android:name=".menuUtama.PaketData.ListrikPLNPasca.Pln_produk_pasca" />
         <activity android:name=".menuUtama.PaketData.ListrikPLN.Pln_Produk" />
-        <activity android:name=".menuUtama.PaketData.PaketData_Activity" />
+        <activity android:name=".menuUtama.PaketData.Paket.PaketData_Activity" />
         <activity android:name=".Notifikasi.Notifikasi_Activity" />
         <activity android:name=".menuUtama.PaketData.PulsaPrabayar.TransaksiPending" />
         <activity android:name=".menuUtama.PaketData.PulsaPrabayar.KonfirmasiPembayaran" />
         <activity android:name=".menuUtama.PaketData.PulsaPrabayar.PulsaPrabayar_activity" />
-        <activity android:name=".menuUtama.PaketData.PulsaPascaBayar.subCategory_activity" />
+        <activity android:name=".menuUtama.PaketData.PulsaPascaBayar.PulsaPascaBayar_activity" />
         <activity android:name=".Kodeproduk" />
         <activity android:name=".Transaksi.BayarSalesServer" />
         <activity android:name=".Profil.Device" />
@@ -59,13 +63,13 @@
             android:name=".Profil.Profil"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Transaksi.RincianTagihan"
+            android:name=".SaldoServer.RincianTagihan"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Transaksi.RiwayatTagihan"
+            android:name=".SaldoServer.RiwayatTagihan"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Transaksi.TopupSaldoServer"
+            android:name=".SaldoServer.TopupSaldoServer"
             android:screenOrientation="portrait" />
         <activity
             android:name=".TopUpSaldoku.TrasferBank"

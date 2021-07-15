@@ -20,9 +20,9 @@ import com.c.dompetabata.menuUtama.PaketData.Internet.InternetProduk;
 import com.c.dompetabata.menuUtama.PaketData.ListrikPLN.Pln_Produk;
 import com.c.dompetabata.menuUtama.PaketData.ListrikPLNPasca.Pln_produk_pasca;
 import com.c.dompetabata.menuUtama.PaketData.PajakPBB.produkPajakPBB;
-import com.c.dompetabata.menuUtama.PaketData.PaketData_Activity;
+import com.c.dompetabata.menuUtama.PaketData.Paket.PaketData_Activity;
 import com.c.dompetabata.menuUtama.PaketData.PaketsmsTelpon.produksmstelpon;
-import com.c.dompetabata.menuUtama.PaketData.PulsaPascaBayar.subCategory_activity;
+import com.c.dompetabata.menuUtama.PaketData.PulsaPascaBayar.PulsaPascaBayar_activity;
 import com.c.dompetabata.menuUtama.PaketData.PulsaPrabayar.PulsaPrabayar_activity;
 import com.c.dompetabata.R;
 import com.c.dompetabata.homelainnya;
@@ -64,6 +64,7 @@ public class AdapterMenuUtama extends RecyclerView.Adapter<AdapterMenuUtama.View
                 case "pulsa_prabayar": {
                     Intent intent = new Intent(context, PulsaPrabayar_activity.class);
                     intent.putExtra("id", modelMenuUtama.getId());
+                    intent.putExtra("type", modelMenuUtama.getType());
                     context.startActivity(intent);
                     break;
                 }
@@ -75,90 +76,105 @@ public class AdapterMenuUtama extends RecyclerView.Adapter<AdapterMenuUtama.View
                 case "paket_data": {
                     Intent intent = new Intent(context, PaketData_Activity.class);
                     intent.putExtra("id", modelMenuUtama.getId());
+                    intent.putExtra("type", modelMenuUtama.getType());
                     context.startActivity(intent);
                     break;
                 }
                 case "pulsa_pascabayar": {
-                    Intent intent = new Intent(context, subCategory_activity.class);
+                    Intent intent = new Intent(context, PulsaPascaBayar_activity.class);
                     intent.putExtra("id", modelMenuUtama.getId());
+                    intent.putExtra("type", modelMenuUtama.getType());
                     context.startActivity(intent);
                     break;
                 }
                 case "pln_prabayar": {
                     Intent intent = new Intent(context, Pln_Produk.class);
                     intent.putExtra("id", modelMenuUtama.getId());
+                    intent.putExtra("type", modelMenuUtama.getType());
                     context.startActivity(intent);
                     break;
                 }
                 case "pln_pascabayar": {
                     Intent intent = new Intent(context, Pln_produk_pasca.class);
                     intent.putExtra("id", modelMenuUtama.getId());
+                    intent.putExtra("type", modelMenuUtama.getType());
                     context.startActivity(intent);
                     break;
                 }
                 case "paket_sms_telepon": {
                     Intent intent = new Intent(context, produksmstelpon.class);
                     intent.putExtra("id", modelMenuUtama.getId());
+                    intent.putExtra("type", modelMenuUtama.getType());
                     context.startActivity(intent);
                     break;
                 }
                 case "uang_elektronik": {
                     Intent intent = new Intent(context, ProdukUangElektronik.class);
                     intent.putExtra("id", modelMenuUtama.getId());
+                    intent.putExtra("type", modelMenuUtama.getType());
                     context.startActivity(intent);
                     break;
                 }
                 case "air_pdam": {
                     Intent intent = new Intent(context, produkair.class);
                     intent.putExtra("id", modelMenuUtama.getId());
+                    intent.putExtra("type", modelMenuUtama.getType());
                     context.startActivity(intent);
                     break;
                 }
                 case "voucher_game": {
                     Intent intent = new Intent(context, produkVoucherGame.class);
                     intent.putExtra("id", modelMenuUtama.getId());
+                    intent.putExtra("type", modelMenuUtama.getType());
                     context.startActivity(intent);
                     break;
                 }
                 case "internet": {
                     Intent intent = new Intent(context, InternetProduk.class);
                     intent.putExtra("id", modelMenuUtama.getId());
+                    intent.putExtra("type", modelMenuUtama.getType());
                     context.startActivity(intent);
                     break;
                 }
                 case "tv": {
                     Intent intent = new Intent(context, tv_produk.class);
                     intent.putExtra("id", modelMenuUtama.getId());
+                    intent.putExtra("type", modelMenuUtama.getType());
                     context.startActivity(intent);
                     break;
                 }
                 case "voucher": {
                     Intent intent = new Intent(context, produkVoucher.class);
                     intent.putExtra("id", modelMenuUtama.getId());
+                    intent.putExtra("type", modelMenuUtama.getType());
                     context.startActivity(intent);
                     break;
                 }
                 case "bpjs_kesehatan": {
                     Intent intent = new Intent(context, produkBPJS.class);
                     intent.putExtra("id", modelMenuUtama.getId());
+                    intent.putExtra("type", modelMenuUtama.getType());
                     context.startActivity(intent);
                     break;
                 }
                 case "angsuran_krefit": {
                     Intent intent = new Intent(context, ProdukAngsuranKredit.class);
                     intent.putExtra("id", modelMenuUtama.getId());
+                    intent.putExtra("type", modelMenuUtama.getType());
                     context.startActivity(intent);
                     break;
                 }
                 case "pajak_pbb": {
                     Intent intent = new Intent(context, produkPajakPBB.class);
                     intent.putExtra("id", modelMenuUtama.getId());
+                    intent.putExtra("type", modelMenuUtama.getType());
                     context.startActivity(intent);
                     break;
                 }
                 case "gas_negara": {
                     Intent intent = new Intent(context, produkGasnegara.class);
                     intent.putExtra("id", modelMenuUtama.getId());
+                    intent.putExtra("type", modelMenuUtama.getType());
                     context.startActivity(intent);
                     break;
                 } case "https://shopee": {

@@ -21,7 +21,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:background="@color/white"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:id="@+id/footer">
@@ -41,9 +42,9 @@
             android:layout_marginHorizontal="5dp"
             android:background="@drawable/bg_send"
             android:src="@drawable/ic_baseline_send_24"
-            android:layout_width="47dp"
+            android:layout_width="40dp"
             android:layout_marginBottom="54sp"
-            android:layout_height="47dp"
+            android:layout_height="40dp"
             android:layout_gravity="bottom|right" />
 
         <ImageButton
@@ -51,9 +52,9 @@
 
             android:background="@drawable/bg_send"
             android:src="@drawable/ic_baseline_add_24"
-            android:layout_width="47dp"
+            android:layout_width="40dp"
             android:layout_marginBottom="54sp"
-            android:layout_height="47dp"
+            android:layout_height="40dp"
             android:layout_gravity="bottom|right" />
     </LinearLayout>
 </RelativeLayout>

@@ -47,5 +47,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pinEditText" />
 
+    <TextView
+        android:id="@+id/warningpinsalah"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:text="3 Kali kesempatan memasukan PIN"
+        android:textColor="@color/green"
+        android:textSize="18dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pinEditText"
+        app:layout_constraintVertical_bias="0.084" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

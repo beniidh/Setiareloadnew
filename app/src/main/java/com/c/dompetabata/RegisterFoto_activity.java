@@ -97,18 +97,15 @@ public class RegisterFoto_activity extends AppCompatActivity {
         progresselfie = findViewById(R.id.progressDiri);
         progresktpdanselfie = findViewById(R.id.progressDiridanKTP);
 
-        uploadKTP.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        uploadKTP.setOnClickListener(v -> {
 
-                Intent intent = CropImage.activity()
-                        .setAspectRatio(1, 1)
-                        .setGuidelines(CropImageView.Guidelines.ON)
-                        .getIntent(RegisterFoto_activity.this);
+            Intent intent = CropImage.activity()
+                    .setAspectRatio(1, 1)
+                    .setGuidelines(CropImageView.Guidelines.ON)
+                    .getIntent(RegisterFoto_activity.this);
 
-                startActivityForResult(intent, INTENT_REQUEST_CODE);
+            startActivityForResult(intent, INTENT_REQUEST_CODE);
 
-            }
         });
 
         uploadDiri.setOnClickListener(new View.OnClickListener() {

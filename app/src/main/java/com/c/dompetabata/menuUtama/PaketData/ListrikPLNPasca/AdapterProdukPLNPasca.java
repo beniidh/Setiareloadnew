@@ -57,6 +57,7 @@ public class AdapterProdukPLNPasca extends RecyclerView.Adapter<AdapterProdukPLN
             bundle.putString("deskripsi",modelProdukPlnPasca.getDescription());
             bundle.putString("nomorr",nomor);
             bundle.putString("hargga",modelProdukPlnPasca.getBasic_price());
+            bundle.putString("kodeproduk","pln");
             DetailTransaksiPulsaPra fragment = new DetailTransaksiPulsaPra(); // you fragment
             FragmentManager fragmentManager = ((FragmentActivity) v.getContext()).getSupportFragmentManager();
             fragment.setArguments(bundle);

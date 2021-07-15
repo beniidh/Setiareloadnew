@@ -2,6 +2,7 @@ package com.c.dompetabata.Profil;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Html;
@@ -19,6 +20,7 @@ public class ubah_pin extends AppCompatActivity {
 
     PinEditText ubahpin;
     GpsTracker gpsTracker;
+    public static Activity pin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,7 @@ public class ubah_pin extends AppCompatActivity {
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#4AB84E'><b>Ubah PIN <b></font>"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
+        pin = this;
 
         ubahpin = findViewById(R.id.ubahpin);
         ubahpin.addTextChangedListener(new TextWatcher() {

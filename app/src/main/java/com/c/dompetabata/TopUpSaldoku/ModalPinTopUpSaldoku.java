@@ -84,9 +84,18 @@ public class ModalPinTopUpSaldoku extends BottomSheetDialogFragment {
                 String code = response.body().getCode();
 
                 if (code.equals("200")) {
-                    StyleableToast.makeText(getContext(), "Berhasil", Toast.LENGTH_SHORT, R.style.mytoast3).show();
-                    dismiss();
+                    String kode = getArguments().getString("kode");
 
+                    if(kode.equals("bank")){
+                        StyleableToast.makeText(getContext(), "Berhasil", Toast.LENGTH_SHORT, R.style.mytoast3).show();
+                        dismiss();
+
+                    }else {
+                        StyleableToast.makeText(getContext(), "Berhasil", Toast.LENGTH_SHORT, R.style.mytoast3).show();
+                        BayarSales.a.finish();
+                        topup_saldoku_activity.b.finish();
+                        dismiss();
+                    }
 
                 } else {
                     StyleableToast.makeText(getContext(), "Pin anda salah", Toast.LENGTH_SHORT, R.style.mytoast2).show();

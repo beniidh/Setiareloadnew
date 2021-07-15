@@ -1,4 +1,4 @@
-package com.c.dompetabata.Transaksi;
+package com.c.dompetabata.SaldoServer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -33,7 +33,7 @@ public class TopupSaldoServer extends AppCompatActivity {
     }
 
     public void RiwayatTagihan(View view){
-        Intent intent = new Intent(TopupSaldoServer.this,RiwayatTagihan.class);
+        Intent intent = new Intent(TopupSaldoServer.this, RiwayatTagihan.class);
         startActivity(intent);
     }
     public void BayarTagihan(View view){

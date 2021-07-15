@@ -36,61 +36,54 @@ public class splash_activity extends AppCompatActivity {
         logo = findViewById(R.id.logosplash);
         getSupportActionBar().hide();
         setLogo();
-        ProgressBar progressBar = findViewById(R.id.myprogress);
-      int delay = 2000;
-
+        int delay = 2000;
 
         Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
+        handler.postDelayed(() -> {
 
-                String token = Preference.getToken(getApplicationContext());
+            String token = Preference.getToken(getApplicationContext());
 
-                if(token != ""){
+            if (!token.equals("")) {
 
-                    Api api = RetroClient.getApiServices();
-                    Call<Mlogin> call = api.getProfile("Bearer "+token);
-                    call.enqueue(new Callback<Mlogin>() {
-                        @Override
-                        public void onResponse(Call<Mlogin> call, Response<Mlogin> response) {
-                            String code = response.body().getCode();
-                            if(code.equals("200")){
-                                Intent home = new Intent(splash_activity.this,drawer_activity.class);
-                                startActivity(home);
+                Api api = RetroClient.getApiServices();
+                Call<Mlogin> call = api.getProfile("Bearer " + token);
+                call.enqueue(new Callback<Mlogin>() {
+                    @Override
+                    public void onResponse(Call<Mlogin> call, Response<Mlogin> response) {
+                        String code = response.body().getCode();
+                        if (code.equals("200")) {
+                            Intent home = new Intent(splash_activity.this, drawer_activity.class);
+                            startActivity(home);
+                            finish();
 
-                                finish();
+                        } else {
 
-                            } else {
-
-                                Intent login = new Intent(splash_activity.this,pin_activity.class);
-                                startActivity(login);
-                                finish();
-
-                                StyleableToast.makeText(getApplicationContext(),"Token sudah berakhir,Silahkan Masukan PIN",Toast.LENGTH_LONG,R.style.mytoast2).show();
-
-                            }
-
+                            Intent login = new Intent(splash_activity.this, pin_activity.class);
+                            startActivity(login);
+                            finish();
+                            StyleableToast.makeText(getApplicationContext(), "Token sudah berakhir,Silahkan Masukan PIN", Toast.LENGTH_LONG, R.style.mytoast2).show();
 
                         }
 
-                        @Override
-                        public void onFailure(Call<Mlogin> call, Throwable t) {
-                            StyleableToast.makeText(getApplicationContext()," Internet Belum dinyalakan",Toast.LENGTH_LONG,R.style.mytoast2).show();
 
-                        }
-                    });
+                    }
 
-                }else {
+                    @Override
+                    public void onFailure(Call<Mlogin> call, Throwable t) {
+                        StyleableToast.makeText(getApplicationContext(), " Internet Belum dinyalakan", Toast.LENGTH_LONG, R.style.mytoast2).show();
 
-                    Intent login = new Intent(splash_activity.this,Login_Activity.class);
-                    startActivity(login);
-                    finish();
+                    }
+                });
 
-                }
+            } else {
 
+                Intent login = new Intent(splash_activity.this, Login_Activity.class);
+                startActivity(login);
+                finish();
 
             }
+
+
         }, delay);
     }
 
@@ -98,16 +91,5 @@ public class splash_activity extends AppCompatActivity {
         logo.setImageDrawable(getDrawable(R.drawable.csoftware));
     }
 
-    private String getUserAgent() {
-
-        String ua = new WebView(this).getSettings().getUserAgentString();
-        return ua;
-    }
-
-    private String getIPaddress() {
-
-        String IP = utils.getIPAddress(true);
-        return IP;
-    }
 }
 

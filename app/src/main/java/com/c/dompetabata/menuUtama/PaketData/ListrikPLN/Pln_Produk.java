@@ -35,6 +35,7 @@ public class Pln_Produk extends AppCompatActivity {
     AdapterProdukPLN adapterProdukPLN;
     ArrayList<ModelProdukPln> modelProdukPlns = new ArrayList<>();
     RecyclerView recyclerPLN;
+    String type;
 
 
     @Override
@@ -44,16 +45,16 @@ public class Pln_Produk extends AppCompatActivity {
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#4AB84E'><b>Listrik PLN <b></font>"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
+        Intent intent = getIntent();
+        type = intent.getStringExtra("type");
+        String id = intent.getStringExtra("id");
 
         recyclerPLN = findViewById(R.id.ReyProdukPlnPra);
         nomorinputpln = findViewById(R.id.nomorinputPLN);
-        adapterProdukPLN = new AdapterProdukPLN(getApplicationContext(), modelProdukPlns,nomorinputpln.getText().toString());
+        adapterProdukPLN = new AdapterProdukPLN(getApplicationContext(), modelProdukPlns,nomorinputpln.getText().toString(),type);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerPLN.setLayoutManager(mLayoutManager);
         recyclerPLN.setAdapter(adapterProdukPLN);
-
-        Intent intent = getIntent();
-        String id = intent.getStringExtra("id");
 
         keterangan = findViewById(R.id.tujukarakterpln);
 
@@ -130,7 +131,7 @@ public class Pln_Produk extends AppCompatActivity {
                 if(code.equals("200")){
 
                     modelProdukPlns = (ArrayList<ModelProdukPln>) response.body().getData();
-                    adapterProdukPLN = new AdapterProdukPLN(getApplicationContext(), modelProdukPlns,nomorinputpln.getText().toString());
+                    adapterProdukPLN = new AdapterProdukPLN(getApplicationContext(), modelProdukPlns,nomorinputpln.getText().toString(),type);
                     recyclerPLN.setAdapter(adapterProdukPLN);
                 }
             }

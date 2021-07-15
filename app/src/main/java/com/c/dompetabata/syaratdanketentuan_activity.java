@@ -23,26 +23,8 @@ public class syaratdanketentuan_activity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
 
-//        setujui = findViewById(R.id.setujuu);
-//        setujui.setClickable(false);
-//        setujui.setTextColor(getColor(R.color.gray2));
         setuju = findViewById(R.id.checksetuju);
-//        setuju.isChecked();
-//        setuju.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                if(isChecked){
-//
-//                    setujui.setEnabled(true);
-//                    setujui.setTextColor(getColor(R.color.green));
-//                }else {
-//
-//                    setujui.setEnabled(false);
-//                    setujui.setTextColor(getColor(R.color.gray2));
-//                }
-//
-//            }
-//        });
+
 
     }
     @Override

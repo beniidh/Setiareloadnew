@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.c.dompetabata.R;
@@ -18,20 +19,35 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 public class DetailTransaksiPulsaPra extends BottomSheetDialogFragment {
-    TextView total;
+    TextView total, namapelanggann, namaPelanggan;
+    RelativeLayout RelativeNamaPelangga;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.activity_detail_transaksi_pulsa_pra,container,false);
+        View v = inflater.inflate(R.layout.activity_detail_transaksi_pulsa_pra, container, false);
 
         Button konfirasidetail = v.findViewById(R.id.konfirmasidetail);
+
+
+        namapelanggann = v.findViewById(R.id.namapelanggann);
+        TextView namaPelanggan = v.findViewById(R.id.namaPelanggan);
+
+        String kode = getArguments().getString("kodeproduk");
+
+        String namecustomer = getArguments().getString("namecustomer");
+        namapelanggann.setVisibility(View.GONE);
+        if (kode.equals("pln")) {
+            namaPelanggan.setVisibility(View.VISIBLE);
+            namaPelanggan.setText(namecustomer);
+            namapelanggann.setVisibility(View.VISIBLE);
+
+        }
         konfirasidetail.setOnClickListener(v12 -> {
-
             String urllicon = getArguments().getString("urlicon");
-
-            Intent intent = new Intent(getContext(),KonfirmasiPembayaran.class);
-            intent.putExtra("hargatotal",total.getText().toString());
-            intent.putExtra("urll",urllicon);
+            Intent intent = new Intent(getContext(), KonfirmasiPembayaran.class);
+            intent.putExtra("hargatotal", total.getText().toString());
+            intent.putExtra("urll", urllicon);
             startActivity(intent);
             dismiss();
 
@@ -44,15 +60,16 @@ public class DetailTransaksiPulsaPra extends BottomSheetDialogFragment {
         TextView deskripsi = v.findViewById(R.id.detaildeskripsifragment);
         TextView nomor = v.findViewById(R.id.nomortujuan);
         TextView hargaproduk = v.findViewById(R.id.hargaproduk);
-         total = v.findViewById(R.id.totalpembayaran);
+        total = v.findViewById(R.id.totalpembayaran);
 
         String strtext = getArguments().getString("deskripsi");
         String nomorr = getArguments().getString("nomorr");
         String harga = getArguments().getString("hargga");
 
+
         hargaproduk.setText(harga);
         double totall = Double.valueOf(harga);
-        Locale localeid = new Locale("in","ID");
+        Locale localeid = new Locale("in", "ID");
         NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeid);
         total.setText(formatRupiah.format(totall));
 

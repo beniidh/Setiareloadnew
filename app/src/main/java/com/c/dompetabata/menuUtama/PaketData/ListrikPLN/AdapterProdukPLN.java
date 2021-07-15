@@ -7,29 +7,42 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.c.dompetabata.Api.Api;
+import com.c.dompetabata.Api.Value;
+import com.c.dompetabata.Helper.GpsTracker;
+import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.R;
+import com.c.dompetabata.Transaksi.MInquiry;
+import com.c.dompetabata.Transaksi.ResponInquiry;
 import com.c.dompetabata.menuUtama.PaketData.PulsaPrabayar.DetailTransaksiPulsaPra;
+import com.c.dompetabata.sharePreference.Preference;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class AdapterProdukPLN extends RecyclerView.Adapter<AdapterProdukPLN.ViewHolder> {
 
     Context context;
     ArrayList<ModelProdukPln> modelProdukPlns;
-    String nomor;
+    String nomor,type;
 
-    public AdapterProdukPLN(Context context, ArrayList<ModelProdukPln> modelProdukPlns, String nomor) {
+    public AdapterProdukPLN(Context context, ArrayList<ModelProdukPln> modelProdukPlns, String nomor,String type) {
         this.context = context;
         this.modelProdukPlns = modelProdukPlns;
         this.nomor = nomor;
+        this.type = type;
     }
 
     @NonNull
@@ -52,14 +65,43 @@ public class AdapterProdukPLN extends RecyclerView.Adapter<AdapterProdukPLN.View
         holder.harga.setText(formatRupiah.format(harga));
 
         holder.linearklik.setOnClickListener(v -> {
-            Bundle bundle = new Bundle();
-            bundle.putString("deskripsi",modelProdukPln.getDescription());
-            bundle.putString("nomorr",nomor);
-            bundle.putString("hargga",modelProdukPln.getBasic_price());
-            DetailTransaksiPulsaPra fragment = new DetailTransaksiPulsaPra(); // you fragment
-            FragmentManager fragmentManager = ((FragmentActivity) v.getContext()).getSupportFragmentManager();
-            fragment.setArguments(bundle);
-            fragment.show(fragmentManager ,"detail");
+
+            GpsTracker gpsTracker = new GpsTracker(context);
+
+            Api api = RetroClient.getApiServices();
+            MInquiry mInquiry = new MInquiry(modelProdukPln.getCode(), nomor, type, Value.getMacAddress(), Value.getIPaddress(),Value.getUserAgent(context), gpsTracker.getLatitude(), gpsTracker.getLongitude());
+            String token = "Bearer " + Preference.getToken(context);
+            Call<ResponInquiry> call = api.CekInquiry(token, mInquiry);
+            call.enqueue(new Callback<ResponInquiry>() {
+                @Override
+                public void onResponse(Call<ResponInquiry> call, Response<ResponInquiry> response) {
+
+                    String code = response.body().getCode();
+                    if(code.equals("200")){
+
+                        Bundle bundle = new Bundle();
+                        bundle.putString("deskripsi",modelProdukPln.getDescription());
+                        bundle.putString("nomorr",nomor);
+                        bundle.putString("namecustomer",response.body().getData().getCustomer_name());
+                        bundle.putString("hargga",modelProdukPln.getBasic_price());
+                        bundle.putString("kodeproduk","pln");
+                        DetailTransaksiPulsaPra fragment = new DetailTransaksiPulsaPra(); // you fragment
+                        FragmentManager fragmentManager = ((FragmentActivity) v.getContext()).getSupportFragmentManager();
+                        fragment.setArguments(bundle);
+                        fragment.show(fragmentManager ,"detail");
+                    }else {
+
+                        Toast.makeText(context,response.body().getError(),Toast.LENGTH_LONG).show();
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<ResponInquiry> call, Throwable t) {
+
+                }
+            });
+
         });
 
 

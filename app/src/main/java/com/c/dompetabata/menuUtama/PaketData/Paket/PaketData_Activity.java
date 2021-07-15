@@ -1,6 +1,7 @@
-package com.c.dompetabata.menuUtama.PaketData;
+package com.c.dompetabata.menuUtama.PaketData.Paket;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ public class PaketData_Activity extends AppCompatActivity {
     private String url;
     ImageView iconproduk;
     modelPasca modelPascaa;
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,8 @@ public class PaketData_Activity extends AppCompatActivity {
 
         iconproduk = findViewById(R.id.iconprodukPaketData);
         nomorbelidata = findViewById(R.id.nomorbelipulsaPaketData);
+        recyclerView = findViewById(R.id.ReyPaketData);
+
 
         nomorbelidata.addTextChangedListener(new TextWatcher() {
             @Override

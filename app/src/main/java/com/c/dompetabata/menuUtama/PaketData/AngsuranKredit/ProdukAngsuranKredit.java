@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.c.dompetabata.R;
 
-public class ProdukAngsuranKredit extends AppCompatActivity {
+public class ProdukAngsuranKredit extends AppCompatActivity implements ModalAngsuran.BottomSheetListenerProduksms {
 
     EditText inputprodukangsuran,inputnomorangsuran;
     TextView tujukarakterangsuran;
@@ -68,5 +68,10 @@ public class ProdukAngsuranKredit extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+    @Override
+    public void onButtonClick(String name, String id) {
+        inputprodukangsuran.setText(name);
     }
 }

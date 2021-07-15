@@ -43,7 +43,7 @@
             android:layout_marginTop="8dp"
             android:fontFamily="@font/abata"
             android:background="@drawable/bg_edittextlogin"
-            android:hint="Nomor Telphone (628578838xx)"
+            android:hint="Nomor Telepone "
             android:drawablePadding="10dp"
             android:inputType="number"
             android:paddingStart="12dp"

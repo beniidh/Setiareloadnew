@@ -40,16 +40,12 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class Register_activity extends AppCompatActivity implements ModalProvinsi.BottomSheetListener, ModalKabupaten.BottomSheetListenerKabupaten, ModalKecamatan.BottomSheetListenerKecamatan, ModalKelurahan.BottomSheetListenerKelurahan,ModalKodePos.BottomSheetListenerPost {
-    EditText provinsi, kecamatan, kabupaten,kelurahan,postcode, namapemilik, email, phone, alamatregis,namakonter,referal,serverid;
+public class Register_activity extends AppCompatActivity implements ModalProvinsi.BottomSheetListener, ModalKabupaten.BottomSheetListenerKabupaten, ModalKecamatan.BottomSheetListenerKecamatan, ModalKelurahan.BottomSheetListenerKelurahan, ModalKodePos.BottomSheetListenerPost {
+    EditText provinsi, kecamatan, kabupaten, kelurahan, postcode, namapemilik, email, phone, alamatregis, namakonter, referal, serverid;
     ProgressBar progressBar;
     Button regis;
     GpsTracker gpsTracker;
-    int province;
-    int Regencie;
-    int district;
-    int subdistrict;
-    int postalCode;
+    int province, Regencie, district, subdistrict, postalCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,74 +80,74 @@ public class Register_activity extends AppCompatActivity implements ModalProvins
         referal = findViewById(R.id.referalcodeRegis);
         serverid = findViewById(R.id.serverID);
 
-provinsi.addTextChangedListener(new TextWatcher() {
-    @Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        provinsi.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-    }
+            }
 
-    @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
- kabupaten.setEnabled(true);
-    }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                kabupaten.setEnabled(true);
+            }
 
-    @Override
-    public void afterTextChanged(Editable s) {
+            @Override
+            public void afterTextChanged(Editable s) {
 
-    }
-});
+            }
+        });
 
-kabupaten.addTextChangedListener(new TextWatcher() {
-    @Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        kabupaten.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-    }
+            }
 
-    @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
-        kecamatan.setEnabled(true);
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                kecamatan.setEnabled(true);
 
-    }
+            }
 
-    @Override
-    public void afterTextChanged(Editable s) {
+            @Override
+            public void afterTextChanged(Editable s) {
 
-    }
-});
+            }
+        });
 
-kecamatan.addTextChangedListener(new TextWatcher() {
-    @Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        kecamatan.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-    }
+            }
 
-    @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
-kelurahan.setEnabled(true);
-    }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                kelurahan.setEnabled(true);
+            }
 
-    @Override
-    public void afterTextChanged(Editable s) {
+            @Override
+            public void afterTextChanged(Editable s) {
 
-    }
-});
+            }
+        });
 
-kelurahan.addTextChangedListener(new TextWatcher() {
-    @Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        kelurahan.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-    }
+            }
 
-    @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
-postcode.setEnabled(true);
-    }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                postcode.setEnabled(true);
+            }
 
-    @Override
-    public void afterTextChanged(Editable s) {
+            @Override
+            public void afterTextChanged(Editable s) {
 
-    }
-});
+            }
+        });
 
 
         postcode.setFocusable(false);
@@ -183,8 +179,6 @@ postcode.setEnabled(true);
                 onClickProvinsi();
             }
         });
-
-
 
 
         //ID Kabupaten definition
@@ -302,11 +296,7 @@ postcode.setEnabled(true);
                         Preference.setKeyPhone(getBaseContext(), phonee);
                         Preference.setKeyUserCode(getBaseContext(), user_code);
                         Preference.setKeyUserId(getBaseContext(), user_id);
-//
-//                        intent.putExtra("user_id",user_id);
-//                        intent.putExtra("user_code",user_code);
-//                        intent.putExtra("phone",phone);
-//                        intent.putExtra("otp_id",otp_id);
+
                         progressBar.setVisibility(View.GONE);
                         regis.setText("Selanjutnya");
 
@@ -322,8 +312,6 @@ postcode.setEnabled(true);
                         postcode.setText("");
                         referal.setText("");
                         serverid.setText("");
-
-
 
 
                         startActivity(intent);
@@ -382,7 +370,7 @@ postcode.setEnabled(true);
     public void onButtonClick(String name, String id) {
         provinsi.setText(name);
         province = Integer.parseInt(id);
-        Preference.setIDProvinsi(getApplicationContext(),id);
+        Preference.setIDProvinsi(getApplicationContext(), id);
 
     }
 

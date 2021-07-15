@@ -16,7 +16,6 @@ public class Device extends AppCompatActivity {
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#4AB84E'><b>Device <b></font>"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
-
     }
 
     @Override
@@ -24,7 +23,6 @@ public class Device extends AppCompatActivity {
         onBackPressed();
         return true;
     }
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();

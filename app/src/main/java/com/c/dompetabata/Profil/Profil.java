@@ -13,7 +13,8 @@ import com.c.dompetabata.Api.Api;
 import com.c.dompetabata.Respon.ResponProfil;
 import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.R;
-import com.c.dompetabata.Transaksi.TopupSaldoServer;
+import com.c.dompetabata.SaldoServer.AjukanLimit;
+import com.c.dompetabata.SaldoServer.TopupSaldoServer;
 import com.c.dompetabata.sharePreference.Preference;
 import com.c.dompetabata.TopUpSaldoku.topup_saldoku_activity;
 import com.squareup.picasso.Picasso;
@@ -82,12 +83,34 @@ public class Profil extends AppCompatActivity {
                 saldoserverprofil.setText(response.body().getData().getWallet().getPaylatter());
                 String statuspayletter = response.body().getData().getPaylater_status();
 
-                if(statuspayletter.equals("0")){
-                    saldoserverprofil.setEnabled(false);
+                if (statuspayletter.equals("0")) {
                     saldoserverprofil.setText("0");
+                    saldoserverprofil.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            Intent intent = new Intent(getApplicationContext(), AjukanLimit.class);
+//                            intent.putExtra("saldoku", saldoku.getText().toString());
+                            startActivity(intent);
+
+                        }
+                    });
+
+
+                } else {
+
+                    saldoserverprofil.setOnClickListener(v -> {
+
+                        Intent intent = new Intent(getApplicationContext(), TopupSaldoServer.class);
+//                        intent.putExtra("saldoku", saldoku.getText().toString());
+                        startActivity(intent);
+
+                    });
+
                 }
 
             }
+
 
             @Override
             public void onFailure(Call<ResponProfil> call, Throwable t) {

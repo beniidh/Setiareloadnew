@@ -2,6 +2,7 @@ package com.c.dompetabata.TopUpSaldoku;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
@@ -24,6 +25,8 @@ public class topup_saldoku_activity extends AppCompatActivity {
     LinearLayout linsaldo100,linsaldo200,linsaldo500,linsaldo1000;
     EditText isisaldoku;
     TextView saldosaatini;
+
+    public static Activity b;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +35,8 @@ public class topup_saldoku_activity extends AppCompatActivity {
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#4AB84E'><b>Top UP Saldoku <b></font>"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
+
+        b = this;
 
         linsaldo100 = findViewById(R.id.linsaldo100);
         linsaldo200 = findViewById(R.id.linsaldo200);
@@ -43,7 +48,7 @@ public class topup_saldoku_activity extends AppCompatActivity {
         bayarsaldoku = findViewById(R.id.bayarsaldoku);
         Intent intent = getIntent();
         String saldosaatin = intent.getStringExtra("saldoku");
-        saldosaatini.setText("Rp."+saldosaatin);
+        saldosaatini.setText(saldosaatin);
 
         bayarsaldoku.setOnClickListener(new View.OnClickListener() {
             @Override
