@@ -75,7 +75,6 @@ public class DetailPersetujuan extends AppCompatActivity {
 
     public void showModal(String status, String id, String saldo) {
 
-
         ModalPinPersetujuan modalPinPersetujuan = new ModalPinPersetujuan();
         Bundle bundle = new Bundle();
         bundle.putString("ID", id);

@@ -117,7 +117,7 @@ public class ModalPinPersetujuan extends BottomSheetDialogFragment {
 
             @Override
             public void onFailure(Call<ResponPersetujuan> call, Throwable t) {
-                StyleableToast.makeText(getContext(),t.getMessage(),Toast.LENGTH_LONG,R.style.mytoast2).show();
+                StyleableToast.makeText(getContext(), "Periksa Sambungan internet", Toast.LENGTH_SHORT, R.style.mytoast2).show();
                 Log.d("pesan",t.getMessage());
             }
         });

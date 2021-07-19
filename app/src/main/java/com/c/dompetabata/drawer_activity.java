@@ -43,6 +43,7 @@ import com.c.dompetabata.Profil.Profil;
 import com.c.dompetabata.sharePreference.Preference;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.muddzdev.styleabletoast.StyleableToast;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -249,7 +250,7 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
 
             @Override
             public void onFailure(Call<ResponProfil> call, Throwable t) {
-
+                StyleableToast.makeText(getApplicationContext(), "Periksa Sambungan internet", Toast.LENGTH_SHORT, R.style.mytoast2).show();
             }
         });
     }
@@ -273,7 +274,7 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
 
             @Override
             public void onFailure(Call<ResponMenu> call, Throwable t) {
-
+                StyleableToast.makeText(getApplicationContext(), "Periksa Sambungan internet", Toast.LENGTH_SHORT, R.style.mytoast2).show();
             }
         });
 
@@ -299,7 +300,7 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
 
             @Override
             public void onFailure(Call<ResponBanner> call, Throwable t) {
-
+                StyleableToast.makeText(getApplicationContext(), "Periksa Sambungan internet", Toast.LENGTH_SHORT, R.style.mytoast2).show();
             }
         });
         return mBanners;

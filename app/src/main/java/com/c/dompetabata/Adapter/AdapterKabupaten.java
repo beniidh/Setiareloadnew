@@ -67,8 +67,6 @@ public class AdapterKabupaten extends RecyclerView.Adapter<AdapterKabupaten.View
             @Override
             public void onClick(View v) {
 
-
-
                 for(int k=0; k<selectCheck.size(); k++) {
                     if(k==position) {
                         selectCheck.set(k,1);

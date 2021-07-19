@@ -1,5 +1,6 @@
 package com.c.dompetabata.Api;
 
+import com.c.dompetabata.Model.MResestPIN;
 import com.c.dompetabata.PengajuanLimit.ResponPengajuan;
 import com.c.dompetabata.PengajuanLimit.SendPengajuan;
 import com.c.dompetabata.PersetujuanSaldoSales.ResponPersetujuan;
@@ -19,6 +20,7 @@ import com.c.dompetabata.Respon.ResponMenu;
 import com.c.dompetabata.Respon.ResponMenuUtama;
 import com.c.dompetabata.Respon.ResponPost;
 import com.c.dompetabata.Respon.ResponProfil;
+import com.c.dompetabata.Respon.ResponResetPin;
 import com.c.dompetabata.Respon.ResponSubCategory;
 import com.c.dompetabata.Respon.ResponSubCategoryPln;
 import com.c.dompetabata.Respon.ResponSubP;
@@ -187,6 +189,9 @@ public interface Api {
 
     @POST("register-konter")
     Call<ResponTambahKonter> registerKonter(@Header("X-Signature")String token, @Body SendDataKonter sendDataKonter);
+
+    @POST("reset-pin")
+    Call<ResponResetPin> resetPIN(@Header("X-Signature")String token, @Body MResestPIN mResestPIN);
 
 
 

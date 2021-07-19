@@ -19,6 +19,7 @@ import com.c.dompetabata.Respon.ResponK;
 import com.c.dompetabata.Respon.ResponKEditKab;
 import com.c.dompetabata.Respon.ResponProfil;
 import com.c.dompetabata.sharePreference.Preference;
+import com.muddzdev.styleabletoast.StyleableToast;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -101,7 +102,7 @@ public class ubah_profil extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponEditLokasi> call, Throwable t) {
-                Toast.makeText(getApplicationContext(),"gagal",Toast.LENGTH_SHORT).show();
+                StyleableToast.makeText(getApplicationContext(), "Periksa Sambungan internet", Toast.LENGTH_SHORT, R.style.mytoast2).show();
             }
         });
 
@@ -120,7 +121,7 @@ public class ubah_profil extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponKEditKab> call, Throwable t) {
-                Toast.makeText(getApplicationContext(),"gagal",Toast.LENGTH_SHORT).show();
+                StyleableToast.makeText(getApplicationContext(), "Periksa Sambungan internet", Toast.LENGTH_SHORT, R.style.mytoast2).show();
             }
         });
 
@@ -139,7 +140,7 @@ public class ubah_profil extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponEditKec> call, Throwable t) {
-                Toast.makeText(getApplicationContext(),"gagal",Toast.LENGTH_SHORT).show();
+                StyleableToast.makeText(getApplicationContext(), "Periksa Sambungan internet", Toast.LENGTH_SHORT, R.style.mytoast2).show();
             }
         });
 
@@ -158,7 +159,7 @@ public class ubah_profil extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponEditkel> call, Throwable t) {
-                Toast.makeText(getApplicationContext(),"gagal",Toast.LENGTH_SHORT).show();
+                StyleableToast.makeText(getApplicationContext(), "Periksa Sambungan internet", Toast.LENGTH_SHORT, R.style.mytoast2).show();
             }
         });
 
@@ -177,7 +178,7 @@ public class ubah_profil extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponEditPost> call, Throwable t) {
-                Toast.makeText(getApplicationContext(),"gagal",Toast.LENGTH_SHORT).show();
+                StyleableToast.makeText(getApplicationContext(), "Periksa Sambungan internet", Toast.LENGTH_SHORT, R.style.mytoast2).show();
             }
         });
 

@@ -7,6 +7,7 @@
     tools:context=".KodeProduk.Kodeprodukact">
 
     <Button
+        android:id="@+id/linkProduk"
         android:layout_width="155dp"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_button_login2"

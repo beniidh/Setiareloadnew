@@ -78,9 +78,12 @@ public class InsertPIN_activity extends AppCompatActivity {
                                 Intent intent = getIntent();
                                 String token = Preference.getToken(getApplicationContext());
 
+                                String pinsatuenkrip = utils.hmacSha(pinsattu);
+                                String pinduaenkrip = utils.hmacSha(pinddua);
+
                                 
                                 Api api = RetroClient.getApiServices();
-                                MsetPIN msetPIN = new MsetPIN(pinsattu,pinddua,MacAddres,IP,UserAgent,longlitut,latitude);
+                                MsetPIN msetPIN = new MsetPIN(pinsatuenkrip,pinduaenkrip,MacAddres,IP,UserAgent,longlitut,latitude);
                                 Call<MsetPIN> call = api.SetPIN("Bearer "+token,msetPIN);
                                 call.enqueue(new Callback<MsetPIN>() {
                                     @Override
@@ -107,7 +110,7 @@ public class InsertPIN_activity extends AppCompatActivity {
 
                                     @Override
                                     public void onFailure(Call<MsetPIN> call, Throwable t) {
-
+                                        StyleableToast.makeText(getApplicationContext(), "Periksa Sambungan internet", Toast.LENGTH_SHORT, R.style.mytoast2).show();
                                     }
                                 });
 

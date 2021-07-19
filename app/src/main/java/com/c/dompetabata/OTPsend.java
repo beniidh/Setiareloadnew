@@ -73,7 +73,7 @@ Button sendEmail;
 
             @Override
             public void onFailure(Call<MRegisData> call, Throwable t) {
-                StyleableToast.makeText(getApplicationContext(),"Jaringan Bermasalah", Toast.LENGTH_SHORT, R.style.mytoast).show();
+                StyleableToast.makeText(getApplicationContext(), "Periksa Sambungan internet", Toast.LENGTH_SHORT, R.style.mytoast2).show();
 
             }
         });

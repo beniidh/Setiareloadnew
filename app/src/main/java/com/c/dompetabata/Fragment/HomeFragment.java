@@ -12,12 +12,14 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.c.dompetabata.Adapter.AdapterMenuUtama;
 import com.c.dompetabata.Adapter.SliderAdapter;
@@ -53,7 +55,6 @@ public class HomeFragment extends Fragment {
     AdapterMenuUtama adapterMenuUtama;
     RecyclerView reymenu;
     ArrayList<ModelMenuUtama> menuUtamas = new ArrayList<>();
-
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -91,6 +92,16 @@ public class HomeFragment extends Fragment {
                 intent.putExtra("saldoku", saldoku.getText().toString());
                 startActivity(intent);
 
+            }
+        });
+
+        SwipeRefreshLayout swipelainnya = v.findViewById(R.id.swipehome);
+        swipelainnya.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getAllmenu();
+                swipelainnya.setRefreshing(false);
+                Toast.makeText(getContext(),"Refresh",Toast.LENGTH_LONG).show();
             }
         });
 

@@ -30,7 +30,6 @@
         android:text="Masukan PIN"
         android:textColor="@color/green"
         android:textSize="25sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/pinEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

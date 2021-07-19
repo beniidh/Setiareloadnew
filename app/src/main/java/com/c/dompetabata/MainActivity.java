@@ -37,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
         burger.setDrawerIndicatorEnabled(true);
 //        dl.addDrawerListener(burger);
 //        burger.syncState();
-
-
         menu_bawah.setOnNavigationItemSelectedListener(this::onOptionsItemSelected);
 
     }

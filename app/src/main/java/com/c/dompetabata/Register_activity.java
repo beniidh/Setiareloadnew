@@ -328,6 +328,7 @@ public class Register_activity extends AppCompatActivity implements ModalProvins
 
                 @Override
                 public void onFailure(Call<MRegister> call, Throwable t) {
+                    StyleableToast.makeText(getApplicationContext(), "Periksa Sambungan Internet", Toast.LENGTH_LONG, R.style.mytoast2).show();
 
                 }
             });

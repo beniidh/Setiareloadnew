@@ -65,11 +65,11 @@ public class ModalPinPengajuanServer extends BottomSheetDialogFragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 if (pinpengajuan.length() == 6) {
-
-
                     String jumlahpengajuan = getArguments().getString("saldo");
                     double pengajuan = Double.valueOf(jumlahpengajuan);
-                    ajukanlimit(pinpengajuan.getText().toString(), getMacAddress(), getIPaddress(), getUserAgent(), gpsTracker.getLatitude(), gpsTracker.getLongitude(), pengajuan);
+                    String pinn = utils.hmacSha(pinpengajuan.getText().toString());
+
+                    ajukanlimit(pinn, getMacAddress(), getIPaddress(), getUserAgent(), gpsTracker.getLatitude(), gpsTracker.getLongitude(), pengajuan);
 
                 }
 
@@ -114,7 +114,7 @@ public class ModalPinPengajuanServer extends BottomSheetDialogFragment {
 
             @Override
             public void onFailure(Call<SendPengajuan> call, Throwable t) {
-                StyleableToast.makeText(getContext(), "Periksa Koneksi", Toast.LENGTH_SHORT, R.style.mytoast).show();
+                StyleableToast.makeText(getContext(), "Periksa Sambungan internet", Toast.LENGTH_SHORT, R.style.mytoast2).show();
 
             }
         });

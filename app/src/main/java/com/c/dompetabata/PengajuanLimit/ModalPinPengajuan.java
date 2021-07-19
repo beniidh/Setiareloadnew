@@ -62,9 +62,11 @@ public class ModalPinPengajuan extends BottomSheetDialogFragment {
 
             } else {
 
+                String pinn = utils.hmacSha(pinpengajuan.getText().toString());
+
                 String jumlahpengajuan = getArguments().getString("jumlahpengajuan");
                 double pengajuan = Double.valueOf(jumlahpengajuan);
-                ajukanlimit(pinpengajuan.getText().toString(), getMacAddress(), getIPaddress(), getUserAgent(), gpsTracker.getLatitude(), gpsTracker.getLongitude(), pengajuan);
+                ajukanlimit(pinn, getMacAddress(), getIPaddress(), getUserAgent(), gpsTracker.getLatitude(), gpsTracker.getLongitude(), pengajuan);
             }
         });
 

@@ -21,7 +21,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DompetAbata">
-        <activity android:name=".PersetujuanSaldoSales.DetailPersetujuan"></activity>
+        <activity android:name=".ResetPIN"></activity>
+        <activity android:name=".PersetujuanSaldoSales.DetailPersetujuan" />
         <activity android:name=".TambahKonter.addKonter" />
         <activity android:name=".PersetujuanSaldoSales.PersetujuanSaldoSales" />
         <activity android:name=".SaldoServer.AjukanLimit" />

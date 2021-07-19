@@ -245,7 +245,7 @@ public class RegisterFoto_activity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Responphoto> call, Throwable t) {
                 progresselfie.setVisibility(View.GONE);
-                StyleableToast.makeText(getApplicationContext(), "Yuk upload lagi,Koneksimu kurang baik", Toast.LENGTH_LONG,R.style.mytoast).show();
+                StyleableToast.makeText(getApplicationContext(), "Yuk upload lagi,Koneksimu kurang baik", Toast.LENGTH_LONG,R.style.mytoast2).show();
 
             }
         });

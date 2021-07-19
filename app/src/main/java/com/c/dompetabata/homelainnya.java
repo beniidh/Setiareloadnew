@@ -3,9 +3,12 @@ package com.c.dompetabata;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Bundle;
 import android.text.Html;
+import android.view.View;
+import android.widget.Toast;
 
 import com.c.dompetabata.Adapter.AdapterMenuUtama;
 import com.c.dompetabata.Adapter.AdapterMenuUtamaLain;
@@ -14,6 +17,8 @@ import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.Model.ModelMenuUtama;
 import com.c.dompetabata.Respon.ResponMenuUtama;
 import com.c.dompetabata.sharePreference.Preference;
+import com.facebook.shimmer.ShimmerFrameLayout;
+import com.muddzdev.styleabletoast.StyleableToast;
 
 import java.util.ArrayList;
 
@@ -26,6 +31,8 @@ public class homelainnya extends AppCompatActivity {
     AdapterMenuUtamaLain adapterMenuUtamalain;
     RecyclerView reymenulain;
     ArrayList<ModelMenuUtama> menuUtamas = new ArrayList<>();
+    ShimmerFrameLayout shimmerFrameLayout;
+    SwipeRefreshLayout swipelainnya;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +43,24 @@ public class homelainnya extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
         getAllmenu();
         reymenulain = findViewById(R.id.reyLainnya);
+
         int numberOfColumns = 6;
         reymenulain.setLayoutManager(new GridLayoutManager(getApplicationContext(), numberOfColumns, GridLayoutManager.VERTICAL, false));
         adapterMenuUtamalain = new AdapterMenuUtamaLain(getApplicationContext(), menuUtamas);
 //        reymenulain.setAdapter(adapterMenuUtama);
+
+        shimmerFrameLayout = findViewById(R.id.shimmerFrameLayout);
+        shimmerFrameLayout.startShimmerAnimation();
+
+        swipelainnya = findViewById(R.id.swipelainnya);
+        swipelainnya.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getAllmenu();
+                swipelainnya.setRefreshing(false);
+                Toast.makeText(getApplicationContext(),"Refresh",Toast.LENGTH_LONG).show();
+            }
+        });
 
     }
 
@@ -66,10 +87,10 @@ public class homelainnya extends AppCompatActivity {
 
 
                     menuUtamas = (ArrayList<ModelMenuUtama>) response.body().getData();
-
-
                     adapterMenuUtamalain = new AdapterMenuUtamaLain(getApplicationContext(), menuUtamas);
                     reymenulain.setAdapter(adapterMenuUtamalain);
+                    shimmerFrameLayout.stopShimmerAnimation();
+                    shimmerFrameLayout.setVisibility(View.GONE);
 
 
                 }
@@ -78,7 +99,7 @@ public class homelainnya extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponMenuUtama> call, Throwable t) {
-
+                StyleableToast.makeText(getApplicationContext(), "Periksa Sambungan internet", Toast.LENGTH_SHORT, R.style.mytoast2).show();
             }
         });
 

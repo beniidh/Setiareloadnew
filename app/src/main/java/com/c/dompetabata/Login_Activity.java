@@ -52,7 +52,6 @@ public class Login_Activity extends AppCompatActivity {
     ProgressBar progressBar;
     CheckBox checkBoxsave,savecheck;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -131,12 +130,13 @@ public class Login_Activity extends AppCompatActivity {
                         startActivity(intent);
                         numberphone.setText("");
                     }else {
-                        StyleableToast.makeText(getApplicationContext(), "Nomor belum terdaftar", Toast.LENGTH_SHORT, R.style.mytoast).show();
+                        StyleableToast.makeText(getApplicationContext(), "Nomor belum terdaftar", Toast.LENGTH_SHORT, R.style.mytoast2).show();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<Mphone> call, Throwable t) {
+                    StyleableToast.makeText(getApplicationContext(), "Periksa Sambungan internet", Toast.LENGTH_SHORT, R.style.mytoast2).show();
 
                 }
             });

@@ -84,12 +84,9 @@ public class AjukanLimit extends AppCompatActivity {
 
                 String code = response.body().getCode();
                 if (code.equals("200")) {
-
-
                     String status = response.body().getData().get(0).getStatus();
 
                     if(status.equals("PENDING")){
-
                         idAjukanLimitServerButton.setText("Menunggu Persetujuan");
                         idAjukanLimitServerButton.setEnabled(false);
                         openDialog();
@@ -106,7 +103,7 @@ public class AjukanLimit extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Responn> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+                StyleableToast.makeText(getApplicationContext(), "Periksa Sambungan internet", Toast.LENGTH_SHORT, R.style.mytoast2).show();
             }
         });
 

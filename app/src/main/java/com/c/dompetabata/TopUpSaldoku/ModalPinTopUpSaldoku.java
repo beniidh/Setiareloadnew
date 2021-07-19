@@ -59,12 +59,13 @@ public class ModalPinTopUpSaldoku extends BottomSheetDialogFragment {
 
             } else {
 
+                String pinn = utils.hmacSha(pinpengajuan.getText().toString());
+
                 String jumlahpengajuan = Preference.getSaldoku(getContext());
                 double pengajuan = Double.valueOf(jumlahpengajuan);
-                ajukanlimitt(pinpengajuan.getText().toString(), getMacAddress(), getIPaddress(), getUserAgent(), gpsTracker.getLatitude(), gpsTracker.getLongitude(), pengajuan);
+                ajukanlimitt(pinn, getMacAddress(), getIPaddress(), getUserAgent(), gpsTracker.getLatitude(), gpsTracker.getLongitude(), pengajuan);
             }
         });
-
 
         return v;
 
@@ -99,16 +100,13 @@ public class ModalPinTopUpSaldoku extends BottomSheetDialogFragment {
 
                 } else {
                     StyleableToast.makeText(getContext(), "Pin anda salah", Toast.LENGTH_SHORT, R.style.mytoast2).show();
-
-
-
                 }
 
             }
 
             @Override
             public void onFailure(Call<ReqSaldoku> call, Throwable t) {
-//                StyleableToast.makeText(getContext(), "Periksa Koneksi", Toast.LENGTH_SHORT, R.style.mytoast).show();
+                StyleableToast.makeText(getContext(), "Periksa Sambungan internet", Toast.LENGTH_SHORT, R.style.mytoast2).show();
 
             }
         });

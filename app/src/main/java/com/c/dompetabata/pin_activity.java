@@ -66,7 +66,8 @@ public class pin_activity extends AppCompatActivity {
                 if (pin1.length() == 6) {
                     progressBar.setVisibility(View.VISIBLE);
                     String pinn = pin1.getText().toString();
-                    Login(pinn);
+                    String pinenkrip = utils.hmacSha(pinn);
+                    Login(pinenkrip);
                 }
             }
 
@@ -86,7 +87,9 @@ public class pin_activity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        Intent intent = new Intent(this,Login_Activity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void Login(String pin) {
@@ -141,7 +144,7 @@ public class pin_activity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Mlogin> call, Throwable t) {
 //                progressBar.setVisibility(View.INVISIBLE);
-                StyleableToast.makeText(getApplicationContext(), "Periksa Sambungan internet", Toast.LENGTH_SHORT, R.style.mytoast).show();
+                StyleableToast.makeText(getApplicationContext(), "Periksa Sambungan internet", Toast.LENGTH_SHORT, R.style.mytoast2).show();
 
             }
         });

@@ -223,9 +223,7 @@ public class addKonter extends AppCompatActivity implements ModalProvinsi.Bottom
 
             @Override
             public void onFailure(Call<ResponTambahKonter> call, Throwable t) {
-
-
-                StyleableToast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT, R.style.mytoast).show();
+                StyleableToast.makeText(getApplicationContext(), "Periksa Sambungan internet", Toast.LENGTH_SHORT, R.style.mytoast2).show();
             }
         });
 
