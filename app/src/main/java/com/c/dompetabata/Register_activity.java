@@ -254,7 +254,7 @@ public class Register_activity extends AppCompatActivity implements ModalProvins
         String parent = referal.getText().toString();
 
         String IpAddres = getIPaddress();
-        String MacAddres = getMacAddress();
+        String MacAddres = Value.getMacAddress();
         String useragent = getUserAgent();
         double longlitude = gpsTracker.getLongitude();
         double latitude = gpsTracker.getLatitude();
@@ -350,11 +350,6 @@ public class Register_activity extends AppCompatActivity implements ModalProvins
         return IP;
     }
 
-    private String getMacAddress() {
-        String MAC = utils.getMACAddress("wlan0");//phone if pc use eth0 if phone wlan0
-        return MAC;
-
-    }
 
     public void getLocation() {
         gpsTracker = new GpsTracker(Register_activity.this);

@@ -3,6 +3,7 @@ package com.c.dompetabata;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -11,6 +12,7 @@ import com.c.dompetabata.Api.Api;
 import com.c.dompetabata.Api.Value;
 import com.c.dompetabata.Helper.GpsTracker;
 import com.c.dompetabata.Helper.RetroClient;
+import com.c.dompetabata.Helper.utils;
 import com.c.dompetabata.Model.MResestPIN;
 import com.c.dompetabata.Respon.ResponResetPin;
 import com.c.dompetabata.sharePreference.Preference;
@@ -30,6 +32,9 @@ public class ResetPIN extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_p_i_n);
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#4AB84E'><b>Reset PIN <b></font>"));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
 
         pinlamareset = findViewById(R.id.pinlamareset);
         pinsatureset = findViewById(R.id.pinsatureset);
@@ -37,11 +42,11 @@ public class ResetPIN extends AppCompatActivity {
         resetPIN = findViewById(R.id.resetPIN);
 
         resetPIN.setOnClickListener(v -> {
-            ResetPin(pinlamareset.getText().toString(),pinsatureset.getText().toString(),pinduareset.getText().toString());
+
+
+            ResetPin(utils.hmacSha(pinlamareset.getText().toString()),utils.hmacSha(pinsatureset.getText().toString()),utils.hmacSha(pinduareset.getText().toString()));
 
         });
-
-
 
     }
 
@@ -63,7 +68,7 @@ public class ResetPIN extends AppCompatActivity {
                     finish();
 
                 } else {
-                    StyleableToast.makeText(getApplicationContext(), response.body().getError(), Toast.LENGTH_SHORT, R.style.mytoast).show();
+                    StyleableToast.makeText(getApplicationContext(), response.body().getError(), Toast.LENGTH_SHORT, R.style.mytoast2).show();
 
                 }
             }
@@ -75,6 +80,16 @@ public class ResetPIN extends AppCompatActivity {
         });
 
 
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
 

@@ -58,7 +58,6 @@ public class homelainnya extends AppCompatActivity {
             public void onRefresh() {
                 getAllmenu();
                 swipelainnya.setRefreshing(false);
-                Toast.makeText(getApplicationContext(),"Refresh",Toast.LENGTH_LONG).show();
             }
         });
 

@@ -49,8 +49,6 @@ public class HomeFragment extends Fragment {
     private HomeViewModel mViewModel;
     TextView saldoku, saldoserver;
     LinearLayout linsaldoserver;
-    String icon;
-    HomeViewModel homeViewModel;
     SliderView sliderView;
     AdapterMenuUtama adapterMenuUtama;
     RecyclerView reymenu;
@@ -60,7 +58,6 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.home_fragment, container, false);
-
         reymenu = v.findViewById(R.id.ReyMenuUtama);
         getAllmenu();
 
@@ -101,14 +98,10 @@ public class HomeFragment extends Fragment {
             public void onRefresh() {
                 getAllmenu();
                 swipelainnya.setRefreshing(false);
-                Toast.makeText(getContext(),"Refresh",Toast.LENGTH_LONG).show();
             }
         });
 
-
         return v;
-
-
     }
 
     @Override

@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.c.dompetabata.Api.Api;
+import com.c.dompetabata.ResetPIN;
 import com.c.dompetabata.Respon.ResponProfil;
 import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.R;
@@ -126,7 +127,7 @@ public class Profil extends AppCompatActivity {
     }
     public void UbahPin(View view){
 
-        Intent intent = new Intent(Profil.this,ubah_pin.class);
+        Intent intent = new Intent(Profil.this, ResetPIN.class);
         startActivity(intent);
     }
     public void point(View view){
