@@ -2,6 +2,7 @@ package com.c.dompetabata.Fragment;
 
 import androidx.lifecycle.Observer;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -33,6 +34,7 @@ import com.c.dompetabata.R;
 import com.c.dompetabata.Respon.ResponMenuUtama;
 import com.c.dompetabata.SaldoServer.AjukanLimit;
 import com.c.dompetabata.SaldoServer.TopupSaldoServer;
+import com.c.dompetabata.drawer_activity;
 import com.c.dompetabata.sharePreference.Preference;
 import com.c.dompetabata.TopUpSaldoku.topup_saldoku_activity;
 import com.smarteist.autoimageslider.SliderAnimations;
@@ -98,6 +100,7 @@ public class HomeFragment extends Fragment {
             public void onRefresh() {
                 getAllmenu();
                 swipelainnya.setRefreshing(false);
+                ((drawer_activity)getActivity()).getContentProfil();
             }
         });
 

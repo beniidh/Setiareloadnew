@@ -1,5 +1,6 @@
 package com.c.dompetabata;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 import com.c.dompetabata.Api.Api;
 import com.c.dompetabata.Api.Value;
 import com.c.dompetabata.Helper.GpsTracker;
+import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.Helper.utils;
 import com.c.dompetabata.Modal.ModalKabupaten;
 import com.c.dompetabata.Modal.ModalKecamatan;
@@ -32,6 +34,9 @@ import com.c.dompetabata.Model.MRegister;
 import com.c.dompetabata.Model.ModelKabupaten;
 import com.c.dompetabata.Model.ModelKelurahan;
 import com.c.dompetabata.sharePreference.Preference;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.muddzdev.styleabletoast.StyleableToast;
 
 import retrofit2.Call;
@@ -271,13 +276,13 @@ public class Register_activity extends AppCompatActivity implements ModalProvins
             progressBar.setVisibility(View.VISIBLE);
             regis.setText("");
 
-            Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl(Value.BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
+            FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
+                @Override
+                public void onComplete(@NonNull Task<String> task) {
+                    String deviceToken = task.getResult();
 
-            MRegister register = new MRegister(name, Email, Phone, Store_name, MacAddres, IpAddres, alamat, parent, useragent, province, Regencie, district, subdistrict, postalCode, longlitude, latitude);
-            Api api = retrofit.create(Api.class);
+            MRegister register = new MRegister(name,deviceToken, Email, Phone, Store_name, MacAddres, IpAddres, alamat, parent, useragent, province, Regencie, district, subdistrict, postalCode, longlitude, latitude);
+            Api api = RetroClient.getApiServices();
             Call<MRegister> call = api.Register(register);
 
             call.enqueue(new Callback<MRegister>() {
@@ -329,6 +334,9 @@ public class Register_activity extends AppCompatActivity implements ModalProvins
                 @Override
                 public void onFailure(Call<MRegister> call, Throwable t) {
                     StyleableToast.makeText(getApplicationContext(), "Periksa Sambungan Internet", Toast.LENGTH_LONG, R.style.mytoast2).show();
+
+                }
+            });
 
                 }
             });

@@ -1,5 +1,6 @@
 package com.c.dompetabata;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -24,6 +26,9 @@ import com.c.dompetabata.Helper.utils;
 import com.c.dompetabata.Model.Mlogin;
 import com.c.dompetabata.sharePreference.Preference;
 import com.chaos.view.PinView;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.muddzdev.styleabletoast.StyleableToast;
 import com.oakkub.android.PinEditText;
 
@@ -37,8 +42,9 @@ public class pin_activity extends AppCompatActivity {
     PinEditText pin1;
     String telepon;
     GpsTracker gpsTracker;
-    int salah=0;
+    int salah = 0;
     TextView warningpinsalah;
+    String deviceToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +93,7 @@ public class pin_activity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this,Login_Activity.class);
+        Intent intent = new Intent(this, Login_Activity.class);
         startActivity(intent);
         finish();
     }
@@ -107,44 +113,52 @@ public class pin_activity extends AppCompatActivity {
             telepon = tlp.getStringExtra("number");
         }
 
-        Mlogin mlogin = new Mlogin(telepon, pin, IP, Value.getMacAddress(), useragent, longlitude, latitude);
 
-        Api api = RetroClient.getApiServices();
-        Call<Mlogin> call = api.Login(mlogin);
-        call.enqueue(new Callback<Mlogin>() {
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
             @Override
-            public void onResponse(Call<Mlogin> call, Response<Mlogin> response) {
+            public void onComplete(@NonNull Task<String> task) {
+                String deviceToken = task.getResult();
+                Mlogin mlogin = new Mlogin(telepon, pin, deviceToken, IP, Value.getMacAddress(), useragent, longlitude, latitude);
 
-                String code = response.body().getCode();
+                Api api = RetroClient.getApiServices();
+                Call<Mlogin> call = api.Login(mlogin);
+                call.enqueue(new Callback<Mlogin>() {
+                    @Override
+                    public void onResponse(Call<Mlogin> call, Response<Mlogin> response) {
 
-                if (code.equals("200")) {
-                    progressBar.setVisibility(View.GONE);
-                    Intent home = new Intent(pin_activity.this, drawer_activity.class);
-                    startActivity(home);
-                    String token = response.body().getData().getToken();
-                    Preference.getSharedPreference(getApplicationContext());
-                    Preference.setToken(getApplicationContext(), token);
-                    finish();
+                        String code = response.body().getCode();
 
-                } else {
-                    progressBar.setVisibility(View.GONE);
-                    pin1.setText("");
-                    StyleableToast.makeText(getApplicationContext(), "PIN salah", Toast.LENGTH_SHORT, R.style.mytoast).show();
-                  salah+=1;
+                        if (code.equals("200")) {
+                            progressBar.setVisibility(View.GONE);
+                            Intent home = new Intent(pin_activity.this, drawer_activity.class);
+                            startActivity(home);
+                            String token = response.body().getData().getToken();
+                            Preference.getSharedPreference(getApplicationContext());
+                            Preference.setToken(getApplicationContext(), token);
+                            finish();
 
-                    if (salah == 3) {
-                        warningpinsalah.setVisibility(View.VISIBLE);
+                        } else {
+                            progressBar.setVisibility(View.GONE);
+                            pin1.setText("");
+                            StyleableToast.makeText(getApplicationContext(), response.body().getError(), Toast.LENGTH_SHORT, R.style.mytoast).show();
+                            salah += 1;
+
+                            if (salah == 3) {
+                                warningpinsalah.setVisibility(View.VISIBLE);
+
+                            }
+                        }
+
 
                     }
-                }
 
-
-            }
-
-            @Override
-            public void onFailure(Call<Mlogin> call, Throwable t) {
+                    @Override
+                    public void onFailure(Call<Mlogin> call, Throwable t) {
 //                progressBar.setVisibility(View.INVISIBLE);
-                StyleableToast.makeText(getApplicationContext(), "Periksa Sambungan internet", Toast.LENGTH_SHORT, R.style.mytoast2).show();
+                        StyleableToast.makeText(getApplicationContext(), "Periksa Sambungan internet", Toast.LENGTH_SHORT, R.style.mytoast2).show();
+
+                    }
+                });
 
             }
         });

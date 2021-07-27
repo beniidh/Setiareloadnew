@@ -40,6 +40,7 @@ public class ModalAir extends BottomSheetDialogFragment {
         mAirs.add(new MAir("3","PDAM Jakarta"));
         mAirs.add(new MAir("4","PDAM Bekasi"));
 
+
         recyclerView = v.findViewById(R.id.ReyProdukAir);
         adapterAir = new AdapterAir(getContext(), mAirs);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());

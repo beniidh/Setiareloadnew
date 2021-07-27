@@ -41,7 +41,9 @@ import com.c.dompetabata.Transaksi.MInquiry;
 import com.c.dompetabata.Transaksi.ResponInquiry;
 import com.c.dompetabata.menuUtama.PaketData.ListrikPLN.ResponListrikPln;
 import com.c.dompetabata.menuUtama.PaketData.ListrikPLNPasca.ResponListrikPlnPasca;
+import com.c.dompetabata.menuUtama.PaketData.PulsaPrabayar.MTransaksiPraPulsa;
 import com.c.dompetabata.menuUtama.PaketData.PulsaPrabayar.ResponPulsaPra;
+import com.c.dompetabata.menuUtama.PaketData.PulsaPrabayar.ResponTransaksiPulsaPra;
 import com.c.dompetabata.menuUtama.PaketData.VoucherGame.ResponVoucherGame;
 
 import okhttp3.MultipartBody;
@@ -192,6 +194,9 @@ public interface Api {
 
     @POST("reset-pin")
     Call<ResponResetPin> resetPIN(@Header("X-Signature")String token, @Body MResestPIN mResestPIN);
+
+    @POST("transaction")
+    Call<ResponTransaksiPulsaPra> transalsiPulsaPra(@Header("X-Signature")String token, @Body MTransaksiPraPulsa mTransaksiPraPulsa);
 
 
 

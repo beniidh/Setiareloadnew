@@ -66,13 +66,10 @@ public class OTPinsert extends AppCompatActivity {
                         if (code.equals("200")) {
                             StyleableToast.makeText(getApplicationContext(), "Berhasil", Toast.LENGTH_SHORT, R.style.mytoast).show();
                             String token = response.body().getData().getToken();
-
                             Preference.getSharedPreference(getApplicationContext());
                             Preference.setToken(getApplicationContext(), token);
-
                             Intent intent = new Intent(OTPinsert.this, RegisterFoto_activity.class);
                             startActivity(intent);
-
                         } else {
 
                             StyleableToast.makeText(getApplicationContext(), "OTP Salah", Toast.LENGTH_SHORT, R.style.mytoast).show();
@@ -146,5 +143,15 @@ public class OTPinsert extends AppCompatActivity {
             }
         });
 
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

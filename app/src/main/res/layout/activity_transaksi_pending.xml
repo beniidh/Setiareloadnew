@@ -21,6 +21,7 @@
             android:src="@drawable/ic_baseline_access_time_filled_24" />
 
         <TextView
+            android:id="@+id/KeteranganTP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -29,9 +30,10 @@
             android:text="Pembelian Diproses"
             android:textColor="#FFC107"
             android:textSize="18sp"
-            android:textStyle="bold" />
+           />
 
         <TextView
+            android:id="@+id/hargaprodukTP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -53,6 +55,7 @@
             app:cardCornerRadius="35sp">
 
             <ImageView
+                android:id="@+id/iconTP"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_gravity="center"
@@ -94,6 +97,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/nomorTP"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -117,6 +121,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/nominalTP"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -333,6 +338,7 @@
                         android:textSize="16sp" />
 
                     <TextView
+                        android:id="@+id/hargatotalTP"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_alignParentRight="true"
@@ -358,16 +364,16 @@
                     android:text="Tutup"
                     android:textColor="@color/white"
                     android:textAllCaps="false"/>
-                <Button
-                    android:id="@+id/konfirmasidetail"
-                    android:layout_width="0dp"
-                    android:layout_margin="6dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_button_login2"
-                    android:layout_height="36dp"
-                    android:text="Refresh"
-                    android:textColor="@color/white"
-                    android:textAllCaps="false"/>
+<!--                <Button-->
+<!--                    android:id="@+id/konfirmasidetail"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_margin="6dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:background="@drawable/bg_button_login2"-->
+<!--                    android:layout_height="36dp"-->
+<!--                    android:text="Refresh"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textAllCaps="false"/>-->
 
             </LinearLayout>
         </LinearLayout>

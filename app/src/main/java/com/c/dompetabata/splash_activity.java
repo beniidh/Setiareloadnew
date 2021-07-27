@@ -1,11 +1,13 @@
 package com.c.dompetabata;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -16,6 +18,9 @@ import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.Helper.utils;
 import com.c.dompetabata.Model.Mlogin;
 import com.c.dompetabata.sharePreference.Preference;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.muddzdev.styleabletoast.StyleableToast;
 
 import java.util.Observable;
@@ -37,6 +42,14 @@ public class splash_activity extends AppCompatActivity {
         getSupportActionBar().hide();
         setLogo();
         int delay = 2000;
+
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
+            @Override
+            public void onComplete(@NonNull Task<String> task) {
+                String deviceToken = task.getResult();
+                Log.d("Tokenn",deviceToken);
+            }
+        });
 
         Handler handler = new Handler();
         handler.postDelayed(() -> {

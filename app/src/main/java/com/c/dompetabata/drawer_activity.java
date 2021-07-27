@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -69,8 +70,10 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
     AdapterSubMenuSide adapterSubMenuSide;
     ArrayList<MSubMenu> mSubMenus = new ArrayList<>();
     RecyclerView submenu;
-    ImageView notifikasi,iconprofilsidebar;
+    ImageView notifikasi, iconprofilsidebar;
     TextView parent;
+
+    static Activity drawwer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +81,7 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
         setContentView(R.layout.activity_drawer_activity);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
-
+        drawwer = this;
         iconprofilsidebar = findViewById(R.id.iconprofilsidebar);
         parent = findViewById(R.id.parent);
 
@@ -94,7 +97,7 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
         ImageView togglenav = findViewById(R.id.togglenavheader);
         getContentProfil();
         submenu = findViewById(R.id.ReySubMenu);
-        adapterSubMenuSide = new AdapterSubMenuSide(getApplicationContext(), mSubMenus,drawer_activity.this);
+        adapterSubMenuSide = new AdapterSubMenuSide(getApplicationContext(), mSubMenus, drawer_activity.this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         submenu.setLayoutManager(mLayoutManager);
         submenu.setAdapter(adapterSubMenuSide);
@@ -235,7 +238,6 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
             @Override
             public void onResponse(Call<ResponProfil> call, Response<ResponProfil> response) {
                 navheadernamakonter.setText(response.body().getData().getStore_name());
-//                Toast.makeText(getApplicationContext(),response.body().getMenu().get(0).getName(),Toast.LENGTH_SHORT).show();
                 myViewModel.sendPayLater(response.body().getData().getPaylater_status());
                 myViewModel.sendSaldoku(response.body().getData().getWallet().getSaldoku());
                 myViewModel.sendPayyLetter(response.body().getData().getWallet().getPaylatter());
@@ -307,5 +309,9 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
 
     }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getContentProfil();
+    }
 }

@@ -41,13 +41,16 @@ public class DetailTransaksiPulsaPra extends BottomSheetDialogFragment {
             namaPelanggan.setVisibility(View.VISIBLE);
             namaPelanggan.setText(namecustomer);
             namapelanggann.setVisibility(View.VISIBLE);
-
         }
         konfirasidetail.setOnClickListener(v12 -> {
             String urllicon = getArguments().getString("urlicon");
             Intent intent = new Intent(getContext(), KonfirmasiPembayaran.class);
             intent.putExtra("hargatotal", total.getText().toString());
             intent.putExtra("urll", urllicon);
+            intent.putExtra("RefID", getArguments().getString("RefID"));
+            intent.putExtra("sku_code",getArguments().getString("sku_code"));
+            intent.putExtra("inquiry",getArguments().getString("inquiry"));
+            intent.putExtra("nomorr",getArguments().getString("nomorr"));
             startActivity(intent);
             dismiss();
 
@@ -72,7 +75,6 @@ public class DetailTransaksiPulsaPra extends BottomSheetDialogFragment {
         Locale localeid = new Locale("in", "ID");
         NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeid);
         total.setText(formatRupiah.format(totall));
-
         nomor.setText(nomorr);
         deskripsi.setText(strtext);
         return v;

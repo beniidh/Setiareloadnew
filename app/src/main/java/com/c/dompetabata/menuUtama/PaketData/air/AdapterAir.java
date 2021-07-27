@@ -9,6 +9,7 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -142,7 +143,7 @@ public class AdapterAir extends RecyclerView.Adapter<AdapterAir.ViewHolder> impl
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView name;
         CheckBox chekP;
-        LinearLayout linklik;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

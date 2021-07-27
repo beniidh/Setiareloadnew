@@ -4,20 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="18dp"
     tools:context=".KodeProduk.Kodeprodukact">
+
+    <EditText
+        android:id="@+id/tokennid"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/bg_search_modal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/linkProduk"
         android:layout_width="155dp"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_button_login2"
-        android:text="Buka Link"
-        android:textSize="20sp"
+        android:text="token"
         android:textAllCaps="false"
         android:textColor="@color/white"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
