@@ -83,8 +83,12 @@ public class AdapterProdukPLN extends RecyclerView.Adapter<AdapterProdukPLN.View
                         bundle.putString("deskripsi",modelProdukPln.getDescription());
                         bundle.putString("nomorr",nomor);
                         bundle.putString("namecustomer",response.body().getData().getCustomer_name());
-                        bundle.putString("hargga",modelProdukPln.getBasic_price());
+                        bundle.putString("RefID",response.body().getData().getRef_id());
+                        bundle.putString("sku_code",response.body().getData().getBuyer_sku_code());
                         bundle.putString("kodeproduk","pln");
+                        bundle.putString("inquiry",response.body().getData().getInquiry_type());
+                        bundle.putString("hargga", response.body().getData().getSelling_price());
+                        Preference.setUrlIcon(context,"");
                         DetailTransaksiPulsaPra fragment = new DetailTransaksiPulsaPra(); // you fragment
                         FragmentManager fragmentManager = ((FragmentActivity) v.getContext()).getSupportFragmentManager();
                         fragment.setArguments(bundle);

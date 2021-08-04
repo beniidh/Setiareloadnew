@@ -1,6 +1,7 @@
 package com.c.dompetabata.menuUtama.PaketData.Paket;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -10,14 +11,19 @@ import android.text.Html;
 import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.c.dompetabata.Api.Api;
 import com.c.dompetabata.Helper.RetroClient;
+import com.c.dompetabata.menuUtama.PaketData.PaketsmsTelpon.AdapterProdukST;
 import com.c.dompetabata.menuUtama.PaketData.PulsaPrabayar.modelPasca;
 import com.c.dompetabata.R;
 import com.c.dompetabata.Respon.ResponSubCategory;
 import com.c.dompetabata.sharePreference.Preference;
+import com.muddzdev.styleabletoast.StyleableToast;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,7 +35,14 @@ public class PaketData_Activity extends AppCompatActivity {
     private String url;
     ImageView iconproduk;
     modelPasca modelPascaa;
+    String idproduk;
+
+
+
     RecyclerView recyclerView;
+    AdapterPaketData adapterPaketData;
+    String nomor;
+    ArrayList<MProdukPaketData> mProdukPaketData = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +53,13 @@ public class PaketData_Activity extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
 
         iconproduk = findViewById(R.id.iconprodukPaketData);
-        nomorbelidata = findViewById(R.id.nomorbelipulsaPaketData);
+        nomorbelidata = findViewById(R.id.nomorbelipulsaPaketDat);
         recyclerView = findViewById(R.id.ReyPaketData);
+
+        adapterPaketData = new AdapterPaketData(getApplicationContext(), mProdukPaketData,nomor,getUrl());
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setAdapter(adapterPaketData);
 
 
         nomorbelidata.addTextChangedListener(new TextWatcher() {
@@ -52,12 +70,11 @@ public class PaketData_Activity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (nomorbelidata.length() == 4) {
-                    String provider = nomorbelidata.getText().toString();
+                if (nomorbelidata.length() >= 4) {
+                    String provider = nomorbelidata.getText().toString().substring(0,4);
                     Intent intent = getIntent();
                     String id = intent.getStringExtra("id");
                     getSubCategory(provider,id);
-
 
                 }
 
@@ -66,6 +83,10 @@ public class PaketData_Activity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 Picasso.get().load(getUrl()).into(iconproduk);
+                if(nomorbelidata.length()>= 4) {
+
+                  getPaketDatabyID(getIdproduk(),nomorbelidata.getText().toString());
+                }
             }
         });
 
@@ -107,6 +128,7 @@ public class PaketData_Activity extends AppCompatActivity {
                 if (code.equals("200")) {
 
                     setUrl(response.body().getData().getIcon());
+                    setIdproduk(response.body().getData().getId());
 
                 } else {
 
@@ -122,5 +144,44 @@ public class PaketData_Activity extends AppCompatActivity {
         });
 
 
+    }
+
+    public void getPaketDatabyID(String id,String nomorr){
+
+        String token = "Bearer " +Preference.getToken(getApplicationContext());
+
+        Api api = RetroClient.getApiServices();
+        Call<ResponPaketData> call = api.getPaketDataProduk(token,id);
+        call.enqueue(new Callback<ResponPaketData>() {
+            @Override
+            public void onResponse(Call<ResponPaketData> call, Response<ResponPaketData> response) {
+                String code = response.body().getCode();
+                if(code.equals("200")){
+                    mProdukPaketData = response.body().getData();
+                    adapterPaketData = new AdapterPaketData(getApplicationContext(),mProdukPaketData,nomorr,getUrl());
+                    recyclerView.setAdapter(adapterPaketData);
+
+                }else {
+                    ArrayList<MProdukPaketData> mProdukPaketDataa = new ArrayList<>();
+                    adapterPaketData = new AdapterPaketData(getApplicationContext(),mProdukPaketDataa,nomorr,getUrl());
+                    recyclerView.setAdapter(adapterPaketData);
+
+                    StyleableToast.makeText(getApplicationContext(),"Produk Tidak ditemukan",Toast.LENGTH_LONG,R.style.mytoast2).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponPaketData> call, Throwable t) {
+
+            }
+        });
+
+    }
+
+    public String getIdproduk() {
+        return idproduk;
+    }
+    public void setIdproduk(String idproduk) {
+        this.idproduk = idproduk;
     }
 }

@@ -24,7 +24,7 @@
         android:text="RP 35.000"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="35dp"
+        android:textSize="28dp"
         android:textStyle="bold" />
 
     <LinearLayout
@@ -45,7 +45,7 @@
         <EditText
             android:id="@+id/isisaldoku"
             android:layout_width="match_parent"
-            android:focusable="false"
+            android:inputType="number"
             android:layout_height="wrap_content" />
 
     </LinearLayout>
@@ -84,7 +84,7 @@
                 android:layout_width="match_parent"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="44px"
+                android:textSize="14sp"
                 android:layout_height="match_parent"
                 android:text="RP.100.000"
                 />
@@ -110,7 +110,7 @@
                 android:layout_width="match_parent"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="44px"
+                android:textSize="14sp"
                 android:layout_height="match_parent"
                 android:text="RP.200.000"
                 />
@@ -142,7 +142,7 @@
                 android:layout_width="match_parent"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="44px"
+                android:textSize="14sp"
                 android:layout_height="match_parent"
                 android:text="RP.500.000"
                 />
@@ -167,7 +167,7 @@
                 android:layout_width="match_parent"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="44px"
+                android:textSize="14sp"
                 android:layout_height="match_parent"
                 android:text="RP1.000.000"
                 />

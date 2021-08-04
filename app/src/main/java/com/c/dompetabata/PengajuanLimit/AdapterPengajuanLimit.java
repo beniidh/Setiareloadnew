@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.c.dompetabata.Adapter.AdapterKabupaten;
 import com.c.dompetabata.Adapter.AdapterPost;
+import com.c.dompetabata.Helper.utils;
 import com.c.dompetabata.R;
 
 import java.util.ArrayList;
@@ -37,9 +38,12 @@ public class AdapterPengajuanLimit extends RecyclerView.Adapter<AdapterPengajuan
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         MPengajuanLimit mPengajuanLimit = mPengajuanLimits.get(position);
         holder.status.setText(mPengajuanLimit.getStatus());
-        holder.nominal.setText(mPengajuanLimit.getAmount());
+        holder.nominal.setText(utils.ConvertRP(mPengajuanLimit.getAmount()));
         String tanggal = mPengajuanLimit.getUpdated_at();
-        holder.tanggal.setText(tanggal.substring(0,10));
+        String tahun = tanggal.substring(0,4);
+        String bulan = utils.convertBulan(tanggal.substring(5,7));
+        String hari = tanggal.substring(8,10);
+        holder.tanggal.setText(hari+" "+bulan+" "+tahun);
 
 
     }

@@ -15,12 +15,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.c.dompetabata.Adapter.AdapterKelurahan;
+import com.c.dompetabata.Adapter.AdapterSubMenuSide;
 import com.c.dompetabata.Api.Api;
 import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.Helper.utils;
+import com.c.dompetabata.Model.MSubMenu;
 import com.c.dompetabata.R;
+import com.c.dompetabata.Respon.ResponProfil;
+import com.c.dompetabata.drawer_activity;
 import com.c.dompetabata.sharePreference.Preference;
 import com.muddzdev.styleabletoast.StyleableToast;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -37,7 +42,8 @@ public class PengajuanDompet extends AppCompatActivity {
     ArrayList<MPengajuanLimit> mPengajuanLimits = new ArrayList<>();
     TextView saldoServerSaatini;
     double saldopengajuann;
-
+    String saldoserverlimit;
+    double saldokuserverlimitt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,11 +56,10 @@ public class PengajuanDompet extends AppCompatActivity {
         idajukanlimitButton = findViewById(R.id.idAjukanLimitButton);
         idRecyclePengajuanDompet = findViewById(R.id.idRecyclePengajuanDompet);
         saldoServerSaatini = findViewById(R.id.saldoServerSaatini);
-        String saldoserverlimit = "100000";
-        saldoServerSaatini.setText(utils.ConvertRP(saldoserverlimit));
-        double saldokuserverlimitt = Double.valueOf(saldoserverlimit);
 
 
+
+        getContentProfil();
         adapterPengajuanLimit = new AdapterPengajuanLimit(getApplicationContext(), mPengajuanLimits);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         idRecyclePengajuanDompet.setLayoutManager(mLayoutManager);
@@ -69,7 +74,7 @@ public class PengajuanDompet extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if (idPengajuanLimitEditText.length() >=1){
+                if (idPengajuanLimitEditText.length() >= 1) {
                     String saldoPengajuan = idPengajuanLimitEditText.getText().toString();
                     saldopengajuann = Double.parseDouble(saldoPengajuan);
                 }
@@ -88,10 +93,6 @@ public class PengajuanDompet extends AppCompatActivity {
 
             if (idPengajuanLimitEditText.getText().toString().isEmpty()) {
                 StyleableToast.makeText(getApplicationContext(), "Jumlah Tidak Boleh kosong", Toast.LENGTH_SHORT, R.style.mytoast2).show();
-
-            } else if (saldopengajuann > saldokuserverlimitt) {
-
-                StyleableToast.makeText(getApplicationContext(), "Pengajuan Tidak Boleh melebihi limit", Toast.LENGTH_SHORT, R.style.mytoast2).show();
 
             } else {
                 Bundle bundle = new Bundle();
@@ -148,5 +149,27 @@ public class PengajuanDompet extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         getPengajuanDompet();
+    }
+
+    public void getContentProfil() {
+
+        Api api = RetroClient.getApiServices();
+        Call<ResponProfil> call = api.getProfileDas("Bearer " + Preference.getToken(getApplicationContext()));
+        call.enqueue(new Callback<ResponProfil>() {
+            @Override
+            public void onResponse(Call<ResponProfil> call, Response<ResponProfil> response) {
+
+                saldoServerSaatini.setText(utils.ConvertRP(response.body().getData().getWallet().getPaylatter()));
+                saldoserverlimit = response.body().getData().getWallet().getPaylatter();
+                saldokuserverlimitt = Double.valueOf(saldoserverlimit);
+
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponProfil> call, Throwable t) {
+                StyleableToast.makeText(getApplicationContext(), "Periksa Sambungan internet", Toast.LENGTH_SHORT, R.style.mytoast2).show();
+            }
+        });
     }
 }

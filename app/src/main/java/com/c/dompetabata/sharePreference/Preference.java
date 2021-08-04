@@ -188,5 +188,15 @@ public class Preference {
         return getSharedPreference(context).getString("saldoku","");
     }
 
+    public static void setUrlIcon(Context context, String iconurl){
+        SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.putString("iconurl", iconurl);
+        editor.apply();
+    }
+
+    public static String getIconUrl(Context context){
+        return getSharedPreference(context).getString("iconurl","");
+    }
+
 
 }

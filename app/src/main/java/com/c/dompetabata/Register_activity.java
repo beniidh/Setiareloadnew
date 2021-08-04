@@ -3,6 +3,7 @@ package com.c.dompetabata;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.ListPopupWindow;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -15,6 +16,8 @@ import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -39,6 +42,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.muddzdev.styleabletoast.StyleableToast;
 
+import java.util.ArrayList;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -51,6 +56,7 @@ public class Register_activity extends AppCompatActivity implements ModalProvins
     Button regis;
     GpsTracker gpsTracker;
     int province, Regencie, district, subdistrict, postalCode;
+    private ListPopupWindow serverpopup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +90,30 @@ public class Register_activity extends AppCompatActivity implements ModalProvins
         kecamatan = findViewById(R.id.kecamatan);
         referal = findViewById(R.id.referalcodeRegis);
         serverid = findViewById(R.id.serverID);
+//        serverid.setFocusable(false);
+
+//        serverid.setOnClickListener(v -> {
+//
+//            ArrayList<String> Serverid = new ArrayList<>();
+//            Serverid.add("SRVID00000001");
+//            Serverid.add("SRVID00000002");
+//
+//
+//            serverpopup = new ListPopupWindow(Register_activity.this);
+//            ArrayAdapter adapter = new ArrayAdapter<>(Register_activity.this, R.layout.list_serverid, R.id.tv_serverid, Serverid);
+//            serverpopup.setAnchorView(serverid); //this let as set the popup below the EditText
+//            serverpopup.setAdapter(adapter);
+//            serverpopup.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                @Override
+//                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                    serverid.setText(Serverid.get(position));//we set the selected element in the EditText
+//                    serverpopup.dismiss();
+//                }
+//            });
+//            serverpopup.show();
+//
+//
+//        });
 
         provinsi.addTextChangedListener(new TextWatcher() {
             @Override

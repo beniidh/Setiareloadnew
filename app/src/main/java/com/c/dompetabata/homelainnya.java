@@ -44,7 +44,7 @@ public class homelainnya extends AppCompatActivity {
         getAllmenu();
         reymenulain = findViewById(R.id.reyLainnya);
 
-        int numberOfColumns = 6;
+        int numberOfColumns = 5;
         reymenulain.setLayoutManager(new GridLayoutManager(getApplicationContext(), numberOfColumns, GridLayoutManager.VERTICAL, false));
         adapterMenuUtamalain = new AdapterMenuUtamaLain(getApplicationContext(), menuUtamas);
 //        reymenulain.setAdapter(adapterMenuUtama);

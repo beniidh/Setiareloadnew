@@ -60,7 +60,7 @@
                 android:id="@+id/idTotalTransaksiTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="12"
+                android:text="0"
                 android:textAlignment="center"
                 android:textSize="20sp"
                 android:fontFamily="@font/mukta"
@@ -90,7 +90,7 @@
                 android:id="@+id/idTransaksiSuksesTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="5"
+                android:text="0"
                 android:fontFamily="@font/mukta"
                 android:textAlignment="center"
                 android:textSize="20sp"
@@ -120,7 +120,7 @@
             android:id="@+id/idTotalPengeluaranTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Rp. 123.000"
+            android:text="Rp.0"
             android:fontFamily="@font/mukta"
             android:textAlignment="center"
             android:textSize="20sp"
@@ -134,19 +134,11 @@
         android:layout_marginTop="10sp"
         android:layout_height="wrap_content">
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:text="Saldo Server"
-            android:layout_height="wrap_content"/>
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:text="Saldoku"
-            android:layout_height="wrap_content"/>
-
 
     </com.google.android.material.tabs.TabLayout>
-    <FrameLayout
-        android:id="@+id/framelayoutTransaksi"
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/ViewPagerlayoutTransaksi"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

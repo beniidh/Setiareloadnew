@@ -5,6 +5,12 @@ public class ModelInquiry {
     String buyer_sku_code,customer_no,customer_name,inquiry_type,ref_id,basic_price,markup_price,selling_price,status,description,user_id,sales_id,server_id,mac_address,ip_address,user_agent,created_at;
     double longitude,latitude;
 
+    detail detail_product;
+
+    public detail getDetail_product() {
+        return detail_product;
+    }
+
     public String getBuyer_sku_code() {
         return buyer_sku_code;
     }
@@ -80,4 +86,26 @@ public class ModelInquiry {
     public double getLatitude() {
         return latitude;
     }
+
+    public class detail{
+
+         String  tarif,daya,lembar_tagihan,detail;
+
+        public  String getTarif() {
+            return tarif;
+        }
+
+        public String getDaya() {
+            return daya;
+        }
+
+        public String getLembar_tagihan() {
+            return lembar_tagihan;
+        }
+
+        public String getDetail() {
+            return detail;
+        }
+    }
 }
+

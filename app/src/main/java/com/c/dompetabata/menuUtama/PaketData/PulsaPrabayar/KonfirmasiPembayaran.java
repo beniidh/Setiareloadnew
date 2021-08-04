@@ -71,7 +71,7 @@ public class KonfirmasiPembayaran extends AppCompatActivity {
         server.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saldo = "PAYLETTER";
+                saldo = "PAYLATTER";
                 konfirmasi = 1;
                 server.setBackground(getDrawable(R.drawable.bg_search_otppin));
                 saldoku.setBackground(getDrawable(R.drawable.bg_edittextlogin));

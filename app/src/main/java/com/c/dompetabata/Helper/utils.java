@@ -202,5 +202,38 @@ public class utils {
         }
     }
 
+    public static String convertBulan(String angka){
+        String bulan="";
+
+        if(angka.equals("01")){
+            bulan = "Januari";
+        } else if(angka.equals("02")){
+            bulan = "Februari";
+        } else if(angka.equals("03")){
+            bulan = "Maret";
+        } else if(angka.equals("04")){
+            bulan = "April";
+        } else if(angka.equals("05")){
+            bulan = "Mei";
+        } else if(angka.equals("06")){
+            bulan = "Juni";
+        } else if(angka.equals("07")){
+            bulan = "Juli";
+        } else if(angka.equals("08")){
+            bulan = "Agustus";
+        } else if(angka.equals("09")){
+            bulan = "September";
+        } else if(angka.equals("10")){
+            bulan = "Oktober";
+        } else if(angka.equals("11")){
+            bulan = "November";
+        } else if(angka.equals("12")){
+            bulan = "Desember";
+        }
+
+        return bulan;
+
+    }
+
 
 }

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class ResponUangElektronik {
 
-    String code, message;
+    String code, message,error;
     ArrayList<MUangElektronik> data;
 
     public String getCode() {
@@ -21,4 +21,7 @@ public class ResponUangElektronik {
         return data;
     }
 
+    public String getError() {
+        return error;
+    }
 }

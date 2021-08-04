@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.c.dompetabata.R;
+import com.c.dompetabata.sharePreference.Preference;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.text.NumberFormat;
@@ -47,6 +48,7 @@ public class DetailTransaksiPulsaPra extends BottomSheetDialogFragment {
             Intent intent = new Intent(getContext(), KonfirmasiPembayaran.class);
             intent.putExtra("hargatotal", total.getText().toString());
             intent.putExtra("urll", urllicon);
+            Preference.setUrlIcon(getContext(),urllicon);
             intent.putExtra("RefID", getArguments().getString("RefID"));
             intent.putExtra("sku_code",getArguments().getString("sku_code"));
             intent.putExtra("inquiry",getArguments().getString("inquiry"));

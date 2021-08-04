@@ -89,7 +89,7 @@ public class OTPinsert extends AppCompatActivity {
 
 
         TextView timer = findViewById(R.id.timer);
-        new CountDownTimer(59000, 1000) {
+        new CountDownTimer(30000, 1000) {
 
 
             @Override

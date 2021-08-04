@@ -43,12 +43,9 @@ public class splash_activity extends AppCompatActivity {
         setLogo();
         int delay = 2000;
 
-        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
-            @Override
-            public void onComplete(@NonNull Task<String> task) {
-                String deviceToken = task.getResult();
-                Log.d("Tokenn",deviceToken);
-            }
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
+            String deviceToken = task.getResult();
+            Log.d("Tokenn",deviceToken);
         });
 
         Handler handler = new Handler();
@@ -77,7 +74,6 @@ public class splash_activity extends AppCompatActivity {
                             StyleableToast.makeText(getApplicationContext(), "Token sudah berakhir,Silahkan Masukan PIN", Toast.LENGTH_LONG, R.style.mytoast2).show();
 
                         }
-
 
                     }
 

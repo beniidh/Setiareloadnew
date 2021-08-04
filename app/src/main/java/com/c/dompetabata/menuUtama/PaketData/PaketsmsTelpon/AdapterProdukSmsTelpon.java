@@ -20,12 +20,12 @@ import java.util.ArrayList;
 public class AdapterProdukSmsTelpon extends RecyclerView.Adapter<AdapterProdukSmsTelpon.ViewHolder> {
 
     Context context;
-    ArrayList<MsmsTelpon> msmsTelpons;
+    ArrayList<MProdukPaketSmsT> msmsTelpons;
     private int selectedPosition = 0;
-    public static   String nameid[][] = new String[1][2];
+    public static   String nameid[][] = new String[1][3];
     ModalVoucherGame voucher;
     private ArrayList<Integer> selectCheck = new ArrayList<>();
-    public AdapterProdukSmsTelpon(Context context, ArrayList<MsmsTelpon> msmsTelpons) {
+    public AdapterProdukSmsTelpon(Context context, ArrayList<MProdukPaketSmsT> msmsTelpons) {
         this.context = context;
         this.msmsTelpons = msmsTelpons;
 
@@ -46,7 +46,7 @@ public class AdapterProdukSmsTelpon extends RecyclerView.Adapter<AdapterProdukSm
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        MsmsTelpon msmsTelpon = msmsTelpons.get(position);
+        MProdukPaketSmsT msmsTelpon = msmsTelpons.get(position);
         holder.name.setText(msmsTelpon.getName());
 
 
@@ -71,6 +71,7 @@ public class AdapterProdukSmsTelpon extends RecyclerView.Adapter<AdapterProdukSm
                 notifyDataSetChanged();
                 nameid[0][0] = msmsTelpon.getName();
                 nameid[0][1] = msmsTelpon.getId();
+                nameid[0][2] = msmsTelpon.getIcon();
 
 
             }

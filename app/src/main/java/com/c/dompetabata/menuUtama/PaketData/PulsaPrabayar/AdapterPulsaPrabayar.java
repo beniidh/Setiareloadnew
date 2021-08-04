@@ -71,13 +71,10 @@ public class AdapterPulsaPrabayar extends RecyclerView.Adapter<AdapterPulsaPraba
         holder.linearklik.setOnClickListener(v -> {
 
             GpsTracker gpsTracker = new GpsTracker(context);
-
             Api api = RetroClient.getApiServices();
             MInquiry mInquiry = new MInquiry(mPulsaPra.getCode(), nomor, type, getMacAddress(), getIPaddress(), getUserAgent(), gpsTracker.getLatitude(), gpsTracker.getLongitude());
             String token = "Bearer " + Preference.getToken(context);
-
             Call<ResponInquiry> call = api.CekInquiry(token, mInquiry);
-
             call.enqueue(new Callback<ResponInquiry>() {
                 @Override
                 public void onResponse(Call<ResponInquiry> call, Response<ResponInquiry> response) {

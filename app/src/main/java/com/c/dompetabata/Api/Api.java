@@ -1,5 +1,6 @@
 package com.c.dompetabata.Api;
 
+import com.c.dompetabata.Fragment.RiwayatTransaksi.ResponTransaksi;
 import com.c.dompetabata.Model.MResestPIN;
 import com.c.dompetabata.PengajuanLimit.ResponPengajuan;
 import com.c.dompetabata.PengajuanLimit.SendPengajuan;
@@ -39,12 +40,37 @@ import com.c.dompetabata.TambahKonter.SendDataKonter;
 import com.c.dompetabata.TopUpSaldoku.ReqSaldoku;
 import com.c.dompetabata.Transaksi.MInquiry;
 import com.c.dompetabata.Transaksi.ResponInquiry;
+import com.c.dompetabata.menuUtama.PaketData.AngsuranKredit.ResponAngsuran;
+import com.c.dompetabata.menuUtama.PaketData.AngsuranKredit.ResponProdukAngsuran;
+import com.c.dompetabata.menuUtama.PaketData.BPJS.ResponBPJS;
+import com.c.dompetabata.menuUtama.PaketData.BPJS.ResponProdukBPJS;
+import com.c.dompetabata.menuUtama.PaketData.GasNegara.ResponGasnegara;
+import com.c.dompetabata.menuUtama.PaketData.GasNegara.ResponProdukGasnegara;
+import com.c.dompetabata.menuUtama.PaketData.Internet.ResponIntenet;
+import com.c.dompetabata.menuUtama.PaketData.Internet.ResponProdukInternet;
 import com.c.dompetabata.menuUtama.PaketData.ListrikPLN.ResponListrikPln;
 import com.c.dompetabata.menuUtama.PaketData.ListrikPLNPasca.ResponListrikPlnPasca;
+import com.c.dompetabata.menuUtama.PaketData.PajakPBB.ResponPajak;
+import com.c.dompetabata.menuUtama.PaketData.PajakPBB.ResponProdukPBB;
+import com.c.dompetabata.menuUtama.PaketData.Paket.ResponPaketData;
+import com.c.dompetabata.menuUtama.PaketData.PaketsmsTelpon.ResponProdukSmsTelp;
+import com.c.dompetabata.menuUtama.PaketData.PaketsmsTelpon.ResponSmsTelpon;
+import com.c.dompetabata.menuUtama.PaketData.PulsaPascaBayar.ResponProdukSubPPasca;
+import com.c.dompetabata.menuUtama.PaketData.PulsaPascaBayar.ResponPulsaPasca;
 import com.c.dompetabata.menuUtama.PaketData.PulsaPrabayar.MTransaksiPraPulsa;
+import com.c.dompetabata.menuUtama.PaketData.PulsaPrabayar.Mchek;
 import com.c.dompetabata.menuUtama.PaketData.PulsaPrabayar.ResponPulsaPra;
 import com.c.dompetabata.menuUtama.PaketData.PulsaPrabayar.ResponTransaksiPulsaPra;
+import com.c.dompetabata.menuUtama.PaketData.TV.ResponProdukTV;
+import com.c.dompetabata.menuUtama.PaketData.TV.ResponTV;
+import com.c.dompetabata.menuUtama.PaketData.UangElektronik.ResponProdukUE;
+import com.c.dompetabata.menuUtama.PaketData.UangElektronik.ResponUangElektronik;
+import com.c.dompetabata.menuUtama.PaketData.Voucher.ResponProdukVoucherv;
+import com.c.dompetabata.menuUtama.PaketData.Voucher.ResponVoucher;
+import com.c.dompetabata.menuUtama.PaketData.VoucherGame.ResponProdukVoucher;
 import com.c.dompetabata.menuUtama.PaketData.VoucherGame.ResponVoucherGame;
+import com.c.dompetabata.menuUtama.PaketData.air.ResponAir;
+import com.c.dompetabata.menuUtama.PaketData.air.ResponProdukAir;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -157,8 +183,9 @@ public interface Api {
     @GET("postal-code/sub-districts/{id}")
     Call<ResponPost> getAllPost(@Path("id") long id);
 
-    @GET("all-product-category?$limit=11&$order=urutan&status=1")
+    @GET("all-product-category?$limit=9&$order=urutan&status=1")
     Call<ResponMenuUtama> getAllMenu(@Header("X-Signature")String token);
+
     @GET("all-product-category?$limit=&$order=urutan&status=1")
     Call<ResponMenuUtama> getAllMenu2(@Header("X-Signature")String token);
 
@@ -198,6 +225,83 @@ public interface Api {
     @POST("transaction")
     Call<ResponTransaksiPulsaPra> transalsiPulsaPra(@Header("X-Signature")String token, @Body MTransaksiPraPulsa mTransaksiPraPulsa);
 
+    @GET("transaction/status/{id}")
+    Call<Mchek> CekTransaksi(@Header("X-Signature")String token, @Path("id") String id);
+
+    @GET("product-subcategory/category/{id}")
+    Call<ResponProdukSmsTelp> getProdukSmsTelpon(@Header("X-Signature")String token, @Path("id") String id);
+
+    @GET("product/sub-category/{id}")
+    Call<ResponSmsTelpon> getProdukSMST(@Header("X-Signature")String token, @Path("id") String id);
+
+    @GET("product/sub-category/{id}")
+    Call<ResponPaketData> getPaketDataProduk(@Header("X-Signature")String token, @Path("id") String id);
+
+    @GET("product-subcategory/prefix/{id}/{prefix}")
+    Call<ResponPulsaPasca> getSubPulsaPascaByPrefix(@Header("X-Signature")String token, @Path("prefix") String prefix, @Path("id") String id);
+
+    @GET("product/sub-category/{id}")
+    Call<ResponProdukSubPPasca> getProdukPulsaPasca(@Header("X-Signature")String token, @Path("id") String id);
+
+    @GET("product/sub-category/{id}")
+    Call<ResponProdukVoucher> getProdukVG(@Header("X-Signature")String token, @Path("id") String id);
+
+    @GET("product-subcategory/category/{id}")
+    Call<ResponUangElektronik> getProdukCategoryUE(@Header("X-Signature")String token, @Path("id") String id);
+
+    @GET("transaction/history")
+    Call<ResponTransaksi> getHistoriTransaksi(@Header("X-Signature")String token);
+
+    @GET("product/sub-category/{id}")
+    Call<ResponProdukUE> getProdukUE(@Header("X-Signature")String token, @Path("id") String id);
+
+    @GET("product-subcategory/category/{id}")
+    Call<ResponAir> getProdukCategoryAir(@Header("X-Signature")String token, @Path("id") String id);
+
+    @GET("product/sub-category/{id}")
+    Call<ResponProdukAir> getProdukAir(@Header("X-Signature")String token, @Path("id") String id);
+
+    @GET("product-subcategory/category/{id}")
+    Call<ResponIntenet> getProdukInternet(@Header("X-Signature")String token, @Path("id") String id);
+
+    @GET("product/sub-category/{id}")
+    Call<ResponProdukInternet> getProdukInternetsub(@Header("X-Signature")String token, @Path("id") String id);
+
+    @GET("product-subcategory/category/{id}")
+    Call<ResponTV> getProdukTV(@Header("X-Signature")String token, @Path("id") String id);
+
+    @GET("product/sub-category/{id}")
+    Call<ResponProdukTV> getProdukTVsub(@Header("X-Signature")String token, @Path("id") String id);
+
+    @GET("product-subcategory/category/{id}")
+    Call<ResponVoucher> getProdukVoucher(@Header("X-Signature")String token, @Path("id") String id);
+
+    @GET("product/sub-category/{id}")
+    Call<ResponProdukVoucherv> getProdukVoucherSub(@Header("X-Signature")String token, @Path("id") String id);
+
+    @GET("product-subcategory/category/{id}")
+    Call<ResponBPJS> getProdukBpjs(@Header("X-Signature")String token, @Path("id") String id);
+
+    @GET("product/sub-category/{id}")
+    Call<ResponProdukBPJS> getProdukBpjsSub(@Header("X-Signature")String token, @Path("id") String id);
+
+    @GET("product-subcategory/category/{id}")
+    Call<ResponAngsuran> getProdukAngsuran(@Header("X-Signature")String token, @Path("id") String id);
+
+    @GET("product/sub-category/{id}")
+    Call<ResponProdukAngsuran> getProdukAngsuranSub(@Header("X-Signature")String token, @Path("id") String id);
+
+    @GET("product-subcategory/category/{id}")
+    Call<ResponPajak> getProdukPajak(@Header("X-Signature")String token, @Path("id") String id);
+
+    @GET("product/sub-category/{id}")
+    Call<ResponProdukPBB> getProdukPBBSub(@Header("X-Signature")String token, @Path("id") String id);
+
+    @GET("product-subcategory/category/{id}")
+    Call<ResponGasnegara> getProdukGas(@Header("X-Signature")String token, @Path("id") String id);
+
+    @GET("product/sub-category/{id}")
+    Call<ResponProdukGasnegara> getProdukGasSub(@Header("X-Signature")String token, @Path("id") String id);
 
 
 

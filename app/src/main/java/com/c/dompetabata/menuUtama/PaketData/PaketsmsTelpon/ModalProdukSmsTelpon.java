@@ -6,25 +6,34 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.c.dompetabata.Api.Api;
+import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.R;
+import com.c.dompetabata.menuUtama.PaketData.PulsaPrabayar.AdapterPulsaPrabayar;
 import com.c.dompetabata.menuUtama.PaketData.VoucherGame.AdapterVoucherGame;
 import com.c.dompetabata.menuUtama.PaketData.VoucherGame.ModalVoucherGame;
+import com.c.dompetabata.sharePreference.Preference;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ModalProdukSmsTelpon extends BottomSheetDialogFragment {
 
     RecyclerView recyclerView;
     AdapterProdukSmsTelpon adapterProdukSmsTelpon;
-    ArrayList<MsmsTelpon> msmsTelpons = new ArrayList<>();
-    Button pilih,tutup;
+    ArrayList<MProdukPaketSmsT> msmsTelpons = new ArrayList<>();
+    Button pilih, tutup;
     private BottomSheetListenerProduksms bottomSheetListenerProduksms;
 
     @Nullable
@@ -32,12 +41,7 @@ public class ModalProdukSmsTelpon extends BottomSheetDialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.modal_layout_produksmspulsa, container, false);
 
-
-        msmsTelpons.add(new MsmsTelpon("1","Telkomsel"));
-        msmsTelpons.add(new MsmsTelpon("2","Indosat"));
-        msmsTelpons.add(new MsmsTelpon("3","Axis"));
-        msmsTelpons.add(new MsmsTelpon("4","Smartfren"));
-
+        getProdukSmsTelpon();
         recyclerView = v.findViewById(R.id.RecycleProduksmsTelpon);
         adapterProdukSmsTelpon = new AdapterProdukSmsTelpon(getContext(), msmsTelpons);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
@@ -49,13 +53,12 @@ public class ModalProdukSmsTelpon extends BottomSheetDialogFragment {
 
         pilih.setOnClickListener(v1 -> {
 
-
             String nameid[][] = adapterProdukSmsTelpon.getNameid();
 
             String namee = nameid[0][0];
             String id = nameid[0][1];
-
-            bottomSheetListenerProduksms.onButtonClick(namee,id);
+            String icon = nameid[0][2];
+            bottomSheetListenerProduksms.onButtonClick(namee, id,icon);
             dismiss();
         });
 
@@ -69,7 +72,7 @@ public class ModalProdukSmsTelpon extends BottomSheetDialogFragment {
     }
 
     public interface BottomSheetListenerProduksms {
-        void onButtonClick(String name, String id);
+        void onButtonClick(String name, String id,String icon);
     }
 
     @Override
@@ -80,5 +83,30 @@ public class ModalProdukSmsTelpon extends BottomSheetDialogFragment {
         } catch (ClassCastException e) {
             throw new ClassCastException(context.toString() + "must implement bottomsheet Listener");
         }
+    }
+
+    public void getProdukSmsTelpon() {
+
+        String token = "Bearer " + Preference.getToken(getContext());
+        Api api = RetroClient.getApiServices();
+        Call<ResponProdukSmsTelp> call = api.getProdukSmsTelpon(token, "CATID062502100000007");
+        call.enqueue(new Callback<ResponProdukSmsTelp>() {
+            @Override
+            public void onResponse(Call<ResponProdukSmsTelp> call, Response<ResponProdukSmsTelp> response) {
+                String code = response.body().getCode();
+
+                if (code.equals("200")) {
+                    msmsTelpons = response.body().getData();
+                    adapterProdukSmsTelpon = new AdapterProdukSmsTelpon(getContext(), msmsTelpons);
+                    recyclerView.setAdapter(adapterProdukSmsTelpon);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponProdukSmsTelp> call, Throwable t) {
+
+            }
+        });
     }
 }

@@ -7,18 +7,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.c.dompetabata.Api.Api;
+import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.R;
 import com.c.dompetabata.menuUtama.PaketData.Voucher.AdapterVoucher;
 import com.c.dompetabata.menuUtama.PaketData.Voucher.ModelVoucher;
+import com.c.dompetabata.menuUtama.PaketData.air.AdapterAir;
+import com.c.dompetabata.menuUtama.PaketData.air.ResponAir;
+import com.c.dompetabata.sharePreference.Preference;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ModalAngsuran extends BottomSheetDialogFragment {
 
@@ -35,8 +45,6 @@ public class ModalAngsuran extends BottomSheetDialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.modal_layout_angsuran, container, false);
 
-        modelAngsurans.add(new ModelAngsuran("1","INDOVISION"));
-        modelAngsurans.add(new ModelAngsuran("2","TELKOMVISION"));
 
 
         recyclerView = v.findViewById(R.id.ReyAngsuran);
@@ -47,6 +55,8 @@ public class ModalAngsuran extends BottomSheetDialogFragment {
 
         pilih = v.findViewById(R.id.pilihAngsuran);
         tutup = v.findViewById(R.id.tutupAngsuran);
+        String idd = getArguments().getString("id");
+        getProduk(idd);
 
         pilih.setOnClickListener(v1 -> {
 
@@ -99,6 +109,29 @@ public class ModalAngsuran extends BottomSheetDialogFragment {
     public interface BottomSheetListenerProduksms {
         void onButtonClick(String name, String id);
     }
+    private void getProduk(String id){
+
+        String token = "Bearer "+ Preference.getToken(getContext());
+        Api api = RetroClient.getApiServices();
+        Call<ResponAngsuran> call = api.getProdukAngsuran(token,id);
+        call.enqueue(new Callback<ResponAngsuran>() {
+            @Override
+            public void onResponse(Call<ResponAngsuran> call, Response<ResponAngsuran> response) {
+
+                modelAngsurans = response.body().getData();
+                adapterAngsuran = new AdapterAngsuran(getContext(), modelAngsurans);
+                recyclerView.setAdapter(adapterAngsuran);
+            }
+
+            @Override
+            public void onFailure(Call<ResponAngsuran> call, Throwable t) {
+                Toast.makeText(getContext(),"Gagal",Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+    }
+
 
     @Override
     public void onAttach(@NonNull Context context) {

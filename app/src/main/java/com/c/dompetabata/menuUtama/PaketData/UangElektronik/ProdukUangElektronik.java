@@ -1,6 +1,8 @@
 package com.c.dompetabata.menuUtama.PaketData.UangElektronik;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -10,13 +12,27 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.c.dompetabata.Api.Api;
+import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.R;
+import com.c.dompetabata.menuUtama.PaketData.VoucherGame.AdapterProdukVoucher;
+import com.c.dompetabata.sharePreference.Preference;
+
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ProdukUangElektronik extends AppCompatActivity implements ModalUangElektronik.BottomSheetListenerProduksms {
 
     EditText inputprodukuangelektronik,inputnomoruangelektronik;
     TextView tujukarakteruangelektronik;
-
+    RecyclerView recyclerView;
+    AdapterProdukUE adapterProdukUE;
+    ArrayList<ResponProdukUE.VoucherData> vdata = new ArrayList<>();
+    String type = "PRABAYAR";
+    String idd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +44,15 @@ public class ProdukUangElektronik extends AppCompatActivity implements ModalUang
         inputprodukuangelektronik.setFocusable(false);
         inputnomoruangelektronik = findViewById(R.id.inputnomoruangelektronik);
         tujukarakteruangelektronik = findViewById(R.id.tujukarakteruangelektronik);
+
+        recyclerView = findViewById(R.id.ReyUangElektronik);
+        adapterProdukUE = new AdapterProdukUE(getApplicationContext(), vdata, inputnomoruangelektronik.getText().toString(), type);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setAdapter(adapterProdukUE);
+
+        String id = getIntent().getStringExtra("id");
+
 
         inputnomoruangelektronik.addTextChangedListener(new TextWatcher() {
             @Override
@@ -48,6 +73,7 @@ public class ProdukUangElektronik extends AppCompatActivity implements ModalUang
 
             @Override
             public void afterTextChanged(Editable s) {
+                getProduk(getIdd(),inputnomoruangelektronik.getText().toString());
 
             }
         });
@@ -57,6 +83,9 @@ public class ProdukUangElektronik extends AppCompatActivity implements ModalUang
             public void onClick(View v) {
 
                 ModalUangElektronik modalUangElektronik = new ModalUangElektronik();
+                Bundle bundle = new Bundle();
+                bundle.putString("id",id);
+                modalUangElektronik.setArguments(bundle);
                 modalUangElektronik.show(getSupportFragmentManager(),"Uang elektronik");
             }
         });
@@ -76,5 +105,40 @@ public class ProdukUangElektronik extends AppCompatActivity implements ModalUang
     @Override
     public void onButtonClick(String name, String id) {
         inputprodukuangelektronik.setText(name);
+        setIdd(id);
+    }
+
+    public void getProduk(String id,String nomor){
+        String token = "Bearer " + Preference.getToken(getApplicationContext());
+        Api api = RetroClient.getApiServices();
+        Call<ResponProdukUE> call = api.getProdukUE(token,id);
+        call.enqueue(new Callback<ResponProdukUE>() {
+            @Override
+            public void onResponse(Call<ResponProdukUE> call, Response<ResponProdukUE> response) {
+                String code = response.body().getCode();
+                if (code.equals("200")){
+
+                    vdata = response.body().getData();
+                    adapterProdukUE = new AdapterProdukUE(getApplicationContext(), vdata, nomor, type);
+                    recyclerView.setAdapter(adapterProdukUE);
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponProdukUE> call, Throwable t) {
+
+            }
+        });
+
+
+    }
+
+    public String getIdd() {
+        return idd;
+    }
+
+    public void setIdd(String idd) {
+        this.idd = idd;
     }
 }

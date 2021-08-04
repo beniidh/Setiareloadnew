@@ -20,7 +20,7 @@
             android:text="Limit Saldo Server Saat ini"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="18dp" />
+            android:textSize="17dp" />
 
         <TextView
             android:id="@+id/saldoServerSaatini"
@@ -30,13 +30,13 @@
             android:text="RP 100.000"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="35dp"
+            android:textSize="28sp"
             android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/bg_saldo"
             android:orientation="vertical"
             android:padding="10dp">
@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:text="Isi pengajuan Limit Baru "
-                android:textSize="15dp" />
+                android:textSize="14dp" />
 
             <EditText
                 android:id="@+id/idPengajuanLimitEditText"
@@ -70,7 +70,7 @@
             android:layout_marginTop="20dp"
             android:text="Pengajuan Limit Dompet"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="17sp"
             android:textStyle="bold" />
 
         <View
@@ -101,7 +101,7 @@
         android:text="Ajukan"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="22dp" />
+        android:textSize="20dp" />
 
 
 </RelativeLayout>

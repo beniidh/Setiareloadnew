@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -39,6 +41,8 @@ public class PulsaPrabayar_activity extends AppCompatActivity {
     ArrayList<MPulsaPra> mPulsaPras = new ArrayList<>();
     AdapterPulsaPrabayar adapterPulsaPrabayar;
     String type;
+    @SuppressLint("StaticFieldLeak")
+    static Activity pulsapra;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +55,12 @@ public class PulsaPrabayar_activity extends AppCompatActivity {
         modelPascaa = new modelPasca();
         reyPulsaPra = findViewById(R.id.reyprodukPulsaPra);
         Intent intent = getIntent();
-         type = intent.getStringExtra("type");
+        type = intent.getStringExtra("type");
+
+        pulsapra = this;
 
         nomorbelipulsa = findViewById(R.id.nomorbelipulsa);
-        adapterPulsaPrabayar = new AdapterPulsaPrabayar(getApplicationContext(), mPulsaPras, nomorbelipulsa.getText().toString(), getUrl(),type);
+        adapterPulsaPrabayar = new AdapterPulsaPrabayar(getApplicationContext(), mPulsaPras, nomorbelipulsa.getText().toString(), getUrl(), type);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         reyPulsaPra.setLayoutManager(mLayoutManager);
         reyPulsaPra.setAdapter(adapterPulsaPrabayar);
@@ -68,11 +74,20 @@ public class PulsaPrabayar_activity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if (nomorbelipulsa.length() == 4) {
-                    String provider = nomorbelipulsa.getText().toString();
+                if (nomorbelipulsa.length() >= 4) {
+                    String provider = nomorbelipulsa.getText().toString().substring(0, 4);
                     Intent intent = getIntent();
                     String id = intent.getStringExtra("id");
                     getSubCategory(provider, id);
+
+                } else {
+                    ArrayList<MPulsaPra> mPulsaPrass = new ArrayList<>();
+                    mPulsaPras = mPulsaPrass;
+                    adapterPulsaPrabayar = new AdapterPulsaPrabayar(getApplicationContext(), mPulsaPras, nomorbelipulsa.getText().toString(), url, type);
+                    reyPulsaPra.setAdapter(adapterPulsaPrabayar);
+
+                    setUrl("http//");
+
 
                 }
 
@@ -84,6 +99,7 @@ public class PulsaPrabayar_activity extends AppCompatActivity {
                 if (nomorbelipulsa.length() >= 4) {
 
                     getProdukBysubID(getIdproduk(), nomorbelipulsa.getText().toString(), getUrl());
+
                 }
 
             }
@@ -167,7 +183,7 @@ public class PulsaPrabayar_activity extends AppCompatActivity {
                 String code = response.body().getCode();
                 if (code.equals("200")) {
                     mPulsaPras = (ArrayList<MPulsaPra>) response.body().getData();
-                    adapterPulsaPrabayar = new AdapterPulsaPrabayar(getApplicationContext(), mPulsaPras, nomor, url,type);
+                    adapterPulsaPrabayar = new AdapterPulsaPrabayar(getApplicationContext(), mPulsaPras, nomor, url, type);
                     reyPulsaPra.setAdapter(adapterPulsaPrabayar);
 
                 }

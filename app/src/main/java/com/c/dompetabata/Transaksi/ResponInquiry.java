@@ -5,6 +5,7 @@ public class ResponInquiry {
     String code,message,error;
     ModelInquiry data;
 
+
     public String getCode() {
         return code;
     }
@@ -20,4 +21,7 @@ public class ResponInquiry {
     public String getError() {
         return error;
     }
+
+
 }
+

@@ -1,6 +1,8 @@
 package com.c.dompetabata.menuUtama.PaketData.PaketsmsTelpon;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -10,12 +12,27 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.c.dompetabata.Api.Api;
+import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.R;
+import com.c.dompetabata.menuUtama.PaketData.PulsaPrabayar.AdapterPulsaPrabayar;
+import com.c.dompetabata.sharePreference.Preference;
+
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class produksmstelpon extends AppCompatActivity implements ModalProdukSmsTelpon.BottomSheetListenerProduksms {
 
     EditText inputproduksmspulsa, inputnomorsmspulsa;
     TextView tujukaraktersmspulsa;
+    AdapterProdukST adapterProdukST;
+    ArrayList<MProdukSmsTelpon> mProdukSmsTelpons = new ArrayList<>();
+    RecyclerView recyclerView;
+    String url;
+    String idd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +46,14 @@ public class produksmstelpon extends AppCompatActivity implements ModalProdukSms
         inputproduksmspulsa.setFocusable(false);
         inputnomorsmspulsa = findViewById(R.id.inputproduksmstelpon);
         tujukaraktersmspulsa = findViewById(R.id.tujukaraktersmstelpon);
+        recyclerView = findViewById(R.id.ReyProdukSMST);
+
+
+        adapterProdukST = new AdapterProdukST(getApplicationContext(), mProdukSmsTelpons,inputnomorsmspulsa.getText().toString(),getUrl());
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setAdapter(adapterProdukST);
+
 
         inputproduksmspulsa.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +80,7 @@ public class produksmstelpon extends AppCompatActivity implements ModalProdukSms
 
             @Override
             public void afterTextChanged(Editable s) {
+                getProdukSmsTelpon(getIdd(),inputnomorsmspulsa.getText().toString());
 
             }
         });
@@ -74,7 +100,53 @@ public class produksmstelpon extends AppCompatActivity implements ModalProdukSms
     }
 
     @Override
-    public void onButtonClick(String name, String id) {
+    public void onButtonClick(String name, String id,String icon) {
         inputproduksmspulsa.setText(name);
+        setIdd(id);
+        getProdukSmsTelpon(id,inputnomorsmspulsa.getText().toString());
+        setUrl(icon);
+    }
+
+    public void getProdukSmsTelpon(String id,String nomor){
+
+        String token = "Bearer "+ Preference.getToken(getApplicationContext());
+        Api api = RetroClient.getApiServices();
+        Call<ResponSmsTelpon> call = api.getProdukSMST(token,id);
+        call.enqueue(new Callback<ResponSmsTelpon>() {
+            @Override
+            public void onResponse(Call<ResponSmsTelpon> call, Response<ResponSmsTelpon> response) {
+
+                String code = response.body().getCode();
+                if (code.equals("200")){
+                    mProdukSmsTelpons = response.body().getData();
+                    adapterProdukST = new AdapterProdukST(getApplicationContext(),mProdukSmsTelpons,nomor,getUrl());
+                    recyclerView.setAdapter(adapterProdukST);
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponSmsTelpon> call, Throwable t) {
+
+            }
+        });
+
+
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getIdd() {
+        return idd;
+    }
+
+    public void setIdd(String idd) {
+        this.idd = idd;
     }
 }

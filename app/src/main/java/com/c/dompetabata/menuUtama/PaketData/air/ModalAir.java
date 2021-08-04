@@ -7,18 +7,29 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.c.dompetabata.Api.Api;
+import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.R;
 import com.c.dompetabata.menuUtama.PaketData.PaketsmsTelpon.AdapterProdukSmsTelpon;
 import com.c.dompetabata.menuUtama.PaketData.PaketsmsTelpon.MsmsTelpon;
+import com.c.dompetabata.menuUtama.PaketData.VoucherGame.AdapterVoucherGame;
+import com.c.dompetabata.menuUtama.PaketData.VoucherGame.ModalVoucherGame;
+import com.c.dompetabata.menuUtama.PaketData.VoucherGame.ResponVoucherGame;
+import com.c.dompetabata.sharePreference.Preference;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ModalAir extends BottomSheetDialogFragment {
 
@@ -35,17 +46,15 @@ public class ModalAir extends BottomSheetDialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.modal_layout_air, container, false);
 
-        mAirs.add(new MAir("1","PDAM Bogor"));
-        mAirs.add(new MAir("2","PDAM Malang"));
-        mAirs.add(new MAir("3","PDAM Jakarta"));
-        mAirs.add(new MAir("4","PDAM Bekasi"));
-
 
         recyclerView = v.findViewById(R.id.ReyProdukAir);
         adapterAir = new AdapterAir(getContext(), mAirs);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(adapterAir);
+
+        String idd = getArguments().getString("id");
+        getProdukAir(idd);
 
         pilih = v.findViewById(R.id.pilihProdukAir);
         tutup = v.findViewById(R.id.tutupProdukAir);
@@ -100,6 +109,30 @@ public class ModalAir extends BottomSheetDialogFragment {
 
     public interface BottomSheetListenerProduksms {
         void onButtonClick(String name, String id);
+    }
+
+    private void getProdukAir(String id){
+
+        String token = "Bearer "+ Preference.getToken(getContext());
+        Api api = RetroClient.getApiServices();
+        Call<ResponAir> call = api.getProdukCategoryAir(token,id);
+        call.enqueue(new Callback<ResponAir>() {
+            @Override
+            public void onResponse(Call<ResponAir> call, Response<ResponAir> response) {
+
+                mAirs = response.body().getData();
+                adapterAir = new AdapterAir(getContext(), mAirs);
+                recyclerView.setAdapter(adapterAir);
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponAir> call, Throwable t) {
+                Toast.makeText(getContext(),"Gagal",Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
     }
 
     @Override

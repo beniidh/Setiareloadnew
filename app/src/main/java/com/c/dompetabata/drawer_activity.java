@@ -6,6 +6,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -49,6 +51,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import info.androidhive.fontawesome.FontDrawable;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -56,12 +59,12 @@ import retrofit2.Response;
 public class drawer_activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     BottomNavigationView menu_bawah;
     Toolbar toolbar;
-    TextView tulisan, navheadernamakonter;
+    TextView tulisan, navheadernamakonter,nbhome,nbtransaksi,nbchat,nbhomet,nbtransaksit,nbchatt;
     DrawerLayout drawer_layout;
     ActionBarDrawerToggle toggle;
     NavigationView navigationView;
     Fragment fragment1, fragment2, fragment3;
-    MenuItem menuItem;
+
     LinearLayout profil;
     ArrayList<Micon> micons = new ArrayList<>();
     ArrayList<MBanner> mBanners = new ArrayList<>();
@@ -84,6 +87,18 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
         drawwer = this;
         iconprofilsidebar = findViewById(R.id.iconprofilsidebar);
         parent = findViewById(R.id.parent);
+        Typeface type2 = ResourcesCompat.getFont(getApplicationContext(), R.font.abata);
+        nbhome = findViewById(R.id.NBhome);
+        nbhomet = findViewById(R.id.NBhomeT);
+        nbhome.setTypeface(type2);
+
+        nbtransaksi = findViewById(R.id.NBTransaksi);
+        nbtransaksit = findViewById(R.id.NBTransaksiT);
+        nbtransaksi.setTypeface(type2);
+        nbchat = findViewById(R.id.NBchat);
+        nbchatt = findViewById(R.id.NBchatT);
+        nbchat.setTypeface(type2);
+
 
         notifikasi = findViewById(R.id.notifikasiID);
 
@@ -137,9 +152,52 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
         fragmentTransaction.commit(); // save the changes
 
 
-        menu_bawah.setOnNavigationItemSelectedListener(this::onOptionsItemSelected);
+        nbhome.setTextColor(getColor(R.color.green));
+        nbhomet.setTextColor(getColor(R.color.green));
+
+        nbchat.setOnClickListener(v -> {
+
+            FragmentManager fm3 = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction2 = fm3.beginTransaction();
+            fragmentTransaction2.replace(R.id.fLayout, fragment2);
+            fragmentTransaction2.commit(); // save the changes
+            nbchat.setTextColor(getColor(R.color.green));
+            nbchatt.setTextColor(getColor(R.color.green));
+            nbtransaksi.setTextColor(getColor(R.color.gray3));
+            nbtransaksit.setTextColor(getColor(R.color.gray3));
+            nbhome.setTextColor(getColor(R.color.gray3));
+            nbhomet.setTextColor(getColor(R.color.gray3));
+
+        });
+
+        nbhome.setOnClickListener(v -> {
+            FragmentManager fmm = getSupportFragmentManager();
+            FragmentTransaction fragmentTransactionn = fmm.beginTransaction();
+            fragmentTransactionn.replace(R.id.fLayout, fragment3);
+            fragmentTransactionn.commit(); // save the changes
+            nbchat.setTextColor(getColor(R.color.gray3));
+            nbchatt.setTextColor(getColor(R.color.gray3));
+            nbtransaksi.setTextColor(getColor(R.color.gray3));
+            nbtransaksit.setTextColor(getColor(R.color.gray3));
+            nbhome.setTextColor(getColor(R.color.green));
+            nbhomet.setTextColor(getColor(R.color.green));
 
 
+        });
+
+        nbtransaksi.setOnClickListener(v -> {
+            FragmentManager fm2 = getSupportFragmentManager();
+            FragmentTransaction fragmentTransactionnn = fm2.beginTransaction();
+            fragmentTransactionnn.replace(R.id.fLayout, fragment1);
+            fragmentTransactionnn.commit(); // save the changes
+            nbchat.setTextColor(getColor(R.color.gray3));
+            nbchatt.setTextColor(getColor(R.color.gray3));
+            nbtransaksi.setTextColor(getColor(R.color.green));
+            nbtransaksit.setTextColor(getColor(R.color.green));
+            nbhome.setTextColor(getColor(R.color.gray3));
+            nbhomet.setTextColor(getColor(R.color.gray3));
+
+        });
     }
 
     @Override
@@ -150,41 +208,6 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
     }
 
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-
-        switch (item.getItemId()) {
-
-
-            case R.id.home:
-                // create a FragmentManager
-                FragmentManager fm = getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fm.beginTransaction();
-                fragmentTransaction.replace(R.id.fLayout, fragment3);
-                fragmentTransaction.commit(); // save the changes
-                break;
-
-            case R.id.transaksi:
-
-                FragmentManager fm2 = getSupportFragmentManager();
-                FragmentTransaction fragmentTransactionn = fm2.beginTransaction();
-                fragmentTransactionn.replace(R.id.fLayout, fragment1);
-                fragmentTransactionn.commit(); // save the changes
-
-                break;
-            case R.id.chat:
-
-                FragmentManager fm3 = getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction2 = fm3.beginTransaction();
-                fragmentTransaction2.replace(R.id.fLayout, fragment2);
-                fragmentTransaction2.commit(); // save the changes
-
-                break;
-
-        }
-        return true;
-    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

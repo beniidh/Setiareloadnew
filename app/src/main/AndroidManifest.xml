@@ -3,6 +3,7 @@
     package="com.c.dompetabata">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -21,15 +22,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DompetAbata">
+        <activity android:name=".Inquiry.InquiryPasca"></activity>
+        <activity android:name=".GantiPin" />
 
         <service android:name=".Notifikasi.MyService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
-
         </service>
 
-        <activity android:name=".ResetPIN"></activity>
+        <activity android:name=".ResetPIN" />
         <activity android:name=".PersetujuanSaldoSales.DetailPersetujuan" />
         <activity android:name=".TambahKonter.addKonter" />
         <activity android:name=".PersetujuanSaldoSales.PersetujuanSaldoSales" />

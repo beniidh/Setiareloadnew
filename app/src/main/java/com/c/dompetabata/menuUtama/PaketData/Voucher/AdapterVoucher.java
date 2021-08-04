@@ -25,7 +25,7 @@ public class AdapterVoucher extends RecyclerView.Adapter<AdapterVoucher.ViewHold
     ArrayList<ModelVoucher> modelVouchers;
     ArrayList<ModelVoucher> modelVouchersfull;
     private int selectedPosition = 0;
-    public static   String nameid[][] = new String[1][2];
+    public static   String nameid[][] = new String[1][3];
     private ArrayList<Integer> selectCheck = new ArrayList<>();
 
     public AdapterVoucher(Context context, ArrayList<ModelVoucher> modelVouchers) {
@@ -75,7 +75,7 @@ public class AdapterVoucher extends RecyclerView.Adapter<AdapterVoucher.ViewHold
                 notifyDataSetChanged();
                 nameid[0][0] = modelVoucher.getName();
                 nameid[0][1] = modelVoucher.getId();
-
+                nameid[0][2] = modelVoucher.getIcon();
 
             }
         });

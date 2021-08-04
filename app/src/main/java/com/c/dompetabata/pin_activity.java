@@ -56,6 +56,16 @@ public class pin_activity extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
         warningpinsalah = findViewById(R.id.warningpinsalah);
 
+
+        warningpinsalah.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(pin_activity.this,GantiPin.class);
+                startActivity(intent);
+
+            }
+        });
+
         getLocation();
 
         progressBar = findViewById(R.id.progressPIN);
@@ -93,9 +103,7 @@ public class pin_activity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this, Login_Activity.class);
-        startActivity(intent);
-        finish();
+        super.onBackPressed();
     }
 
     private void Login(String pin) {

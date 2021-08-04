@@ -6,8 +6,9 @@ import java.util.ArrayList;
 
 public class ResponSmsTelpon {
 
-    String code, message;
-    ArrayList<MsmsTelpon> data;
+    String code, message,error;
+    ArrayList<MProdukSmsTelpon> data;
+
     public String getCode() {
         return code;
     }
@@ -16,7 +17,11 @@ public class ResponSmsTelpon {
         return message;
     }
 
-    public ArrayList<MsmsTelpon> getData() {
+    public String getError() {
+        return error;
+    }
+
+    public ArrayList<MProdukSmsTelpon> getData() {
         return data;
     }
 }

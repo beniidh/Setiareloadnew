@@ -7,18 +7,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.c.dompetabata.Api.Api;
+import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.R;
 import com.c.dompetabata.menuUtama.PaketData.air.AdapterAir;
 import com.c.dompetabata.menuUtama.PaketData.air.MAir;
+import com.c.dompetabata.sharePreference.Preference;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ModalUangElektronik extends BottomSheetDialogFragment {
 
@@ -35,10 +43,6 @@ public class ModalUangElektronik extends BottomSheetDialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.modal_layout_uangelektronik, container, false);
 
-        mUangElektroniks.add(new MUangElektronik("1","Go PAY"));
-        mUangElektroniks.add(new MUangElektronik("2","OVO"));
-        mUangElektroniks.add(new MUangElektronik("3","GRAB"));
-        mUangElektroniks.add(new MUangElektronik("4","DANA"));
 
         recyclerView = v.findViewById(R.id.ReyUangElektronik);
         adapterUangElektronik = new AdapterUangElektronik(getContext(), mUangElektroniks);
@@ -48,6 +52,9 @@ public class ModalUangElektronik extends BottomSheetDialogFragment {
 
         pilih = v.findViewById(R.id.pilihUangElektronik);
         tutup = v.findViewById(R.id.tutupUangElektronik);
+
+        String idd = getArguments().getString("id");
+        getProdukUE(idd);
 
         pilih.setOnClickListener(v1 -> {
 
@@ -109,5 +116,32 @@ public class ModalUangElektronik extends BottomSheetDialogFragment {
         } catch (ClassCastException e) {
             throw new ClassCastException(context.toString() + "must implement bottomsheet Listener");
         }
+    }
+
+    public void getProdukUE(String id){
+        String token = "Bearer "+ Preference.getToken(getContext());
+
+        Api api = RetroClient.getApiServices();
+        Call<ResponUangElektronik> call = api.getProdukCategoryUE(token,id);
+        call.enqueue(new Callback<ResponUangElektronik>() {
+            @Override
+            public void onResponse(Call<ResponUangElektronik> call, Response<ResponUangElektronik> response) {
+                String code = response.body().getCode();
+                if(code.equals("200")){
+                    mUangElektroniks = response.body().getData();
+                    adapterUangElektronik = new AdapterUangElektronik(getContext(), mUangElektroniks);
+                    recyclerView.setAdapter(adapterUangElektronik);
+                }else {
+
+                    Toast.makeText(getContext(),response.body().getMessage(),Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponUangElektronik> call, Throwable t) {
+
+            }
+        });
+
     }
 }

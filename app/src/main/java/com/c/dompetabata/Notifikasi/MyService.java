@@ -23,11 +23,11 @@ import com.google.firebase.messaging.RemoteMessage;
 public class MyService extends FirebaseMessagingService {
 
 
-
     public void createNotification(String judul, String isi, Context context, Intent intent){
 
         NotificationManager notificationManager = (NotificationManager)context.getSystemService(context.NOTIFICATION_SERVICE);
         Intent resultIntent = new Intent(this, splash_activity.class);
+
         PendingIntent PI = PendingIntent.getActivity(this,1,resultIntent,PendingIntent.FLAG_UPDATE_CURRENT);
         int NotificationID = 0;
         String ChanelID = "Hallo";
@@ -41,7 +41,7 @@ public class MyService extends FirebaseMessagingService {
 
         NotificationCompat.Builder MBuilder = new NotificationCompat.Builder(context,ChanelID)
                 .setAutoCancel(true)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.drawable.logoapkcsoft)
                 .setContentTitle(judul)
                 .setStyle( new NotificationCompat.BigTextStyle().bigText(isi))
                 .setPriority(Notification.PRIORITY_MAX)

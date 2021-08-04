@@ -1,6 +1,8 @@
 package com.c.dompetabata.menuUtama.PaketData.air;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -9,13 +11,32 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.c.dompetabata.Api.Api;
+import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.R;
+import com.c.dompetabata.menuUtama.PaketData.UangElektronik.AdapterProdukUE;
+import com.c.dompetabata.menuUtama.PaketData.UangElektronik.ResponProdukUE;
+import com.c.dompetabata.menuUtama.PaketData.VoucherGame.AdapterProdukVoucher;
+import com.c.dompetabata.menuUtama.PaketData.VoucherGame.ResponProdukVoucher;
+import com.c.dompetabata.sharePreference.Preference;
+
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class produkair extends AppCompatActivity implements ModalAir.BottomSheetListenerProduksms{
 
     EditText inputprodukair, inputnomorair;
     TextView tujukarakterair;
+    AdapterProdukAir adapterProdukAir;
+    ArrayList<ResponProdukAir.VoucherData> mAir = new ArrayList<>();
+    RecyclerView recyclerView;
+    String type ="PASCABAYAR";
+    String idd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +50,12 @@ public class produkair extends AppCompatActivity implements ModalAir.BottomSheet
         inputprodukair.setFocusable(false);
         inputnomorair = findViewById(R.id.inputnomorair);
         tujukarakterair = findViewById(R.id.tujukarakterair);
+        recyclerView = findViewById(R.id.ReyProdukAAir);
+
+        adapterProdukAir = new AdapterProdukAir(getApplicationContext(), mAir, inputnomorair.getText().toString(), type);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setAdapter(adapterProdukAir);
 
         inputnomorair.addTextChangedListener(new TextWatcher() {
             @Override
@@ -49,12 +76,17 @@ public class produkair extends AppCompatActivity implements ModalAir.BottomSheet
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                getProdukk(getIdd(),inputnomorair.getText().toString());
             }
         });
 
         inputprodukair.setOnClickListener(v -> {
+
+            String id = getIntent().getStringExtra("id");
             ModalAir modalAir = new ModalAir();
+            Bundle bundle = new Bundle();
+            bundle.putString("id",id);
+            modalAir.setArguments(bundle);
             modalAir.show(getSupportFragmentManager(), "Modal Air");
         });
 
@@ -74,6 +106,44 @@ public class produkair extends AppCompatActivity implements ModalAir.BottomSheet
     @Override
     public void onButtonClick(String name, String id) {
         inputprodukair.setText(name);
+        setIdd(id);
 
+    }
+
+    public void getProdukk(String id,String nomor){
+        String token = "Bearer " + Preference.getToken(getApplicationContext());
+        Api api = RetroClient.getApiServices();
+        Call<ResponProdukAir> call = api.getProdukAir(token,id);
+        call.enqueue(new Callback<ResponProdukAir>() {
+            @Override
+            public void onResponse(Call<ResponProdukAir> call, Response<ResponProdukAir> response) {
+                String code = response.body().getCode();
+                if (code.equals("200")){
+
+                    mAir = response.body().getData();
+                    adapterProdukAir = new AdapterProdukAir(produkair.this, mAir, nomor, type);
+                    recyclerView.setAdapter(adapterProdukAir);
+
+                }else {
+
+                    Toast.makeText(getApplicationContext(),response.body().getError(),Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponProdukAir> call, Throwable t) {
+
+            }
+        });
+
+
+    }
+
+    public String getIdd() {
+        return idd;
+    }
+
+    public void setIdd(String idd) {
+        this.idd = idd;
     }
 }

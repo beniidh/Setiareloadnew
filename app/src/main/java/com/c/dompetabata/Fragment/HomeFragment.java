@@ -63,7 +63,7 @@ public class HomeFragment extends Fragment {
         reymenu = v.findViewById(R.id.ReyMenuUtama);
         getAllmenu();
 
-        int numberOfColumns = 6;
+        int numberOfColumns = 5;
         reymenu.setLayoutManager(new GridLayoutManager(getActivity(), numberOfColumns, GridLayoutManager.VERTICAL, false));
         adapterMenuUtama = new AdapterMenuUtama(getActivity(), menuUtamas);
         reymenu.setAdapter(adapterMenuUtama);

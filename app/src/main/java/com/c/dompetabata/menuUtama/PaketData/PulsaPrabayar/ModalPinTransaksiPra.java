@@ -86,6 +86,7 @@ public class ModalPinTransaksiPra extends BottomSheetDialogFragment {
     }
 
     public void TransaksiPulsaPra(String pin) {
+
         String token = "Bearer " + Preference.getToken(getContext());
         Api api = RetroClient.getApiServices();
         GpsTracker gpsTracker = new GpsTracker(getContext());
@@ -107,10 +108,13 @@ public class ModalPinTransaksiPra extends BottomSheetDialogFragment {
                     intent.putExtra("pesan",response.body().getData().getMessage());
                     intent.putExtra("hargatotal",response.body().getData().getTotal_price());
                     intent.putExtra("nomorcustomer",response.body().getData().getCustomer_no());
+                    intent.putExtra("create_at",response.body().getData().getCreated_at());
+                    intent.putExtra("transaksid",response.body().getData().getRef_id());
                     intent.putExtra("iconn",getArguments().getString("iconn"));
 
 
                     startActivity(intent);
+                    KonfirmasiPembayaran.konifirmpembayaran.finish();
                     dismiss();
 
 

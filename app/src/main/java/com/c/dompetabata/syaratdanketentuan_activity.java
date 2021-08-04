@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Toast;
 
 public class syaratdanketentuan_activity extends AppCompatActivity {
 
@@ -24,6 +25,13 @@ public class syaratdanketentuan_activity extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
 
         setuju = findViewById(R.id.checksetuju);
+
+//        setuju.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                Toast.makeText(getApplicationContext(),"Syarat & Ketentuan",Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
 
     }

@@ -7,25 +7,34 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.c.dompetabata.Api.Api;
+import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.R;
 import com.c.dompetabata.menuUtama.PaketData.Internet.AdapterInternet;
 import com.c.dompetabata.menuUtama.PaketData.Internet.ModelInternet;
+import com.c.dompetabata.menuUtama.PaketData.Internet.ResponIntenet;
+import com.c.dompetabata.sharePreference.Preference;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ModalTV extends BottomSheetDialogFragment {
 
     RecyclerView recyclerView;
     AdapterTV adapterTV;
     ArrayList<ModelTV> modelTVS = new ArrayList<>();
-    Button pilih,tutup;
+    Button pilih, tutup;
     SearchView search;
 
     private BottomSheetListenerProduksms bottomSheetListenerProduksms;
@@ -35,16 +44,14 @@ public class ModalTV extends BottomSheetDialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.modal_layout_tv, container, false);
 
-        modelTVS.add(new ModelTV("1","INDOVISION"));
-        modelTVS.add(new ModelTV("2","TELKOMVISION"));
-
-
         recyclerView = v.findViewById(R.id.ReyTV);
         adapterTV = new AdapterTV(getContext(), modelTVS);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(adapterTV);
 
+        String idd = getArguments().getString("id");
+        getProduk(idd);
         pilih = v.findViewById(R.id.pilihTV);
         tutup = v.findViewById(R.id.tutupTV);
 
@@ -56,7 +63,7 @@ public class ModalTV extends BottomSheetDialogFragment {
             String namee = nameid[0][0];
             String id = nameid[0][1];
 
-            bottomSheetListenerProduksms.onButtonClick(namee,id);
+            bottomSheetListenerProduksms.onButtonClick(namee, id);
             dismiss();
         });
 
@@ -91,8 +98,6 @@ public class ModalTV extends BottomSheetDialogFragment {
         });
 
 
-
-
         return v;
     }
 
@@ -108,5 +113,30 @@ public class ModalTV extends BottomSheetDialogFragment {
         } catch (ClassCastException e) {
             throw new ClassCastException(context.toString() + "must implement bottomsheet Listener");
         }
+    }
+
+
+    private void getProduk(String id) {
+
+        String token = "Bearer " + Preference.getToken(getContext());
+        Api api = RetroClient.getApiServices();
+        Call<ResponTV> call = api.getProdukTV(token, id);
+        call.enqueue(new Callback<ResponTV>() {
+            @Override
+            public void onResponse(Call<ResponTV> call, Response<ResponTV> response) {
+
+                modelTVS = response.body().getData();
+                adapterTV = new AdapterTV(getContext(), modelTVS);
+                recyclerView.setAdapter(adapterTV);
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponTV> call, Throwable t) {
+                Toast.makeText(getContext(), "Gagal", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
     }
 }

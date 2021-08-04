@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.c.dompetabata.Helper.utils;
 import com.c.dompetabata.R;
 import com.c.dompetabata.sharePreference.Preference;
 
@@ -29,7 +30,7 @@ public class BayarSales extends AppCompatActivity {
         a= this;
 
         saldokusales = findViewById(R.id.saldokusales);
-        saldokusales.setText(Preference.getSaldoku(getApplicationContext()));
+        saldokusales.setText(utils.ConvertRP( Preference.getSaldoku(getApplicationContext())));
         idbayarsaldokuButton = findViewById(R.id.idbayarsaldokuButton);
 
         idbayarsaldokuButton.setOnClickListener(v -> {

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_ubahpin"
+    android:orientation="vertical"
+    android:padding="25dp"
+    tools:context=".menuUtama.PaketData.PulsaPrabayar.DetailTransaksiPulsaPra">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/mukta"
+        android:text="Informasi Transaksi"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/RelativeLayout01"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:padding="6dp">
+
+        <TextView
+            android:id="@+id/mytextview1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="Nomor Tujuan" />
+
+        <TextView
+            android:id="@+id/nomortujuanP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="N/A" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/RelativeNamaPelanggan"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/namapelanggann"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="-1dp"
+            android:padding="6dp"
+            android:visibility="gone"
+            android:text="Nama Pelanggan" />
+
+        <TextView
+            android:id="@+id/namaPelanggan"
+            android:layout_width="270sp"
+            android:padding="6dp"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Hardi Kusuma"
+            android:textAlignment="textEnd" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:padding="6dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="Nama" />
+
+        <TextView
+            android:id="@+id/ProdukP"
+            android:layout_width="270sp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="N/A"
+            android:textAlignment="textEnd" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:padding="6dp">
+
+        <TextView
+            android:id="@+id/produk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="Tagihan" />
+
+        <TextView
+            android:id="@+id/tagihanP"
+            android:layout_width="270sp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Rp.0"
+            android:textAlignment="textEnd" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
+        android:fontFamily="@font/mukta"
+        android:text="Status Transaksi"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:padding="6dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="Status" />
+
+        <TextView
+            android:id="@+id/statusP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="N/A" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:padding="6dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="Deskripsi" />
+
+        <TextView
+            android:id="@+id/deskripsiP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="N/A" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginHorizontal="6dp"
+        android:background="@drawable/dash" />
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:padding="6dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="Harga"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/hargaP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Rp.0"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/tutupdetaill"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_margin="6dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_button_login3"
+            android:text="Tutup"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/konfirmasidetaill"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_margin="6dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_button_login2"
+            android:text="Bayar"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+</LinearLayout>
+
+
