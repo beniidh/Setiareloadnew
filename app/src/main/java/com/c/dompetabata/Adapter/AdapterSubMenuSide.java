@@ -22,6 +22,7 @@ import com.c.dompetabata.DaftarHarga.DaftarHarga_activity;
 import com.c.dompetabata.Fragment.TransaksiFragment;
 import com.c.dompetabata.KodeProduk.Kodeprodukact;
 import com.c.dompetabata.Kodeproduk;
+import com.c.dompetabata.MarkUP.markup;
 import com.c.dompetabata.Model.MSubMenu;
 import com.c.dompetabata.Notifikasi.Notifikasi_Activity;
 import com.c.dompetabata.PengajuanLimit.PengajuanDompet;
@@ -145,6 +146,13 @@ public class AdapterSubMenuSide extends RecyclerView.Adapter<AdapterSubMenuSide.
                     FragmentTransaction fragmentTransaction2 = fm3.beginTransaction();
                     fragmentTransaction2.replace(R.id.fLayout, fragment1);
                     fragmentTransaction2.commit(); // save the change
+                    drawer_activity.LinDaftarHarga();
+                    break;
+                }
+                case "mark_up": {
+                    Intent intent = new Intent(context, markup.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
                     drawer_activity.LinDaftarHarga();
                     break;
                 }

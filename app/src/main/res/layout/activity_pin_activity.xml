@@ -61,6 +61,8 @@
             android:id="@+id/gantipin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingHorizontal="18sp"
+            android:gravity="center"
             android:fontFamily="@font/mukta"
             android:text="3 Kali kesempatan memasukan PIN"
             android:textColor="@color/gray4"
@@ -69,7 +71,6 @@
             />
         <TextView
             android:id="@+id/warningpinsalah"
-            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/mukta"

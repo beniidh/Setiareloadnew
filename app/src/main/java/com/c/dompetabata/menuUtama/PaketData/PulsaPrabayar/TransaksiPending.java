@@ -1,7 +1,9 @@
 package com.c.dompetabata.menuUtama.PaketData.PulsaPrabayar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.Html;
@@ -15,6 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.c.dompetabata.Api.Api;
+import com.c.dompetabata.CetakStruk.DetailTransaksiTruk;
+import com.c.dompetabata.CetakStruk.cetak;
 import com.c.dompetabata.Helper.LoadingPrimer;
 import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.Helper.utils;
@@ -31,10 +35,12 @@ public class TransaksiPending extends AppCompatActivity {
 
     ImageView expand;
     LinearLayout linearExpand;
-    TextView KeteranganTP, noSN, hargaprodukTP, nomorTP, nominalTP, saldokuterpakai, tanggalDetail, waktuDetail, NomorTransaksiDetail, hargatotalDetail;
-    Button tutuppending, refreshstatus;
+    TextView KeteranganTP,produkTransaksi, noSN, hargaprodukTP, nomorTP, nominalTP, saldokuterpakai, tanggalDetail, waktuDetail, NomorTransaksiDetail, hargatotalDetail;
+    Button tutuppending, cetakStruk;
     ImageView iconTP, iconTPP;
     LoadingPrimer loadingPrimer;
+    SwipeRefreshLayout swipeTransaksi;
+    String harga;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,18 +57,34 @@ public class TransaksiPending extends AppCompatActivity {
         nominalTP = findViewById(R.id.nominalTP);
         tutuppending = findViewById(R.id.tutuppending);
         iconTP = findViewById(R.id.iconTP);
+        produkTransaksi = findViewById(R.id.produkTransaksi);
         iconTPP = findViewById(R.id.iconTPP);
         noSN = findViewById(R.id.noSN);
-        refreshstatus = findViewById(R.id.refreshstatus);
+        cetakStruk = findViewById(R.id.refreshstatus);
 
+        swipeTransaksi = findViewById(R.id.swipeTransaksi);
         String transaksiid = getIntent().getStringExtra("transaksid");
         loadingPrimer = new LoadingPrimer(TransaksiPending.this);
+        swipeTransaksi.setOnRefreshListener(() -> {
+            ChekTransaksi(transaksiid);
+            swipeTransaksi.setRefreshing(false);
+        });
 
         ChekTransaksi(transaksiid);
-        refreshstatus.setOnClickListener(new View.OnClickListener() {
+        cetakStruk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ChekTransaksi(transaksiid);
+
+                Intent intent = new Intent(TransaksiPending.this, DetailTransaksiTruk.class);
+                intent.putExtra("nomor", nomorTP.getText().toString());
+                intent.putExtra("produk", produkTransaksi.getText().toString());
+                intent.putExtra("harga", getHarga());
+                intent.putExtra("tanggal", tanggalDetail.getText().toString());
+                intent.putExtra("waktu", waktuDetail.getText().toString());
+                intent.putExtra("sn", noSN.getText().toString());
+                intent.putExtra("transaksid", NomorTransaksiDetail.getText().toString());
+                startActivity(intent);
+
             }
         });
 
@@ -73,39 +95,32 @@ public class TransaksiPending extends AppCompatActivity {
         hargatotalDetail = findViewById(R.id.hargatotalDetail);
 
         if (Preference.getIconUrl(getApplicationContext()).isEmpty()) {
-            iconTP.setBackground(getDrawable(R.drawable.listrik));
+            iconTP.setBackground(getDrawable(R.drawable.logoapkcsoft));
         } else {
 
             Picasso.get().load(Preference.getIconUrl(getApplicationContext())).into(iconTP);
         }
 
-        tutuppending.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String code = getIntent().getStringExtra("code");
+        tutuppending.setOnClickListener(v -> {
+            String code = getIntent().getStringExtra("code");
 
-                if (code == null) {
+            if (code == null) {
+
+                finish();
+                KonfirmasiPembayaran.konifirmpembayaran.finish();
+
+            } else {
+
+                if (code.equals("saldo")) {
 
                     finish();
-                    KonfirmasiPembayaran.konifirmpembayaran.finish();
-
-                } else {
-
-                    if (code.equals("saldo")) {
-
-                        finish();
-                    }
                 }
-
-
             }
+
+
         });
 
 
-//        KeteranganTP.setText(getIntent().getStringExtra("pesan"));
-//        hargaprodukTP.setText(utils.ConvertRP(getIntent().getStringExtra("hargatotal")));
-//        nominalTP.setText(utils.ConvertRP(getIntent().getStringExtra("hargatotal")));
-//        nomorTP.setText(getIntent().getStringExtra("nomorcustomer"));
         expand.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -180,7 +195,7 @@ public class TransaksiPending extends AppCompatActivity {
                     if (status.equals("SUKSES")) {
                         KeteranganTP.setTextColor(getColor(R.color.green));
                         iconTPP.setBackground(getDrawable(R.drawable.check));
-
+                        cetakStruk.setVisibility(View.VISIBLE);
                     } else if (status.equals("GAGAL")) {
                         KeteranganTP.setTextColor(getColor(R.color.red));
                         iconTPP.setBackground(getDrawable(R.drawable.failed));
@@ -197,16 +212,21 @@ public class TransaksiPending extends AppCompatActivity {
                     String jam = create.substring(11, 16);
                     tanggalDetail.setText(hari + " " + bulan + " " + tahun);
                     waktuDetail.setText(jam);
+                    produkTransaksi.setText(response.body().getData().getProduct_name());
                     NomorTransaksiDetail.setText(response.body().getData().getId());
                     noSN.setText(response.body().getData().getSn());
                     hargatotalDetail.setText(utils.ConvertRP(response.body().getData().getTotal_price()));
+                    setHarga(response.body().getData().getTotal_price());
                     loadingPrimer.dismissDialog();
 
 
-                } else {
+                } else if(response.body().getCode().equals("401")){
+                    Toast.makeText(getApplicationContext(),"Token telah berakhir,silahkan login ulang",Toast.LENGTH_LONG).show();
 
-                    Toast.makeText(getApplicationContext(), response.body().getError(), Toast.LENGTH_SHORT).show();
                     loadingPrimer.dismissDialog();
+                }else {
+                    loadingPrimer.dismissDialog();
+
                 }
 
             }
@@ -219,5 +239,13 @@ public class TransaksiPending extends AppCompatActivity {
         });
 
 
+    }
+
+    public String getHarga() {
+        return harga;
+    }
+
+    public void setHarga(String harga) {
+        this.harga = harga;
     }
 }

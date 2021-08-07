@@ -1,5 +1,6 @@
 package com.c.dompetabata.CetakStruk;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.res.ResourcesCompat;
@@ -25,8 +26,10 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.text.Html;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,6 +57,9 @@ public class DetailTransaksiTruk extends AppCompatActivity {
 
     TextView title;
 
+    TextView idNomorStruk, idProdukStruk, hargastruk, idSaldokuStruk, idTanggalStruk, idWaktuStruk, idNomorSNStruk, idNomorTransaksiStruk, idTotalPembelianStruk;
+
+
     Button setHargaJual;
 
     @Override
@@ -68,22 +74,54 @@ public class DetailTransaksiTruk extends AppCompatActivity {
         StrictMode.setVmPolicy(builder.build());
 
         setHargaJual = findViewById(R.id.setHargaJual);
+        idNomorStruk = findViewById(R.id.idNomorStruk);
+        idProdukStruk = findViewById(R.id.idProdukStruk);
+        idSaldokuStruk = findViewById(R.id.idSaldokuStruk);
+        idTanggalStruk = findViewById(R.id.idTanggalStruk);
+        idWaktuStruk = findViewById(R.id.idWaktuStruk);
+        idNomorSNStruk = findViewById(R.id.idNomorSNStruk);
+        idNomorTransaksiStruk = findViewById(R.id.idNomorTransaksiStruk);
+        idTotalPembelianStruk = findViewById(R.id.idTotalPembelianStruk);
+        hargastruk = findViewById(R.id.hargastruk);
+        title = findViewById(R.id.titlestruk);
+        idNomorStruk.setText(getIntent().getStringExtra("nomor"));
+        idProdukStruk.setText(getIntent().getStringExtra("produk"));
+        idSaldokuStruk.setText(utils.ConvertRP(getIntent().getStringExtra("harga")));
+        idTanggalStruk.setText(getIntent().getStringExtra("tanggal"));
+        idWaktuStruk.setText(getIntent().getStringExtra("waktu"));
+        idNomorSNStruk.setText(getIntent().getStringExtra("sn"));
+        idNomorTransaksiStruk.setText(getIntent().getStringExtra("transaksid"));
+        idTotalPembelianStruk.setText(utils.ConvertRP(getIntent().getStringExtra("harga")));
+        hargastruk.setText(utils.ConvertRP(getIntent().getStringExtra("harga")));
+        title.setText(getIntent().getStringExtra("produk"));
 
         setHargaJual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                savePDF();
-                Toast.makeText(DetailTransaksiTruk.this, getMacAddress(), Toast.LENGTH_SHORT).show();
+                popUpMenuSetHargajual();
+
             }
+
         });
 
-        title = findViewById(R.id.titlestruk);
+
         Button cetakPDF = findViewById(R.id.cetakPDF);
         cetakPDF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                createpdf();
+                Intent intent = new Intent(DetailTransaksiTruk.this, cetak.class);
+                intent.putExtra("nomor", idNomorStruk.getText().toString());
+                intent.putExtra("produk", idProdukStruk.getText().toString());
+                intent.putExtra("hargajual", idTotalPembelianStruk.getText().toString());
+                intent.putExtra("tanggal", idTanggalStruk.getText().toString());
+                intent.putExtra("waktu", idWaktuStruk.getText().toString());
+                intent.putExtra("sn", idNomorSNStruk.getText().toString());
+                intent.putExtra("title", title.getText().toString());
+                intent.putExtra("transaksid", idNomorTransaksiStruk.getText().toString());
+                startActivity(intent);
+
+//                createpdf();
             }
         });
 
@@ -112,7 +150,6 @@ public class DetailTransaksiTruk extends AppCompatActivity {
 
 
     public void createpdf() {
-
 
         Rect bounds = new Rect();
         int pageWidth = 300;
@@ -220,7 +257,7 @@ public class DetailTransaksiTruk extends AppCompatActivity {
 
     public void savePDF() {
 
-        PdfDocument pdfDocument  = new PdfDocument();
+        PdfDocument pdfDocument = new PdfDocument();
         PdfDocument.PageInfo mypageInfo = new PdfDocument.PageInfo.Builder(300, 400, 1).create();
 
         // below line is used for setting
@@ -228,14 +265,18 @@ public class DetailTransaksiTruk extends AppCompatActivity {
         PdfDocument.Page myPage = pdfDocument.startPage(mypageInfo);
 
 
-        String directory_path = Environment.getExternalStorageDirectory()+ "mypdfyuhu.pdf";
+        String directory_path = Environment.getExternalStorageDirectory() + "bismm.pdf";
 
         pdfDocument.finishPage(myPage);
-        File file = new File( Environment.getDataDirectory(), "mypdfyuhu.pdf");
+        File file = new File(Environment.getExternalStorageDirectory(), "bismillah.pdf");
+        File dir = new File(getApplicationContext().getFilesDir(), "bismillah.pdf");
 
 
         try {
-            pdfDocument .writeTo(new FileOutputStream(file));
+
+            pdfDocument.writeTo(new FileOutputStream(file));
+            Toast.makeText(getApplicationContext(), "File Tersimpan pada internal memory, dengan nama", Toast.LENGTH_LONG).show();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -277,6 +318,29 @@ public class DetailTransaksiTruk extends AppCompatActivity {
     private String getMacAddress() {
         String MAC = utils.getMACAddress("wlan0");//phone if pc use eth0 if phone wlan0
         return MAC;
+
+    }
+
+    public void popUpMenuSetHargajual() {
+
+        final AlertDialog dialogBuilder = new AlertDialog.Builder(DetailTransaksiTruk.this).create();
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.set_hargajual, null);
+
+        EditText editText = (EditText) dialogView.findViewById(R.id.edithargajual);
+        Button button1 = (Button) dialogView.findViewById(R.id.buttonCancelhargajual);
+        Button button2 = (Button) dialogView.findViewById(R.id.buttonSavehargajual);
+
+        button1.setOnClickListener(view -> dialogBuilder.dismiss());
+        button2.setOnClickListener(view -> {
+            // DO SOMETHINGS
+            String harga = utils.ConvertRP(editText.getText().toString());
+            idTotalPembelianStruk.setText(harga);
+            dialogBuilder.dismiss();
+
+        });
+        dialogBuilder.setView(dialogView);
+        dialogBuilder.show();
 
     }
 

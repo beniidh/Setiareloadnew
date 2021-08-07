@@ -1,7 +1,12 @@
 package com.c.dompetabata.Api;
 
+import com.c.dompetabata.CetakStruk.ResponStruk;
+import com.c.dompetabata.DaftarHarga.ResponProdukDH;
+import com.c.dompetabata.DaftarHarga.ResponProdukList;
+import com.c.dompetabata.DaftarHarga.ResponSubProdukDH;
 import com.c.dompetabata.Fragment.RiwayatTransaksi.ResponTransaksi;
 import com.c.dompetabata.Model.MResestPIN;
+import com.c.dompetabata.Model.mResetPassword;
 import com.c.dompetabata.PengajuanLimit.ResponPengajuan;
 import com.c.dompetabata.PengajuanLimit.SendPengajuan;
 import com.c.dompetabata.PersetujuanSaldoSales.ResponPersetujuan;
@@ -21,6 +26,7 @@ import com.c.dompetabata.Respon.ResponMenu;
 import com.c.dompetabata.Respon.ResponMenuUtama;
 import com.c.dompetabata.Respon.ResponPost;
 import com.c.dompetabata.Respon.ResponProfil;
+import com.c.dompetabata.Respon.ResponResetPassword;
 import com.c.dompetabata.Respon.ResponResetPin;
 import com.c.dompetabata.Respon.ResponSubCategory;
 import com.c.dompetabata.Respon.ResponSubCategoryPln;
@@ -38,6 +44,7 @@ import com.c.dompetabata.SaldoServer.Responn;
 import com.c.dompetabata.TambahKonter.ResponTambahKonter;
 import com.c.dompetabata.TambahKonter.SendDataKonter;
 import com.c.dompetabata.TopUpSaldoku.ReqSaldoku;
+import com.c.dompetabata.TopUpSaldoku.ResponTopUp;
 import com.c.dompetabata.Transaksi.MInquiry;
 import com.c.dompetabata.Transaksi.ResponInquiry;
 import com.c.dompetabata.menuUtama.PaketData.AngsuranKredit.ResponAngsuran;
@@ -105,49 +112,54 @@ public interface Api {
 
     @Multipart
     @POST("ekyc-idcard")
-    Call<Responphoto> uploadImage(@Part MultipartBody.Part image,@Part("id") RequestBody id);
+    Call<Responphoto> uploadImage(@Part MultipartBody.Part image, @Part("id") RequestBody id);
 
     @Multipart
     @POST("ekyc-selfie")
-    Call<Responphoto> uploadImageDiri(@Part MultipartBody.Part image,@Part("id") RequestBody id);
+    Call<Responphoto> uploadImageDiri(@Part MultipartBody.Part image, @Part("id") RequestBody id);
 
     @Multipart
     @POST("ekyc-idcardselfie")
-    Call<Responphoto> uploadImageDiridanKTP(@Part MultipartBody.Part image,@Part("id") RequestBody id);
+    Call<Responphoto> uploadImageDiridanKTP(@Part MultipartBody.Part image, @Part("id") RequestBody id);
+
+    @Multipart
+    @POST("photo-upload")
+    Call<ResponTopUp> uploadBuktiBayar(@Header("X-Signature") String token,@Part MultipartBody.Part image, @Part("type") RequestBody type, @Part("primary_id") RequestBody primary_id);
 
     @GET("all-province?next=39")
     Call<Respon> getAllProvinsi();
 
     @GET("profile")
-    Call<Mlogin> getProfile(@Header("X-Signature")String token);
+    Call<Mlogin> getProfile(@Header("X-Signature") String token);
 
     @GET("banner/user/052f96d0-78a2-4df7-a9df-134484ca1446")
-    Call<ResponBanner> getBanner(@Header("X-Signature")String token);
+    Call<ResponBanner> getBanner(@Header("X-Signature") String token);
 
     @GET("profile")
-    Call<ResponProfil> getProfileDas(@Header("X-Signature")String token);
+    Call<ResponProfil> getProfileDas(@Header("X-Signature") String token);
 
     @GET("all-product-category")
-    Call<ResponMenu> getAllProduct(@Header("X-Signature")String token);
+    Call<ResponMenu> getAllProduct(@Header("X-Signature") String token);
 
     @POST("set-pin")
-    Call<MsetPIN> SetPIN(@Header("X-Signature")String token, @Body MsetPIN msetPIN);
+    Call<MsetPIN> SetPIN(@Header("X-Signature") String token, @Body MsetPIN msetPIN);
 
     @POST("pengajuan-dompet")
-    Call<SendPengajuan> SetPengajuanLimit(@Header("X-Signature")String token, @Body SendPengajuan pengajuan);
+    Call<SendPengajuan> SetPengajuanLimit(@Header("X-Signature") String token, @Body SendPengajuan pengajuan);
 
 
     @POST("request-paylater")
-    Call<SendPengajuan> SetPayLetter(@Header("X-Signature")String token, @Body SendPengajuan pengajuan);
+    Call<SendPengajuan> SetPayLetter(@Header("X-Signature") String token, @Body SendPengajuan pengajuan);
 
     @GET("request-paylater")
-    Call<Responn> GetPayLetter(@Header("X-Signature")String token);
+    Call<Responn> GetPayLetter(@Header("X-Signature") String token);
 
     @GET("pengajuan-dompet")
-    Call<ResponPengajuan> getPengajuanDompet(@Header("X-Signature")String token);
+    Call<ResponPengajuan> getPengajuanDompet(@Header("X-Signature") String token);
 
     @POST("auth-check")
     Call<Mphone> ChekPhone(@Body Mphone mphone);
+
     @GET("regencies/province/{id}")
     Call<ResponK> getAllKabupaten(@Path("id") long id);
 
@@ -162,7 +174,7 @@ public interface Api {
     Call<ResponKEditKab> getKabupatenById(@Path("id") long id);
 
     @GET("product/sub-category/{id}")
-    Call<ResponPulsaPra> getProdukPulsaPraById(@Header("X-Signature")String token,@Path("id") String id);
+    Call<ResponPulsaPra> getProdukPulsaPraById(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("districts/{id}")
     Call<ResponEditKec> getKecamatanById(@Path("id") long id);
@@ -175,7 +187,7 @@ public interface Api {
 
 
     @GET("product-subcategory/prefix/{id}/{prefix}")
-    Call<ResponSubCategory> getSubPrdoductByPrefix(@Header("X-Signature")String token,@Path("prefix") String prefix,@Path("id") String id);
+    Call<ResponSubCategory> getSubPrdoductByPrefix(@Header("X-Signature") String token, @Path("prefix") String prefix, @Path("id") String id);
 
     @GET("sub-districts/districts/{id}")
     Call<Responkel> getAllKelurahan(@Path("id") long id);
@@ -184,125 +196,139 @@ public interface Api {
     Call<ResponPost> getAllPost(@Path("id") long id);
 
     @GET("all-product-category?$limit=9&$order=urutan&status=1")
-    Call<ResponMenuUtama> getAllMenu(@Header("X-Signature")String token);
+    Call<ResponMenuUtama> getAllMenu(@Header("X-Signature") String token);
 
     @GET("all-product-category?$limit=&$order=urutan&status=1")
-    Call<ResponMenuUtama> getAllMenu2(@Header("X-Signature")String token);
+    Call<ResponMenuUtama> getAllMenu2(@Header("X-Signature") String token);
 
     @GET("product-subcategory/category/{id}")
-    Call<ResponSubP> getSubCategoryPLN(@Header("X-Signature")String token, @Path("id") String id);
+    Call<ResponSubP> getSubCategoryPLN(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("product/sub-category/{id}")
-    Call<ResponListrikPln> getProdukPLNListrik(@Header("X-Signature")String token, @Path("id") String id);
+    Call<ResponListrikPln> getProdukPLNListrik(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("product/sub-category/{id}")
-    Call<ResponListrikPlnPasca> getProdukPLNListrikPasca(@Header("X-Signature")String token, @Path("id") String id);
+    Call<ResponListrikPlnPasca> getProdukPLNListrikPasca(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("product-subcategory/category/{id}")
-    Call<ResponVoucherGame> getProdukVoucherGame(@Header("X-Signature")String token, @Path("id") String id);
+    Call<ResponVoucherGame> getProdukVoucherGame(@Header("X-Signature") String token, @Path("id") String id);
 
     @POST("request-saldoku")
-    Call<ReqSaldoku> AddRequestSaldoku(@Header("X-Signature")String token,  @Body ReqSaldoku saldoku);
+    Call<ReqSaldoku> AddRequestSaldoku(@Header("X-Signature") String token, @Body ReqSaldoku saldoku);
 
     @POST("set-pin")
-    Call<MPin> UbahPin(@Header("X-Signature")String token, @Body MPin mPin);
+    Call<MPin> UbahPin(@Header("X-Signature") String token, @Body MPin mPin);
 
     @POST("inquiry")
-    Call<ResponInquiry> CekInquiry(@Header("X-Signature")String token, @Body MInquiry mInquiry);
+    Call<ResponInquiry> CekInquiry(@Header("X-Signature") String token, @Body MInquiry mInquiry);
 
     @POST("approve-paylater")
-    Call<ResponPersetujuan> sendDataPersetujuan(@Header("X-Signature")String token, @Body SendDataPersetujuan sendDataPersetujuan);
+    Call<ResponPersetujuan> sendDataPersetujuan(@Header("X-Signature") String token, @Body SendDataPersetujuan sendDataPersetujuan);
 
     @GET("approve-paylater")
-    Call<ResponPersetujuanSaldo> getDataAprroval(@Header("X-Signature")String token);
+    Call<ResponPersetujuanSaldo> getDataAprroval(@Header("X-Signature") String token);
 
     @POST("register-konter")
-    Call<ResponTambahKonter> registerKonter(@Header("X-Signature")String token, @Body SendDataKonter sendDataKonter);
+    Call<ResponTambahKonter> registerKonter(@Header("X-Signature") String token, @Body SendDataKonter sendDataKonter);
 
     @POST("reset-pin")
-    Call<ResponResetPin> resetPIN(@Header("X-Signature")String token, @Body MResestPIN mResestPIN);
+    Call<ResponResetPin> resetPIN(@Header("X-Signature") String token, @Body MResestPIN mResestPIN);
 
     @POST("transaction")
-    Call<ResponTransaksiPulsaPra> transalsiPulsaPra(@Header("X-Signature")String token, @Body MTransaksiPraPulsa mTransaksiPraPulsa);
+    Call<ResponTransaksiPulsaPra> transalsiPulsaPra(@Header("X-Signature") String token, @Body MTransaksiPraPulsa mTransaksiPraPulsa);
 
     @GET("transaction/status/{id}")
-    Call<Mchek> CekTransaksi(@Header("X-Signature")String token, @Path("id") String id);
+    Call<Mchek> CekTransaksi(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("product-subcategory/category/{id}")
-    Call<ResponProdukSmsTelp> getProdukSmsTelpon(@Header("X-Signature")String token, @Path("id") String id);
+    Call<ResponProdukSmsTelp> getProdukSmsTelpon(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("product/sub-category/{id}")
-    Call<ResponSmsTelpon> getProdukSMST(@Header("X-Signature")String token, @Path("id") String id);
+    Call<ResponSmsTelpon> getProdukSMST(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("product/sub-category/{id}")
-    Call<ResponPaketData> getPaketDataProduk(@Header("X-Signature")String token, @Path("id") String id);
+    Call<ResponPaketData> getPaketDataProduk(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("product-subcategory/prefix/{id}/{prefix}")
-    Call<ResponPulsaPasca> getSubPulsaPascaByPrefix(@Header("X-Signature")String token, @Path("prefix") String prefix, @Path("id") String id);
+    Call<ResponPulsaPasca> getSubPulsaPascaByPrefix(@Header("X-Signature") String token, @Path("prefix") String prefix, @Path("id") String id);
 
     @GET("product/sub-category/{id}")
-    Call<ResponProdukSubPPasca> getProdukPulsaPasca(@Header("X-Signature")String token, @Path("id") String id);
+    Call<ResponProdukSubPPasca> getProdukPulsaPasca(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("product/sub-category/{id}")
-    Call<ResponProdukVoucher> getProdukVG(@Header("X-Signature")String token, @Path("id") String id);
+    Call<ResponProdukVoucher> getProdukVG(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("product-subcategory/category/{id}")
-    Call<ResponUangElektronik> getProdukCategoryUE(@Header("X-Signature")String token, @Path("id") String id);
+    Call<ResponUangElektronik> getProdukCategoryUE(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("transaction/history")
-    Call<ResponTransaksi> getHistoriTransaksi(@Header("X-Signature")String token);
+    Call<ResponTransaksi> getHistoriTransaksi(@Header("X-Signature") String token);
+
+    @GET("transaction/history")
+    Call<ResponStruk> getHistoriStruk(@Header("X-Signature") String token);
 
     @GET("product/sub-category/{id}")
-    Call<ResponProdukUE> getProdukUE(@Header("X-Signature")String token, @Path("id") String id);
+    Call<ResponProdukUE> getProdukUE(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("product-subcategory/category/{id}")
-    Call<ResponAir> getProdukCategoryAir(@Header("X-Signature")String token, @Path("id") String id);
+    Call<ResponAir> getProdukCategoryAir(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("product/sub-category/{id}")
-    Call<ResponProdukAir> getProdukAir(@Header("X-Signature")String token, @Path("id") String id);
+    Call<ResponProdukAir> getProdukAir(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("product-subcategory/category/{id}")
-    Call<ResponIntenet> getProdukInternet(@Header("X-Signature")String token, @Path("id") String id);
+    Call<ResponIntenet> getProdukInternet(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("product/sub-category/{id}")
-    Call<ResponProdukInternet> getProdukInternetsub(@Header("X-Signature")String token, @Path("id") String id);
+    Call<ResponProdukInternet> getProdukInternetsub(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("product-subcategory/category/{id}")
-    Call<ResponTV> getProdukTV(@Header("X-Signature")String token, @Path("id") String id);
+    Call<ResponTV> getProdukTV(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("product/sub-category/{id}")
-    Call<ResponProdukTV> getProdukTVsub(@Header("X-Signature")String token, @Path("id") String id);
+    Call<ResponProdukTV> getProdukTVsub(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("product-subcategory/category/{id}")
-    Call<ResponVoucher> getProdukVoucher(@Header("X-Signature")String token, @Path("id") String id);
+    Call<ResponVoucher> getProdukVoucher(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("product/sub-category/{id}")
-    Call<ResponProdukVoucherv> getProdukVoucherSub(@Header("X-Signature")String token, @Path("id") String id);
+    Call<ResponProdukVoucherv> getProdukVoucherSub(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("product-subcategory/category/{id}")
-    Call<ResponBPJS> getProdukBpjs(@Header("X-Signature")String token, @Path("id") String id);
+    Call<ResponBPJS> getProdukBpjs(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("product/sub-category/{id}")
-    Call<ResponProdukBPJS> getProdukBpjsSub(@Header("X-Signature")String token, @Path("id") String id);
+    Call<ResponProdukBPJS> getProdukBpjsSub(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("product-subcategory/category/{id}")
-    Call<ResponAngsuran> getProdukAngsuran(@Header("X-Signature")String token, @Path("id") String id);
+    Call<ResponAngsuran> getProdukAngsuran(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("product/sub-category/{id}")
-    Call<ResponProdukAngsuran> getProdukAngsuranSub(@Header("X-Signature")String token, @Path("id") String id);
+    Call<ResponProdukAngsuran> getProdukAngsuranSub(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("product-subcategory/category/{id}")
-    Call<ResponPajak> getProdukPajak(@Header("X-Signature")String token, @Path("id") String id);
+    Call<ResponPajak> getProdukPajak(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("product/sub-category/{id}")
-    Call<ResponProdukPBB> getProdukPBBSub(@Header("X-Signature")String token, @Path("id") String id);
+    Call<ResponProdukPBB> getProdukPBBSub(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("product-subcategory/category/{id}")
-    Call<ResponGasnegara> getProdukGas(@Header("X-Signature")String token, @Path("id") String id);
+    Call<ResponGasnegara> getProdukGas(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("product/sub-category/{id}")
-    Call<ResponProdukGasnegara> getProdukGasSub(@Header("X-Signature")String token, @Path("id") String id);
+    Call<ResponProdukGasnegara> getProdukGasSub(@Header("X-Signature") String token, @Path("id") String id);
 
+    @GET("all-product-category?$limit=0&$order=urutan&status=1")
+    Call<ResponProdukDH> getProdukDH(@Header("X-Signature") String token);
+
+    @GET("product-subcategory/category/{id}")
+    Call<ResponSubProdukDH> getProdukDHsub(@Header("X-Signature") String token, @Path("id") String id);
+
+    @GET("product/sub-category/{id}")
+    Call<ResponProdukList> getProdukDHList(@Header("X-Signature") String token, @Path("id") String id);
+
+    @POST("reset-password")
+    Call<ResponResetPassword> resetPassword(@Body mResetPassword mResest);
 
 
 }

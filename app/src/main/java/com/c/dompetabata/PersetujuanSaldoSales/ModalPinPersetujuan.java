@@ -96,7 +96,7 @@ public class ModalPinPersetujuan extends BottomSheetDialogFragment {
         String id = getArguments().getString("ID");
         String status = getArguments().getString("STATUS");
         Api api = RetroClient.getApiServices();
-        SendDataPersetujuan sendDataPersetujuan = new SendDataPersetujuan(id,pin,status, Value.getMacAddress(),Value.getIPaddress(),Value.getUserAgent(getContext()),gpsTracker.getLatitude(),gpsTracker.getLongitude());
+        SendDataPersetujuan sendDataPersetujuan = new SendDataPersetujuan(id,utils.hmacSha(pin),status, Value.getMacAddress(),Value.getIPaddress(),Value.getUserAgent(getContext()),gpsTracker.getLatitude(),gpsTracker.getLongitude());
         Call<ResponPersetujuan> call = api.sendDataPersetujuan(token,sendDataPersetujuan);
         call.enqueue(new Callback<ResponPersetujuan>() {
             @Override
@@ -110,7 +110,7 @@ public class ModalPinPersetujuan extends BottomSheetDialogFragment {
 
                 }else {
 
-                    StyleableToast.makeText(getContext(),response.body().error,Toast.LENGTH_SHORT,R.style.mytoast2).show();
+                    StyleableToast.makeText(getContext(),response.body().getError(),Toast.LENGTH_SHORT,R.style.mytoast2).show();
                 }
 
             }

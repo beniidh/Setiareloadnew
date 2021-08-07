@@ -58,7 +58,7 @@
 
     <LinearLayout
         android:id="@+id/LinearpPasca"
-        android:visibility="invisible"
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/linearLayout7"

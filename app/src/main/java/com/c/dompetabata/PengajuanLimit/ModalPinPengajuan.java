@@ -82,7 +82,7 @@ public class ModalPinPengajuan extends BottomSheetDialogFragment {
 
         SendPengajuan pengajuan = new SendPengajuan(pin, mac_address, ip_address, user_agent, latitude, longitude, amount);
 
-        Call<SendPengajuan> call = api.SetPengajuanLimit(token, pengajuan);
+        Call<SendPengajuan> call = api.SetPayLetter(token, pengajuan);
         call.enqueue(new Callback<SendPengajuan>() {
             @Override
             public void onResponse(Call<SendPengajuan> call, Response<SendPengajuan> response) {
@@ -95,7 +95,7 @@ public class ModalPinPengajuan extends BottomSheetDialogFragment {
 
                 } else {
 
-                    StyleableToast.makeText(getContext(), "Pin anda salah", Toast.LENGTH_SHORT, R.style.mytoast).show();
+                    StyleableToast.makeText(getContext(), response.body().getError(), Toast.LENGTH_SHORT, R.style.mytoast).show();
                 }
 
             }

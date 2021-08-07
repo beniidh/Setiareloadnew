@@ -287,7 +287,7 @@ public class Register_activity extends AppCompatActivity implements ModalProvins
         String Email = email.getText().toString();
         String alamat = alamatregis.getText().toString();
         String parent = referal.getText().toString();
-
+        String serveridd = serverid.getText().toString();
         String IpAddres = getIPaddress();
         String MacAddres = Value.getMacAddress();
         String useragent = getUserAgent();
@@ -311,7 +311,7 @@ public class Register_activity extends AppCompatActivity implements ModalProvins
                 public void onComplete(@NonNull Task<String> task) {
                     String deviceToken = task.getResult();
 
-            MRegister register = new MRegister(name,deviceToken, Email, Phone, Store_name, MacAddres, IpAddres, alamat, parent, useragent, province, Regencie, district, subdistrict, postalCode, longlitude, latitude);
+            MRegister register = new MRegister(name,deviceToken, Email, Phone, Store_name, MacAddres, IpAddres, alamat, parent, useragent, province, Regencie, district, subdistrict, postalCode, longlitude, latitude,serveridd);
             Api api = RetroClient.getApiServices();
             Call<MRegister> call = api.Register(register);
 

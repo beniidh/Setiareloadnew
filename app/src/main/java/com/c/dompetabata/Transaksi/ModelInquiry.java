@@ -1,13 +1,15 @@
 package com.c.dompetabata.Transaksi;
 
+import java.util.ArrayList;
+
 public class ModelInquiry {
 
     String buyer_sku_code,customer_no,customer_name,inquiry_type,ref_id,basic_price,markup_price,selling_price,status,description,user_id,sales_id,server_id,mac_address,ip_address,user_agent,created_at;
     double longitude,latitude;
 
-    detail detail_product;
+    detaill detail_product;
 
-    public detail getDetail_product() {
+    public detaill getDetail_product() {
         return detail_product;
     }
 
@@ -87,9 +89,14 @@ public class ModelInquiry {
         return latitude;
     }
 
-    public class detail{
+    public class detaill{
 
-         String  tarif,daya,lembar_tagihan,detail;
+         String  tarif,daya,lembar_tagihan;
+         ArrayList<mDetail> detail;
+
+        public ArrayList<mDetail> getDetail() {
+            return detail;
+        }
 
         public  String getTarif() {
             return tarif;
@@ -103,9 +110,28 @@ public class ModelInquiry {
             return lembar_tagihan;
         }
 
-        public String getDetail() {
-            return detail;
+
+        public class mDetail{
+
+            String periode,nilai_tagihan,admin,denda;
+
+            public String getPeriode() {
+                return periode;
+            }
+
+            public String getNilai_tagihan() {
+                return nilai_tagihan;
+            }
+
+            public String getAdmin() {
+                return admin;
+            }
+
+            public String getDenda() {
+                return denda;
+            }
         }
+
     }
 }
 

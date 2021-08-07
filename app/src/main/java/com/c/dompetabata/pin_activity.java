@@ -145,16 +145,19 @@ public class pin_activity extends AppCompatActivity {
                             Preference.setToken(getApplicationContext(), token);
                             finish();
 
-                        } else {
+                        } else if(code.equals("403")){
+                            StyleableToast.makeText(getApplicationContext(), response.body().getError()+" Silahkan hubungi Admin", Toast.LENGTH_LONG, R.style.mytoast).show();
+                            Intent intent = new Intent(pin_activity.this,Login_Activity.class);
+                            startActivity(intent);
+                            finish();
+
+
+                        }else {
                             progressBar.setVisibility(View.GONE);
                             pin1.setText("");
                             StyleableToast.makeText(getApplicationContext(), response.body().getError(), Toast.LENGTH_SHORT, R.style.mytoast).show();
                             salah += 1;
 
-                            if (salah == 3) {
-                                warningpinsalah.setVisibility(View.VISIBLE);
-
-                            }
                         }
 
 

@@ -2,7 +2,7 @@ package com.c.dompetabata.PengajuanLimit;
 
 public class SendPengajuan {
 
-    String pin, mac_address, ip_address, user_agent;
+    String pin, mac_address, ip_address, user_agent,error;
     double latitude, longitude, amount;
     String code,message;
 
@@ -22,5 +22,9 @@ public class SendPengajuan {
 
     public String getMessage() {
         return message;
+    }
+
+    public String getError() {
+        return error;
     }
 }

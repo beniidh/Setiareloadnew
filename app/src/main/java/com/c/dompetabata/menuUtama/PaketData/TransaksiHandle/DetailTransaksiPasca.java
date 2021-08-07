@@ -22,7 +22,7 @@ import java.util.Locale;
 
 public class DetailTransaksiPasca extends BottomSheetDialogFragment {
     TextView total;
-    TextView nomor, produk, tagihan, status, harga, deskripsi;
+    TextView nomor, produk, tagihan, status, harga, deskripsi,AdminP;
 
     @Nullable
     @Override
@@ -34,6 +34,7 @@ public class DetailTransaksiPasca extends BottomSheetDialogFragment {
         tagihan = v.findViewById(R.id.tagihanP);
         status = v.findViewById(R.id.statusP);
         harga = v.findViewById(R.id.hargaP);
+        AdminP = v.findViewById(R.id.AdminP);
         deskripsi = v.findViewById(R.id.deskripsiP);
 
         Button konfirasidetail = v.findViewById(R.id.konfirmasidetaill);
@@ -41,7 +42,7 @@ public class DetailTransaksiPasca extends BottomSheetDialogFragment {
 
             String urllicon = getArguments().getString("urlicon");
             Intent intent = new Intent(getContext(), KonfirmasiPembayaran.class);
-            intent.putExtra("hargatotal", total.getText().toString());
+            intent.putExtra("hargatotal", harga.getText().toString());
             intent.putExtra("urll", urllicon);
             Preference.setUrlIcon(getContext(),urllicon);
             intent.putExtra("RefID", getArguments().getString("RefID"));
@@ -62,6 +63,7 @@ public class DetailTransaksiPasca extends BottomSheetDialogFragment {
         String nomorr = getArguments().getString("nomorr");
         String hargaa = getArguments().getString("hargga");
         String nama = getArguments().getString("namecustomer");
+        String admin = getArguments().getString("admin");
         String statuss = getArguments().getString("status");
         String tagihann = getArguments().getString("tagihan");
 
@@ -72,10 +74,12 @@ public class DetailTransaksiPasca extends BottomSheetDialogFragment {
 
         nomor.setText(nomorr);
         produk.setText(nama);
-        tagihan.setText(utils.ConvertRP(tagihann));
+        tagihan.setText(tagihann);
         harga.setText(utils.ConvertRP(hargaa));
         status.setText(statuss);
         deskripsi.setText(deskripsii);
+        AdminP.setText(admin);
+
 
         return v;
     }

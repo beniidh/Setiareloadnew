@@ -33,19 +33,9 @@ public class Kodeprodukact extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
 
         linkProduk = findViewById(R.id.linkProduk);
-        tokennid = findViewById(R.id.tokennid);
 
 
         linkProduk.setOnClickListener(v -> {
-            FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
-                @Override
-                public void onComplete(@NonNull Task<String> task) {
-                    String deviceToken = task.getResult();
-                    tokennid.setText("");
-                    tokennid.setText(deviceToken);
-                }
-            });
-
 
 
         });

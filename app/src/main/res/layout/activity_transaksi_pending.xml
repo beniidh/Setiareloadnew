@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbars="none"
+    android:id="@+id/swipeTransaksi"
     android:padding="18dp"
     tools:context=".menuUtama.PaketData.PulsaPrabayar.TransaksiPending">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:scrollbars="none"
+        android:layout_height="match_parent">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -104,7 +110,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="N/A"
+                    android:text=""
 
                     />
             </RelativeLayout>
@@ -215,6 +221,28 @@
 
                         />
                 </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10sp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:fontFamily="@font/mukta"
+                        android:text="Produk"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/produkTransaksi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:text=""
+
+                        />
+                </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -235,7 +263,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:text="N/A"
+                        android:text=""
                         android:textStyle="bold"
 
                         />
@@ -260,7 +288,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:text="N/A"
+                        android:text=""
                         android:textStyle="bold"
 
                         />
@@ -285,7 +313,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginEnd="7dp"
                         android:layout_toStartOf="@+id/copy"
-                        android:text="N/A" />
+                        android:text="" />
 
                     <ImageView
                         android:id="@+id/copy"
@@ -302,13 +330,15 @@
                     android:layout_marginVertical="7dp"
                     android:background="@color/gray3" />
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="horizontal"
                     android:layout_marginTop="10sp">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_weight="0.4"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:fontFamily="@font/mukta"
@@ -317,20 +347,22 @@
 
                     <TextView
                         android:id="@+id/noSN"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.8"
+                        android:textAlignment="textEnd"
+                        android:layout_height="wrap_content"
                         android:layout_marginEnd="7dp"
                         android:layout_toStartOf="@+id/copy2"
-                        android:text="N/A" />
+                        android:text="" />
 
                     <ImageView
                         android:id="@+id/copy2"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
-                        android:layout_alignParentEnd="true"
+                        android:layout_weight="0"
                         android:src="@drawable/ic_baseline_file_copy_24" />
 
-                </RelativeLayout>
+                </LinearLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -376,10 +408,11 @@
                     android:id="@+id/refreshstatus"
                     android:layout_width="0dp"
                     android:layout_margin="6dp"
+                    android:visibility="gone"
                     android:layout_weight="1"
                     android:background="@drawable/bg_button_login2"
                     android:layout_height="36dp"
-                    android:text="Refresh"
+                    android:text="Cetak"
                     android:textColor="@color/white"
                     android:textAllCaps="false"/>
 
@@ -387,6 +420,6 @@
         </LinearLayout>
 
     </LinearLayout>
+    </ScrollView>
 
-
-</ScrollView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

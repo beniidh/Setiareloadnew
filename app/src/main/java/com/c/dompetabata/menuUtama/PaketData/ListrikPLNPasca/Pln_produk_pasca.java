@@ -49,9 +49,8 @@ public class Pln_produk_pasca extends AppCompatActivity {
     TextView tujukarakterplnpasca;
     String skucode, inquiry,hargaa;
     Button periksaplnpascaP, bayartagihanpulsapascaP;
-    TextView name, nomcos, deskrip, tanggall, transaksi, tagihan, PPtarifP,PPStatusP;
+    TextView name, nomcos, deskrip, tanggall, transaksi, tagihan, PPtarifP,PPStatusP,PPdayaP,PPAdminP;
     LinearLayout LinearPasca;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,8 +72,8 @@ public class Pln_produk_pasca extends AppCompatActivity {
         tagihan = findViewById(R.id.PPjumlahTagihanP);
         LinearPasca = findViewById(R.id.LinearPasca);
         PPStatusP = findViewById(R.id.PPStatusP);
-
-
+        PPdayaP = findViewById(R.id.PPdayaP);
+        PPAdminP = findViewById(R.id.PPAdminP);
 
         periksaplnpascaP.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,29 +99,34 @@ public class Pln_produk_pasca extends AppCompatActivity {
 
                                 String code = response.body().getCode();
                                 if (code.equals("200")) {
-                                    name.setText(response.body().getData().getCustomer_name());
-                                    nomcos.setText(response.body().getData().getCustomer_no());
-                                    deskrip.setText(response.body().getData().getDescription());
-                                    String tanggal = response.body().getData().getCreated_at();
-                                    String tahun = tanggal.substring(0, 4);
-                                    String bulan = utils.convertBulan(tanggal.substring(5, 7));
-                                    String hari = tanggal.substring(8, 10);
-                                    setInquiry(response.body().getData().getInquiry_type());
-                                    setSkucode(response.body().getData().getBuyer_sku_code());
-                                    tanggall.setText(hari + " " + bulan + " " + tahun);
-                                    transaksi.setText(response.body().getData().getRef_id());
-                                    PPStatusP.setText(response.body().getData().getStatus());
-                                    setHargaa(response.body().getData().getSelling_price());
-                                    tagihan.setText(utils.ConvertRP(response.body().getData().getSelling_price()));
-                                    loadingPrimer.dismissDialog();
 
                                     if (response.body().getData().getStatus().equals("Sukses")) {
+                                        name.setText(response.body().getData().getCustomer_name());
+                                        nomcos.setText(response.body().getData().getCustomer_no());
+                                        deskrip.setText(response.body().getData().getDescription());
+                                        String tanggal = response.body().getData().getCreated_at();
+                                        String tahun = tanggal.substring(0, 4);
+                                        String bulan = utils.convertBulan(tanggal.substring(5, 7));
+                                        String hari = tanggal.substring(8, 10);
+                                        setInquiry(response.body().getData().getInquiry_type());
+                                        setSkucode(response.body().getData().getBuyer_sku_code());
+                                        tanggall.setText(hari + " " + bulan + " " + tahun);
+                                        PPdayaP.setText(response.body().getData().getDetail_product().getDaya());
+                                        tagihan.setText(utils.ConvertRP(response.body().getData().getDetail_product().getDetail().get(0).getNilai_tagihan()));
+                                        transaksi.setText(response.body().getData().getRef_id());
+                                        PPAdminP.setText(utils.ConvertRP(response.body().getData().getDetail_product().getDetail().get(0).getAdmin()));
+                                        PPtarifP.setText(response.body().getData().getDetail_product().getTarif());
+                                        PPStatusP.setText(response.body().getData().getStatus());
+                                        setHargaa(response.body().getData().getDetail_product().getDetail().get(0).getNilai_tagihan());
 
+                                        loadingPrimer.dismissDialog();
                                         periksaplnpascaP.setText("Bayar");
                                         LinearPasca.setVisibility(View.VISIBLE);
 
                                     }else {
-                                        Toast.makeText(getApplicationContext(),"Tidak ada tagihan",Toast.LENGTH_LONG).show();
+
+                                        Toast.makeText(getApplicationContext(),response.body().getData().getStatus()+" "+response.body().getData().getDescription(),Toast.LENGTH_LONG).show();
+                                        loadingPrimer.dismissDialog();
                                     }
 
                                 } else {
@@ -134,6 +138,9 @@ public class Pln_produk_pasca extends AppCompatActivity {
 
                             @Override
                             public void onFailure(Call<ResponInquiry> call, Throwable t) {
+                                Toast.makeText(getApplicationContext(),t.toString(),Toast.LENGTH_LONG).show();
+                                loadingPrimer.dismissDialog();
+
 
                             }
                         });

@@ -54,10 +54,11 @@ public class topup_saldoku_activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String saldoku = isisaldoku.getText().toString();
-
                 if(saldoku.equals("")){
+
                     StyleableToast.makeText(getApplicationContext(),"Jumlah Saldo Masi Kosong", Toast.LENGTH_LONG,R.style.mytoast2).show();
                 } else {
+                    Preference.setSaldoku(getApplicationContext(),isisaldoku.getText().toString());
                     ModalMetodePemayaran modalPembayaran = new ModalMetodePemayaran();
                     modalPembayaran.show(getSupportFragmentManager(), "ModalPebayaran");
                 }
@@ -83,7 +84,6 @@ public class topup_saldoku_activity extends AppCompatActivity {
 
             case R.id.linsaldo100 :
                 isisaldoku.setText("100000");
-                Preference.setSaldoku(getApplicationContext(),"100000");
                 linsaldo100.setBackground(getDrawable(R.drawable.bg_saldoku_choose));
                 linsaldo200.setBackground(getDrawable(R.drawable.bg_saldo));
                 linsaldo500.setBackground(getDrawable(R.drawable.bg_saldo));
@@ -91,7 +91,6 @@ public class topup_saldoku_activity extends AppCompatActivity {
                 break;
             case R.id.linsaldo200 :
                 isisaldoku.setText("200000");
-                Preference.setSaldoku(getApplicationContext(),"200000");
                 linsaldo200.setBackground(getDrawable(R.drawable.bg_saldoku_choose));
                 linsaldo100.setBackground(getDrawable(R.drawable.bg_saldo));
                 linsaldo500.setBackground(getDrawable(R.drawable.bg_saldo));
@@ -99,7 +98,7 @@ public class topup_saldoku_activity extends AppCompatActivity {
                 break;
             case R.id.linsaldo500 :
                 isisaldoku.setText("500000");
-                Preference.setSaldoku(getApplicationContext(),"500000");
+
                 linsaldo500.setBackground(getDrawable(R.drawable.bg_saldoku_choose));
                 linsaldo100.setBackground(getDrawable(R.drawable.bg_saldo));
                 linsaldo200.setBackground(getDrawable(R.drawable.bg_saldo));
@@ -107,7 +106,6 @@ public class topup_saldoku_activity extends AppCompatActivity {
                 break;
             case R.id.linsaldo1000 :
                 isisaldoku.setText("1000000");
-                Preference.setSaldoku(getApplicationContext(),"1000000");
                 linsaldo1000.setBackground(getDrawable(R.drawable.bg_saldoku_choose));
                 linsaldo100.setBackground(getDrawable(R.drawable.bg_saldo));
                 linsaldo200.setBackground(getDrawable(R.drawable.bg_saldo));

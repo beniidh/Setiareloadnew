@@ -2,6 +2,8 @@ package com.c.dompetabata.Fragment.RiwayatTransaksi;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,14 +41,25 @@ public class AdapterFragmentSaldoku extends RecyclerView.Adapter<AdapterFragment
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ResponTransaksi.DataTransaksi dataTransaksi = mData.get(position);
+
+        if (dataTransaksi.getStatus().equals("PENDING")) {
+
+            holder.status.setBackgroundColor(Color.rgb(204, 204, 0));
+        } else if (dataTransaksi.getStatus().equals("GAGAL")) {
+            holder.status.setBackgroundColor(Color.rgb(204, 0, 0));
+
+        }else {
+            holder.status.setBackgroundColor(Color.rgb(0, 204, 0));
+        }
+
         holder.status.setText(dataTransaksi.getStatus());
         holder.harga.setText(dataTransaksi.getTotal_price());
         holder.transaksi.setText(dataTransaksi.getId());
         String tanggal = dataTransaksi.getUpdated_at();
-        String tahun = tanggal.substring(0,4);
-        String bulan = utils.convertBulan(tanggal.substring(5,7));
-        String hari = tanggal.substring(8,10);
-        holder.tanggal.setText(hari+" "+bulan+" "+tahun);
+        String tahun = tanggal.substring(0, 4);
+        String bulan = utils.convertBulan(tanggal.substring(5, 7));
+        String hari = tanggal.substring(8, 10);
+        holder.tanggal.setText(hari + " " + bulan + " " + tahun);
         holder.produk.setText(dataTransaksi.getProduct_name());
 
         holder.linearklik.setOnClickListener(v -> {
@@ -54,8 +67,8 @@ public class AdapterFragmentSaldoku extends RecyclerView.Adapter<AdapterFragment
 
             Intent intent = new Intent(context, TransaksiPending.class);
             Bundle extras = new Bundle();
-            extras.putString("transaksid",dataTransaksi.getId());
-            extras.putString("code","saldo");
+            extras.putString("transaksid", dataTransaksi.getId());
+            extras.putString("code", "saldo");
             intent.putExtras(extras);
             context.startActivity(intent);
 
@@ -69,7 +82,7 @@ public class AdapterFragmentSaldoku extends RecyclerView.Adapter<AdapterFragment
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView transaksi, tanggal, produk,harga,status;
+        TextView transaksi, tanggal, produk, harga, status;
         LinearLayout linearklik;
 
         public ViewHolder(@NonNull View itemView) {

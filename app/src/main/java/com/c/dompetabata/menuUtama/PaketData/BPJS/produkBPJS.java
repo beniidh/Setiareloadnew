@@ -2,6 +2,7 @@ package com.c.dompetabata.menuUtama.PaketData.BPJS;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -21,6 +22,7 @@ import com.c.dompetabata.R;
 import com.c.dompetabata.Transaksi.MInquiry;
 import com.c.dompetabata.Transaksi.ResponInquiry;
 import com.c.dompetabata.menuUtama.PaketData.ListrikPLNPasca.Pln_produk_pasca;
+import com.c.dompetabata.menuUtama.PaketData.PulsaPrabayar.KonfirmasiPembayaran;
 import com.c.dompetabata.sharePreference.Preference;
 import com.muddzdev.styleabletoast.StyleableToast;
 
@@ -35,6 +37,7 @@ public class produkBPJS extends AppCompatActivity {
     Button periksaBpjs;
     LinearLayout LineraBPJS;
     String skucode, inquiry;
+    String hargaa;
     String code;
 
     @Override
@@ -64,6 +67,8 @@ public class produkBPJS extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                if (periksaBpjs.getText().toString().equals("Periksa")) {
+
                 if (!nomorinputBpjs.getText().toString().isEmpty()) {
 
                     LoadingPrimer loadingPrimer = new LoadingPrimer(produkBPJS.this);
@@ -82,26 +87,33 @@ public class produkBPJS extends AppCompatActivity {
 
                             String code = response.body().getCode();
                             if (code.equals("200")) {
-                                PPnamaBp.setText(response.body().getData().getCustomer_name());
-                                PPnomorBp.setText(response.body().getData().getCustomer_no());
-                                PPStatusBp.setText(response.body().getData().getStatus());
-                                String tanggal = response.body().getData().getCreated_at();
-                                String tahun = tanggal.substring(0, 4);
-                                String bulan = utils.convertBulan(tanggal.substring(5, 7));
-                                String hari = tanggal.substring(8, 10);
-                                setInquiry(response.body().getData().getInquiry_type());
-                                setSkucode(response.body().getData().getBuyer_sku_code());
-                                PPTanggalBp.setText(hari + " " + bulan + " " + tahun);
-                                PPTransaksiBp.setText(response.body().getData().getRef_id());
-                                PPtarifBp.setText(utils.ConvertRP(response.body().getData().getDetail_product().getLembar_tagihan()));
-                                loadingPrimer.dismissDialog();
-                                if(response.body().getData().getStatus().equals("Gagal")){
-                                   Toast.makeText(getApplicationContext(),"Tidak ada tagihan",Toast.LENGTH_SHORT).show();
+
+                                if(response.body().getData().getStatus().equals("Sukses")){
+
+                                    PPnamaBp.setText(response.body().getData().getCustomer_name());
+                                    PPnomorBp.setText(response.body().getData().getCustomer_no());
+                                    PPStatusBp.setText(response.body().getData().getStatus());
+                                    PPdayaBp.setText(utils.ConvertRP(response.body().getData().getDetail_product().getDetail().get(0).getAdmin()));
+                                    String tanggal = response.body().getData().getCreated_at();
+                                    String tahun = tanggal.substring(0, 4);
+                                    String bulan = utils.convertBulan(tanggal.substring(5, 7));
+                                    String hari = tanggal.substring(8, 10);
+                                    setInquiry(response.body().getData().getInquiry_type());
+                                    setSkucode(response.body().getData().getBuyer_sku_code());
+                                    PPTanggalBp.setText(hari + " " + bulan + " " + tahun);
+                                    PPTransaksiBp.setText(response.body().getData().getRef_id());
+                                    PPtarifBp.setText(utils.ConvertRP(response.body().getData().getDetail_product().getDetail().get(0).getNilai_tagihan()));
+                                    loadingPrimer.dismissDialog();
+                                    LineraBPJS.setVisibility(View.VISIBLE);
+                                    periksaBpjs.setText("Bayar");
+
+
 
                                 }else {
-                                 LineraBPJS.setVisibility(View.VISIBLE);
-
+                                    Toast.makeText(getApplicationContext(),response.body().getData().getStatus()+" "+response.body().getData().getDescription(),Toast.LENGTH_SHORT).show();
+                                    loadingPrimer.dismissDialog();
                                 }
+
 
 
                             } else {
@@ -120,6 +132,18 @@ public class produkBPJS extends AppCompatActivity {
 
                 } else {
                     StyleableToast.makeText(getApplicationContext(), "Nomor tidak boleh kosong", Toast.LENGTH_SHORT, R.style.mytoast2).show();
+
+                }
+
+                } else {
+                    Intent intent = new Intent(getApplicationContext(), KonfirmasiPembayaran.class);
+                    intent.putExtra("hargatotal", getHargaa());
+                    intent.putExtra("RefID", PPTransaksiBp.getText().toString());
+                    intent.putExtra("sku_code",getSkucode());
+                    intent.putExtra("inquiry",getInquiry());
+                    intent.putExtra("nomorr",nomorinputBpjs.getText().toString());
+                    startActivity(intent);
+
 
                 }
 
@@ -212,5 +236,13 @@ public class produkBPJS extends AppCompatActivity {
 
     public void setInquiry(String inquiry) {
         this.inquiry = inquiry;
+    }
+
+    public String getHargaa() {
+        return hargaa;
+    }
+
+    public void setHargaa(String hargaa) {
+        this.hargaa = hargaa;
     }
 }

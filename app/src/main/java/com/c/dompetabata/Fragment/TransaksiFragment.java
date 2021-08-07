@@ -36,8 +36,10 @@ import com.c.dompetabata.R;
 import com.c.dompetabata.sharePreference.Preference;
 import com.google.android.material.tabs.TabLayout;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -53,6 +55,7 @@ public class TransaksiFragment extends Fragment {
     EditText idtransaksiTanggalEditText;
     ArrayList<ResponTransaksi.DataTransaksi> datahistory = new ArrayList<>();
     ArrayList<ResponTransaksi.DataTransaksi> datasaldoserver = new ArrayList<>();
+    ArrayList<ResponTransaksi.DataTransaksi> datasaldoku = new ArrayList<>();
     TextView idTotalTransaksiTextView, idTransaksiSuksesTextView, idTotalPengeluaranTextView;
     private int mYear, mMonth, mDay, mHour, mMinute;
 
@@ -109,7 +112,7 @@ public class TransaksiFragment extends Fragment {
 
                     datahistory = response.body().getData();
 
-                    ArrayList<ResponTransaksi.DataTransaksi> datasaldoku = new ArrayList<>();
+
 
                     for (ResponTransaksi.DataTransaksi dataa : datahistory) {
 
@@ -186,7 +189,7 @@ public class TransaksiFragment extends Fragment {
                     }
 
                     String tnggl = year + "-" + bulan + "-" + day;
-                    datasaldoserver.clear();
+
                     getDataHistory(tnggl);
                 }, mYear, mMonth, mDay);
 
@@ -196,7 +199,12 @@ public class TransaksiFragment extends Fragment {
 
     @Override
     public void onResume() {
-        idtransaksiTanggalEditText.setText("");
+        String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        datahistory.clear();
+        datasaldoserver.clear();
+        datasaldoku.clear();
+        getDataHistory(date);
+        idtransaksiTanggalEditText.setText(date);
         super.onResume();
     }
 }

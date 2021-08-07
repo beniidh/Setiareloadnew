@@ -1,5 +1,6 @@
 package com.c.dompetabata.TopUpSaldoku;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.c.dompetabata.Api.Api;
 import com.c.dompetabata.Helper.GpsTracker;
 import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.Helper.utils;
+import com.c.dompetabata.Modal.ModalKabupaten;
 import com.c.dompetabata.PengajuanLimit.PengajuanDompet;
 import com.c.dompetabata.PengajuanLimit.SendPengajuan;
 import com.c.dompetabata.R;
@@ -36,6 +38,7 @@ public class ModalPinTopUpSaldoku extends BottomSheetDialogFragment {
     PinEditText pinpengajuan;
     TextView idCancelPengajuan;
     Button idPinPengajuanButton;
+    private BottomSheetListeneridUpload bottomSheetListeneridUpload;
 
     @Nullable
     @Override
@@ -87,6 +90,9 @@ public class ModalPinTopUpSaldoku extends BottomSheetDialogFragment {
                 if (code.equals("200")) {
                     String kode = getArguments().getString("kode");
 
+                    String id = response.body().getData().getId();
+                    bottomSheetListeneridUpload.onButtonClickIdUpload(id);
+
                     if(kode.equals("bank")){
                         StyleableToast.makeText(getContext(), "Berhasil", Toast.LENGTH_SHORT, R.style.mytoast3).show();
                         dismiss();
@@ -99,7 +105,7 @@ public class ModalPinTopUpSaldoku extends BottomSheetDialogFragment {
                     }
 
                 } else {
-                    StyleableToast.makeText(getContext(), "Pin anda salah", Toast.LENGTH_SHORT, R.style.mytoast2).show();
+                    StyleableToast.makeText(getContext(), response.body().getError(), Toast.LENGTH_SHORT, R.style.mytoast2).show();
                 }
 
             }
@@ -111,6 +117,19 @@ public class ModalPinTopUpSaldoku extends BottomSheetDialogFragment {
             }
         });
 
+    }
+    public interface BottomSheetListeneridUpload {
+        void onButtonClickIdUpload(String id);
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        try {
+            bottomSheetListeneridUpload = (ModalPinTopUpSaldoku.BottomSheetListeneridUpload) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString() + "must implement bottomsheet Listener");
+        }
     }
 
     private String getUserAgent() {

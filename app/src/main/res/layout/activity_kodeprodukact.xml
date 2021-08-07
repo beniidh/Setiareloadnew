@@ -7,21 +7,13 @@
     android:padding="18dp"
     tools:context=".KodeProduk.Kodeprodukact">
 
-    <EditText
-        android:id="@+id/tokennid"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@drawable/bg_search_modal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/linkProduk"
         android:layout_width="155dp"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_button_login2"
-        android:text="token"
+        android:text="Buka Link"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="20sp"

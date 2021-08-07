@@ -15,6 +15,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.c.dompetabata.R;
 import com.c.dompetabata.drawer_activity;
+import com.c.dompetabata.menuUtama.PaketData.PulsaPrabayar.TransaksiPending;
 import com.c.dompetabata.splash_activity;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -23,10 +24,11 @@ import com.google.firebase.messaging.RemoteMessage;
 public class MyService extends FirebaseMessagingService {
 
 
-    public void createNotification(String judul, String isi, Context context, Intent intent){
+    public void createNotification(String judul, String isi, Context context, Intent intent,String transaksi){
 
         NotificationManager notificationManager = (NotificationManager)context.getSystemService(context.NOTIFICATION_SERVICE);
-        Intent resultIntent = new Intent(this, splash_activity.class);
+        Intent resultIntent = new Intent(this, TransaksiPending.class);
+        resultIntent.putExtra("transaksid",transaksi);
 
         PendingIntent PI = PendingIntent.getActivity(this,1,resultIntent,PendingIntent.FLAG_UPDATE_CURRENT);
         int NotificationID = 0;
@@ -60,8 +62,9 @@ public class MyService extends FirebaseMessagingService {
         super.onMessageReceived(remoteMessage);
         String judul = remoteMessage.getNotification().getTitle();
         String isi = remoteMessage.getNotification().getBody();
+        String trx = remoteMessage.getNotification().getTag();
 
-        createNotification(judul,isi,getApplicationContext(),new Intent());
+        createNotification(judul,isi,getApplicationContext(),new Intent(),trx);
 
     }
 }

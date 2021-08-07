@@ -1,9 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="18dp"
     tools:context=".GantiPin">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15sp"
+        android:fontFamily="@font/mukta"
+        android:text="Reset PIN"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/inputEmailGantiPin"
+        android:layout_width="match_parent"
+        android:layout_height="45sp"
+        android:background="@drawable/bg_edittextlogin"
+        android:drawableRight="@drawable/ic_baseline_mail_outline_24"
+        android:hint="Masukan Email"
+        android:paddingStart="10sp"
+        android:paddingRight="10sp"
+        android:textSize="17sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="* Masukan alamat Email untuk mengirimkan link perubahan PIN"
+        android:textSize="11sp" />
+
+    <Button
+        android:id="@+id/ResetPINGanti"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_button_login3"
+        android:text="Reset PIN"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/keterangangantipin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textSize="15sp" />
+
+</LinearLayout>

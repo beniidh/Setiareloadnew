@@ -18,6 +18,7 @@ import com.c.dompetabata.Api.Api;
 import com.c.dompetabata.Api.Value;
 import com.c.dompetabata.Helper.GpsTracker;
 import com.c.dompetabata.Helper.RetroClient;
+import com.c.dompetabata.Helper.utils;
 import com.c.dompetabata.R;
 import com.c.dompetabata.Transaksi.MInquiry;
 import com.c.dompetabata.Transaksi.ResponInquiry;
@@ -79,27 +80,31 @@ public class AdapterProdukAir extends RecyclerView.Adapter<AdapterProdukAir.View
                     String code = response.body().getCode();
                     if (code.equals("200")) {
 
-                        Bundle bundle = new Bundle();
+                        if (response.body().getData().getStatus().equals("Sukses")) {
+                            Bundle bundle = new Bundle();
+                            bundle.putString("nomorr", nomor);
+                            bundle.putString("namecustomer", response.body().getData().getCustomer_name());
+                            bundle.putString("RefID", response.body().getData().getRef_id());
+                            bundle.putString("sku_code", response.body().getData().getBuyer_sku_code());
+                            bundle.putString("kodeproduk", "pulsapasca");
+                            bundle.putString("inquiry", response.body().getData().getInquiry_type());
+                            bundle.putString("hargga", response.body().getData().getSelling_price());
 
-                        bundle.putString("nomorr", nomor);
-                        bundle.putString("namecustomer", response.body().getData().getCustomer_name());
-                        bundle.putString("RefID", response.body().getData().getRef_id());
-                        bundle.putString("sku_code", response.body().getData().getBuyer_sku_code());
-                        bundle.putString("kodeproduk", "pulsapasca");
-                        bundle.putString("inquiry", response.body().getData().getInquiry_type());
-                        bundle.putString("hargga", response.body().getData().getSelling_price());
+                            bundle.putString("status", response.body().getData().getStatus());
+                            bundle.putString("tagihan", utils.ConvertRP(response.body().getData().getDetail_product().getDetail().get(0).getNilai_tagihan()));
+                            bundle.putString("deskription", response.body().getData().getDescription());
+                            bundle.putString("admin", utils.ConvertRP(response.body().getData().getDetail_product().getDetail().get(0).getAdmin()));
 
-                        bundle.putString("status",response.body().getData().getStatus());
-                        bundle.putString("tagihan",response.body().getData().getDetail_product().getLembar_tagihan());
-                        bundle.putString("deskription", response.body().getData().getDescription());
+                            Preference.setUrlIcon(context, "");
+                            DetailTransaksiPasca fragment = new DetailTransaksiPasca(); // you fragment
+                            FragmentManager fragmentManager = ((FragmentActivity) v.getContext()).getSupportFragmentManager();
+                            fragment.setArguments(bundle);
+                            fragment.show(fragmentManager, "detail");
+                        } else {
 
-                        Preference.setUrlIcon(context, "");
-                        DetailTransaksiPasca fragment = new DetailTransaksiPasca(); // you fragment
-                        FragmentManager fragmentManager = ((FragmentActivity) v.getContext()).getSupportFragmentManager();
-                        fragment.setArguments(bundle);
-                        fragment.show(fragmentManager, "detail");
+                            Toast.makeText(context, response.body().getData().getStatus() + " " + response.body().getData().getDescription(), Toast.LENGTH_LONG).show();
+                        }
                     } else {
-
                         Toast.makeText(context, response.body().getError(), Toast.LENGTH_LONG).show();
                     }
 
@@ -107,6 +112,7 @@ public class AdapterProdukAir extends RecyclerView.Adapter<AdapterProdukAir.View
 
                 @Override
                 public void onFailure(Call<ResponInquiry> call, Throwable t) {
+                    Toast.makeText(context,t.toString(),Toast.LENGTH_SHORT).show();
 
                 }
             });
@@ -130,7 +136,7 @@ public class AdapterProdukAir extends RecyclerView.Adapter<AdapterProdukAir.View
             name = itemView.findViewById(R.id.nameair);
             deskripsi = itemView.findViewById(R.id.deskriair);
             linearklik = itemView.findViewById(R.id.linearklikair);
-            brand =itemView.findViewById(R.id.brandair);
+            brand = itemView.findViewById(R.id.brandair);
 
 
         }
