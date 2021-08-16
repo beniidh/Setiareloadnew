@@ -43,53 +43,58 @@ public class splash_activity extends AppCompatActivity {
         setLogo();
         int delay = 2000;
 
-        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
-            String deviceToken = task.getResult();
-            Log.d("Tokenn",deviceToken);
-        });
+        String coder = Preference.getTrackRegister(getApplicationContext());
 
         Handler handler = new Handler();
         handler.postDelayed(() -> {
 
             String token = Preference.getToken(getApplicationContext());
 
-            if (!token.equals("")) {
+            if(coder.equals("")) {
 
-                Api api = RetroClient.getApiServices();
-                Call<Mlogin> call = api.getProfile("Bearer " + token);
-                call.enqueue(new Callback<Mlogin>() {
-                    @Override
-                    public void onResponse(Call<Mlogin> call, Response<Mlogin> response) {
-                        String code = response.body().getCode();
-                        if (code.equals("200")) {
-                            Intent home = new Intent(splash_activity.this, drawer_activity.class);
-                            startActivity(home);
-                            finish();
+                if (!token.equals("")) {
 
-                        } else {
+                    Api api = RetroClient.getApiServices();
+                    Call<Mlogin> call = api.getProfile("Bearer " + token);
+                    call.enqueue(new Callback<Mlogin>() {
+                        @Override
+                        public void onResponse(Call<Mlogin> call, Response<Mlogin> response) {
+                            String code = response.body().getCode();
+                            if (code.equals("200")) {
+                                Intent home = new Intent(splash_activity.this, drawer_activity.class);
+                                startActivity(home);
+                                finish();
 
-                            Intent login = new Intent(splash_activity.this, pin_activity.class);
-                            startActivity(login);
-                            finish();
-                            StyleableToast.makeText(getApplicationContext(), "Token sudah berakhir,Silahkan Masukan PIN", Toast.LENGTH_LONG, R.style.mytoast2).show();
+                            } else {
+
+                                Intent login = new Intent(splash_activity.this, pin_activity.class);
+                                startActivity(login);
+                                finish();
+                                StyleableToast.makeText(getApplicationContext(), "Token sudah berakhir,Silahkan Masukan PIN", Toast.LENGTH_LONG, R.style.mytoast2).show();
+
+                            }
 
                         }
 
-                    }
+                        @Override
+                        public void onFailure(Call<Mlogin> call, Throwable t) {
+                            StyleableToast.makeText(getApplicationContext(), " Internet Belum dinyalakan", Toast.LENGTH_LONG, R.style.mytoast2).show();
 
-                    @Override
-                    public void onFailure(Call<Mlogin> call, Throwable t) {
-                        StyleableToast.makeText(getApplicationContext(), " Internet Belum dinyalakan", Toast.LENGTH_LONG, R.style.mytoast2).show();
+                        }
+                    });
 
-                    }
-                });
+                } else {
 
-            } else {
+                    Intent login = new Intent(splash_activity.this, Login_Activity.class);
+                    startActivity(login);
+                    finish();
 
-                Intent login = new Intent(splash_activity.this, Login_Activity.class);
-                startActivity(login);
+                }
+            }else {
+
+                Intent intent = new Intent(splash_activity.this,Pending_Activity.class);
+                startActivity(intent);
                 finish();
-
             }
 
 

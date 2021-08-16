@@ -108,6 +108,7 @@ public class InternetProduk extends AppCompatActivity implements ModalInternet.B
     @Override
     public void onButtonClick(String name, String id) {
         inputprodukinternet.setText(name);
+        getProdukk(id,inputnomorinternet.getText().toString());
         setIdd(id);
     }
 

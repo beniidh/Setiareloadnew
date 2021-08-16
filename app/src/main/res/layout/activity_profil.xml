@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18dp"
                 android:fontFamily="@font/poppins"
-                android:text="Amadea Sahara"
+                android:text=""
                 android:textColor="@color/black"
                 android:textSize="18dp"
                 android:textStyle="bold" />
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:fontFamily="@font/mukta"
-                android:text="0857883837393"
+                android:text=""
                 android:textColor="@color/black"
                 android:textSize="17dp" />
 
@@ -97,14 +97,6 @@
                 android:foreground="?android:attr/selectableItemBackground"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins"
-                    android:text="RP. "
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/saldokuprofil"
@@ -113,7 +105,7 @@
                     android:clickable="true"
                     android:fontFamily="@font/poppins"
                     android:foreground="?android:attr/selectableItemBackground"
-                    android:text="300.000"
+                    android:text="Rp.0"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -158,21 +150,13 @@
                 android:foreground="?android:attr/selectableItemBackground"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins"
-                    android:text="RP. "
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/saldoserverprofil"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
-                    android:text="300.000"
+                    android:text="Rp.0"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -229,7 +213,7 @@
                     android:clickable="true"
                     android:fontFamily="@font/poppins"
                     android:foreground="?android:attr/selectableItemBackground"
-                    android:text="8"
+                    android:text="0"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -278,7 +262,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
-                    android:text="12"
+                    android:text="0"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -307,7 +291,8 @@
 
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
             android:layout_weight="1"
             android:src="@drawable/ic_baseline_person" />
 
@@ -324,7 +309,8 @@
 
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
             android:layout_weight="2"
             android:src="@drawable/ic_baseline_navigate_next_24"
 
@@ -349,7 +335,8 @@
 
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
             android:layout_weight="1"
             android:src="@drawable/ic_baseline_lock_24" />
 
@@ -366,7 +353,8 @@
 
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
             android:layout_weight="2"
             android:src="@drawable/ic_baseline_navigate_next_24"
 
@@ -391,7 +379,8 @@
 
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
             android:layout_weight="1"
             android:src="@drawable/ic_baseline_stars_24" />
 
@@ -408,7 +397,8 @@
 
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
             android:layout_weight="2"
             android:src="@drawable/ic_baseline_navigate_next_24"
 
@@ -433,7 +423,8 @@
 
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
             android:layout_weight="1"
             android:src="@drawable/ic_baseline_mobile_friendly_24" />
 
@@ -450,7 +441,8 @@
 
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
             android:layout_weight="2"
             android:src="@drawable/ic_baseline_navigate_next_24"
 

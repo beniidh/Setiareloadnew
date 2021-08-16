@@ -105,6 +105,7 @@ public class ProdukAngsuranKredit extends AppCompatActivity implements ModalAngs
 
     @Override
     public void onButtonClick(String name, String id) {
+        getProduk(id,inputnomorangsuran.getText().toString());
         inputprodukangsuran.setText(name);
         setId(id);
     }

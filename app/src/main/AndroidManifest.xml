@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -23,10 +24,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DompetAbata">
-        <activity android:name=".MarkUP.markup"></activity>
-        <activity android:name=".CetakStruk.cetak" />
-        <activity android:name=".Inquiry.InquiryPasca" />
-        <activity android:name=".GantiPin" />
+        <activity android:name=".Pending_Activity"></activity>
+        <activity android:name=".TagihanKonter.DetailTagihanKonter" />
+        <activity android:name=".TagihanKonter.TagihanKonter" />
+        <activity
+            android:name=".MarkUP.markup"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CetakStruk.cetak"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Inquiry.InquiryPasca"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".GantiPin"
+            android:screenOrientation="portrait" />
 
         <service android:name=".Notifikasi.MyService">
             <intent-filter>
@@ -34,45 +46,123 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".ResetPIN" />
-        <activity android:name=".PersetujuanSaldoSales.DetailPersetujuan" />
-        <activity android:name=".TambahKonter.addKonter" />
-        <activity android:name=".PersetujuanSaldoSales.PersetujuanSaldoSales" />
-        <activity android:name=".SaldoServer.AjukanLimit" />
-        <activity android:name=".Fragment.RiwayatTransaksi.HistoryTransaksi" />
-        <activity android:name=".Notifikasi.DetailNotifikasi" />
-        <activity android:name=".TentangKami.TentangKamiAct" />
-        <activity android:name=".KodeProduk.Kodeprodukact" />
-        <activity android:name=".CetakStruk.DetailTransaksiTruk" />
-        <activity android:name=".CetakStruk.Cetakstruk" />
-        <activity android:name=".DaftarHarga.DaftarHarga_activity" />
-        <activity android:name=".PengajuanLimit.PengajuanDompet" />
-        <activity android:name=".menuUtama.PaketData.WarungAbata.produkWarungAbata" />
-        <activity android:name=".menuUtama.PaketData.PajakPBB.produkPajakPBB" />
-        <activity android:name=".menuUtama.PaketData.GasNegara.produkGasnegara" />
-        <activity android:name=".menuUtama.PaketData.AngsuranKredit.ProdukAngsuranKredit" />
-        <activity android:name=".menuUtama.PaketData.BPJS.produkBPJS" />
-        <activity android:name=".menuUtama.PaketData.Voucher.produkVoucher" />
-        <activity android:name=".menuUtama.PaketData.TV.tv_produk" />
-        <activity android:name=".menuUtama.PaketData.Internet.InternetProduk" />
-        <activity android:name=".menuUtama.PaketData.VoucherGame.produkVoucherGame" />
-        <activity android:name=".menuUtama.PaketData.air.produkair" />
-        <activity android:name=".menuUtama.PaketData.UangElektronik.ProdukUangElektronik" />
-        <activity android:name=".menuUtama.PaketData.PaketsmsTelpon.produksmstelpon" />
-        <activity android:name=".menuUtama.PaketData.ListrikPLNPasca.Pln_produk_pasca" />
-        <activity android:name=".menuUtama.PaketData.ListrikPLN.Pln_Produk" />
-        <activity android:name=".menuUtama.PaketData.Paket.PaketData_Activity" />
-        <activity android:name=".Notifikasi.Notifikasi_Activity" />
-        <activity android:name=".menuUtama.PaketData.PulsaPrabayar.TransaksiPending" />
-        <activity android:name=".menuUtama.PaketData.PulsaPrabayar.KonfirmasiPembayaran" />
-        <activity android:name=".menuUtama.PaketData.PulsaPrabayar.PulsaPrabayar_activity" />
-        <activity android:name=".menuUtama.PaketData.PulsaPascaBayar.PulsaPascaBayar_activity" />
-        <activity android:name=".Kodeproduk" />
-        <activity android:name=".Transaksi.BayarSalesServer" />
-        <activity android:name=".Profil.Device" />
-        <activity android:name=".Profil.Point" />
-        <activity android:name=".Profil.ubah_pin" />
-        <activity android:name=".Profil.ubah_profil" />
+        <activity
+            android:name=".ResetPIN"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PersetujuanSaldoSales.DetailPersetujuan"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TambahKonter.addKonter"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PersetujuanSaldoSales.PersetujuanSaldoSales"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SaldoServer.AjukanLimit"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Fragment.RiwayatTransaksi.HistoryTransaksi"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Notifikasi.DetailNotifikasi"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TentangKami.TentangKamiAct"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".KodeProduk.Kodeprodukact"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CetakStruk.DetailTransaksiTruk"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CetakStruk.Cetakstruk"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DaftarHarga.DaftarHarga_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PengajuanLimit.PengajuanDompet"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".menuUtama.PaketData.WarungAbata.produkWarungAbata"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".menuUtama.PaketData.PajakPBB.produkPajakPBB"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".menuUtama.PaketData.GasNegara.produkGasnegara"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".menuUtama.PaketData.AngsuranKredit.ProdukAngsuranKredit"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".menuUtama.PaketData.BPJS.produkBPJS"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".menuUtama.PaketData.Voucher.produkVoucher"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".menuUtama.PaketData.TV.tv_produk"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".menuUtama.PaketData.Internet.InternetProduk"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".menuUtama.PaketData.VoucherGame.produkVoucherGame"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".menuUtama.PaketData.air.produkair"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".menuUtama.PaketData.UangElektronik.ProdukUangElektronik"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".menuUtama.PaketData.PaketsmsTelpon.produksmstelpon"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".menuUtama.PaketData.ListrikPLNPasca.Pln_produk_pasca"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".menuUtama.PaketData.ListrikPLN.Pln_Produk"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".menuUtama.PaketData.Paket.PaketData_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Notifikasi.Notifikasi_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".menuUtama.PaketData.PulsaPrabayar.TransaksiPending"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".menuUtama.PaketData.PulsaPrabayar.KonfirmasiPembayaran"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".menuUtama.PaketData.PulsaPrabayar.PulsaPrabayar_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".menuUtama.PaketData.PulsaPascaBayar.PulsaPascaBayar_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Kodeproduk"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SaldoServer.BayarSalesServer"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Profil.Device"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Profil.Point"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Profil.ubah_pin"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Profil.ubah_profil"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Profil.Profil"
             android:screenOrientation="portrait" />
@@ -87,6 +177,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".TopUpSaldoku.TrasferBank"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SaldoServer.TrasferBankServer"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Transaksi.BayarViaBank"

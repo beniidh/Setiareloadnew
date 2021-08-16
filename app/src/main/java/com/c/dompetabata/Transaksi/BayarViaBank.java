@@ -22,12 +22,9 @@ public class BayarViaBank extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
 
         LinearLayout linearLayoutbankBRI = findViewById(R.id.LinearBankBRI);
-        linearLayoutbankBRI.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(BayarViaBank.this, TrasferBank.class);
-                startActivity(intent);
-            }
+        linearLayoutbankBRI.setOnClickListener(v -> {
+            Intent intent = new Intent(BayarViaBank.this, TrasferBank.class);
+            startActivity(intent);
         });
     }
     @Override

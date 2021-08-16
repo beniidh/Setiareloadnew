@@ -55,7 +55,7 @@ public class OTPinsert extends AppCompatActivity {
                 String otpid = otp.getText().toString();
 
                 Bundle ekstra = getIntent().getExtras();
-                MOtpVerif mOtpVerif = new MOtpVerif(ekstra.getString("user_id"), ekstra.getString("otp_id"), otpid);
+                MOtpVerif mOtpVerif = new MOtpVerif(Preference.getKeyUserId(getBaseContext()), Preference.getKeyOtpId(getBaseContext()), otpid);
 
                 Api api = RetroClient.getApiServices();
                 Call<MOtpVerif> call = api.verifOTP(mOtpVerif);
@@ -69,6 +69,7 @@ public class OTPinsert extends AppCompatActivity {
                             Preference.getSharedPreference(getApplicationContext());
                             Preference.setToken(getApplicationContext(), token);
                             Intent intent = new Intent(OTPinsert.this, RegisterFoto_activity.class);
+                            Preference.setTrackRegister(getApplicationContext(), "3");
                             startActivity(intent);
                         } else {
 

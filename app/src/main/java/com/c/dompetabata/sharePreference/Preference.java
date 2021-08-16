@@ -137,34 +137,8 @@ public class Preference {
         editor.putString("PIN", pin);
         editor.apply();
     }
-    public static String getPIN(Context context){
-        return getSharedPreference(context).getString("PIN","");
-    }
 
-    public static void setLong(Context context, String longlitut){
-        SharedPreferences.Editor editor = getSharedPreference(context).edit();
-        editor.putString("longlitut", longlitut);
-        editor.apply();
-    }
 
-    public static String getLong(Context context){
-        return getSharedPreference(context).getString("longlitut","");
-    }
-
-    public static void SetVoucherGame(Context context, MVoucherGame voucherGame){
-        SharedPreferences.Editor editor = getSharedPreference(context).edit();
-        Gson gson = new Gson();
-        String json = gson.toJson(voucherGame);
-        editor.putString("vouchergame", json);
-        editor.apply();
-    }
-
-    public static MVoucherGame getVoucherGame(Context context){
-        Gson gson = new Gson();
-        String json = getSharedPreference(context).getString("vouchergame","");
-        MVoucherGame obj = gson.fromJson(json,MVoucherGame.class);
-        return obj;
-    }
 
     public static void setToken(Context context, String token){
         SharedPreferences.Editor editor = getSharedPreference(context).edit();
@@ -196,6 +170,36 @@ public class Preference {
 
     public static String getIconUrl(Context context){
         return getSharedPreference(context).getString("iconurl","");
+    }
+
+    public static void setSaldoServer(Context context, String saldo){
+        SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.putString("saldoserver", saldo);
+        editor.apply();
+    }
+
+    public static String getSaldoServer(Context context){
+        return getSharedPreference(context).getString("saldoserver","");
+    }
+
+    public static void setIdUPP(Context context, String upp){
+        SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.putString("upp", upp);
+        editor.apply();
+    }
+
+    public static String getIdUPP(Context context){
+        return getSharedPreference(context).getString("upp","");
+    }
+
+    public static void setTrackRegister(Context context, String track){
+        SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.putString("track", track);
+        editor.apply();
+    }
+
+    public static String getTrackRegister(Context context){
+        return getSharedPreference(context).getString("track","");
     }
 
 

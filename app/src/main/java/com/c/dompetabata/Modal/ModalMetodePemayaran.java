@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.c.dompetabata.R;
+import com.c.dompetabata.SaldoServer.BayarSalesServer;
+import com.c.dompetabata.SaldoServer.TrasferBankServer;
 import com.c.dompetabata.TopUpSaldoku.BayarSales;
 import com.c.dompetabata.Transaksi.BayarViaBank;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
@@ -26,9 +28,20 @@ public class ModalMetodePemayaran extends BottomSheetDialogFragment {
         linearSales.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), BayarSales.class);
-                startActivity(intent);
-                dismiss();
+                String codebayar = getArguments().getString("saldotipe");
+
+                if (codebayar.equals("saldoserver")) {
+                    Intent intent = new Intent(getActivity(), BayarSalesServer.class);
+                    startActivity(intent);
+                    dismiss();
+
+                } else {
+                    Intent intent = new Intent(getActivity(), BayarSales.class);
+                    startActivity(intent);
+                    dismiss();
+                }
+
+
             }
         });
 
@@ -36,9 +49,18 @@ public class ModalMetodePemayaran extends BottomSheetDialogFragment {
         LinearBayarBank.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), BayarViaBank.class);
-                startActivity(intent);
-                dismiss();
+                String codebayar = getArguments().getString("saldotipe");
+                if (codebayar.equals("saldoserver")) {
+                    Intent intent = new Intent(getActivity(), TrasferBankServer.class);
+                    startActivity(intent);
+                    dismiss();
+
+                } else {
+
+                    Intent intent = new Intent(getActivity(), BayarViaBank.class);
+                    startActivity(intent);
+                    dismiss();
+                }
             }
         });
 

@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.c.dompetabata.Helper.utils;
 import com.c.dompetabata.PengajuanLimit.MPengajuanLimit;
 import com.c.dompetabata.R;
 
@@ -37,9 +38,12 @@ public class AdapterPersetujuanSaldoServer extends RecyclerView.Adapter<AdapterP
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ModelPersetujuanSaldo modelPersetujuanSaldo = modelPersetujuanSaldos.get(position);
         holder.status.setText(modelPersetujuanSaldo.getStatus());
-        holder.nominal.setText(modelPersetujuanSaldo.getAmount());
+        holder.nominal.setText(utils.ConvertRP(modelPersetujuanSaldo.getAmount()));
         String tanggal = modelPersetujuanSaldo.getUpdated_at();
-        holder.tanggal.setText(tanggal.substring(0,10));
+        String tahun = tanggal.substring(0,4);
+        String bulan = utils.convertBulan(tanggal.substring(5,7));
+        String hari = tanggal.substring(8,10);
+        holder.tanggal.setText(hari+" "+bulan+" "+tahun);
         holder.namakonter.setText(modelPersetujuanSaldo.getUser().getStore_name());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

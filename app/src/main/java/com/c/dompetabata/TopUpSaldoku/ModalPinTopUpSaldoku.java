@@ -17,14 +17,15 @@ import com.c.dompetabata.Api.Api;
 import com.c.dompetabata.Helper.GpsTracker;
 import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.Helper.utils;
+
 import com.c.dompetabata.Modal.ModalKabupaten;
-import com.c.dompetabata.PengajuanLimit.PengajuanDompet;
-import com.c.dompetabata.PengajuanLimit.SendPengajuan;
 import com.c.dompetabata.R;
 import com.c.dompetabata.sharePreference.Preference;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.muddzdev.styleabletoast.StyleableToast;
 import com.oakkub.android.PinEditText;
+
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,7 +35,6 @@ import retrofit2.Response;
 public class ModalPinTopUpSaldoku extends BottomSheetDialogFragment {
 
     GpsTracker gpsTracker;
-    PengajuanDompet pengajuanDompet;
     PinEditText pinpengajuan;
     TextView idCancelPengajuan;
     Button idPinPengajuanButton;
@@ -49,12 +49,7 @@ public class ModalPinTopUpSaldoku extends BottomSheetDialogFragment {
         pinpengajuan = v.findViewById(R.id.pinpengajuan);
         idCancelPengajuan = v.findViewById(R.id.idCancelPengajuan);
         idPinPengajuanButton = v.findViewById(R.id.idPinPengajuanButton);
-        idCancelPengajuan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-            }
-        });
+        idCancelPengajuan.setOnClickListener(v12 -> dismiss());
         idPinPengajuanButton.setOnClickListener(v1 -> {
 
             if (pinpengajuan.length() < 6) {
@@ -62,10 +57,10 @@ public class ModalPinTopUpSaldoku extends BottomSheetDialogFragment {
 
             } else {
 
-                String pinn = utils.hmacSha(pinpengajuan.getText().toString());
+                String pinn = utils.hmacSha(Objects.requireNonNull(pinpengajuan.getText()).toString());
 
                 String jumlahpengajuan = Preference.getSaldoku(getContext());
-                double pengajuan = Double.valueOf(jumlahpengajuan);
+                double pengajuan = Double.parseDouble(jumlahpengajuan);
                 ajukanlimitt(pinn, getMacAddress(), getIPaddress(), getUserAgent(), gpsTracker.getLatitude(), gpsTracker.getLongitude(), pengajuan);
             }
         });
@@ -85,9 +80,11 @@ public class ModalPinTopUpSaldoku extends BottomSheetDialogFragment {
         call.enqueue(new Callback<ReqSaldoku>() {
             @Override
             public void onResponse(Call<ReqSaldoku> call, Response<ReqSaldoku> response) {
+                assert response.body() != null;
                 String code = response.body().getCode();
 
                 if (code.equals("200")) {
+                    assert getArguments() != null;
                     String kode = getArguments().getString("kode");
 
                     String id = response.body().getData().getId();
@@ -122,15 +119,6 @@ public class ModalPinTopUpSaldoku extends BottomSheetDialogFragment {
         void onButtonClickIdUpload(String id);
     }
 
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        try {
-            bottomSheetListeneridUpload = (ModalPinTopUpSaldoku.BottomSheetListeneridUpload) context;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() + "must implement bottomsheet Listener");
-        }
-    }
 
     private String getUserAgent() {
 
@@ -158,6 +146,15 @@ public class ModalPinTopUpSaldoku extends BottomSheetDialogFragment {
 
         } else {
             gpsTracker.showSettingsAlert();
+        }
+    }
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        try {
+            bottomSheetListeneridUpload = (ModalPinTopUpSaldoku.BottomSheetListeneridUpload) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString() + "must implement bottomsheet Listener");
         }
     }
 

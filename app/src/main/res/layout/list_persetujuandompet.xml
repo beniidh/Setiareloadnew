@@ -54,6 +54,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_marginLeft="10sp"
+                        android:textSize="12sp"
                         android:text="30 April 2021"
                         android:textColor="@color/black" />
 

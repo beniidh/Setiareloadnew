@@ -10,6 +10,7 @@ import android.text.Html;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.c.dompetabata.Api.Api;
 import com.c.dompetabata.Helper.LoadingPrimer;
@@ -108,8 +109,9 @@ public class Cetakstruk extends AppCompatActivity {
                     }
                     adapterCetakStruk = new AdapterCetakStruk(getApplicationContext(), mdataa);
                     recyclerView.setAdapter(adapterCetakStruk);
-
-
+                    loadingPrimer.dismissDialog();
+                }else {
+                    Toast.makeText(getApplicationContext(),response.body().getError(),Toast.LENGTH_SHORT).show();
                     loadingPrimer.dismissDialog();
                 }
 
@@ -117,6 +119,7 @@ public class Cetakstruk extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponStruk> call, Throwable t) {
+                Toast.makeText(getApplicationContext(),t.toString(),Toast.LENGTH_SHORT).show();
 
             }
         });

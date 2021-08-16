@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.c.dompetabata.Api.Api;
+import com.c.dompetabata.Helper.utils;
 import com.c.dompetabata.ResetPIN;
 import com.c.dompetabata.Respon.ResponProfil;
 import com.c.dompetabata.Helper.RetroClient;
@@ -80,8 +81,8 @@ public class Profil extends AppCompatActivity {
                 namaprofil.setText(response.body().getData().getName());
                 phone.setText(response.body().getData().getPhone());
                 Picasso.get().load(response.body().getData().getAvatar()).into(iconprofile);
-                saldokuprofil.setText(response.body().getData().getWallet().getSaldoku());
-                saldoserverprofil.setText(response.body().getData().getWallet().getPaylatter());
+                saldokuprofil.setText(utils.ConvertRP(response.body().getData().getWallet().getSaldoku()));
+                saldoserverprofil.setText(utils.ConvertRP(response.body().getData().getWallet().getPaylatter()));
                 String statuspayletter = response.body().getData().getPaylater_status();
 
                 if (statuspayletter.equals("0")) {

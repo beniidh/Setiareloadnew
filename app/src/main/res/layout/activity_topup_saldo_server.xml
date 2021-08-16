@@ -33,21 +33,13 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:fontFamily="@font/mukta"
-                    android:text="Rp."
-                    android:textColor="@color/black"
-                    android:textSize="25sp"
-                    android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tagihanSaldoServer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/mukta"
-                    android:text="200.000"
+                    android:text="0"
                     android:textColor="@color/black"
                     android:textSize="25sp"
                     android:textStyle="bold" />
@@ -71,10 +63,11 @@
                     android:textSize="13sp" />
 
                 <TextView
+                    android:id="@+id/tanggalTagihan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/mukta"
-                    android:text="18-06-2021"
+                    android:text="00-00- 0000"
                     android:textColor="@color/red"
                     android:textSize="14sp" />
 
@@ -106,140 +99,103 @@
                 android:textColor="@color/green"
                 android:textSize="16sp" />
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
+                android:layout_marginTop="20dp">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="4.5"
+                    android:layout_alignParentStart="true"
                     android:text="Limit Saldo Server"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Rp. "
-                    android:textAlignment="viewEnd"
+                    android:layout_alignParentEnd="true"
+                    android:text="Rp.0"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:text="100.000"
-                    android:textColor="@color/black"
-                    android:textSize="13sp" />
+            </RelativeLayout>
 
-            </LinearLayout>
-
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15sp"
-                android:orientation="horizontal">
+               >
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="4.5"
+                    android:layout_alignParentStart="true"
                     android:text="Sisa Saldo Server"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
 
+
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Rp. "
-                    android:textAlignment="viewEnd"
+                    android:text="Rp.0"
+                    android:layout_alignParentEnd="true"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:text="50.000"
-                    android:textColor="@color/black"
-                    android:textSize="13sp" />
+            </RelativeLayout>
 
-            </LinearLayout>
-
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15sp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="4.5"
+                   android:layout_alignParentStart="true"
                     android:text="Pengembalian Saldo Server"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Rp. "
-                    android:textAlignment="viewEnd"
+                   android:layout_alignParentEnd="true"
+                    android:text="Rp.0"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:text="50.000"
-                    android:textColor="@color/black"
-                    android:textSize="13sp" />
+            </RelativeLayout>
 
-            </LinearLayout>
-
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15sp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="4.5"
-                    android:text="Total Pemayaran"
+                    android:layout_alignParentStart="true"
+                    android:text="Total Pembayaran"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Rp. "
-                    android:textAlignment="viewEnd"
+                    android:layout_alignParentEnd="true"
+                    android:text="Rp.0"
                     android:textColor="@color/red"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:text="200.000"
-                    android:textColor="@color/red"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
+            </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
@@ -283,10 +239,10 @@
                 android:background="@color/gray2" />
 
             <RelativeLayout
+                android:id="@+id/LinearBayartagihan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:clickable="true"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:onClick="BayarTagihan">
 

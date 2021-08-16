@@ -7,6 +7,7 @@ import com.c.dompetabata.DaftarHarga.ResponSubProdukDH;
 import com.c.dompetabata.Fragment.RiwayatTransaksi.ResponTransaksi;
 import com.c.dompetabata.Model.MResestPIN;
 import com.c.dompetabata.Model.mResetPassword;
+import com.c.dompetabata.Notifikasi.ResponTransaksiN;
 import com.c.dompetabata.PengajuanLimit.ResponPengajuan;
 import com.c.dompetabata.PengajuanLimit.SendPengajuan;
 import com.c.dompetabata.PersetujuanSaldoSales.ResponPersetujuan;
@@ -39,8 +40,14 @@ import com.c.dompetabata.Model.Mlogin;
 import com.c.dompetabata.Model.Mphone;
 import com.c.dompetabata.Model.MsetPIN;
 import com.c.dompetabata.Model.Responphoto;
+import com.c.dompetabata.SaldoServer.AddUPP;
 import com.c.dompetabata.SaldoServer.ResponPayletter;
+import com.c.dompetabata.SaldoServer.ResponTagihanPayLatter;
+import com.c.dompetabata.SaldoServer.ResponUPP;
 import com.c.dompetabata.SaldoServer.Responn;
+import com.c.dompetabata.TagihanKonter.ResponApprove;
+import com.c.dompetabata.TagihanKonter.ResponTagihanKonter;
+import com.c.dompetabata.TagihanKonter.SendApprove;
 import com.c.dompetabata.TambahKonter.ResponTambahKonter;
 import com.c.dompetabata.TambahKonter.SendDataKonter;
 import com.c.dompetabata.TopUpSaldoku.ReqSaldoku;
@@ -154,7 +161,7 @@ public interface Api {
     @GET("request-paylater")
     Call<Responn> GetPayLetter(@Header("X-Signature") String token);
 
-    @GET("pengajuan-dompet")
+    @GET("request-paylater")
     Call<ResponPengajuan> getPengajuanDompet(@Header("X-Signature") String token);
 
     @POST("auth-check")
@@ -265,6 +272,9 @@ public interface Api {
     Call<ResponTransaksi> getHistoriTransaksi(@Header("X-Signature") String token);
 
     @GET("transaction/history")
+    Call<ResponTransaksiN> getHistoriTransaksiN(@Header("X-Signature") String token);
+
+    @GET("transaction/history")
     Call<ResponStruk> getHistoriStruk(@Header("X-Signature") String token);
 
     @GET("product/sub-category/{id}")
@@ -329,6 +339,18 @@ public interface Api {
 
     @POST("reset-password")
     Call<ResponResetPassword> resetPassword(@Body mResetPassword mResest);
+
+    @GET("user-paylater")
+    Call<ResponTagihanPayLatter> getTagihan(@Header("X-Signature") String token);
+
+    @POST("user-paylater-payment")
+    Call<ResponUPP> SetUPP(@Header("X-Signature") String token, @Body AddUPP upp);
+
+    @GET("user-paylater-payment")
+    Call<ResponTagihanKonter> getTagihanSales(@Header("X-Signature") String token);
+
+    @POST("approve-paylater-payment")
+    Call<ResponApprove> ApproveTagihan(@Header("X-Signature") String token, @Body SendApprove approve);
 
 
 }

@@ -344,6 +344,7 @@ public class RegisterFoto_activity extends AppCompatActivity {
         if(foto1 =="1" && foto2 == "1" && foto3 == "1"){
 
             Intent intent = new Intent(RegisterFoto_activity.this, syaratdanketentuan_activity.class);
+            Preference.setTrackRegister(getApplicationContext(),"4");
             startActivity(intent);
         }else {
 

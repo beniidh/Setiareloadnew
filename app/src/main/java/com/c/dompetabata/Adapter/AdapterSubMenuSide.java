@@ -30,6 +30,7 @@ import com.c.dompetabata.PersetujuanSaldoSales.ModalPinPersetujuan;
 import com.c.dompetabata.PersetujuanSaldoSales.PersetujuanSaldoSales;
 import com.c.dompetabata.Profil.Point;
 import com.c.dompetabata.R;
+import com.c.dompetabata.TagihanKonter.TagihanKonter;
 import com.c.dompetabata.TambahKonter.addKonter;
 import com.c.dompetabata.drawer_activity;
 import com.squareup.picasso.Picasso;
@@ -151,6 +152,13 @@ public class AdapterSubMenuSide extends RecyclerView.Adapter<AdapterSubMenuSide.
                 }
                 case "mark_up": {
                     Intent intent = new Intent(context, markup.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                    drawer_activity.LinDaftarHarga();
+                    break;
+                }
+                case "konter_tagihan": {
+                    Intent intent = new Intent(context, TagihanKonter.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                     drawer_activity.LinDaftarHarga();

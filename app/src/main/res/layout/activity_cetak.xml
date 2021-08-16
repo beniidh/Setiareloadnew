@@ -24,7 +24,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:fontFamily="@font/notoregular"
-            android:text="Axis"
+            android:text=""
             android:textSize="20sp"
             android:textStyle="bold" />
 

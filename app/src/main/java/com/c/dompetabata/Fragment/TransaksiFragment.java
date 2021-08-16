@@ -112,17 +112,11 @@ public class TransaksiFragment extends Fragment {
 
                     datahistory = response.body().getData();
 
-
-
                     for (ResponTransaksi.DataTransaksi dataa : datahistory) {
 
                         String tanggal = dataa.getUpdated_at().substring(0, 10);
                         if (tanggal.equals(tanggall)) {
-
-
                             totaltransaksi += 1;
-
-
                         }
                         if (tanggal.equals(tanggall) && dataa.getStatus().equals("SUKSES")) {
                             totaltransaksisukses += 1;
@@ -131,7 +125,6 @@ public class TransaksiFragment extends Fragment {
                         }
                         if (tanggal.equals(tanggall) && dataa.getWallet_type().equals("PAYLATTER")) {
                             datasaldoserver.add(dataa);
-
                         }
                         if (tanggal.equals(tanggall) && dataa.getWallet_type().equals("SALDOKU")) {
                             datasaldoku.add(dataa);
@@ -152,6 +145,9 @@ public class TransaksiFragment extends Fragment {
                         idTotalPengeluaranTextView.setText(utils.ConvertRP(total));
 
                     }
+                    loadingPrimer.dismissDialog();
+                }else {
+                    Toast.makeText(getContext(),response.body().getError(),Toast.LENGTH_SHORT).show();
                     loadingPrimer.dismissDialog();
                 }
             }

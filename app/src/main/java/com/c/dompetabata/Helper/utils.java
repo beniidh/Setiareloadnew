@@ -180,7 +180,7 @@ public class utils {
 
     }
 
-    public static String hmacSha( String VALUE ) {
+    public static String hmacSha(String VALUE) {
         String KEY = "R5cCI6IkpXVCJ9";
         String SHA_TYPE = "HmacSHA256";
 
@@ -202,32 +202,32 @@ public class utils {
         }
     }
 
-    public static String convertBulan(String angka){
-        String bulan="";
+    public static String convertBulan(String angka) {
+        String bulan = "";
 
-        if(angka.equals("01")){
+        if (angka.equals("01")) {
             bulan = "Januari";
-        } else if(angka.equals("02")){
+        } else if (angka.equals("02")) {
             bulan = "Februari";
-        } else if(angka.equals("03")){
+        } else if (angka.equals("03")) {
             bulan = "Maret";
-        } else if(angka.equals("04")){
+        } else if (angka.equals("04")) {
             bulan = "April";
-        } else if(angka.equals("05")){
+        } else if (angka.equals("05")) {
             bulan = "Mei";
-        } else if(angka.equals("06")){
+        } else if (angka.equals("06")) {
             bulan = "Juni";
-        } else if(angka.equals("07")){
+        } else if (angka.equals("07")) {
             bulan = "Juli";
-        } else if(angka.equals("08")){
+        } else if (angka.equals("08")) {
             bulan = "Agustus";
-        } else if(angka.equals("09")){
+        } else if (angka.equals("09")) {
             bulan = "September";
-        } else if(angka.equals("10")){
+        } else if (angka.equals("10")) {
             bulan = "Oktober";
-        } else if(angka.equals("11")){
+        } else if (angka.equals("11")) {
             bulan = "November";
-        } else if(angka.equals("12")){
+        } else if (angka.equals("12")) {
             bulan = "Desember";
         }
 

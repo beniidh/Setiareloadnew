@@ -64,6 +64,7 @@ public class MyService extends FirebaseMessagingService {
         String isi = remoteMessage.getNotification().getBody();
         String trx = remoteMessage.getNotification().getTag();
 
+
         createNotification(judul,isi,getApplicationContext(),new Intent(),trx);
 
     }

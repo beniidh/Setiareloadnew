@@ -282,7 +282,7 @@
                 android:layout_margin="6dp"
                 android:layout_weight="1"
                 android:background="@drawable/bg_button_login2"
-                android:text="Cetak"
+                android:text="Selanjutnya"
                 android:textAllCaps="false"
                 android:textColor="@color/white" />
 

@@ -107,7 +107,7 @@ public class ModalPinPengajuanServer extends BottomSheetDialogFragment {
 
                 } else {
 
-                    StyleableToast.makeText(getContext(), "Pin anda salah", Toast.LENGTH_SHORT, R.style.mytoast).show();
+                    StyleableToast.makeText(getContext(), response.body().getError(), Toast.LENGTH_SHORT, R.style.mytoast).show();
                 }
 
             }

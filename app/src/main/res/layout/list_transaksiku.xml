@@ -21,18 +21,36 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:padding="10dp">
+            android:paddingHorizontal="10sp"
+            android:paddingBottom="5dp"
+            android:paddingTop="3dp"
+           >
 
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:layout_marginTop="15dp"
                 android:src="@drawable/databasepay" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
+                    <TextView
+                        android:id="@+id/TanggalFSSS"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginLeft="10sp"
+                        android:text="30 April 2021"
+                        android:textColor="@color/black"
+                        android:textSize="10sp" />
+
+                </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -47,15 +65,6 @@
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/TanggalFSSS"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginLeft="10sp"
-                        android:text="30 April 2021"
-                        android:textColor="@color/black"
-                        android:textSize="10sp" />
 
                 </RelativeLayout>
 

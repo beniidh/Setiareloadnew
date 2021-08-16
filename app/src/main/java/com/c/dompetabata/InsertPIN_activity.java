@@ -97,6 +97,7 @@ public class InsertPIN_activity extends AppCompatActivity {
                                           home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|
                                                   Intent.FLAG_ACTIVITY_CLEAR_TASK |
                                                   Intent.FLAG_ACTIVITY_NEW_TASK);
+                                          Preference.setTrackRegister(getApplicationContext(),"");
                                           startActivity(home);
 
 

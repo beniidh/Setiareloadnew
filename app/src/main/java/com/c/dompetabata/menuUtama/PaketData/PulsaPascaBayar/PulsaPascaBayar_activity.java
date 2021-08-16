@@ -121,7 +121,7 @@ public class PulsaPascaBayar_activity extends AppCompatActivity {
 
                                         } else {
 
-                                            Toast.makeText(getApplicationContext(), "Tidak ada tagihan atau nomor salah", Toast.LENGTH_LONG).show();
+                                            Toast.makeText(getApplicationContext(), response.body().getData().getStatus()+" "+response.body().getData().getDescription(), Toast.LENGTH_LONG).show();
                                         }
 
 

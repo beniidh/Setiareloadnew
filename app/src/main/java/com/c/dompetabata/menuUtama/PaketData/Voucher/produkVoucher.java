@@ -101,9 +101,9 @@ public class produkVoucher extends AppCompatActivity implements ModalVoucher.Bot
     @Override
     public void onButtonClick(String name, String id,String icon) {
         inputprodukvoucher.setText(name);
+        getProduk(id,inputnomorvoucher.getText().toString());
         setIdd(id);
         setUrl(icon);
-
     }
 
     public void getProduk(String id,String nomor){

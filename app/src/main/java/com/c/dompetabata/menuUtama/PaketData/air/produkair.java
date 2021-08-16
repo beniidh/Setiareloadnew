@@ -106,6 +106,7 @@ public class produkair extends AppCompatActivity implements ModalAir.BottomSheet
     @Override
     public void onButtonClick(String name, String id) {
         inputprodukair.setText(name);
+        getProdukk(id,inputnomorair.getText().toString());
         setIdd(id);
 
     }

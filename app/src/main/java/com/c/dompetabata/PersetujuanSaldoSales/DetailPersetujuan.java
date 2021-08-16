@@ -51,13 +51,13 @@ public class DetailPersetujuan extends AppCompatActivity {
 
         idTolakDetail.setOnClickListener(v -> {
 
-            showModal("Di Tolak", id, harga);
+            showModal("REJECT SALES", id, harga);
 
         });
 
         idSetujuDetail.setOnClickListener(v -> {
 
-            showModal("Di Setujui", id, harga);
+            showModal("PENDING ADMIN", id, harga);
         });
     }
 

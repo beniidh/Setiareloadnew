@@ -87,7 +87,6 @@ public class ModalPinPersetujuan extends BottomSheetDialogFragment {
         });
 
         return v;
-
     }
 
     private void sendRequestPersetujuan(String pin){

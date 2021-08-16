@@ -14,7 +14,7 @@ import com.c.dompetabata.Helper.utils;
 import com.c.dompetabata.R;
 import com.c.dompetabata.sharePreference.Preference;
 
-public class BayarSales extends AppCompatActivity {
+public class BayarSales extends AppCompatActivity implements ModalPinTopUpSaldoku.BottomSheetListeneridUpload {
     TextView saldokusales;
     Button idbayarsaldokuButton;
     public static Activity a;
@@ -57,6 +57,11 @@ public class BayarSales extends AppCompatActivity {
     public Context getContextt() {
         finish();
         return getApplicationContext();
+
+    }
+
+    @Override
+    public void onButtonClickIdUpload(String id) {
 
     }
 }

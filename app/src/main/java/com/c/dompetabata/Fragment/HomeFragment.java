@@ -83,16 +83,16 @@ public class HomeFragment extends Fragment {
         });
 
         linsaldoserver = v.findViewById(R.id.LinSaldoServer);
-        linsaldoserver.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(getActivity(), TopupSaldoServer.class);
-                intent.putExtra("saldoku", saldoku.getText().toString());
-                startActivity(intent);
-
-            }
-        });
+//        linsaldoserver.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Intent intent = new Intent(getActivity(), TopupSaldoServer.class);
+//                intent.putExtra("saldoku", saldoku.getText().toString());
+//                startActivity(intent);
+//
+//            }
+//        });
 
         SwipeRefreshLayout swipelainnya = v.findViewById(R.id.swipehome);
         swipelainnya.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -135,8 +135,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onChanged(String s) {
 
-                String statusPaylater = s;
-                if (statusPaylater.equals("0")) {
+                if (s.equals("0")) {
                     saldoserver.setText("0");
                     linsaldoserver.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -195,11 +194,9 @@ public class HomeFragment extends Fragment {
                 if (code.equals("200")) {
 
                     menuUtamas = (ArrayList<ModelMenuUtama>) response.body().getData();
-
                     ModelMenuUtama menuUtama = new ModelMenuUtama("lainnya", "https://res.cloudinary.com/diagsydjq/image/upload/v1624616125/c-software/icon_homemenu/iconlainnya_ybvupx.png", "lainnya");
 
                     menuUtamas.add(menuUtama);
-
                     adapterMenuUtama = new AdapterMenuUtama(getContext(), menuUtamas);
                     reymenu.setAdapter(adapterMenuUtama);
 

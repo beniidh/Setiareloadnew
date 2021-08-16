@@ -103,7 +103,8 @@ public class pin_activity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        Intent intent = new Intent(pin_activity.this,Login_Activity.class);
+        startActivity(intent);
     }
 
     private void Login(String pin) {

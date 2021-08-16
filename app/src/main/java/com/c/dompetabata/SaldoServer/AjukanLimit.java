@@ -44,7 +44,6 @@ public class AjukanLimit extends AppCompatActivity {
 
                 StyleableToast.makeText(getApplicationContext(), "Limit tidak boleh kosong", Toast.LENGTH_SHORT, R.style.mytoast2).show();
 
-
             } else {
 
                 Bundle bundle = new Bundle();
@@ -54,7 +53,6 @@ public class AjukanLimit extends AppCompatActivity {
                 modalPinPengajuanServer.show(getSupportFragmentManager(), "Pin Server");
             }
         });
-
 
     }
 
@@ -82,17 +80,15 @@ public class AjukanLimit extends AppCompatActivity {
             @Override
             public void onResponse(Call<Responn> call, Response<Responn> response) {
 
+                assert response.body() != null;
                 String code = response.body().getCode();
                 if (code.equals("200")) {
                     String status = response.body().getData().get(0).getStatus();
 
-                    if(status.equals("PENDING")){
+                    if(status.equals("PENDING SALES")){
                         idAjukanLimitServerButton.setText("Menunggu Persetujuan");
                         idAjukanLimitServerButton.setEnabled(false);
                         openDialog();
-                    }else {
-
-
                     }
 
                 } else {

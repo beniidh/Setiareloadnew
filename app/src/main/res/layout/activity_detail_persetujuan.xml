@@ -20,7 +20,7 @@
             android:text="Limit Saldo Server Saat ini"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="18dp" />
+            android:textSize="17dp" />
 
         <TextView
             android:id="@+id/saldoServerSaatini"
@@ -30,7 +30,7 @@
             android:text="RP 100.000"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="33dp"
+            android:textSize="28dp"
             android:layout_marginBottom="10dp"
             android:textStyle="bold" />
 

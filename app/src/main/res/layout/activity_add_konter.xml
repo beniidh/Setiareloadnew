@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -25,16 +24,16 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:fontFamily="@font/poppinsbold"
-                android:textSize="14dp"
-                android:text=" Nama Pemilik"
+                android:textSize="14sp"
+                android:text="@string/nama_pemilik"
                 />
             <EditText
                 android:id="@+id/namapemilikKonter"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:fontFamily="@font/poppins"
-                android:textSize="16dp"
-                android:hint="Masukan Nama Pemilik "
+                android:textSize="16sp"
+                android:hint="@string/masukan_nama_pemilik"
                 />
 
             <TextView
@@ -42,137 +41,137 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:fontFamily="@font/poppinsbold"
-                android:textSize="14dp"
-                android:text=" Nama Konter"
+                android:textSize="14sp"
+                android:text="@string/nama_konter"
                 />
             <EditText
                 android:id="@+id/namakonterKonter"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:fontFamily="@font/poppins"
-                android:textSize="16dp"
-                android:hint="Masukan Nama Konter "
+                android:textSize="16sp"
+                android:hint="@string/masukan_nama_konter"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppinsbold"
                 android:textStyle="bold"
-                android:textSize="14dp"
-                android:text=" Email"
+                android:textSize="14sp"
+                android:text="@string/email"
                 />
             <EditText
                 android:id="@+id/emailRegisKonter"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:fontFamily="@font/poppins"
-                android:hint="Masukan Email "
+                android:hint="@string/masukan_email"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:fontFamily="@font/poppinsbold"
-                android:textSize="14dp"
-                android:text=" Alamat"
+                android:textSize="14sp"
+                android:text="@string/alamat"
                 />
             <EditText
                 android:id="@+id/alamatRegisKonter"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:fontFamily="@font/poppins"
-                android:hint="Masukan Alamat "
+                android:hint="@string/masukan_alamat"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 android:fontFamily="@font/poppinsbold"
-                android:text=" Provinsi"
+                android:text="@string/provinsi"
                 />
             <EditText
                 android:id="@+id/provinsiKonter"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:fontFamily="@font/poppins"
-                android:textSize="16dp"
-                android:hint="Pilih Provinsi "
+                android:textSize="16sp"
+                android:hint="@string/pilih_provinsi"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 android:fontFamily="@font/poppinsbold"
-                android:text=" Kabupaten/Kota"
+                android:text="@string/kabupaten_kota"
                 />
             <EditText
                 android:id="@+id/kabupatenKonter"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:fontFamily="@font/poppins"
-                android:hint="Pilih Kabupaten / Kota "
-                />
+                android:hint="@string/pilih_kabupaten_kota"
+                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 android:fontFamily="@font/poppinsbold"
-                android:text=" Kecamatan"
+                android:text="@string/kecamatan"
                 />
 
             <EditText
                 android:id="@+id/kecamatanKonter"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:fontFamily="@font/poppins"
-                android:hint="Pilih Kecamatan "
+                android:hint="@string/pilih_kecamatan"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 android:fontFamily="@font/poppinsbold"
-                android:text=" Kelurahan"
+                android:text="@string/kelurahan"
                 />
 
             <EditText
                 android:id="@+id/kelurahanKonter"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:fontFamily="@font/poppins"
-                android:hint="Pilih Kelurahan "
+                android:hint="@string/pilih_kelurahan"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 android:fontFamily="@font/poppinsbold"
-                android:text=" Kode Pos"
+                android:text="@string/kode_pos"
                 />
 
             <EditText
                 android:id="@+id/postCodeKonter"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:fontFamily="@font/poppins"
-                android:hint="Pilih Kode Pos "
+                android:hint="@string/pilih_kode_pos"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:fontFamily="@font/poppinsbold"
-                android:textSize="14dp"
-                android:text=" Nomor Hanphone"
+                android:textSize="14sp"
+                android:text="@string/nomor_hanphone"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -180,18 +179,18 @@
                 android:fontFamily="@font/poppins"
                 android:layout_marginTop="5dp"
                 android:textColor="@color/green"
-                android:textSize="12dp"
-                android:text=" Nomor yang dimasukan digunakan untuk login"
+                android:textSize="12sp"
+                android:text="@string/nomor_yang_dimasukan_digunakan_untuk_login"
                 />
             <EditText
                 android:id="@+id/PhoneRegisKonter"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:inputType="number"
                 android:fontFamily="@font/poppins"
                 android:layout_marginTop="4dp"
-                android:hint="Masukan Nomor "
+                android:hint="@string/masukan_nomor"
                 />
 
 
@@ -216,10 +215,10 @@
                     android:fontFamily="@font/mukta"
                     android:background="@drawable/bg_button_login"
                     android:foreground="?android:attr/selectableItemBackground"
-                    android:text="Simpan"
+                    android:text="@string/simpan"
                     android:textAllCaps="false"
                     android:textColor="@color/green"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
             </RelativeLayout>

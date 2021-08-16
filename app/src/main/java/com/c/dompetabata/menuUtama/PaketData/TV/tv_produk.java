@@ -103,6 +103,7 @@ public class tv_produk extends AppCompatActivity implements ModalTV.BottomSheetL
     @Override
     public void onButtonClick(String name, String id) {
         inputproduktv.setText(name);
+        getProduk(id, inputnomortv.getText().toString());
         setIdd(id);
     }
 

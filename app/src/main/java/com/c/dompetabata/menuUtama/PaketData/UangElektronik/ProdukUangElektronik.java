@@ -105,6 +105,7 @@ public class ProdukUangElektronik extends AppCompatActivity implements ModalUang
     @Override
     public void onButtonClick(String name, String id) {
         inputprodukuangelektronik.setText(name);
+        getProduk(id,inputnomoruangelektronik.getText().toString());
         setIdd(id);
     }
 

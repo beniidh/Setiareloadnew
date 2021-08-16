@@ -16,8 +16,8 @@
         android:padding="5dp"
         android:textColor="@color/green"
         android:textStyle="bold"
-        android:text="Pengajuan Limit"
-        android:textSize="20dp" />
+        android:text="@string/pengajuan_limit"
+        android:textSize="20sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,8 +31,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:text="Isi pengajuan Limit"
-            android:textSize="15dp" />
+            android:text="@string/isi_pengajuan_limit"
+            android:textSize="15sp" />
 
         <EditText
             android:id="@+id/idPengajuanLimitServerEditText"
@@ -54,11 +54,10 @@
         android:id="@+id/idAjukanLimitServerButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_marginTop="50dp"
         android:background="@drawable/bg_button_login2"
-        android:text="Ajukan"
+        android:text="@string/ajukan"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 </LinearLayout>

@@ -62,6 +62,7 @@ Button sendEmail;
                     Intent otpInsert = new Intent(OTPsend.this, OTPinsert.class);
                     otpInsert.putExtra("user_id",user_id);
                     otpInsert.putExtra("otp_id",otp_id);
+                    Preference.setTrackRegister(getApplicationContext(), "2");
                     startActivity(otpInsert);
 
                 }else {

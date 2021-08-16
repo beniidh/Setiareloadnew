@@ -77,7 +77,8 @@ public class AdapterFragmentSaldoServer extends RecyclerView.Adapter<AdapterFrag
         String tahun = tanggal.substring(0, 4);
         String bulan = utils.convertBulan(tanggal.substring(5, 7));
         String hari = tanggal.substring(8, 10);
-        holder.tanggal.setText(hari + " " + bulan + " " + tahun);
+        String jam = tanggal.substring(11,16);
+        holder.tanggal.setText(hari + " " + bulan + " " + tahun+" "+jam);
         holder.produk.setText(dataTransaksi.getProduct_name());
 
         holder.linearklik.setOnClickListener(v -> {

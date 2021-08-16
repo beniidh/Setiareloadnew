@@ -23,11 +23,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins"
-            android:text="Masukan PIN Lama :"
+            android:fontFamily="@font/mukta"
             android:textAlignment="center"
+            android:text="Masukan PIN Lama :"
             android:textColor="@color/green"
-            android:textSize="20sp" />
+            android:textSize="19sp" />
 
         <com.oakkub.android.PinEditText
             android:id="@+id/pinlamareset"
@@ -65,11 +65,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins"
+            android:fontFamily="@font/mukta"
             android:text="Masukan PIN Baru :"
             android:textAlignment="center"
             android:textColor="@color/green"
-            android:textSize="20sp" />
+            android:textSize="19sp" />
 
         <com.oakkub.android.PinEditText
             android:id="@+id/pinsatureset"
@@ -107,11 +107,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins"
-            android:text="Konfirmasi PIN Baru :"
+            android:fontFamily="@font/mukta"
             android:textAlignment="center"
+            android:text="Konfirmasi PIN Baru :"
             android:textColor="@color/green"
-            android:textSize="20sp" />
+            android:textSize="19sp" />
 
         <com.oakkub.android.PinEditText
             android:id="@+id/pinduareset"

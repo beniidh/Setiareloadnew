@@ -138,6 +138,7 @@ public class produkGasnegara extends AppCompatActivity implements ModalGasnegara
 
     @Override
     public void onButtonClick(String name, String id) {
+        getProduk(id,inputnomorgasnegara.getText().toString());
         inputprodukgasnegara.setText(name);
         setIdd(id);
 
