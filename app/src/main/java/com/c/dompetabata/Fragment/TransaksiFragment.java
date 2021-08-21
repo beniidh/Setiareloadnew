@@ -111,6 +111,8 @@ public class TransaksiFragment extends Fragment {
                 if (code.equals("200")) {
 
                     datahistory = response.body().getData();
+                    datasaldoku.clear();
+                    datasaldoserver.clear();
 
                     for (ResponTransaksi.DataTransaksi dataa : datahistory) {
 

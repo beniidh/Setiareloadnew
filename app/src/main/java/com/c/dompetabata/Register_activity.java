@@ -289,7 +289,7 @@ public class Register_activity extends AppCompatActivity implements ModalProvins
         String parent = referal.getText().toString();
         String serveridd = serverid.getText().toString();
         String IpAddres = getIPaddress();
-        String MacAddres = Value.getMacAddress();
+        String MacAddres = Value.getMacAddress(getApplicationContext());
         String useragent = getUserAgent();
         double longlitude = gpsTracker.getLongitude();
         double latitude = gpsTracker.getLatitude();

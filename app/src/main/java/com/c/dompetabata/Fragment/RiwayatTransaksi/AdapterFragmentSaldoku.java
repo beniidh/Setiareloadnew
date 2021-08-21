@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.c.dompetabata.Helper.utils;
 import com.c.dompetabata.R;
 import com.c.dompetabata.menuUtama.PaketData.PulsaPrabayar.TransaksiPending;
+import com.c.dompetabata.sharePreference.Preference;
 
 import java.util.ArrayList;
 
@@ -68,6 +69,7 @@ public class AdapterFragmentSaldoku extends RecyclerView.Adapter<AdapterFragment
 
             Intent intent = new Intent(context, TransaksiPending.class);
             Bundle extras = new Bundle();
+            Preference.setUrlIcon(context,"");
             extras.putString("transaksid", dataTransaksi.getId());
             extras.putString("code", "saldo");
             intent.putExtras(extras);

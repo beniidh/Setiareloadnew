@@ -86,6 +86,7 @@ public class AdapterFragmentSaldoServer extends RecyclerView.Adapter<AdapterFrag
 
             Intent intent = new Intent(context, TransaksiPending.class);
             Bundle extras = new Bundle();
+            Preference.setUrlIcon(context,"");
             extras.putString("transaksid", dataTransaksi.getId());
             extras.putString("code", "saldo");
             intent.putExtras(extras);

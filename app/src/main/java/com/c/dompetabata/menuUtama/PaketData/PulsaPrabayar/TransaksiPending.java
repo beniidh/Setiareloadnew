@@ -3,6 +3,7 @@ package com.c.dompetabata.menuUtama.PaketData.PulsaPrabayar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -32,8 +33,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TransaksiPending extends AppCompatActivity {
-
-    ImageView expand;
+    ImageView expand,copySNTransaksi,copyTransaksi;
     LinearLayout linearExpand;
     TextView KeteranganTP,produkTransaksi, noSN, hargaprodukTP, nomorTP, nominalTP, saldokuterpakai, tanggalDetail, waktuDetail, NomorTransaksiDetail, hargatotalDetail;
     Button tutuppending, cetakStruk;
@@ -61,6 +61,8 @@ public class TransaksiPending extends AppCompatActivity {
         iconTPP = findViewById(R.id.iconTPP);
         noSN = findViewById(R.id.noSN);
         cetakStruk = findViewById(R.id.refreshstatus);
+        copySNTransaksi = findViewById(R.id.copySNTransaksi);
+        copyTransaksi = findViewById(R.id.copyTransaksi);
 
         swipeTransaksi = findViewById(R.id.swipeTransaksi);
         String transaksiid = getIntent().getStringExtra("transaksid");
@@ -71,21 +73,44 @@ public class TransaksiPending extends AppCompatActivity {
         });
 
         ChekTransaksi(transaksiid);
-        cetakStruk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        cetakStruk.setOnClickListener(v -> {
 
-                Intent intent = new Intent(TransaksiPending.this, DetailTransaksiTruk.class);
-                intent.putExtra("nomor", nomorTP.getText().toString());
-                intent.putExtra("produk", produkTransaksi.getText().toString());
-                intent.putExtra("harga", getHarga());
-                intent.putExtra("tanggal", tanggalDetail.getText().toString());
-                intent.putExtra("waktu", waktuDetail.getText().toString());
-                intent.putExtra("sn", noSN.getText().toString());
-                intent.putExtra("transaksid", NomorTransaksiDetail.getText().toString());
-                startActivity(intent);
+            Intent intent = new Intent(TransaksiPending.this, DetailTransaksiTruk.class);
+            intent.putExtra("nomor", nomorTP.getText().toString());
+            intent.putExtra("produk", produkTransaksi.getText().toString());
+            intent.putExtra("harga", getHarga());
+            intent.putExtra("tanggal", tanggalDetail.getText().toString());
+            intent.putExtra("waktu", waktuDetail.getText().toString());
+            intent.putExtra("sn", noSN.getText().toString());
+            intent.putExtra("transaksid", NomorTransaksiDetail.getText().toString());
+            startActivity(intent);
 
+        });
+
+        copySNTransaksi.setOnClickListener(v -> {
+
+            if(android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.HONEYCOMB) {
+                android.text.ClipboardManager clipboard = (android.text.ClipboardManager) getApplicationContext().getSystemService(Context.CLIPBOARD_SERVICE);
+                clipboard.setText(noSN.getText().toString());
+            } else {
+                android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getApplicationContext().getSystemService(Context.CLIPBOARD_SERVICE);
+                android.content.ClipData clip = android.content.ClipData.newPlainText("Copied Text", noSN.getText().toString());
+                clipboard.setPrimaryClip(clip);
             }
+            Toast.makeText(getApplicationContext(),"Copied",Toast.LENGTH_SHORT).show();
+        });
+
+        copyTransaksi.setOnClickListener(v -> {
+
+            if(android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.HONEYCOMB) {
+                android.text.ClipboardManager clipboard = (android.text.ClipboardManager) getApplicationContext().getSystemService(Context.CLIPBOARD_SERVICE);
+                clipboard.setText(NomorTransaksiDetail.getText().toString());
+            } else {
+                android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getApplicationContext().getSystemService(Context.CLIPBOARD_SERVICE);
+                android.content.ClipData clip = android.content.ClipData.newPlainText("Copied Text", NomorTransaksiDetail.getText().toString());
+                clipboard.setPrimaryClip(clip);
+            }
+            Toast.makeText(getApplicationContext(),"Copied",Toast.LENGTH_SHORT).show();
         });
 
         saldokuterpakai = findViewById(R.id.saldokuterpakai);
@@ -121,28 +146,24 @@ public class TransaksiPending extends AppCompatActivity {
         });
 
 
-        expand.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        expand.setOnClickListener(v -> {
 
-                if (linearExpand.getVisibility() == View.GONE) {
+            if (linearExpand.getVisibility() == View.GONE) {
 
-                    TransitionManager.beginDelayedTransition(linearExpand, new AutoTransition());
-                    linearExpand.setVisibility(View.VISIBLE);
-                    expand.setImageResource(R.drawable.ic_baseline_keyboard_arrow_up);
-                } else {
+                TransitionManager.beginDelayedTransition(linearExpand, new AutoTransition());
+                linearExpand.setVisibility(View.VISIBLE);
+                expand.setImageResource(R.drawable.ic_baseline_keyboard_arrow_up);
+            } else {
 
-                    TransitionManager.beginDelayedTransition(linearExpand, new AutoTransition());
-                    linearExpand.setVisibility(View.GONE);
-                    expand.setImageResource(R.drawable.ic_baseline_expand_more_24);
-
-                }
+                TransitionManager.beginDelayedTransition(linearExpand, new AutoTransition());
+                linearExpand.setVisibility(View.GONE);
+                expand.setImageResource(R.drawable.ic_baseline_expand_more_24);
 
             }
+
         });
 
         new CountDownTimer(3000, 1000) {
-
 
             @Override
             public void onTick(long millisUntilFinished) {
@@ -161,7 +182,6 @@ public class TransaksiPending extends AppCompatActivity {
                     }
 
                 }
-
 
             }
         }.start();

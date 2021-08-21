@@ -37,8 +37,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.c.dompetabata.Api.Value.getIPaddress;
-import static com.c.dompetabata.Api.Value.getMacAddress;
+
 
 public class PulsaPascaBayar_activity extends AppCompatActivity {
 
@@ -89,7 +88,7 @@ public class PulsaPascaBayar_activity extends AppCompatActivity {
                             GpsTracker gpsTracker = new GpsTracker(getApplicationContext());
 
                             Api api = RetroClient.getApiServices();
-                            MInquiry mInquiry = new MInquiry(codeinquiry, nomorbelipulsa.getText().toString(), "PASCABAYAR", Value.getMacAddress(), Value.getIPaddress(), Value.getUserAgent(getApplicationContext()), gpsTracker.getLatitude(), gpsTracker.getLongitude());
+                            MInquiry mInquiry = new MInquiry(codeinquiry, nomorbelipulsa.getText().toString(), "PASCABAYAR", Value.getMacAddress(getApplicationContext()), Value.getIPaddress(), Value.getUserAgent(getApplicationContext()), gpsTracker.getLatitude(), gpsTracker.getLongitude());
                             String token = "Bearer " + Preference.getToken(getApplicationContext());
 
                             Call<ResponInquiry> call = api.CekInquiry(token, mInquiry);

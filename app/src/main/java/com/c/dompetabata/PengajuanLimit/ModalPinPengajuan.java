@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.c.dompetabata.Api.Api;
+import com.c.dompetabata.Api.Value;
 import com.c.dompetabata.Helper.GpsTracker;
 import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.Helper.utils;
@@ -66,7 +67,7 @@ public class ModalPinPengajuan extends BottomSheetDialogFragment {
 
                 String jumlahpengajuan = getArguments().getString("jumlahpengajuan");
                 double pengajuan = Double.valueOf(jumlahpengajuan);
-                ajukanlimit(pinn, getMacAddress(), getIPaddress(), getUserAgent(), gpsTracker.getLatitude(), gpsTracker.getLongitude(), pengajuan);
+                ajukanlimit(pinn, Value.getMacAddress(getContext()), getIPaddress(), getUserAgent(), gpsTracker.getLatitude(), gpsTracker.getLongitude(), pengajuan);
             }
         });
 
@@ -121,11 +122,6 @@ public class ModalPinPengajuan extends BottomSheetDialogFragment {
         return IP;
     }
 
-    private String getMacAddress() {
-        String MAC = utils.getMACAddress("wlan0");//phone if pc use eth0 if phone wlan0
-        return MAC;
-
-    }
 
     public void getLocation() {
         gpsTracker = new GpsTracker(getContext());

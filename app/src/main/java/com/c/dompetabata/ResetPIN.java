@@ -56,7 +56,7 @@ public class ResetPIN extends AppCompatActivity {
         Api api = RetroClient.getApiServices();
 
         GpsTracker gpsTracker = new GpsTracker(getApplicationContext());
-        MResestPIN mResestPIN = new MResestPIN(pinlama, pinbaru, pinbaruconfirm, Value.getMacAddress(), Value.getIPaddress(), Value.getUserAgent(getApplicationContext()), gpsTracker.getLatitude(), gpsTracker.getLongitude());
+        MResestPIN mResestPIN = new MResestPIN(pinlama, pinbaru, pinbaruconfirm, Value.getMacAddress(getApplicationContext()), Value.getIPaddress(), Value.getUserAgent(getApplicationContext()), gpsTracker.getLatitude(), gpsTracker.getLongitude());
         Call<ResponResetPin> call = api.resetPIN(token, mResestPIN);
         call.enqueue(new Callback<ResponResetPin>() {
             @Override

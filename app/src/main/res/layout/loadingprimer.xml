@@ -16,8 +16,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:textColor="@color/gray3"
         android:fontFamily="@font/mukta"
-        android:text="Loading.."
+        android:text="@string/loading"
         android:textSize="20sp" />
 
 

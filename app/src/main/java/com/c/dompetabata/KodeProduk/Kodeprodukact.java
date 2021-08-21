@@ -9,7 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.c.dompetabata.Api.Value;
 import com.c.dompetabata.Helper.utils;
 import com.c.dompetabata.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,6 +38,8 @@ public class Kodeprodukact extends AppCompatActivity {
 
 
         linkProduk.setOnClickListener(v -> {
+
+            Toast.makeText(getApplicationContext(), Value.getMacAddress(getApplicationContext()),Toast.LENGTH_LONG).show();
 
 
         });

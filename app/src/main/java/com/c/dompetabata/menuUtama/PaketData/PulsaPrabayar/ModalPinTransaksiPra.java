@@ -96,7 +96,7 @@ public class ModalPinTransaksiPra extends BottomSheetDialogFragment {
         String type = getArguments().getString("inquiry");
         String wallet_type = getArguments().getString("wallettype");
 
-        MTransaksiPraPulsa mTransaksiPraPulsa = new MTransaksiPraPulsa(sku_code, customer_code, ref_id, type, wallet_type, Value.getMacAddress(), Value.getIPaddress(), Value.getUserAgent(getContext()), pin, gpsTracker.getLongitude(), gpsTracker.getLatitude());
+        MTransaksiPraPulsa mTransaksiPraPulsa = new MTransaksiPraPulsa(sku_code, customer_code, ref_id, type, wallet_type, Value.getMacAddress(getContext()), Value.getIPaddress(), Value.getUserAgent(getContext()), pin, gpsTracker.getLongitude(), gpsTracker.getLatitude());
 
         Call<ResponTransaksiPulsaPra> call = api.transalsiPulsaPra(token, mTransaksiPraPulsa);
         call.enqueue(new Callback<ResponTransaksiPulsaPra>() {

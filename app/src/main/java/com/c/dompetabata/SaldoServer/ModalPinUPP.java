@@ -59,7 +59,7 @@ public class ModalPinUPP extends BottomSheetDialogFragment {
                 String pinn = utils.hmacSha(Objects.requireNonNull(pinpengajuan.getText()).toString());
                 String jumlahpengajuan = Preference.getSaldoServer(getContext());
                 double pengajuan = Double.parseDouble(jumlahpengajuan);
-                ajukanUPP(Preference.getIdUPP(getContext()), pinn, Value.getMacAddress(), Value.getIPaddress(), Value.getUserAgent(getContext()), gpsTracker.getLatitude(), gpsTracker.getLongitude(), pengajuan);
+                ajukanUPP(Preference.getIdUPP(getContext()), pinn, Value.getMacAddress(getContext()), Value.getIPaddress(), Value.getUserAgent(getContext()), gpsTracker.getLatitude(), gpsTracker.getLongitude(), pengajuan);
             }
         });
 

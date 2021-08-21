@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.c.dompetabata.Api.Api;
+import com.c.dompetabata.Api.Value;
 import com.c.dompetabata.Helper.GpsTracker;
 import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.Helper.utils;
@@ -72,7 +73,7 @@ public class AdapterPulsaPrabayar extends RecyclerView.Adapter<AdapterPulsaPraba
 
             GpsTracker gpsTracker = new GpsTracker(context);
             Api api = RetroClient.getApiServices();
-            MInquiry mInquiry = new MInquiry(mPulsaPra.getCode(), nomor, type, getMacAddress(), getIPaddress(), getUserAgent(), gpsTracker.getLatitude(), gpsTracker.getLongitude());
+            MInquiry mInquiry = new MInquiry(mPulsaPra.getCode(), nomor, type, Value.getMacAddress(context), getIPaddress(), getUserAgent(), gpsTracker.getLatitude(), gpsTracker.getLongitude());
             String token = "Bearer " + Preference.getToken(context);
             Call<ResponInquiry> call = api.CekInquiry(token, mInquiry);
             call.enqueue(new Callback<ResponInquiry>() {
@@ -146,11 +147,7 @@ public class AdapterPulsaPrabayar extends RecyclerView.Adapter<AdapterPulsaPraba
         return IP;
     }
 
-    private String getMacAddress() {
-        String MAC = utils.getMACAddress("wlan0");//phone if pc use eth0 if phone wlan0
-        return MAC;
 
-    }
 
 //    public void getLocation() {
 //        gpsTracker = new GpsTracker(context);

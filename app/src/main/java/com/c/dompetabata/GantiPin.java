@@ -71,7 +71,7 @@ public class GantiPin extends AppCompatActivity {
     public void resetPassword (String email){
         GpsTracker gpsTracker = new GpsTracker(getApplicationContext());
         Api api = RetroClient.getApiServices();
-        mResetPassword mResetPassword = new mResetPassword(email, Value.getIPaddress(),Value.getMacAddress(),Value.getUserAgent(getApplicationContext()),gpsTracker.getLongitude(),gpsTracker.getLatitude());
+        mResetPassword mResetPassword = new mResetPassword(email, Value.getIPaddress(),Value.getMacAddress(getApplicationContext()),Value.getUserAgent(getApplicationContext()),gpsTracker.getLongitude(),gpsTracker.getLatitude());
         Call<ResponResetPassword> call = api.resetPassword(mResetPassword);
         call.enqueue(new Callback<ResponResetPassword>() {
             @Override

@@ -39,7 +39,7 @@ public class TrasferBank extends AppCompatActivity implements ModalPinTopUpSaldo
     TextView saldokubank;
     Button oktransaksi, uploadBuktiTBSaldo;
     int up = 0;
-    String primaryid="";
+    String primaryid = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,13 +51,15 @@ public class TrasferBank extends AppCompatActivity implements ModalPinTopUpSaldo
 
         saldokubank = findViewById(R.id.saldokubank);
         uploadBuktiTBSaldo = findViewById(R.id.uploadBuktiTBSaldo);
+        oktransaksi = findViewById(R.id.oktransaksi);
 
         uploadBuktiTBSaldo.setOnClickListener(v -> {
             String idprimary = getPrimaryid();
-            if(idprimary.isEmpty()){
+            if (idprimary.isEmpty()) {
 
-                Toast.makeText(getApplicationContext(),"Lakukan Pengajuan terlebih dahulu",Toast.LENGTH_SHORT).show();
-            }else {
+
+                Toast.makeText(getApplicationContext(), "Lakukan Pengajuan terlebih dahulu", Toast.LENGTH_SHORT).show();
+            } else {
 
                 Intent intent = CropImage.activity()
                         .setAspectRatio(1, 1)
@@ -70,7 +72,7 @@ public class TrasferBank extends AppCompatActivity implements ModalPinTopUpSaldo
         });
 
         saldokubank.setText(utils.ConvertRP(Preference.getSaldoku(getApplicationContext())));
-        oktransaksi = findViewById(R.id.oktransaksi);
+
         oktransaksi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,6 +127,9 @@ public class TrasferBank extends AppCompatActivity implements ModalPinTopUpSaldo
     @Override
     public void onButtonClickIdUpload(String id) {
         setPrimaryid(id);
+        if (!id.isEmpty()) {
+            oktransaksi.setText("Pengajuan Berhasil");
+        }
     }
 
     private void uploadBukti(Bitmap photo) {
@@ -140,7 +145,7 @@ public class TrasferBank extends AppCompatActivity implements ModalPinTopUpSaldo
         //creating retrofit object
         Api api = RetroClient.getApiServices();
 //        progresktp.setVisibility(View.VISIBLE);
-        Call<ResponTopUp> call = api.uploadBuktiBayar(token,body, type, primary_id);
+        Call<ResponTopUp> call = api.uploadBuktiBayar(token, body, type, primary_id);
         call.enqueue(new Callback<ResponTopUp>() {
 
 
@@ -150,7 +155,7 @@ public class TrasferBank extends AppCompatActivity implements ModalPinTopUpSaldo
 //                progresktp.setVisibility(View.INVISIBLE);
 //                foto2 ="1";
                 if (code.equals("200")) {
-                  Toast.makeText(getApplicationContext(), "Foto Berhasil diupload", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Foto Berhasil diupload", Toast.LENGTH_SHORT).show();
                     loadingPrimerd.dismissDialog();
 //                    uploadKTP.setImageDrawable(getDrawable(R.drawable.check));
                 } else {

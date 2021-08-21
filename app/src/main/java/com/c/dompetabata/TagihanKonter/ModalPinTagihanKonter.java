@@ -90,7 +90,7 @@ public class ModalPinTagihanKonter extends BottomSheetDialogFragment {
         String token = "Bearer " + Preference.getToken(getContext());
         Api api = RetroClient.getApiServices();
         String aksi = getArguments().getString("aksi");
-        SendApprove sendApprove = new SendApprove(id, pin, aksi, Value.getMacAddress(), Value.getIPaddress(), Value.getUserAgent(getContext()), gpsTracker.getLatitude(), gpsTracker.getLongitude());
+        SendApprove sendApprove = new SendApprove(id, pin, aksi, Value.getMacAddress(getContext()), Value.getIPaddress(), Value.getUserAgent(getContext()), gpsTracker.getLatitude(), gpsTracker.getLongitude());
         Call<ResponApprove> call = api.ApproveTagihan(token, sendApprove);
         call.enqueue(new Callback<ResponApprove>() {
             @Override

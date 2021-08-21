@@ -125,6 +125,10 @@ public class TrasferBankServer extends AppCompatActivity implements ModalPinUPPS
     @Override
     public void onButtonClickIdUpload(String id) {
         setPrimaryid(id);
+
+        if (!id.isEmpty()) {
+            oktransaksi.setText("Pengajuan Berhasil");
+        }
     }
 
     private void uploadBukti(Bitmap photo) {

@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.c.dompetabata.Api.Api;
+import com.c.dompetabata.Api.Value;
 import com.c.dompetabata.Helper.GpsTracker;
 import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.Helper.utils;
@@ -30,7 +31,6 @@ import java.util.Objects;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 
 public class ModalPinTopUpSaldoku extends BottomSheetDialogFragment {
 
@@ -61,7 +61,7 @@ public class ModalPinTopUpSaldoku extends BottomSheetDialogFragment {
 
                 String jumlahpengajuan = Preference.getSaldoku(getContext());
                 double pengajuan = Double.parseDouble(jumlahpengajuan);
-                ajukanlimitt(pinn, getMacAddress(), getIPaddress(), getUserAgent(), gpsTracker.getLatitude(), gpsTracker.getLongitude(), pengajuan);
+                ajukanlimitt(pinn, Value.getMacAddress(getContext()), getIPaddress(), getUserAgent(), gpsTracker.getLatitude(), gpsTracker.getLongitude(), pengajuan);
             }
         });
 
@@ -132,11 +132,7 @@ public class ModalPinTopUpSaldoku extends BottomSheetDialogFragment {
         return IP;
     }
 
-    private String getMacAddress() {
-        String MAC = utils.getMACAddress("wlan0");//phone if pc use eth0 if phone wlan0
-        return MAC;
 
-    }
 
     public void getLocation() {
         gpsTracker = new GpsTracker(getContext());

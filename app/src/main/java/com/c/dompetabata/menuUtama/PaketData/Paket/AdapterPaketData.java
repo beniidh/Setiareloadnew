@@ -69,7 +69,7 @@ public class AdapterPaketData extends RecyclerView.Adapter<AdapterPaketData.View
 
             GpsTracker gpsTracker = new GpsTracker(context);
             Api api = RetroClient.getApiServices();
-            MInquiry mInquiry = new MInquiry(mPaketDatas.getCode(), nomor, "PRABAYAR", Value.getMacAddress(), Value.getIPaddress(), Value.getUserAgent(context), gpsTracker.getLatitude(), gpsTracker.getLongitude());
+            MInquiry mInquiry = new MInquiry(mPaketDatas.getCode(), nomor, "PRABAYAR", Value.getMacAddress(context), Value.getIPaddress(), Value.getUserAgent(context), gpsTracker.getLatitude(), gpsTracker.getLongitude());
             String token = "Bearer " + Preference.getToken(context);
 
             Call<ResponInquiry> call = api.CekInquiry(token, mInquiry);

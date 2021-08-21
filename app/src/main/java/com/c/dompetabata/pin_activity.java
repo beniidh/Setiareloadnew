@@ -105,6 +105,7 @@ public class pin_activity extends AppCompatActivity {
     public void onBackPressed() {
         Intent intent = new Intent(pin_activity.this,Login_Activity.class);
         startActivity(intent);
+        finish();
     }
 
     private void Login(String pin) {
@@ -127,7 +128,7 @@ public class pin_activity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<String> task) {
                 String deviceToken = task.getResult();
-                Mlogin mlogin = new Mlogin(telepon, pin, deviceToken, IP, Value.getMacAddress(), useragent, longlitude, latitude);
+                Mlogin mlogin = new Mlogin(telepon, pin, deviceToken, IP, Value.getMacAddress(getApplicationContext()), useragent, longlitude, latitude);
 
                 Api api = RetroClient.getApiServices();
                 Call<Mlogin> call = api.Login(mlogin);

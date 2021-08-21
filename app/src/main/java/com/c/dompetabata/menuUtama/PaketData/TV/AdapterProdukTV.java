@@ -67,7 +67,7 @@ public class AdapterProdukTV extends RecyclerView.Adapter<AdapterProdukTV.ViewHo
             GpsTracker gpsTracker = new GpsTracker(context);
 
             Api api = RetroClient.getApiServices();
-            MInquiry mInquiry = new MInquiry(mVoucherData.getCode(), nomor, type, Value.getMacAddress(), Value.getIPaddress(), Value.getUserAgent(context), gpsTracker.getLatitude(), gpsTracker.getLongitude());
+            MInquiry mInquiry = new MInquiry(mVoucherData.getCode(), nomor, type, Value.getMacAddress(context), Value.getIPaddress(), Value.getUserAgent(context), gpsTracker.getLatitude(), gpsTracker.getLongitude());
             String token = "Bearer " + Preference.getToken(context);
             Call<ResponInquiry> call = api.CekInquiry(token, mInquiry);
             call.enqueue(new Callback<ResponInquiry>() {

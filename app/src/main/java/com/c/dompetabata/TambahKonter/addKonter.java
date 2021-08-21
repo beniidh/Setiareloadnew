@@ -199,7 +199,7 @@ public class addKonter extends AppCompatActivity implements ModalProvinsi.Bottom
         double latitude = gpsTracker.getLongitude();
         String UA = Value.getUserAgent(getApplicationContext());
         String IP = Value.getIPaddress();
-        String mac = Value.getMacAddress();
+        String mac = Value.getMacAddress(getApplicationContext());
 
 
         SendDataKonter sendDataKonter = new SendDataKonter(name, namakonterr, emaill, phonne, address, IP, mac, UA, province, Regencie, district, subdistrict, postalCode, longlitutde, latitude);

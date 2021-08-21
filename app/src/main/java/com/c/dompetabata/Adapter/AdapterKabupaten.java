@@ -24,7 +24,7 @@ import java.util.List;
 
 public class AdapterKabupaten extends RecyclerView.Adapter<AdapterKabupaten.ViewHolder> implements Filterable {
 
-    private Context context;
+    private final Context context;
     private List<ModelKabupaten> modelKabupatens;
     private List<ModelKabupaten> modelKabupatensFull;
     private int selectedPosition = 0;

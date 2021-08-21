@@ -8,6 +8,9 @@ import com.c.dompetabata.Helper.utils;
 import com.c.dompetabata.Model.Mlogin;
 import com.c.dompetabata.Model.data;
 
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Collections;
 import java.util.List;
 
 public class Value {
@@ -34,27 +37,14 @@ public class Value {
         this.password = password;
     }
 
-    public String getCredentials() {
-        return credentials;
-    }
 
-    public void setCredentials(String credentials) {
-        this.credentials = credentials;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public static String getMacAddress() {
-        String MAC = utils.getMACAddress("wlan0");//phone if pc use eth0 if phone wlan0
+    public static String getMacAddress(Context context) {
+        String MAC = utils.getMacAddr();//phone if pc use eth0 if phone wlan0
         return MAC;
 
     }
+
+
 
     public static String getUserAgent(Context context) {
 

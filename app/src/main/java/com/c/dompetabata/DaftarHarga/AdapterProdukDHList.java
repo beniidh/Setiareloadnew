@@ -37,7 +37,6 @@ public class AdapterProdukDHList extends RecyclerView.Adapter<AdapterProdukDHLis
     Context context;
     ArrayList<ResponProdukList.mData> mData;
 
-
     public AdapterProdukDHList(Context context, ArrayList<ResponProdukList.mData> mData) {
         this.context = context;
         this.mData = mData;

@@ -2,7 +2,11 @@ package com.c.dompetabata.Model;
 
 public class MRegisData {
 
-    String user_id,user_code,email,phone,otp_id,created_at,updated_at,code;
+    String user_id,user_code,email,phone,otp_id,created_at,updated_at,code,error;
+
+    public String getError() {
+        return error;
+    }
 
     public MRegisData() {
     }

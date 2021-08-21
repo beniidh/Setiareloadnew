@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.c.dompetabata.Api.Api;
+import com.c.dompetabata.Api.Value;
 import com.c.dompetabata.Helper.GpsTracker;
 import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.Helper.utils;
@@ -72,7 +73,7 @@ public class InsertPIN_activity extends AppCompatActivity {
                                 String IP = getIPaddress();
                                 String pinsattu = pinsatu.getText().toString();
                                 String pinddua = pindua.getText().toString();
-                                String MacAddres = getMacAddress();
+                                String MacAddres = Value.getMacAddress(getApplicationContext());
                                 double longlitut = gpsTracker.getLongitude();
                                 double latitude = gpsTracker.getLatitude();
                                 Intent intent = getIntent();
@@ -148,11 +149,7 @@ public class InsertPIN_activity extends AppCompatActivity {
         return IP;
     }
 
-    private String getMacAddress() {
-        String MAC = utils.getMACAddress("wlan0");//phone if pc use eth0 if phone wlan0
-        return MAC;
 
-    }
 
     public void getLocation() {
         gpsTracker = new GpsTracker(InsertPIN_activity.this);

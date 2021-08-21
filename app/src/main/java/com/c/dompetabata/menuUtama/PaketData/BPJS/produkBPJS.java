@@ -77,7 +77,7 @@ public class produkBPJS extends AppCompatActivity {
                     GpsTracker gpsTracker = new GpsTracker(getApplicationContext());
 
                     Api api = RetroClient.getApiServices();
-                    MInquiry mInquiry = new MInquiry(getCode(), nomorinputBpjs.getText().toString(), "PASCABAYAR", Value.getMacAddress(), Value.getIPaddress(), Value.getUserAgent(getApplicationContext()), gpsTracker.getLatitude(), gpsTracker.getLongitude());
+                    MInquiry mInquiry = new MInquiry(getCode(), nomorinputBpjs.getText().toString(), "PASCABAYAR", Value.getMacAddress(getApplicationContext()), Value.getIPaddress(), Value.getUserAgent(getApplicationContext()), gpsTracker.getLatitude(), gpsTracker.getLongitude());
                     String token = "Bearer " + Preference.getToken(getApplicationContext());
 
                     Call<ResponInquiry> call = api.CekInquiry(token, mInquiry);

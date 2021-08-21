@@ -243,7 +243,6 @@ public class cetak extends AppCompatActivity {
             beginListenForData();
 
             myLabel.setText("Bluetooth Opened");
-//            sendData();
 
         } catch (Exception e) {
             e.printStackTrace();

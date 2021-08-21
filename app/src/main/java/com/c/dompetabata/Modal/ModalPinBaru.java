@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.c.dompetabata.Api.Api;
+import com.c.dompetabata.Api.Value;
 import com.c.dompetabata.Helper.GpsTracker;
 import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.Helper.utils;
@@ -71,7 +72,7 @@ public class ModalPinBaru extends BottomSheetDialogFragment {
         String pin = getArguments().getString("PINedit");
         String token = "Bearer " + Preference.getToken(getContext());
         Api api = RetroClient.getApiServices();
-        MPin mPin = new MPin(pin, pinbaru, getMacAddress(), getIPaddress(), getUserAgent(), gpsTracker.getLatitude(), gpsTracker.getLatitude());
+        MPin mPin = new MPin(pin, pinbaru, Value.getMacAddress(getContext()), getIPaddress(), getUserAgent(), gpsTracker.getLatitude(), gpsTracker.getLatitude());
         Call<MPin> call = api.UbahPin(token, mPin);
         call.enqueue(new Callback<MPin>() {
             @Override
@@ -105,11 +106,7 @@ public class ModalPinBaru extends BottomSheetDialogFragment {
         return IP;
     }
 
-    private String getMacAddress() {
-        String MAC = utils.getMACAddress("wlan0");//phone if pc use eth0 if phone wlan0
-        return MAC;
 
-    }
 
     public void getLocation() {
         gpsTracker = new GpsTracker(getContext());
