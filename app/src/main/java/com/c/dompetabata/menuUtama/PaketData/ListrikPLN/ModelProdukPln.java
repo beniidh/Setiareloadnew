@@ -2,7 +2,7 @@ package com.c.dompetabata.menuUtama.PaketData.ListrikPLN;
 
 public class ModelProdukPln {
 
-    String id,code,name,brand,basic_price,markup_price,status,seller_product_status,multi,description,product_subcategory_id,start_cut_off,end_cut_off;
+    String id,code,name,brand,basic_price,markup_price,status,seller_product_status,multi,description,product_subcategory_id,start_cut_off,end_cut_off,total_price;
 
     public String getId() {
         return id;
@@ -38,6 +38,10 @@ public class ModelProdukPln {
 
     public String getMulti() {
         return multi;
+    }
+
+    public String getTotal_price() {
+        return total_price;
     }
 
     public String getDescription() {

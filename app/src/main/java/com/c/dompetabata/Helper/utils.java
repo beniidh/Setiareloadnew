@@ -20,6 +20,7 @@ import java.net.NetworkInterface;
 import java.nio.charset.Charset;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Collections;
 import java.util.List;
@@ -157,11 +158,12 @@ public class utils {
     }
 
     public static String ConvertRP(String value) {
-        double harga = Double.valueOf(value);
-        Locale localeid = new Locale("in", "ID");
-        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeid);
 
-        return formatRupiah.format(harga);
+        Locale localeid = new Locale("in", "ID");
+//        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeid);
+        NumberFormat formatRupiah = new DecimalFormat("#,###");
+        double harga = Double.parseDouble(value);
+        return "Rp"+formatRupiah.format(harga);
     }
 
     public static void GenerateHas(Context context, String kata) throws NoSuchAlgorithmException, InvalidKeyException {

@@ -16,6 +16,8 @@ import android.widget.Toast;
 import com.c.dompetabata.Api.Api;
 import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.menuUtama.PaketData.PaketsmsTelpon.AdapterProdukST;
+import com.c.dompetabata.menuUtama.PaketData.PulsaPrabayar.AdapterPulsaPrabayar;
+import com.c.dompetabata.menuUtama.PaketData.PulsaPrabayar.MPulsaPra;
 import com.c.dompetabata.menuUtama.PaketData.PulsaPrabayar.modelPasca;
 import com.c.dompetabata.R;
 import com.c.dompetabata.Respon.ResponSubCategory;
@@ -75,6 +77,12 @@ public class PaketData_Activity extends AppCompatActivity {
                     Intent intent = getIntent();
                     String id = intent.getStringExtra("id");
                     getSubCategory(provider,id);
+
+                }else{
+                    ArrayList<MProdukPaketData> mProdukPaketDataa = new ArrayList<>();
+                    adapterPaketData = new AdapterPaketData(getApplicationContext(),mProdukPaketDataa,nomorbelidata.getText().toString(),getUrl());
+                    setUrl("http//");
+
 
                 }
 

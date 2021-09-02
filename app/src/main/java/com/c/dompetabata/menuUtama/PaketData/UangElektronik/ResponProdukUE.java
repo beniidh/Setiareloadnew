@@ -25,7 +25,7 @@ public class ResponProdukUE {
 
     public class VoucherData{
 
-        String id,code,name,brand,basic_price,description,product_subcategory_id,updated_at;
+        String id,code,name,brand,basic_price,description,product_subcategory_id,updated_at,total_price;
 
         public String getId() {
             return id;
@@ -45,6 +45,10 @@ public class ResponProdukUE {
 
         public String getBasic_price() {
             return basic_price;
+        }
+
+        public String getTotal_price() {
+            return total_price;
         }
 
         public String getDescription() {

@@ -47,7 +47,6 @@ public class AdapterProdukVoucher extends RecyclerView.Adapter<AdapterProdukVouc
         this.nomor = nomor;
         this.urll = urll;
 
-
     }
 
 
@@ -65,7 +64,7 @@ public class AdapterProdukVoucher extends RecyclerView.Adapter<AdapterProdukVouc
         ResponProdukVoucherv.VoucherData mdata = mData.get(position);
         holder.name.setText(mdata.getName());
         holder.deskripsi.setText(mdata.getDescription());
-        holder.harga.setText(utils.ConvertRP(mdata.getBasic_price()));
+        holder.harga.setText(utils.ConvertRP(mdata.getTotal_price()));
         holder.linearklik.setOnClickListener(v -> {
 
             GpsTracker gpsTracker = new GpsTracker(context);

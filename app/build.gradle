@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "com.c.dompetabata"
         minSdkVersion 23
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
@@ -59,6 +59,7 @@ dependencies {
     implementation 'com.github.DantSu:ESCPOS-ThermalPrinter-Android:3.0.0'
     implementation 'com.google.firebase:firebase-messaging:22.0.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+    implementation 'io.github.nikartm:image-support:2.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

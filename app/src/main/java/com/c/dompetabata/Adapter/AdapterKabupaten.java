@@ -137,7 +137,6 @@ public class AdapterKabupaten extends RecyclerView.Adapter<AdapterKabupaten.View
         }
     };
 
-
     public class ViewHolder extends RecyclerView.ViewHolder{
      TextView name;
      CheckBox chekP;

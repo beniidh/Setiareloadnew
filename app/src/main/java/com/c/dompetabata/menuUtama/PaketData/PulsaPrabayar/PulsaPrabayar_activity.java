@@ -85,9 +85,7 @@ public class PulsaPrabayar_activity extends AppCompatActivity {
                     mPulsaPras = mPulsaPrass;
                     adapterPulsaPrabayar = new AdapterPulsaPrabayar(getApplicationContext(), mPulsaPras, nomorbelipulsa.getText().toString(), url, type);
                     reyPulsaPra.setAdapter(adapterPulsaPrabayar);
-
                     setUrl("http//");
-
 
                 }
 

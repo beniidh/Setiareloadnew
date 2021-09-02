@@ -79,7 +79,6 @@ public class PulsaPascaBayar_activity extends AppCompatActivity {
 
                     if (!nomorbelipulsa.getText().toString().isEmpty()) {
 
-
                         if (!codeinquiry.equals("")) {
 
                             LoadingPrimer loadingPrimer = new LoadingPrimer(PulsaPascaBayar_activity.this);

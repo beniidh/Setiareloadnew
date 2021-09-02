@@ -32,8 +32,8 @@ public class MyService extends FirebaseMessagingService {
 
         PendingIntent PI = PendingIntent.getActivity(this,1,resultIntent,PendingIntent.FLAG_UPDATE_CURRENT);
         int NotificationID = 0;
-        String ChanelID = "Hallo";
-        String ChanelName ="Hallobeni";
+        String ChanelID = "Abata";
+        String ChanelName ="AbataChannel";
         int Impoortance = NotificationManager.IMPORTANCE_HIGH;
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
 

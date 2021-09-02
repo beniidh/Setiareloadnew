@@ -24,7 +24,7 @@ public class ResponTransaksi {
 
     public class DataTransaksi{
 
-        String id,customer_no,product_code,product_name,basic_price,markup_price,sales_markup,user_markup,sub_total,total_price,status,type,wallet_type,sn,user_id,sales_id,server_id,updated_at;
+        String id,customer_no,product_code,product_name,basic_price,markup_price,sales_markup,user_markup,sub_total,total_price,status,type,wallet_type,sn,user_id,sales_id,server_id,updated_at,created_at;
 
         public String getId() {
             return id;
@@ -92,6 +92,10 @@ public class ResponTransaksi {
 
         public String getServer_id() {
             return server_id;
+        }
+
+        public String getCreated_at() {
+            return created_at;
         }
 
         public String getUpdated_at() {

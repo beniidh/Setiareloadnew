@@ -1,8 +1,10 @@
 package com.c.dompetabata.Profil;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -28,6 +30,7 @@ import retrofit2.Response;
 public class Profil extends AppCompatActivity {
     TextView namaprofil, phone,saldokuprofil,saldoserverprofil;
     ImageView iconprofile;
+    TextView Pubahpin,Pubahprofil,Ppoint,Pdevice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,18 @@ public class Profil extends AppCompatActivity {
         iconprofile = findViewById(R.id.iconprofile);
         saldokuprofil = findViewById(R.id.saldokuprofil);
         saldoserverprofil = findViewById(R.id.saldoserverprofil);
+
+        Pubahpin = findViewById(R.id.PubahPin);
+        Pubahprofil = findViewById(R.id.PubahProfil);
+        Ppoint = findViewById(R.id.Ppoint);
+        Pdevice = findViewById(R.id.Pdevice);
+        Typeface type = ResourcesCompat.getFont(getApplicationContext(), R.font.abata);
+        Pubahpin.setTypeface(type);
+        Pubahprofil.setTypeface(type);
+        Ppoint.setTypeface(type);
+        Pdevice.setTypeface(type);
+
+
         getContentProfil();
 
         saldokuprofil.setOnClickListener(v -> {

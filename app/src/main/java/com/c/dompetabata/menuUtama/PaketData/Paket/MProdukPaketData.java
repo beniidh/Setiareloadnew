@@ -2,10 +2,14 @@ package com.c.dompetabata.menuUtama.PaketData.Paket;
 
 public class MProdukPaketData {
 
-    String id,code,brand,basic_price,name,description,icon,product_category_id,created_at,updated_at;
+    String id,code,brand,basic_price,name,description,icon,product_category_id,created_at,updated_at,total_price;
 
     public String getId() {
         return id;
+    }
+
+    public String getTotal_price() {
+        return total_price;
     }
 
     public String getBasic_price() {

@@ -55,6 +55,8 @@ import info.androidhive.fontawesome.FontDrawable;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import ru.nikartm.support.BadgePosition;
+import ru.nikartm.support.ImageBadgeView;
 
 public class drawer_activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     BottomNavigationView menu_bawah;
@@ -73,7 +75,8 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
     AdapterSubMenuSide adapterSubMenuSide;
     ArrayList<MSubMenu> mSubMenus = new ArrayList<>();
     RecyclerView submenu;
-    ImageView notifikasi, iconprofilsidebar;
+    ImageView iconprofilsidebar;
+    ImageBadgeView notifikasi;
     TextView parent;
 
     static Activity drawwer;
@@ -101,6 +104,14 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
 
 
         notifikasi = findViewById(R.id.notifikasiID);
+        notifikasi.setBadgeValue(0)
+                .setBadgeTextSize(9)
+                .setMaxBadgeValue(999)
+                .setBadgeBackground(getResources().getDrawable(R.drawable.rectangle_rounded))
+                .setBadgePosition(BadgePosition.TOP_RIGHT)
+                .setBadgeTextStyle(Typeface.NORMAL)
+                .setShowCounter(true)
+                .setBadgePadding(4);
 
         notifikasi.setOnClickListener(v -> {
 
@@ -226,6 +237,7 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
         drawer_layout.closeDrawers();
 
     }
+
 
     public void LinKeluar(View view) {
 

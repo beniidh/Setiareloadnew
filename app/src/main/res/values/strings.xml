@@ -7,6 +7,12 @@
     <string name="Close">tutup</string>
     <string name="open">open</string>
     <string name="close">close</string>
+
+    <string name="userProfil">&#xea05;</string>
+    <string name="gantiPIN">&#xe98f;</string>
+    <string name="Point">&#xe9e1;</string>
+    <string name="Device">&#xe9dd;</string>
+
     <string name="userabata">&#xea00;</string>
     <string name="iconhome">&#xe980;</string>
     <string name="icontransaksi">&#xe939;</string>

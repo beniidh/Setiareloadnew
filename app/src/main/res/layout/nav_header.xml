@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="55dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="10dp"
     android:background="@color/white"
-    android:elevation="2dp"
-    >
+    android:elevation="2dp">
     <ImageView
         android:foreground="?android:attr/selectableItemBackground"
         android:layout_width="0dp"
@@ -29,11 +29,22 @@
             />
 
     </LinearLayout>
-    <ImageView
+    <ru.nikartm.support.ImageBadgeView
         android:id="@+id/notifikasiID"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="match_parent"
-        android:src="@drawable/ic_baseline_notifications_green"/>
+        android:layout_gravity="center"
+        android:src="@drawable/ic_baseline_notifications_green"
+        app:ibv_badgePosition="top_right"
+        />
+<!--        app:ibv_badgeValue="100"-->
+<!--        app:ibv_badgeTextSize="8sp"-->
+<!--        app:ibv_fixedBadgeRadius="10dp"-->
+<!--        app:ibv_badgeTextStyle="bold"-->
+<!--        app:ibv_badgeTextColor="#ffffff"-->
+<!--        app:ibv_badgeColor="@color/red"-->
+<!--        app:ibv_badgeLimitValue="false"-->
+
 
 </LinearLayout>

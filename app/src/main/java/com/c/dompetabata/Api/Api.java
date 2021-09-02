@@ -98,6 +98,7 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface Api {
 
@@ -154,7 +155,6 @@ public interface Api {
     @POST("pengajuan-dompet")
     Call<SendPengajuan> SetPengajuanLimit(@Header("X-Signature") String token, @Body SendPengajuan pengajuan);
 
-
     @POST("request-paylater")
     Call<SendPengajuan> SetPayLetter(@Header("X-Signature") String token, @Body SendPengajuan pengajuan);
 
@@ -180,7 +180,7 @@ public interface Api {
     @GET("regencies/{id}")
     Call<ResponKEditKab> getKabupatenById(@Path("id") long id);
 
-    @GET("product/sub-category/{id}")
+    @GET("product-us/sub-category/{id}")
     Call<ResponPulsaPra> getProdukPulsaPraById(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("districts/{id}")
@@ -191,7 +191,6 @@ public interface Api {
 
     @GET("postal-code/{id}")
     Call<ResponEditPost> getPostById(@Path("id") long id);
-
 
     @GET("product-subcategory/prefix/{id}/{prefix}")
     Call<ResponSubCategory> getSubPrdoductByPrefix(@Header("X-Signature") String token, @Path("prefix") String prefix, @Path("id") String id);
@@ -211,7 +210,7 @@ public interface Api {
     @GET("product-subcategory/category/{id}")
     Call<ResponSubP> getSubCategoryPLN(@Header("X-Signature") String token, @Path("id") String id);
 
-    @GET("product/sub-category/{id}")
+    @GET("product-us/sub-category/{id}")
     Call<ResponListrikPln> getProdukPLNListrik(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("product/sub-category/{id}")
@@ -250,10 +249,10 @@ public interface Api {
     @GET("product-subcategory/category/{id}")
     Call<ResponProdukSmsTelp> getProdukSmsTelpon(@Header("X-Signature") String token, @Path("id") String id);
 
-    @GET("product/sub-category/{id}")
+    @GET("product-us/sub-category/{id}")
     Call<ResponSmsTelpon> getProdukSMST(@Header("X-Signature") String token, @Path("id") String id);
 
-    @GET("product/sub-category/{id}")
+    @GET("product-us/sub-category/{id}")
     Call<ResponPaketData> getPaketDataProduk(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("product-subcategory/prefix/{id}/{prefix}")
@@ -262,22 +261,22 @@ public interface Api {
     @GET("product/sub-category/{id}")
     Call<ResponProdukSubPPasca> getProdukPulsaPasca(@Header("X-Signature") String token, @Path("id") String id);
 
-    @GET("product/sub-category/{id}")
+    @GET("product-us/sub-category/{id}")
     Call<ResponProdukVoucher> getProdukVG(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("product-subcategory/category/{id}")
     Call<ResponUangElektronik> getProdukCategoryUE(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("transaction/history")
-    Call<ResponTransaksi> getHistoriTransaksi(@Header("X-Signature") String token);
+    Call<ResponTransaksi> getHistoriTransaksi(@Header("X-Signature") String token, @Query("date") String date);
 
     @GET("transaction/history")
     Call<ResponTransaksiN> getHistoriTransaksiN(@Header("X-Signature") String token);
 
-    @GET("transaction/history")
+    @GET("transaction/history?date=week")
     Call<ResponStruk> getHistoriStruk(@Header("X-Signature") String token);
 
-    @GET("product/sub-category/{id}")
+    @GET("product-us/sub-category/{id}")
     Call<ResponProdukUE> getProdukUE(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("product-subcategory/category/{id}")
@@ -301,7 +300,7 @@ public interface Api {
     @GET("product-subcategory/category/{id}")
     Call<ResponVoucher> getProdukVoucher(@Header("X-Signature") String token, @Path("id") String id);
 
-    @GET("product/sub-category/{id}")
+    @GET("product-us/sub-category/{id}")
     Call<ResponProdukVoucherv> getProdukVoucherSub(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("product-subcategory/category/{id}")
@@ -351,6 +350,5 @@ public interface Api {
 
     @POST("approve-paylater-payment")
     Call<ResponApprove> ApproveTagihan(@Header("X-Signature") String token, @Body SendApprove approve);
-
 
 }

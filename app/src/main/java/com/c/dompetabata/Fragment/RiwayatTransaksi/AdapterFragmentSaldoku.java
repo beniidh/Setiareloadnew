@@ -54,9 +54,9 @@ public class AdapterFragmentSaldoku extends RecyclerView.Adapter<AdapterFragment
         }
 
         holder.status.setText(dataTransaksi.getStatus());
-        holder.harga.setText(dataTransaksi.getTotal_price());
+        holder.harga.setText(utils.ConvertRP(dataTransaksi.getTotal_price()));
         holder.transaksi.setText(dataTransaksi.getId());
-        String tanggal = dataTransaksi.getUpdated_at();
+        String tanggal = dataTransaksi.getCreated_at();
         String tahun = tanggal.substring(0, 4);
         String bulan = utils.convertBulan(tanggal.substring(5, 7));
         String hari = tanggal.substring(8, 10);

@@ -60,11 +60,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
             <include layout="@layout/nav_header_main" />
-
             <include layout="@layout/nav_menu" />
-
 
         </LinearLayout>
     </com.google.android.material.navigation.NavigationView>

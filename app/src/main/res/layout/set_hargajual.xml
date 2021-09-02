@@ -19,7 +19,7 @@
             android:textStyle="bold"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:text="Masukan Harga Jual"
             />
         <TextView

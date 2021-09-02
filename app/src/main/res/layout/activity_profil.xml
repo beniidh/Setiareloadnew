@@ -289,12 +289,14 @@
         android:onClick="UbahProfil"
         android:orientation="horizontal">
 
-        <ImageView
+        <TextView
+            android:id="@+id/PubahProfil"
             android:layout_width="0dp"
+            android:text="@string/userProfil"
             android:layout_height="30dp"
+            android:gravity="center"
             android:layout_gravity="center"
-            android:layout_weight="1"
-            android:src="@drawable/ic_baseline_person" />
+            android:layout_weight="1" />
 
         <TextView
             android:layout_width="0dp"
@@ -333,12 +335,15 @@
         android:onClick="UbahPin"
         android:orientation="horizontal">
 
-        <ImageView
+        <TextView
             android:layout_width="0dp"
             android:layout_height="30dp"
+            android:id="@+id/PubahPin"
+            android:gravity="center"
+            android:text="@string/gantiPIN"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:src="@drawable/ic_baseline_lock_24" />
+          />
 
         <TextView
             android:layout_width="0dp"
@@ -377,12 +382,15 @@
         android:onClick="point"
         android:orientation="horizontal">
 
-        <ImageView
+        <TextView
             android:layout_width="0dp"
             android:layout_height="30dp"
+            android:id="@+id/Ppoint"
+            android:gravity="center"
+            android:text="@string/Point"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:src="@drawable/ic_baseline_stars_24" />
+            />
 
         <TextView
             android:layout_width="0dp"
@@ -421,12 +429,15 @@
         android:onClick="Device"
         android:orientation="horizontal">
 
-        <ImageView
+        <TextView
             android:layout_width="0dp"
             android:layout_height="30dp"
+            android:id="@+id/Pdevice"
+           android:gravity="center"
+            android:text="@string/Device"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:src="@drawable/ic_baseline_mobile_friendly_24" />
+             />
 
         <TextView
             android:layout_width="0dp"

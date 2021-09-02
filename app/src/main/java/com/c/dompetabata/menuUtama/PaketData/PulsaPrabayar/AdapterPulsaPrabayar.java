@@ -62,12 +62,9 @@ public class AdapterPulsaPrabayar extends RecyclerView.Adapter<AdapterPulsaPraba
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         MPulsaPra mPulsaPra = mPulsaPras.get(position);
-        holder.name.setText(mPulsaPra.name);
+        holder.name.setText(mPulsaPra.getName());
         holder.deskripsi.setText(mPulsaPra.getDescription());
-        double harga = Double.valueOf(mPulsaPra.getBasic_price());
-        Locale localeid = new Locale("in", "ID");
-        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeid);
-        holder.harga.setText(formatRupiah.format(harga));
+        holder.harga.setText(utils.ConvertRP(mPulsaPra.getTotal_price()));
 
         holder.linearklik.setOnClickListener(v -> {
 
@@ -149,14 +146,4 @@ public class AdapterPulsaPrabayar extends RecyclerView.Adapter<AdapterPulsaPraba
 
 
 
-//    public void getLocation() {
-//        gpsTracker = new GpsTracker(context);
-//        if (gpsTracker.canGetLocation()) {
-//            double latitude = gpsTracker.getLatitude();
-//            double longitude = gpsTracker.getLongitude();
-//
-//        } else {
-//            gpsTracker.showSettingsAlert();
-//        }
-//    }
 }

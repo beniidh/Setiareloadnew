@@ -48,7 +48,7 @@ import retrofit2.Response;
 public class TransaksiFragment extends Fragment {
 
     private TransaksiViewModel mViewModel;
-    FrameLayout framelayoutnotifikasi;
+
     TabLayout tablayoutnotifikasi;
     private ViewPager viewPager;
     TabAdapter tabAdapter;
@@ -59,9 +59,6 @@ public class TransaksiFragment extends Fragment {
     TextView idTotalTransaksiTextView, idTransaksiSuksesTextView, idTotalPengeluaranTextView;
     private int mYear, mMonth, mDay, mHour, mMinute;
 
-    public static TransaksiFragment newInstance() {
-        return new TransaksiFragment();
-    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -76,6 +73,8 @@ public class TransaksiFragment extends Fragment {
         idTotalTransaksiTextView = v.findViewById(R.id.idTotalTransaksiTextView);
         idTransaksiSuksesTextView = v.findViewById(R.id.idTransaksiSuksesTextView);
         idTotalPengeluaranTextView = v.findViewById(R.id.idTotalPengeluaranTextView);
+
+
 
 
         idtransaksiTanggalEditText.setOnClickListener(v1 -> {
@@ -99,7 +98,7 @@ public class TransaksiFragment extends Fragment {
         loadingPrimer.startDialogLoading();
         String token = "Bearer " + Preference.getToken(getContext());
         Api api = RetroClient.getApiServices();
-        Call<ResponTransaksi> call = api.getHistoriTransaksi(token);
+        Call<ResponTransaksi> call = api.getHistoriTransaksi(token, tanggall);
         call.enqueue(new Callback<ResponTransaksi>() {
             @Override
             public void onResponse(Call<ResponTransaksi> call, Response<ResponTransaksi> response) {
@@ -116,42 +115,48 @@ public class TransaksiFragment extends Fragment {
 
                     for (ResponTransaksi.DataTransaksi dataa : datahistory) {
 
-                        String tanggal = dataa.getUpdated_at().substring(0, 10);
-                        if (tanggal.equals(tanggall)) {
-                            totaltransaksi += 1;
-                        }
-                        if (tanggal.equals(tanggall) && dataa.getStatus().equals("SUKSES")) {
+                        totaltransaksi += 1;
+
+                        if (dataa.getStatus().equals("SUKSES")) {
                             totaltransaksisukses += 1;
                             double totalpengeluarann = Double.parseDouble(dataa.getTotal_price());
                             totalpengeluaran += totalpengeluarann;
                         }
-                        if (tanggal.equals(tanggall) && dataa.getWallet_type().equals("PAYLATTER")) {
+                        if (dataa.getWallet_type().equals("PAYLATTER")) {
                             datasaldoserver.add(dataa);
                         }
-                        if (tanggal.equals(tanggall) && dataa.getWallet_type().equals("SALDOKU")) {
+                        if (dataa.getWallet_type().equals("SALDOKU")) {
                             datasaldoku.add(dataa);
 
                         }
 
-                        tabAdapter = new TabAdapter(getParentFragmentManager());
-                        tabAdapter.addFragment(new FragmentSaldoku(datasaldoku), "Tab 1");
-                        tabAdapter.addFragment(new FragmentSaldoServer(datasaldoserver), "Tab 2");
-                        viewPager.setAdapter(tabAdapter);
-                        tablayoutnotifikasi.setupWithViewPager(viewPager);
-                        tablayoutnotifikasi.getTabAt(0).setText("Saldoku");
-                        tablayoutnotifikasi.getTabAt(1).setText("Saldo Server");
-
-                        idTotalTransaksiTextView.setText(String.valueOf(totaltransaksi));
-                        idTransaksiSuksesTextView.setText(String.valueOf(totaltransaksisukses));
-                        String total = String.valueOf(totalpengeluaran);
-                        idTotalPengeluaranTextView.setText(utils.ConvertRP(total));
 
                     }
                     loadingPrimer.dismissDialog();
-                }else {
-                    Toast.makeText(getContext(),response.body().getError(),Toast.LENGTH_SHORT).show();
+
+
+                } else {
+                    Toast.makeText(getContext(), response.body().getError(), Toast.LENGTH_SHORT).show();
+                    datahistory.clear();
+                    datasaldoku.clear();
+                    datasaldoserver.clear();
                     loadingPrimer.dismissDialog();
+
                 }
+                tabAdapter = new TabAdapter(getParentFragmentManager());
+                tabAdapter.addFragment(new FragmentSaldoku(datasaldoku), "Tab 1");
+                tabAdapter.addFragment(new FragmentSaldoServer(datasaldoserver), "Tab 2");
+                viewPager.setAdapter(tabAdapter);
+                tablayoutnotifikasi.setupWithViewPager(viewPager);
+                tablayoutnotifikasi.getTabAt(0).setText("Saldoku");
+                tablayoutnotifikasi.getTabAt(1).setText("Saldo Server");
+
+
+                idTotalTransaksiTextView.setText(String.valueOf(totaltransaksi));
+                idTransaksiSuksesTextView.setText(String.valueOf(totaltransaksisukses));
+                String total = String.valueOf(totalpengeluaran);
+                idTotalPengeluaranTextView.setText(utils.ConvertRP(total));
+
             }
 
             @Override
@@ -187,7 +192,7 @@ public class TransaksiFragment extends Fragment {
                     }
 
                     String tnggl = year + "-" + bulan + "-" + day;
-
+                    datahistory.clear();
                     getDataHistory(tnggl);
                 }, mYear, mMonth, mDay);
 
@@ -197,12 +202,11 @@ public class TransaksiFragment extends Fragment {
 
     @Override
     public void onResume() {
-        String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-        datahistory.clear();
-        datasaldoserver.clear();
-        datasaldoku.clear();
-        getDataHistory(date);
-        idtransaksiTanggalEditText.setText(date);
         super.onResume();
+        String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        idtransaksiTanggalEditText.setText(date);
+        getDataHistory(date);
+        getDataHistory(date);
+        datahistory.clear();
     }
 }

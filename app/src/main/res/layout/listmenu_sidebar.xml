@@ -12,7 +12,6 @@
         android:background="@color/gray2" />
 
     <LinearLayout
-        android:onClick="LinDaftarHarga"
         android:id="@+id/Linierside"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

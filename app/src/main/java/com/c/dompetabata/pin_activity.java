@@ -124,65 +124,60 @@ public class pin_activity extends AppCompatActivity {
         }
 
 
-        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
-            @Override
-            public void onComplete(@NonNull Task<String> task) {
-                String deviceToken = task.getResult();
-                Mlogin mlogin = new Mlogin(telepon, pin, deviceToken, IP, Value.getMacAddress(getApplicationContext()), useragent, longlitude, latitude);
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
+            String deviceToken = task.getResult();
+            Mlogin mlogin = new Mlogin(telepon, pin, deviceToken, IP, Value.getMacAddress(getApplicationContext()), useragent, longlitude, latitude);
 
-                Api api = RetroClient.getApiServices();
-                Call<Mlogin> call = api.Login(mlogin);
-                call.enqueue(new Callback<Mlogin>() {
-                    @Override
-                    public void onResponse(Call<Mlogin> call, Response<Mlogin> response) {
+            Api api = RetroClient.getApiServices();
+            Call<Mlogin> call = api.Login(mlogin);
+            call.enqueue(new Callback<Mlogin>() {
+                @Override
+                public void onResponse(Call<Mlogin> call, Response<Mlogin> response) {
 
-                        String code = response.body().getCode();
+                    String code = response.body().getCode();
 
-                        if (code.equals("200")) {
-                            progressBar.setVisibility(View.GONE);
-                            Intent home = new Intent(pin_activity.this, drawer_activity.class);
-                            startActivity(home);
-                            String token = response.body().getData().getToken();
-                            Preference.getSharedPreference(getApplicationContext());
-                            Preference.setToken(getApplicationContext(), token);
-                            finish();
+                    if (code.equals("200")) {
 
-                        } else if(code.equals("403")){
-                            StyleableToast.makeText(getApplicationContext(), response.body().getError()+" Silahkan hubungi Admin", Toast.LENGTH_LONG, R.style.mytoast).show();
-                            Intent intent = new Intent(pin_activity.this,Login_Activity.class);
-                            startActivity(intent);
-                            finish();
+                        progressBar.setVisibility(View.GONE);
+                        Intent home = new Intent(pin_activity.this, drawer_activity.class);
+                        startActivity(home);
+                        String token = response.body().getData().getToken();
+                        Preference.getSharedPreference(getApplicationContext());
+                        Preference.setToken(getApplicationContext(), token);
+                        finish();
+
+                    } else if(code.equals("403")){
+
+                        StyleableToast.makeText(getApplicationContext(), response.body().getError()+" Silahkan hubungi Admin", Toast.LENGTH_LONG, R.style.mytoast).show();
+                        Intent intent = new Intent(pin_activity.this,Login_Activity.class);
+                        startActivity(intent);
+                        finish();
 
 
-                        }else {
-                            progressBar.setVisibility(View.GONE);
-                            pin1.setText("");
-                            StyleableToast.makeText(getApplicationContext(), response.body().getError(), Toast.LENGTH_SHORT, R.style.mytoast).show();
-                            salah += 1;
-
-                        }
-
+                    }else {
+                        progressBar.setVisibility(View.GONE);
+                        pin1.setText("");
+                        StyleableToast.makeText(getApplicationContext(), response.body().getError(), Toast.LENGTH_SHORT, R.style.mytoast).show();
+                        salah += 1;
 
                     }
 
-                    @Override
-                    public void onFailure(Call<Mlogin> call, Throwable t) {
+
+                }
+
+                @Override
+                public void onFailure(Call<Mlogin> call, Throwable t) {
 //                progressBar.setVisibility(View.INVISIBLE);
-                        StyleableToast.makeText(getApplicationContext(), "Periksa Sambungan internet", Toast.LENGTH_SHORT, R.style.mytoast2).show();
+                    StyleableToast.makeText(getApplicationContext(), "Periksa Sambungan internet", Toast.LENGTH_SHORT, R.style.mytoast2).show();
 
-                    }
-                });
+                }
+            });
 
-            }
         });
 
 
     }
 
-    public boolean isOnline() {
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnectedOrConnecting();
-    }
 
     private String getUserAgent() {
 

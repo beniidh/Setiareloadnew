@@ -18,6 +18,7 @@ import com.c.dompetabata.Api.Api;
 import com.c.dompetabata.Api.Value;
 import com.c.dompetabata.Helper.GpsTracker;
 import com.c.dompetabata.Helper.RetroClient;
+import com.c.dompetabata.Helper.utils;
 import com.c.dompetabata.R;
 import com.c.dompetabata.Transaksi.MInquiry;
 import com.c.dompetabata.Transaksi.ResponInquiry;
@@ -59,11 +60,7 @@ public class AdapterProdukPLN extends RecyclerView.Adapter<AdapterProdukPLN.View
         ModelProdukPln modelProdukPln = modelProdukPlns.get(position);
         holder.name.setText(modelProdukPln.getName());
         holder.deskripsi.setText(modelProdukPln.getDescription());
-        double harga = Double.valueOf(modelProdukPln.getBasic_price());
-        Locale localeid = new Locale("in","ID");
-        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeid);
-        holder.harga.setText(formatRupiah.format(harga));
-
+        holder.harga.setText(utils.ConvertRP(modelProdukPln.getTotal_price()));
         holder.linearklik.setOnClickListener(v -> {
 
             GpsTracker gpsTracker = new GpsTracker(context);

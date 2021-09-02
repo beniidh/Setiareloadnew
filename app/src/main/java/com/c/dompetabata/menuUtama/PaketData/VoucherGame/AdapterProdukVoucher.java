@@ -18,6 +18,7 @@ import com.c.dompetabata.Api.Api;
 import com.c.dompetabata.Api.Value;
 import com.c.dompetabata.Helper.GpsTracker;
 import com.c.dompetabata.Helper.RetroClient;
+import com.c.dompetabata.Helper.utils;
 import com.c.dompetabata.R;
 import com.c.dompetabata.Transaksi.MInquiry;
 import com.c.dompetabata.Transaksi.ResponInquiry;
@@ -60,10 +61,7 @@ public class AdapterProdukVoucher extends RecyclerView.Adapter<AdapterProdukVouc
         ResponProdukVoucher.VoucherData mVoucherData = mVoucherProduk.get(position);
         holder.name.setText(mVoucherData.getName());
         holder.deskripsi.setText(mVoucherData.getDescription());
-        double harga = Double.valueOf(mVoucherData.getBasic_price());
-        Locale localeid = new Locale("in", "ID");
-        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeid);
-        holder.harga.setText(formatRupiah.format(harga));
+        holder.harga.setText(utils.ConvertRP(mVoucherData.getTotal_price()));
 
         holder.linearklik.setOnClickListener(v -> {
 

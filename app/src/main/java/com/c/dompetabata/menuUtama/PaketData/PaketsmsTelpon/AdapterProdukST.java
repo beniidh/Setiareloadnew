@@ -66,7 +66,7 @@ public class AdapterProdukST extends RecyclerView.Adapter<AdapterProdukST.ViewHo
         MProdukSmsTelpon msmsTelpon = msmsTelpons.get(position);
         holder.name.setText(msmsTelpon.getName());
         holder.deskripsi.setText(msmsTelpon.getDescription());
-        holder.harga.setText(utils.ConvertRP(msmsTelpon.getBasic_price()));
+        holder.harga.setText(utils.ConvertRP(msmsTelpon.getTotal_price()));
         holder.linearklik.setOnClickListener(v -> {
 
             GpsTracker gpsTracker = new GpsTracker(context);
