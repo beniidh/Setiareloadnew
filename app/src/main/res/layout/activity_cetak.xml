@@ -137,7 +137,8 @@
 
             <TextView
                 android:id="@+id/idNomorSNStrukC"
-                android:layout_width="wrap_content"
+                android:layout_width="220sp"
+                android:textAlignment="textEnd"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:text="" />
