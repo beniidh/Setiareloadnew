@@ -103,7 +103,15 @@ public class ModalKecamatan extends BottomSheetDialogFragment {
 
     private void getKecamatan() {
 
-        long id = Long.valueOf(Preference.getIDKabupaten(getContext()));
+        String idkabupaten = getArguments().getString("kabupatenkey");
+        long id;
+        if (idkabupaten.isEmpty()){
+
+            id = Long.parseLong(Preference.getIDKabupaten(getContext()));
+        }else {
+            id = Long.parseLong(getArguments().getString("kabupatenkey"));
+        }
+
 
         Api api = RetroClient.getApiServices();
         Call<ResponKe> call = api.getAllKecamatan(id);

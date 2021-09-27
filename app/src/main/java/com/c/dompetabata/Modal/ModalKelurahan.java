@@ -101,7 +101,14 @@ public class ModalKelurahan extends BottomSheetDialogFragment {
 
     private void getKelurahan() {
 
-        long id = Long.valueOf(Preference.getIDKecamatan(getContext()));
+        String idkecamatan = getArguments().getString("kecamatankey");
+        long id;
+        if (idkecamatan.isEmpty()){
+            id = Long.parseLong(Preference.getIDKecamatan(getContext()));
+        }else {
+            id = Long.parseLong(getArguments().getString("kecamatankey"));
+        }
+
 
         Api api = RetroClient.getApiServices();
         Call<Responkel> call = api.getAllKelurahan(id);

@@ -1,4 +1,4 @@
-package com.c.dompetabata.Modal;
+package com.c.dompetabata.Transfer;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -14,15 +14,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.c.dompetabata.Adapter.AdapterKabupaten;
-
 import com.c.dompetabata.Adapter.AdapterProvinsi;
 import com.c.dompetabata.Api.Api;
-import com.c.dompetabata.Model.ModelProvinsi;
-import com.c.dompetabata.Respon.ResponK;
 import com.c.dompetabata.Helper.RetroClient;
 import com.c.dompetabata.Model.ModelKabupaten;
-
 import com.c.dompetabata.R;
+import com.c.dompetabata.Respon.ResponK;
 import com.c.dompetabata.sharePreference.Preference;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
@@ -32,31 +29,31 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ModalKabupaten extends BottomSheetDialogFragment {
+public class ModalTransfer extends BottomSheetDialogFragment {
 
     RecyclerView recyclerViewK;
-    AdapterKabupaten adapterKabupaten;
-    ArrayList<ModelKabupaten> modelKabupatens = new ArrayList<>();
+    AdapterTransfer adapterTransfer;
+    ArrayList<ModelKonter.data> modelkonter = new ArrayList<>();
     Button tutup, pilih;
-    AdapterProvinsi adapterProvinsi;
+
     private BottomSheetListenerKabupaten bottomSheetListenerKabupaten;
     SearchView searchView;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.modal_layout_kabupaten, container, false);
+        View v = inflater.inflate(R.layout.modal_layout_transfer, container, false);
 
-        recyclerViewK = v.findViewById(R.id.ReyKabupaten);
+        recyclerViewK = v.findViewById(R.id.ReyTransfer);
         tutup = v.findViewById(R.id.tutupK);
         pilih = v.findViewById(R.id.pilihK);
-        searchView = v.findViewById(R.id.search_kabupaten);
+        searchView = v.findViewById(R.id.search_transfer);
 
 
-        adapterKabupaten = new AdapterKabupaten(getContext(), modelKabupatens);
+        adapterTransfer = new AdapterTransfer(getContext(), modelkonter);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerViewK.setLayoutManager(mLayoutManager);
-        recyclerViewK.setAdapter(adapterKabupaten);
+        recyclerViewK.setAdapter(adapterTransfer);
 
         getKabupaten();
 
@@ -76,7 +73,7 @@ public class ModalKabupaten extends BottomSheetDialogFragment {
             @Override
             public boolean onQueryTextChange(String newText) {
 
-                adapterKabupaten.getFilter().filter(newText);
+                adapterTransfer.getFilter().filter(newText);
                 return false;
             }
         });
@@ -88,17 +85,16 @@ public class ModalKabupaten extends BottomSheetDialogFragment {
             }
         });
 
-        pilih.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        pilih.setOnClickListener(v1 -> {
 
-                String id = Preference.getID(getContext());
-                String name = Preference.getName(getContext());
+            String nameid[][] = AdapterTransfer.getNameid();
 
-                bottomSheetListenerKabupaten.onButtonClickKabupaten(name, id);
-                Preference.setName(getContext(),"");
-                dismiss();
-            }
+            String namee = nameid[0][0];
+            String id = nameid[0][1];
+
+            bottomSheetListenerKabupaten.onButtonClickKabupaten(namee, id);
+            Preference.setName(getContext(), "");
+            dismiss();
         });
 
         return v;
@@ -109,31 +105,22 @@ public class ModalKabupaten extends BottomSheetDialogFragment {
 
         String nameid[][] = AdapterProvinsi.getNameid();
 
-
-         String idprovinsi = getArguments().getString("provinsikey");
-        long id;
-        if (idprovinsi.isEmpty()){
-
-            id = Long.parseLong(Preference.getIDProvinsi(getContext()));
-         }else {
-            id = Long.parseLong(getArguments().getString("provinsikey"));
-        }
-
-
-
         Api api = RetroClient.getApiServices();
-        Call<ResponK> call = api.getAllKabupaten(id);
-        call.enqueue(new Callback<ResponK>() {
+        Call<ModelKonter> call = api.getKonter("Bearer "+Preference.getToken(getContext()));
+        call.enqueue(new Callback<ModelKonter>() {
             @Override
-            public void onResponse(Call<ResponK> call, Response<ResponK> response) {
-
-                modelKabupatens = (ArrayList<ModelKabupaten>) response.body().getData();
-                adapterKabupaten = new AdapterKabupaten(getContext(), modelKabupatens);
-                recyclerViewK.setAdapter(adapterKabupaten);
+            public void onResponse(Call<ModelKonter> call, Response<ModelKonter> response) {
+                ArrayList<ModelKonter.data> modelkontesr = new ArrayList<>();
+                modelkonter = response.body().getData();
+                if(modelkonter == null){
+                    modelkonter = modelkontesr;
+                }
+                adapterTransfer = new AdapterTransfer(getContext(), modelkonter);
+                recyclerViewK.setAdapter(adapterTransfer);
             }
 
             @Override
-            public void onFailure(Call<ResponK> call, Throwable t) {
+            public void onFailure(Call<ModelKonter> call, Throwable t) {
 
             }
         });

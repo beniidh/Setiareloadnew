@@ -19,7 +19,7 @@ public class Value {
     String password;
     data data;
     String message;
-    public static String BASE_URL = "https://api-mobile-staging.abatapulsa.com/";   //   https://api-mobile.c-software.id/
+    public static String BASE_URL = "https://api-mobile.c-software.id/";   //https://api-mobile-staging.abatapulsa.com/
 
     public String getMessage() {
         return message;
@@ -38,8 +38,7 @@ public class Value {
     }
 
     public static String getMacAddress(Context context) {
-        String MAC = utils.getMacAddr();//phone if pc use eth0 if phone wlan0
-        return MAC;
+        return utils.getMacAddr();
     }
 
     public static String getUserAgent(Context context) {

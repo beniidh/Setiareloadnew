@@ -42,7 +42,7 @@ public class ModalKodePos extends BottomSheetDialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-       View v = inflater.inflate(R.layout.modal_layout_post,container,false);
+        View v = inflater.inflate(R.layout.modal_layout_post, container, false);
 
 
         recyclerViewPost = v.findViewById(R.id.ReyPost);
@@ -67,7 +67,7 @@ public class ModalKodePos extends BottomSheetDialogFragment {
             @Override
             public void onClick(View v) {
 
-                String id =  Preference.getID(getContext());
+                String id = Preference.getID(getContext());
                 String name = Preference.getName(getContext());
 
                 bottomSheetListenerPost.onButtonClickPost(name, id);
@@ -76,13 +76,18 @@ public class ModalKodePos extends BottomSheetDialogFragment {
         });
 
 
-
         return v;
     }
 
     private void getPost() {
 
-        long id = Long.valueOf(Preference.getIDKelurahan(getContext()));
+        String idkelurahan = getArguments().getString("kelurahankey");
+        long id;
+        if (idkelurahan.isEmpty()) {
+            id = Long.parseLong(Preference.getIDKelurahan(getContext()));
+        } else {
+            id = Long.parseLong(getArguments().getString("kelurahankey"));
+        }
 
         Api api = RetroClient.getApiServices();
         Call<ResponPost> call = api.getAllPost(id);

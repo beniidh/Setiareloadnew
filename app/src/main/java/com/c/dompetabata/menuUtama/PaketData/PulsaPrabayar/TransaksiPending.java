@@ -89,27 +89,17 @@ public class TransaksiPending extends AppCompatActivity {
 
         copySNTransaksi.setOnClickListener(v -> {
 
-            if(android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.HONEYCOMB) {
-                android.text.ClipboardManager clipboard = (android.text.ClipboardManager) getApplicationContext().getSystemService(Context.CLIPBOARD_SERVICE);
-                clipboard.setText(noSN.getText().toString());
-            } else {
-                android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getApplicationContext().getSystemService(Context.CLIPBOARD_SERVICE);
-                android.content.ClipData clip = android.content.ClipData.newPlainText("Copied Text", noSN.getText().toString());
-                clipboard.setPrimaryClip(clip);
-            }
+            android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getApplicationContext().getSystemService(Context.CLIPBOARD_SERVICE);
+            android.content.ClipData clip = android.content.ClipData.newPlainText("Copied Text", noSN.getText().toString());
+            clipboard.setPrimaryClip(clip);
             Toast.makeText(getApplicationContext(),"Copied",Toast.LENGTH_SHORT).show();
         });
 
         copyTransaksi.setOnClickListener(v -> {
 
-            if(android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.HONEYCOMB) {
-                android.text.ClipboardManager clipboard = (android.text.ClipboardManager) getApplicationContext().getSystemService(Context.CLIPBOARD_SERVICE);
-                clipboard.setText(NomorTransaksiDetail.getText().toString());
-            } else {
-                android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getApplicationContext().getSystemService(Context.CLIPBOARD_SERVICE);
-                android.content.ClipData clip = android.content.ClipData.newPlainText("Copied Text", NomorTransaksiDetail.getText().toString());
-                clipboard.setPrimaryClip(clip);
-            }
+            android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getApplicationContext().getSystemService(Context.CLIPBOARD_SERVICE);
+            android.content.ClipData clip = android.content.ClipData.newPlainText("Copied Text", NomorTransaksiDetail.getText().toString());
+            clipboard.setPrimaryClip(clip);
             Toast.makeText(getApplicationContext(),"Copied",Toast.LENGTH_SHORT).show();
         });
 
@@ -141,7 +131,6 @@ public class TransaksiPending extends AppCompatActivity {
                     finish();
                 }
             }
-
 
         });
 

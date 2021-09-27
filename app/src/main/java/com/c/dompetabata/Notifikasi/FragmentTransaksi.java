@@ -55,11 +55,7 @@ public class FragmentTransaksi extends Fragment {
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(adapterFragmentTransaksi);
 
-//        LinearLayout lintesst = v.findViewById(R.id.linearnotifikasi);
-//        lintesst.setOnClickListener(v1 -> {
-//            Intent intent = new Intent(getActivity(), DetailNotifikasi.class);
-//            startActivity(intent);
-//        });
+
         getDataa();
         return v;
     }

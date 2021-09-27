@@ -2,7 +2,9 @@ package com.c.dompetabata.KodeProduk;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
@@ -25,6 +27,8 @@ public class Kodeprodukact extends AppCompatActivity {
 
     Button linkProduk;
     EditText tokennid;
+    LocalBroadcastManager localBroadcastManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +39,13 @@ public class Kodeprodukact extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
 
         linkProduk = findViewById(R.id.linkProduk);
+        localBroadcastManager = LocalBroadcastManager.getInstance(this);
 
 
         linkProduk.setOnClickListener(v -> {
 
             Toast.makeText(getApplicationContext(), Value.getMacAddress(getApplicationContext()),Toast.LENGTH_LONG).show();
-
+            localBroadcastManager.sendBroadcast(new Intent("kirim"));
 
         });
     }

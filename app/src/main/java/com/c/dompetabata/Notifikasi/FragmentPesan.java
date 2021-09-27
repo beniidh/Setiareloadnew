@@ -30,12 +30,7 @@ public class FragmentPesan extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View v= inflater.inflate(R.layout.fragment_pesan_fragment, container, false);
 
-//        LinearLayout lintesst = v.findViewById(R.id.linearnotifikasi2);
-//        lintesst.setOnClickListener(v1 -> {
-//
-//            Intent intent = new Intent(getActivity(), DetailNotifikasi.class);
-//            startActivity(intent);
-//        });
+
         return v;
     }
 

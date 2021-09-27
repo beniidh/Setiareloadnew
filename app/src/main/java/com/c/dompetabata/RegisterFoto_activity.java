@@ -78,6 +78,7 @@ public class RegisterFoto_activity extends AppCompatActivity {
     String foto2 = "0";
     String foto3 = "0";
 
+    @SuppressWarnings("deprecation")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -237,6 +238,9 @@ public class RegisterFoto_activity extends AppCompatActivity {
                     foto1 ="1";
                     StyleableToast.makeText(getApplicationContext(), "Foto Berhasil diupload", Toast.LENGTH_SHORT, R.style.mytoast).show();
                     uploadDiri.setImageDrawable(getDrawable(R.drawable.check));
+                } else{
+
+                    Toast.makeText(getApplicationContext(),response.body().getError(),Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -274,6 +278,9 @@ public class RegisterFoto_activity extends AppCompatActivity {
                     progresktpdanselfie.setVisibility(View.INVISIBLE);
                     StyleableToast.makeText(getApplicationContext(), "Foto Berhasil diupload", Toast.LENGTH_SHORT, R.style.mytoast).show();
                     uploadKTPdanDiri.setImageDrawable(getDrawable(R.drawable.check));
+                } else{
+
+                    Toast.makeText(getApplicationContext(),response.body().getError(),Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -310,6 +317,9 @@ public class RegisterFoto_activity extends AppCompatActivity {
                 if(code.equals("200")){
                     StyleableToast.makeText(getApplicationContext(), "Foto Berhasil diupload", Toast.LENGTH_SHORT, R.style.mytoast).show();
                     uploadKTP.setImageDrawable(getDrawable(R.drawable.check));
+                } else{
+
+                    Toast.makeText(getApplicationContext(),response.body().getError(),Toast.LENGTH_SHORT).show();
                 }
 
 

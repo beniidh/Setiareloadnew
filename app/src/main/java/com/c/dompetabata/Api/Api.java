@@ -14,6 +14,8 @@ import com.c.dompetabata.PersetujuanSaldoSales.ResponPersetujuan;
 import com.c.dompetabata.PersetujuanSaldoSales.ResponPersetujuanSaldo;
 import com.c.dompetabata.PersetujuanSaldoSales.SendDataPersetujuan;
 import com.c.dompetabata.Profil.MPin;
+import com.c.dompetabata.Profil.MProfilEdit;
+import com.c.dompetabata.Profil.ResEdit;
 import com.c.dompetabata.Respon.Respon;
 import com.c.dompetabata.Respon.ResponBanner;
 import com.c.dompetabata.Respon.ResponEditKec;
@@ -54,6 +56,8 @@ import com.c.dompetabata.TopUpSaldoku.ReqSaldoku;
 import com.c.dompetabata.TopUpSaldoku.ResponTopUp;
 import com.c.dompetabata.Transaksi.MInquiry;
 import com.c.dompetabata.Transaksi.ResponInquiry;
+import com.c.dompetabata.Transfer.ModelKonter;
+import com.c.dompetabata.Transfer.Mtransfer;
 import com.c.dompetabata.menuUtama.PaketData.AngsuranKredit.ResponAngsuran;
 import com.c.dompetabata.menuUtama.PaketData.AngsuranKredit.ResponProdukAngsuran;
 import com.c.dompetabata.menuUtama.PaketData.BPJS.ResponBPJS;
@@ -96,6 +100,7 @@ import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -151,6 +156,9 @@ public interface Api {
 
     @POST("set-pin")
     Call<MsetPIN> SetPIN(@Header("X-Signature") String token, @Body MsetPIN msetPIN);
+
+    @POST("send-saldoku")
+    Call<Mtransfer> sendsaldoku(@Header("X-Signature") String token, @Body Mtransfer mtransfer);
 
     @POST("pengajuan-dompet")
     Call<SendPengajuan> SetPengajuanLimit(@Header("X-Signature") String token, @Body SendPengajuan pengajuan);
@@ -270,7 +278,7 @@ public interface Api {
     @GET("transaction/history")
     Call<ResponTransaksi> getHistoriTransaksi(@Header("X-Signature") String token, @Query("date") String date);
 
-    @GET("transaction/history")
+    @GET("transaction/history?date=week")
     Call<ResponTransaksiN> getHistoriTransaksiN(@Header("X-Signature") String token);
 
     @GET("transaction/history?date=week")
@@ -348,7 +356,14 @@ public interface Api {
     @GET("user-paylater-payment")
     Call<ResponTagihanKonter> getTagihanSales(@Header("X-Signature") String token);
 
+    @GET("users-referal")
+    Call<ModelKonter> getKonter(@Header("X-Signature") String token);
+
     @POST("approve-paylater-payment")
     Call<ResponApprove> ApproveTagihan(@Header("X-Signature") String token, @Body SendApprove approve);
+
+    @Headers({"Content-Type: application/json"})
+    @PUT("profile")
+    Call<ResEdit> editProfil(@Header("X-Signature") String token, @Body MProfilEdit mProfilEdit);
 
 }

@@ -124,6 +124,17 @@ public class Preference {
         return getSharedPreference(context).getString("IDKelurahan","");
     }
 
+    //ID postcode
+
+    public static void setIDPost(Context context, String id){
+        SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.putString("IDPost", id);
+        editor.apply();
+    }
+    public static String getIDPost(Context context){
+        return getSharedPreference(context).getString("IDPost","");
+    }
+
     public static void setkredentials(Context context, String credentials){
         SharedPreferences.Editor editor = getSharedPreference(context).edit();
         editor.putString("credentials", credentials);

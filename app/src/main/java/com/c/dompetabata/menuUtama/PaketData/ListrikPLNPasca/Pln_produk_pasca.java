@@ -47,7 +47,7 @@ import retrofit2.Response;
 public class Pln_produk_pasca extends AppCompatActivity {
     EditText inputplnpasca;
     TextView tujukarakterplnpasca;
-    String skucode, inquiry,hargaa;
+    String skucode, inquiry,hargaa,sellingprice;
     Button periksaplnpascaP, bayartagihanpulsapascaP;
     TextView name, nomcos, deskrip, tanggall, transaksi, tagihan, PPtarifP,PPStatusP,PPdayaP,PPAdminP;
     LinearLayout LinearPasca;
@@ -75,92 +75,90 @@ public class Pln_produk_pasca extends AppCompatActivity {
         PPdayaP = findViewById(R.id.PPdayaP);
         PPAdminP = findViewById(R.id.PPAdminP);
 
-        periksaplnpascaP.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        periksaplnpascaP.setOnClickListener(v -> {
 
-                if (periksaplnpascaP.getText().toString().equals("Periksa")) {
+            if (periksaplnpascaP.getText().toString().equals("Periksa")) {
 
-                    if (!inputplnpasca.getText().toString().isEmpty()) {
+                if (!inputplnpasca.getText().toString().isEmpty()) {
 
-                        LoadingPrimer loadingPrimer = new LoadingPrimer(Pln_produk_pasca.this);
-                        loadingPrimer.startDialogLoading();
+                    LoadingPrimer loadingPrimer = new LoadingPrimer(Pln_produk_pasca.this);
+                    loadingPrimer.startDialogLoading();
 
-                        GpsTracker gpsTracker = new GpsTracker(getApplicationContext());
+                    GpsTracker gpsTracker = new GpsTracker(getApplicationContext());
 
-                        Api api = RetroClient.getApiServices();
-                        MInquiry mInquiry = new MInquiry("PLNPASCA", inputplnpasca.getText().toString(), "PASCABAYAR", Value.getMacAddress(getApplicationContext()), Value.getIPaddress(), Value.getUserAgent(getApplicationContext()), gpsTracker.getLatitude(), gpsTracker.getLongitude());
-                        String token = "Bearer " + Preference.getToken(getApplicationContext());
+                    Api api = RetroClient.getApiServices();
+                    MInquiry mInquiry = new MInquiry("PLNPASCA", inputplnpasca.getText().toString(), "PASCABAYAR", Value.getMacAddress(getApplicationContext()), Value.getIPaddress(), Value.getUserAgent(getApplicationContext()), gpsTracker.getLatitude(), gpsTracker.getLongitude());
+                    String token = "Bearer " + Preference.getToken(getApplicationContext());
 
-                        Call<ResponInquiry> call = api.CekInquiry(token, mInquiry);
-                        call.enqueue(new Callback<ResponInquiry>() {
-                            @Override
-                            public void onResponse(Call<ResponInquiry> call, Response<ResponInquiry> response) {
+                    Call<ResponInquiry> call = api.CekInquiry(token, mInquiry);
+                    call.enqueue(new Callback<ResponInquiry>() {
+                        @Override
+                        public void onResponse(Call<ResponInquiry> call, Response<ResponInquiry> response) {
 
-                                String code = response.body().getCode();
-                                if (code.equals("200")) {
+                            String code = response.body().getCode();
+                            if (code.equals("200")) {
 
-                                    if (response.body().getData().getStatus().equals("Sukses")) {
-                                        name.setText(response.body().getData().getCustomer_name());
-                                        nomcos.setText(response.body().getData().getCustomer_no());
-                                        deskrip.setText(response.body().getData().getDescription());
-                                        String tanggal = response.body().getData().getCreated_at();
-                                        String tahun = tanggal.substring(0, 4);
-                                        String bulan = utils.convertBulan(tanggal.substring(5, 7));
-                                        String hari = tanggal.substring(8, 10);
-                                        setInquiry(response.body().getData().getInquiry_type());
-                                        setSkucode(response.body().getData().getBuyer_sku_code());
-                                        tanggall.setText(hari + " " + bulan + " " + tahun);
-                                        PPdayaP.setText(response.body().getData().getDetail_product().getDaya());
-                                        tagihan.setText(utils.ConvertRP(response.body().getData().getDetail_product().getDetail().get(0).getNilai_tagihan()));
-                                        transaksi.setText(response.body().getData().getRef_id());
-                                        PPAdminP.setText(utils.ConvertRP(response.body().getData().getDetail_product().getDetail().get(0).getAdmin()));
-                                        PPtarifP.setText(response.body().getData().getDetail_product().getTarif());
-                                        PPStatusP.setText(response.body().getData().getStatus());
-                                        setHargaa(response.body().getData().getDetail_product().getDetail().get(0).getNilai_tagihan());
+                                if (response.body().getData().getStatus().equals("Sukses")) {
+                                    name.setText(response.body().getData().getCustomer_name());
+                                    nomcos.setText(response.body().getData().getCustomer_no());
+                                    deskrip.setText(response.body().getData().getDescription());
+                                    String tanggal = response.body().getData().getCreated_at();
+                                    String tahun = tanggal.substring(0, 4);
+                                    String bulan = utils.convertBulan(tanggal.substring(5, 7));
+                                    String hari = tanggal.substring(8, 10);
+                                    setInquiry(response.body().getData().getInquiry_type());
+                                    setSkucode(response.body().getData().getBuyer_sku_code());
+                                    tanggall.setText(hari + " " + bulan + " " + tahun);
+                                    PPdayaP.setText(response.body().getData().getDetail_product().getDaya());
+                                    tagihan.setText(utils.ConvertRP(response.body().getData().getBasic_price()));
+                                    transaksi.setText(response.body().getData().getRef_id());
+                                    PPAdminP.setText(utils.ConvertRP(response.body().getData().getDetail_product().getDetail().get(0).getAdmin()));
+                                    PPtarifP.setText(response.body().getData().getDetail_product().getTarif());
+                                    PPStatusP.setText(response.body().getData().getStatus());
+                                    setHargaa(response.body().getData().getDetail_product().getDetail().get(0).getNilai_tagihan());
+                                    setSellingprice(response.body().getData().getSelling_price());
 
-                                        loadingPrimer.dismissDialog();
-                                        periksaplnpascaP.setText("Bayar");
-                                        LinearPasca.setVisibility(View.VISIBLE);
+                                    loadingPrimer.dismissDialog();
+                                    periksaplnpascaP.setText("Bayar");
+                                    LinearPasca.setVisibility(View.VISIBLE);
 
-                                    }else {
+                                }else {
 
-                                        Toast.makeText(getApplicationContext(),response.body().getData().getStatus()+" "+response.body().getData().getDescription(),Toast.LENGTH_LONG).show();
-                                        loadingPrimer.dismissDialog();
-                                    }
-
-                                } else {
-
-                                    StyleableToast.makeText(getApplicationContext(), response.body().getError(), Toast.LENGTH_SHORT, R.style.mytoast2).show();
+                                    Toast.makeText(getApplicationContext(),response.body().getData().getStatus()+" "+response.body().getData().getDescription(),Toast.LENGTH_LONG).show();
+                                    loadingPrimer.dismissDialog();
                                 }
 
+                            } else {
+
+                                StyleableToast.makeText(getApplicationContext(), response.body().getError(), Toast.LENGTH_SHORT, R.style.mytoast2).show();
                             }
 
-                            @Override
-                            public void onFailure(Call<ResponInquiry> call, Throwable t) {
-                                Toast.makeText(getApplicationContext(),t.toString(),Toast.LENGTH_LONG).show();
-                                loadingPrimer.dismissDialog();
+                        }
+
+                        @Override
+                        public void onFailure(Call<ResponInquiry> call, Throwable t) {
+                            Toast.makeText(getApplicationContext(),t.toString(),Toast.LENGTH_LONG).show();
+                            loadingPrimer.dismissDialog();
 
 
-                            }
-                        });
-
-                    } else {
-                        StyleableToast.makeText(getApplicationContext(), "Nomor tidak boleh kosong", Toast.LENGTH_SHORT, R.style.mytoast2).show();
-
-                    }
+                        }
+                    });
 
                 } else {
-                    Intent intent = new Intent(getApplicationContext(), KonfirmasiPembayaran.class);
-                    intent.putExtra("hargatotal", getHargaa());
-                    intent.putExtra("RefID", transaksi.getText().toString());
-                    intent.putExtra("sku_code",getSkucode());
-                    intent.putExtra("inquiry",getInquiry());
-                    intent.putExtra("nomorr",nomcos.getText().toString());
-                    startActivity(intent);
-
+                    StyleableToast.makeText(getApplicationContext(), "Nomor tidak boleh kosong", Toast.LENGTH_SHORT, R.style.mytoast2).show();
 
                 }
+
+            } else {
+                Intent intent = new Intent(getApplicationContext(), KonfirmasiPembayaran.class);
+                intent.putExtra("hargatotal", utils.ConvertRP(getSellingprice()));
+                intent.putExtra("RefID", transaksi.getText().toString());
+                intent.putExtra("sku_code",getSkucode());
+                intent.putExtra("inquiry",getInquiry());
+                intent.putExtra("nomorr",nomcos.getText().toString());
+                startActivity(intent);
+
+
             }
         });
 
@@ -229,5 +227,13 @@ public class Pln_produk_pasca extends AppCompatActivity {
 
     public void setHargaa(String hargaa) {
         this.hargaa = hargaa;
+    }
+
+    public String getSellingprice() {
+        return sellingprice;
+    }
+
+    public void setSellingprice(String sellingprice) {
+        this.sellingprice = sellingprice;
     }
 }

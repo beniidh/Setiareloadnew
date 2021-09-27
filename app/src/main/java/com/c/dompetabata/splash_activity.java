@@ -27,6 +27,7 @@ import java.util.Observable;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
+import io.sentry.Sentry;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -38,6 +39,8 @@ public class splash_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_activity);
+//        Sentry.captureMessage("Great this is setting");
+
         logo = findViewById(R.id.logosplash);
         getSupportActionBar().hide();
         setLogo();

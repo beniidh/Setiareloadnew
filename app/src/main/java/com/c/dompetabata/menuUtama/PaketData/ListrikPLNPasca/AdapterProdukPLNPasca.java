@@ -47,7 +47,7 @@ public class AdapterProdukPLNPasca extends RecyclerView.Adapter<AdapterProdukPLN
         ModelProdukPlnPasca modelProdukPlnPasca = modelProdukPlnPascas.get(position);
         holder.name.setText(modelProdukPlnPasca.getName());
         holder.deskripsi.setText(modelProdukPlnPasca.getDescription());
-        double harga = Double.valueOf(modelProdukPlnPasca.getBasic_price());
+        double harga = Double.parseDouble(modelProdukPlnPasca.getBasic_price());
         Locale localeid = new Locale("in","ID");
         NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeid);
         holder.harga.setText(formatRupiah.format(harga));

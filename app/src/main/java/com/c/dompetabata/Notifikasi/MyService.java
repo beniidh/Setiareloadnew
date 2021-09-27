@@ -1,5 +1,6 @@
 package com.c.dompetabata.Notifikasi;
 
+import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -10,8 +11,10 @@ import android.content.Intent;
 import android.os.Build;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.c.dompetabata.R;
 import com.c.dompetabata.drawer_activity;
@@ -21,10 +24,17 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
-public class MyService extends FirebaseMessagingService {
+public class MyService extends FirebaseMessagingService  {
 
+    LocalBroadcastManager localBroadcastManager;
 
-    public void createNotification(String judul, String isi, Context context, Intent intent,String transaksi){
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        localBroadcastManager =LocalBroadcastManager.getInstance(this);
+    }
+
+    public void createNotification(String judul, String isi, Context context, Intent intent, String transaksi){
 
         NotificationManager notificationManager = (NotificationManager)context.getSystemService(context.NOTIFICATION_SERVICE);
         Intent resultIntent = new Intent(this, TransaksiPending.class);
@@ -41,6 +51,7 @@ public class MyService extends FirebaseMessagingService {
             notificationManager.createNotificationChannel(notificationChannel);
         }
 
+
         NotificationCompat.Builder MBuilder = new NotificationCompat.Builder(context,ChanelID)
                 .setAutoCancel(true)
                 .setSmallIcon(R.drawable.logoapkcsoft)
@@ -54,6 +65,7 @@ public class MyService extends FirebaseMessagingService {
         taskStackBuilder.addNextIntent(intent);
         notificationManager.notify(NotificationID++,MBuilder.build());
 
+
     }
 
 
@@ -64,8 +76,10 @@ public class MyService extends FirebaseMessagingService {
         String isi = remoteMessage.getNotification().getBody();
         String trx = remoteMessage.getNotification().getTag();
 
-
+        localBroadcastManager.sendBroadcast( new Intent("kirim"));
         createNotification(judul,isi,getApplicationContext(),new Intent(),trx);
 
     }
+
+
 }

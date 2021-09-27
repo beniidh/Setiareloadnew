@@ -240,24 +240,40 @@ public class Register_activity extends AppCompatActivity implements ModalProvins
 
     }
 
+    public void onClickProvinsi() {
+        ModalProvinsi modalProvinsi = new ModalProvinsi();
+        modalProvinsi.show(getSupportFragmentManager(), "Modalprovinsi");
+    }
     private void onClickKecamatan() {
+        Bundle bundle = new Bundle();
         ModalKecamatan modalKecamatan = new ModalKecamatan();
+        bundle.putString("kabupatenkey","");
+        modalKecamatan.setArguments(bundle);
         modalKecamatan.show(getSupportFragmentManager(), "Modalkecamatan");
     }
 
     private void onClickKabupaten() {
+        Bundle bundle = new Bundle();
         ModalKabupaten modalKabupaten = new ModalKabupaten();
+        bundle.putString("provinsikey","");
+        modalKabupaten.setArguments(bundle);
         modalKabupaten.show(getSupportFragmentManager(), "Modalkabupaten");
     }
 
     private void onClickKelurahan() {
+        Bundle bundle = new Bundle();
         ModalKelurahan modalKelurahan = new ModalKelurahan();
+        bundle.putString("kecamatankey","");
+        modalKelurahan.setArguments(bundle);
         modalKelurahan.show(getSupportFragmentManager(), "Modalkelurahan");
     }
 
     private void onClickKodePos() {
+        Bundle bundle = new Bundle();
         ModalKodePos modalKodePos = new ModalKodePos();
-        modalKodePos.show(getSupportFragmentManager(), "Modalkelurahan");
+        bundle.putString("kelurahankey","");
+        modalKodePos.setArguments(bundle);
+        modalKodePos.show(getSupportFragmentManager(), "Modalkodepos");
     }
 
 
@@ -272,10 +288,7 @@ public class Register_activity extends AppCompatActivity implements ModalProvins
         super.onBackPressed();
     }
 
-    public void onClickProvinsi() {
-        ModalProvinsi modalProvinsi = new ModalProvinsi();
-        modalProvinsi.show(getSupportFragmentManager(), "Modalprovinsi");
-    }
+
 
     public void Register(View view) {
         getLocation();

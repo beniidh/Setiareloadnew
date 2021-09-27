@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.c.dompetabata.Modal.ModalKelurahan;
 import com.c.dompetabata.Modal.ModalMetodePemayaran;
 import com.c.dompetabata.R;
+import com.c.dompetabata.Transfer.transferKonter;
 import com.c.dompetabata.sharePreference.Preference;
 import com.muddzdev.styleabletoast.StyleableToast;
 
@@ -24,7 +25,7 @@ public class topup_saldoku_activity extends AppCompatActivity {
     Button bayarsaldoku;
     LinearLayout linsaldo100, linsaldo200, linsaldo500, linsaldo1000;
     EditText isisaldoku;
-    TextView saldosaatini;
+    TextView saldosaatini,transfersaldo;
 
     public static Activity b;
 
@@ -41,6 +42,7 @@ public class topup_saldoku_activity extends AppCompatActivity {
 
         linsaldo100 = findViewById(R.id.linsaldo100);
         linsaldo200 = findViewById(R.id.linsaldo200);
+        transfersaldo = findViewById(R.id.transfersaldo);
         saldosaatini = findViewById(R.id.saldosaatini);
         isisaldoku = findViewById(R.id.isisaldoku);
         linsaldo500 = findViewById(R.id.linsaldo500);
@@ -50,6 +52,11 @@ public class topup_saldoku_activity extends AppCompatActivity {
         Intent intent = getIntent();
         String saldosaatin = intent.getStringExtra("saldoku");
         saldosaatini.setText(saldosaatin);
+
+        transfersaldo.setOnClickListener(view -> {
+            Intent intent1 = new Intent(topup_saldoku_activity.this, transferKonter.class);
+            startActivity(intent1);
+        });
 
         bayarsaldoku.setOnClickListener(new View.OnClickListener() {
             @Override
