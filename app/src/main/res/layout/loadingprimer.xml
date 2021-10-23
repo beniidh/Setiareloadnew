@@ -2,14 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="40dp">
 
-    <ProgressBar
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/progressUtama"
         android:layout_width="40dp"
+        app:lottie_url="https://assets2.lottiefiles.com/packages/lf20_9345yvlv.json"
         android:layout_height="40dp"
+        app:lottie_autoPlay="true"
         android:theme="@style/progressbar" />
 
     <TextView

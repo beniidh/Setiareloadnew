@@ -244,19 +244,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="19dp"
+                    android:background="@drawable/bg_button_login2"
                     android:fontFamily="@font/mukta"
-                    android:onClick="Register"
-                    android:background="@drawable/bg_button_login"
                     android:foreground="?android:attr/selectableItemBackground"
+                    android:onClick="Register"
                     android:text="Selanjutnya"
                     android:textAllCaps="false"
-                    android:textColor="@color/green"
+                    android:textColor="@color/white"
                     android:textSize="20dp"
                     android:textStyle="bold" />
 
             </RelativeLayout>
-
-
 
 
         </LinearLayout>

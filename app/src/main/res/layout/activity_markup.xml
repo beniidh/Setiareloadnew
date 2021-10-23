@@ -11,10 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Tipe"
+        android:visibility="invisible"
         android:textSize="18sp"
         android:textColor="@color/black"
         />
     <EditText
+        android:visibility="gone"
         android:focusable="false"
         android:id="@+id/markupEditText"
         android:layout_marginTop="5dp"
@@ -23,15 +25,26 @@
         android:textSize="17sp"
         android:layout_height="47dp"/>
 
+    <EditText
+        android:id="@+id/markupNilai"
+        android:layout_marginTop="15dp"
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:hint="Masukan Harga"
+        android:paddingStart="9sp"
+        android:background="@drawable/bg_edittextlogin"
+        android:textSize="17sp"
+        android:layout_height="47dp"/>
+
     <Button
         android:id="@+id/markupButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10sp"
+        android:layout_marginTop="20sp"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="18sp"
-        android:text="Update Harga"
+        android:text="Simpan"
         android:background="@drawable/bg_button_login2"
         />
 

@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
-            android:text="Bayar ke Sales"
+            android:text="Bayar ke Server"
             android:textColor="@color/green"
             android:textSize="20sp" />
 
@@ -70,13 +70,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
-            android:text="Sales"
+            android:text="Server"
             android:textColor="@color/black"
             android:textSize="16sp"
 
             />
 
         <TextView
+            android:id="@+id/namasalesserver"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/mukta"
@@ -105,7 +106,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/poppins"
-            android:text="Petunjuk Bayar Sales"
+            android:text="Petunjuk Bayar Server"
             android:textColor="@color/black"
             android:textSize="18dp"
             android:textStyle="bold" />

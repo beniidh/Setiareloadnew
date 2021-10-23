@@ -236,8 +236,9 @@
 
                     <TextView
                         android:id="@+id/produkTransaksi"
-                        android:layout_width="wrap_content"
+                        android:layout_width="210sp"
                         android:layout_height="match_parent"
+                        android:textAlignment="textEnd"
                         android:layout_alignParentRight="true"
                         android:text=""
 

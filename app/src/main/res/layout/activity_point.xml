@@ -23,6 +23,7 @@
             android:textColor="@color/black"
             android:textSize="22sp" />
 
+
         <EditText
             android:id="@+id/idpointtanggalEditText"
             android:layout_width="120sp"
@@ -30,7 +31,9 @@
             android:layout_height="34sp"
             android:gravity="center"
             android:background="@drawable/bg_edittextlogin"
-            android:paddingStart="8sp" />
+            android:paddingStart="8sp"
+            tools:ignore="RtlSymmetry" />
+
 
     </LinearLayout>
 
@@ -53,7 +56,7 @@
             android:id="@+id/idpointTotalPointTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="5"
+            android:text="0"
             android:textAlignment="center"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -66,9 +69,10 @@
         android:layout_marginTop="10sp"
         android:layout_marginRight="10sp"
         android:fontFamily="@font/mukta"
-        android:text="23 Mei 2021"
+        android:text="-"
         android:textColor="@color/black"
         android:textSize="18dp" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/idRecyclePoint"
         android:visibility="gone"
@@ -121,7 +125,8 @@
                         android:foreground="?android:attr/selectableItemBackground"
                         android:text="Saldo Server"
                         android:textColor="@color/gray4"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:focusable="true" />
 
                 </LinearLayout>
 
@@ -131,9 +136,9 @@
             <TextView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:gravity="center"
-                android:text="1" />
+                android:text="0" />
         </LinearLayout>
 
         <LinearLayout
@@ -184,7 +189,7 @@
                 android:layout_height="25dp"
                 android:layout_marginRight="10dp"
                 android:gravity="center"
-                android:text="1" />
+                android:text="0" />
         </LinearLayout>
 
         <LinearLayout
@@ -237,7 +242,7 @@
                 android:layout_height="25dp"
                 android:layout_marginRight="10dp"
                 android:gravity="center"
-                android:text="1" />
+                android:text="0" />
         </LinearLayout>
 
     </LinearLayout>

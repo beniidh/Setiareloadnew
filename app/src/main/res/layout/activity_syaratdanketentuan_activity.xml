@@ -69,13 +69,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:background="@drawable/bg_button_login"
-                android:text="Daftar"
+                android:background="@drawable/bg_button_login2"
                 android:fontFamily="@font/mukta"
+                android:foreground="?android:attr/selectableItemBackground"
                 android:onClick="SendOTP"
+                android:text="Daftar"
                 android:textAllCaps="false"
-                android:textColor="@color/green"
+                android:textColor="@color/white"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
