@@ -1,5 +1,6 @@
 package com.c.setiareload.menuUtama.PaketData.PaketsmsTelpon;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,7 +44,7 @@ public class AdapterProdukSmsTelpon extends RecyclerView.Adapter<AdapterProdukSm
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         MProdukPaketSmsT msmsTelpon = msmsTelpons.get(position);
         holder.name.setText(msmsTelpon.getName());
@@ -55,7 +56,7 @@ public class AdapterProdukSmsTelpon extends RecyclerView.Adapter<AdapterProdukSm
             holder.chekP.setChecked(false);
         }
 
-        holder.chekP.setOnClickListener(new View.OnClickListener() {
+        holder.klik.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -97,13 +98,14 @@ public class AdapterProdukSmsTelpon extends RecyclerView.Adapter<AdapterProdukSm
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView name;
         CheckBox chekP;
-        LinearLayout linklik;
+        LinearLayout klik;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.nameList);
             chekP = itemView.findViewById(R.id.chekProvinsi);
 //            linklik = itemView.findViewById(R.id.linklik);
+            klik = itemView.findViewById(R.id.linearKlikk);
 
         }
     }

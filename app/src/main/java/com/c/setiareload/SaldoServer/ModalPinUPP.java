@@ -60,13 +60,10 @@ public class ModalPinUPP extends BottomSheetDialogFragment {
                 String jumlahpengajuan = Preference.getSaldoServer(getContext());
                 double pengajuan = Double.parseDouble(jumlahpengajuan);
                 if(getRoless().equals("4")){
-
-
                     ajukanUPP(Preference.getIdUPP(getContext()),"SERVER", pinn, utils.getMacAddr(),
                             Value.getIPaddress(), Value.getUserAgent(getContext()), gpsTracker.getLatitude(),
                             gpsTracker.getLongitude(), pengajuan);
                 }else {
-
 
                     ajukanUPP(Preference.getIdUPP(getContext()),"SALES", pinn, utils.getMacAddr(),
                             Value.getIPaddress(), Value.getUserAgent(getContext()), gpsTracker.getLatitude(),

@@ -34,16 +34,17 @@
                 android:id="@+id/nameair"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="PLN 2000"
+                android:text="-"
                 android:fontFamily="@font/mukta"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
+
             <TextView
                 android:id="@+id/brandair"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="PLN 2000"
+                android:text="-"
                 android:fontFamily="@font/mukta"
                 android:textStyle="bold"
                 android:textColor="@color/black"
@@ -52,12 +53,10 @@
                 android:id="@+id/deskriair"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="PLN 2000"
+                android:text="-"
                 android:fontFamily="@font/mukta"
                 android:textColor="@color/gray4"
                 android:textSize="13sp" />
-
-
 
 
         </LinearLayout>

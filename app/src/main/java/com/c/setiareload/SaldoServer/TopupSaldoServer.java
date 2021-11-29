@@ -10,12 +10,20 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.c.setiareload.Adapter.AdapterSubMenuSide;
 import com.c.setiareload.Api.Api;
 import com.c.setiareload.Helper.RetroClient;
 import com.c.setiareload.Helper.utils;
 import com.c.setiareload.Modal.ModalMetodePemayaran;
+import com.c.setiareload.Model.MSubMenu;
 import com.c.setiareload.R;
+import com.c.setiareload.Respon.ResponProfil;
+import com.c.setiareload.drawer_activity;
 import com.c.setiareload.sharePreference.Preference;
+import com.muddzdev.styleabletoast.StyleableToast;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,7 +31,7 @@ import retrofit2.Response;
 
 public class TopupSaldoServer extends AppCompatActivity {
 
-    TextView tagihanSaldoServer,tanggalTagihan;
+    TextView tagihanSaldoServer,tanggalTagihan,TotalSS,PengembalianSS,limitsaldoserverr;
     RelativeLayout LinearBayartagihan;
 
     @Override
@@ -36,6 +44,12 @@ public class TopupSaldoServer extends AppCompatActivity {
 
         tagihanSaldoServer = findViewById(R.id.tagihanSaldoServer);
         LinearBayartagihan = findViewById(R.id.LinearBayartagihan);
+        limitsaldoserverr = findViewById(R.id.limitsaldoserverr);
+
+        TotalSS = findViewById(R.id.TotalSS);
+        PengembalianSS = findViewById(R.id.PengembalianSS);
+        getContentProfil();
+
         tanggalTagihan = findViewById(R.id.tanggalTagihan);
         getTagihan();
     }
@@ -78,7 +92,11 @@ public class TopupSaldoServer extends AppCompatActivity {
                     Preference.setSaldoServer(getApplicationContext(),response.body().getData().getTotal_bill());
                     String tanggal = response.body().getData().getDue_date();
                     tanggalTagihan.setText(tanggal.substring(0,10));
+                    PengembalianSS.setText(utils.ConvertRP(response.body().getData().getTotal_bill()));
+                    TotalSS.setText(utils.ConvertRP(response.body().getData().getTotal_bill()));
                     Preference.setIdUPP(getApplicationContext(),response.body().getData().getId());
+
+
                 }else {
 
                     LinearBayartagihan.setEnabled(false);
@@ -89,6 +107,25 @@ public class TopupSaldoServer extends AppCompatActivity {
             @Override
             public void onFailure(Call<ResponTagihanPayLatter> call, Throwable t) {
 
+            }
+        });
+    }
+
+    public void getContentProfil() {
+
+        Api api = RetroClient.getApiServices();
+        Call<ResponProfil> call = api.getProfileDas("Bearer " + Preference.getToken(getApplicationContext()));
+        call.enqueue(new Callback<ResponProfil>() {
+            @Override
+            public void onResponse(Call<ResponProfil> call, Response<ResponProfil> response) {
+                limitsaldoserverr.setText(utils.ConvertRP(response.body().getData().getWallet().getPaylater_limit()));
+
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponProfil> call, Throwable t) {
+                StyleableToast.makeText(getApplicationContext(), "Periksa Sambungan internet", Toast.LENGTH_SHORT, R.style.mytoast2).show();
             }
         });
     }

@@ -384,7 +384,8 @@ public interface Api {
     Call<ResponMarkup> markup(@Header("X-Signature") String token, @Body sendMarkUP markup);
 
     @GET("sales-komisi/history")
-    Call<ResponSales> getKomisiSales(@Header("X-Signature") String token,@Query("datestart") String datestart,@Query("dateend") String dateend);
+    Call<ResponSales> getKomisiSales(@Header("X-Signature") String token,@Query("datestart")
+            String datestart,@Query("dateend") String dateend);
 
     @GET("user-paylater/sales")
     Call<ResponTagihanKonterSales> getTagihanSalesKonter(@Header("X-Signature") String token);

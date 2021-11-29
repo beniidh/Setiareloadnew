@@ -113,6 +113,7 @@
                     android:textSize="13sp" />
 
                 <TextView
+                    android:id="@+id/limitsaldoserverr"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -162,9 +163,10 @@
                     android:textSize="13sp" />
 
                 <TextView
+                    android:id="@+id/PengembalianSS"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                   android:layout_alignParentEnd="true"
+                    android:layout_alignParentEnd="true"
                     android:text="Rp.0"
                     android:textColor="@color/black"
                     android:textSize="13sp" />
@@ -187,6 +189,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/TotalSS"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"

@@ -54,13 +54,9 @@ public class produksmstelpon extends AppCompatActivity implements ModalProdukSms
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(adapterProdukST);
 
-
-        inputproduksmspulsa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ModalProdukSmsTelpon produkSmsTelpon = new ModalProdukSmsTelpon();
-                produkSmsTelpon.show(getSupportFragmentManager(),"produksmstelpon");
-            }
+        inputproduksmspulsa.setOnClickListener(v -> {
+            ModalProdukSmsTelpon produkSmsTelpon = new ModalProdukSmsTelpon();
+            produkSmsTelpon.show(getSupportFragmentManager(),"produksmstelpon");
         });
 
         inputnomorsmspulsa.addTextChangedListener(new TextWatcher() {
@@ -68,7 +64,6 @@ public class produksmstelpon extends AppCompatActivity implements ModalProdukSms
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
             }
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (inputnomorsmspulsa.length() >= 7) {

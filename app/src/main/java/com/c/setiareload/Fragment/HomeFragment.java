@@ -70,14 +70,11 @@ public class HomeFragment extends Fragment {
 
         saldoku = v.findViewById(R.id.saldoku);
         saldoserver = v.findViewById(R.id.saldoserver);
-        saldoku.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        saldoku.setOnClickListener(v1 -> {
 
-                Intent intent = new Intent(getActivity(), topup_saldoku_activity.class);
-                intent.putExtra("saldoku", saldoku.getText().toString());
-                startActivity(intent);
-            }
+            Intent intent = new Intent(getActivity(), topup_saldoku_activity.class);
+            intent.putExtra("saldoku", saldoku.getText().toString());
+            startActivity(intent);
         });
 
         linsaldoserver = v.findViewById(R.id.LinSaldoServer);
@@ -129,38 +126,41 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        ViewModelProviders.of(getActivity()).get(HomeViewModel.class).getPayLater().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-
-                if (s.equals("0")) {
-                    saldoserver.setText("0");
-                    linsaldoserver.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-
-                            Intent intent = new Intent(getActivity(), AjukanLimit.class);
-                            intent.putExtra("saldoku", saldoku.getText().toString());
-                            startActivity(intent);
-
-                        }
-                    });
 
 
-                } else {
+        linsaldoserver.setOnClickListener(v -> {
 
-                    linsaldoserver.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), TopupSaldoServer.class);
+            intent.putExtra("saldoku", saldoku.getText().toString());
+            startActivity(intent);
 
-                        Intent intent = new Intent(getActivity(), TopupSaldoServer.class);
-                        intent.putExtra("saldoku", saldoku.getText().toString());
-                        startActivity(intent);
-
-                    });
-
-                }
-
-            }
         });
+
+//        ViewModelProviders.of(getActivity()).get(HomeViewModel.class).getPayLater().observe(getViewLifecycleOwner(), new Observer<String>() {
+//            @Override
+//            public void onChanged(String s) {
+//
+//                if (s.equals("0")) {
+//                    saldoserver.setText("0");
+//                    linsaldoserver.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//
+//                            Intent intent = new Intent(getActivity(), AjukanLimit.class);
+//                            intent.putExtra("saldoku", saldoku.getText().toString());
+//                            startActivity(intent);
+//
+//                        }
+//                    });
+//
+//
+//                } else {
+//
+//
+//                }
+//
+//            }
+//        });
 
         ViewModelProviders.of(getActivity()).get(HomeViewModel.class).getPayyLetter().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override

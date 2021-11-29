@@ -1,5 +1,6 @@
 package com.c.setiareload.DaftarHarga;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,7 +48,7 @@ public class AdapterProdukDH extends RecyclerView.Adapter<AdapterProdukDH.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         ResponProdukDH.mData mproduk = mProduk.get(position);
         holder.name.setText(mproduk.getName());

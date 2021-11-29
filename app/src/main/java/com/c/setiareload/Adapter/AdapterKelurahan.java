@@ -7,11 +7,13 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.c.setiareload.Helper.utils;
 import com.c.setiareload.Model.ModelKelurahan;
 import com.c.setiareload.R;
 import com.c.setiareload.sharePreference.Preference;
@@ -45,16 +47,12 @@ public class AdapterKelurahan extends RecyclerView.Adapter<AdapterKelurahan.View
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list, parent, false);
         ViewHolder holder = new ViewHolder(v);
         return holder;
-
     }
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-
         ModelKelurahan modelKelurahan = modelKelurahans.get(position);
-        holder.name.setText(modelKelurahan.getName());
-
+        holder.name.setText(utils.capitalizeFirstLetter(modelKelurahan.getName().toLowerCase()));
 
         if (selectCheck.get(position) == 1) {
             holder.chekP.setChecked(true);
@@ -62,25 +60,21 @@ public class AdapterKelurahan extends RecyclerView.Adapter<AdapterKelurahan.View
             holder.chekP.setChecked(false);
         }
 
-        holder.chekP.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        holder.klik.setOnClickListener(v -> {
 
-                for(int k=0; k<selectCheck.size(); k++) {
-                    if(k==position) {
-                        selectCheck.set(k,1);
-                    } else {
-                        selectCheck.set(k,0);
-                    }
+            for(int k=0; k<selectCheck.size(); k++) {
+                if(k==position) {
+                    selectCheck.set(k,1);
+                } else {
+                    selectCheck.set(k,0);
                 }
-                notifyDataSetChanged();
-
-                Preference.getSharedPreference(context);
-                Preference.setName(context,modelKelurahan.getName());
-                Preference.setID(context,modelKelurahan.getId());
-                Preference.setIDKelurahan(context,modelKelurahan.getId());
-
             }
+            notifyDataSetChanged();
+
+            Preference.getSharedPreference(context);
+            Preference.setName(context,modelKelurahan.getName());
+            Preference.setID(context,modelKelurahan.getId());
+            Preference.setIDKelurahan(context,modelKelurahan.getId());
 
         });
     }
@@ -129,15 +123,16 @@ public class AdapterKelurahan extends RecyclerView.Adapter<AdapterKelurahan.View
         }
     };
 
-
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView name;
         CheckBox chekP;
+        LinearLayout klik;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.nameList);
             chekP = itemView.findViewById(R.id.chekProvinsi);
+            klik = itemView.findViewById(R.id.linearKlikk);
 
         }
     }

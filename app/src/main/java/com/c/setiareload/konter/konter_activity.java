@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.text.Html;
+import android.widget.Toast;
 
 import com.c.setiareload.Api.Api;
 import com.c.setiareload.Helper.RetroClient;
@@ -56,8 +57,13 @@ public class konter_activity extends AppCompatActivity {
                 if(code.equals("200")){
 
                     data = response.body().getData();
-                    adapterKonter = new AdapterKonter(getApplicationContext(), data);
-                    recyclerView.setAdapter(adapterKonter);
+                    if(data == null){
+                        Toast.makeText(getApplicationContext(),"Data tidak ditemukan",Toast.LENGTH_SHORT).show();
+                    } else{
+                        adapterKonter = new AdapterKonter(getApplicationContext(), data);
+                        recyclerView.setAdapter(adapterKonter);
+
+                    }
 
                 }
             }

@@ -1,10 +1,12 @@
 package com.c.setiareload.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -44,7 +46,7 @@ public class AdapterPost extends RecyclerView.Adapter<AdapterPost.ViewHolder>  {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
 
         ModelPost modelPost = modelPosts.get(position);
@@ -57,7 +59,7 @@ public class AdapterPost extends RecyclerView.Adapter<AdapterPost.ViewHolder>  {
         }
 
 
-        holder.chekP.setOnClickListener(new View.OnClickListener() {
+        holder.klik.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -90,11 +92,13 @@ public class AdapterPost extends RecyclerView.Adapter<AdapterPost.ViewHolder>  {
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView name;
         CheckBox chekP;
+        LinearLayout klik;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.nameList);
             chekP = itemView.findViewById(R.id.chekProvinsi);
+            klik = itemView.findViewById(R.id.linearKlikk);
 
         }
     }

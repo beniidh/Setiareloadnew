@@ -7,11 +7,13 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.c.setiareload.Helper.utils;
 import com.c.setiareload.Model.ModelProvinsi;
 import com.c.setiareload.R;
 
@@ -60,26 +62,20 @@ public class AdapterProvinsi extends RecyclerView.Adapter<AdapterProvinsi.ViewHo
         }
 
         ModelProvinsi modelProvinsi = modelProvinsiList.get(position);
-        holder.name.setText(modelProvinsi.getName());
-        holder.chekP.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                for (int k = 0; k < selectCheck.size(); k++) {
-                    if (k == position) {
-                        selectCheck.set(k, 1);
-                    } else {
-                        selectCheck.set(k, 0);
-                    }
+        holder.name.setText(utils.capitalizeFirstLetter(modelProvinsi.getName().toLowerCase()));
+        holder.klik.setOnClickListener(v -> {
+            for (int k = 0; k < selectCheck.size(); k++) {
+                if (k == position) {
+                    selectCheck.set(k, 1);
+                } else {
+                    selectCheck.set(k, 0);
                 }
-                notifyDataSetChanged();
-//                obj[0].setData("hallo","h");
-                nameid[0][0] = modelProvinsi.getName();
-                nameid[0][1] = modelProvinsi.getId();
-
-
             }
+            notifyDataSetChanged();
+//                obj[0].setData("hallo","h");
+            nameid[0][0] = modelProvinsi.getName();
+            nameid[0][1] = modelProvinsi.getId();
+
 
         });
 
@@ -133,11 +129,13 @@ public class AdapterProvinsi extends RecyclerView.Adapter<AdapterProvinsi.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView name;
         CheckBox chekP;
+        LinearLayout klik;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.nameList);
             chekP = itemView.findViewById(R.id.chekProvinsi);
+            klik = itemView.findViewById(R.id.linearKlikk);
 
         }
     }

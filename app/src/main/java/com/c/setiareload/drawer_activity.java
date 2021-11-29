@@ -306,7 +306,7 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
                 myViewModel.sendSaldoku(response.body().getData().getWallet().getSaldoku());
                 myViewModel.sendPayyLetter(response.body().getData().getWallet().getPaylatter());
                 Picasso.get().load(response.body().getData().getAvatar()).into(iconprofilsidebar);
-                parent.setText(response.body().getData().getParent());
+                parent.setText(response.body().getData().getReferal_code());
                 getIconBanner(response.body().getData().getServer_id());
                 mSubMenus = (ArrayList<MSubMenu>) response.body().getData().getMenu();
                 adapterSubMenuSide = new AdapterSubMenuSide(getApplicationContext(), mSubMenus, drawer_activity.this);

@@ -49,13 +49,10 @@ public class pin_activity extends AppCompatActivity {
         warningpinsalah = findViewById(R.id.warningpinsalah);
 
 
-        warningpinsalah.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(pin_activity.this,GantiPin.class);
-                startActivity(intent);
+        warningpinsalah.setOnClickListener(v -> {
+            Intent intent = new Intent(pin_activity.this, GantiPin.class);
+            startActivity(intent);
 
-            }
         });
 
         getLocation();
@@ -95,7 +92,7 @@ public class pin_activity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(pin_activity.this,Login_Activity.class);
+        Intent intent = new Intent(pin_activity.this, Login_Activity.class);
         startActivity(intent);
         finish();
     }
@@ -138,15 +135,15 @@ public class pin_activity extends AppCompatActivity {
                         Preference.setToken(getApplicationContext(), token);
                         finish();
 
-                    } else if(code.equals("403")){
+                    } else if (code.equals("403")) {
 
-                        StyleableToast.makeText(getApplicationContext(), response.body().getError()+" Silahkan hubungi Admin", Toast.LENGTH_LONG, R.style.mytoast).show();
-                        Intent intent = new Intent(pin_activity.this,Login_Activity.class);
+                        StyleableToast.makeText(getApplicationContext(), response.body().getError() + " Silahkan hubungi Admin", Toast.LENGTH_LONG, R.style.mytoast).show();
+                        Intent intent = new Intent(pin_activity.this, Login_Activity.class);
                         startActivity(intent);
                         finish();
 
 
-                    }else {
+                    } else {
                         progressBar.setVisibility(View.GONE);
                         pin1.setText("");
                         StyleableToast.makeText(getApplicationContext(), response.body().getError(), Toast.LENGTH_SHORT, R.style.mytoast).show();

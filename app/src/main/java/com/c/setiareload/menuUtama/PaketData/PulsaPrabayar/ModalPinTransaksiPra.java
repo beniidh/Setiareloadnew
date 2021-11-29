@@ -107,8 +107,6 @@ public class ModalPinTransaksiPra extends BottomSheetDialogFragment {
                     intent.putExtra("create_at",response.body().getData().getCreated_at());
                     intent.putExtra("transaksid",response.body().getData().getRef_id());
                     intent.putExtra("iconn",getArguments().getString("iconn"));
-
-
                     startActivity(intent);
                     KonfirmasiPembayaran.konifirmpembayaran.finish();
                     dismiss();

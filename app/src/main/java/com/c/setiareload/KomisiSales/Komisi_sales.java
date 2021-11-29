@@ -142,12 +142,10 @@ public class Komisi_sales extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this, Login_Activity.class);
-        startActivity(intent);
-        finish();
+        super.onBackPressed();
     }
 
-    public void getKomisi(String dateStart,String dateEnd){
+    public void getKomisi(String dateStart, String dateEnd){
 
         String token = "Bearer "+ Preference.getToken(getApplicationContext());
         Api api = RetroClient.getApiServices();

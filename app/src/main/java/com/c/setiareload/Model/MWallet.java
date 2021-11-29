@@ -2,7 +2,7 @@ package com.c.setiareload.Model;
 
 public class MWallet {
     String saldoku,paylatter;
-    String user_id;
+    String user_id,paylater_limit;
 
     public String getSaldoku() {
         return saldoku;
@@ -14,5 +14,9 @@ public class MWallet {
 
     public String getUser_id() {
         return user_id;
+    }
+
+    public String getPaylater_limit() {
+        return paylater_limit;
     }
 }

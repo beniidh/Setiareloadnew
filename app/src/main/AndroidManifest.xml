@@ -26,12 +26,15 @@
         android:theme="@style/Theme.DompetAbata">
         <activity
             android:name=".TagihanKonterSales.TagihanKonterbySales"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".KomisiSales.Komisi_sales"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".konter.konter_activity"
+            android:screenOrientation="portrait"
             android:exported="true" />
 
         <meta-data

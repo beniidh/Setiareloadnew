@@ -1,5 +1,6 @@
 package com.c.setiareload.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,11 +9,13 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.c.setiareload.Helper.utils;
 import com.c.setiareload.Model.ModelKabupaten;
 import com.c.setiareload.R;
 import com.c.setiareload.sharePreference.Preference;
@@ -49,10 +52,10 @@ public class AdapterKabupaten extends RecyclerView.Adapter<AdapterKabupaten.View
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         ModelKabupaten modelKabupaten = modelKabupatens.get(position);
-        holder.name.setText(modelKabupaten.getName());
+        holder.name.setText(utils.capitalizeFirstLetter(modelKabupaten.getName().toLowerCase()));
 
 
         if (selectCheck.get(position) == 1) {
@@ -61,7 +64,7 @@ public class AdapterKabupaten extends RecyclerView.Adapter<AdapterKabupaten.View
             holder.chekP.setChecked(false);
         }
 
-        holder.chekP.setOnClickListener(new View.OnClickListener() {
+        holder.klik.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -138,11 +141,13 @@ public class AdapterKabupaten extends RecyclerView.Adapter<AdapterKabupaten.View
     public class ViewHolder extends RecyclerView.ViewHolder{
      TextView name;
      CheckBox chekP;
+     LinearLayout klik;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.nameList);
             chekP = itemView.findViewById(R.id.chekProvinsi);
+            klik = itemView.findViewById(R.id.linearKlikk);
 
         }
     }
