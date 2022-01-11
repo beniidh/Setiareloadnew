@@ -83,6 +83,8 @@ public class ModalPinTransaksiPra extends BottomSheetDialogFragment {
 
     public void TransaksiPulsaPra(String pin) {
 
+
+
         String token = "Bearer " + Preference.getToken(getContext());
         Api api = RetroClient.getApiServices();
         GpsTracker gpsTracker = new GpsTracker(getContext());
@@ -110,7 +112,6 @@ public class ModalPinTransaksiPra extends BottomSheetDialogFragment {
                     startActivity(intent);
                     KonfirmasiPembayaran.konifirmpembayaran.finish();
                     dismiss();
-
 
                 } else {
                     StyleableToast.makeText(getContext(), response.body().getError(), Toast.LENGTH_LONG,R.style.mytoast2).show();

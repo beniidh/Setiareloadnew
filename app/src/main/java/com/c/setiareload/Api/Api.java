@@ -4,9 +4,13 @@ import com.c.setiareload.CetakStruk.ResponStruk;
 import com.c.setiareload.DaftarHarga.ResponProdukDH;
 import com.c.setiareload.DaftarHarga.ResponProdukList;
 import com.c.setiareload.DaftarHarga.ResponSubProdukDH;
+import com.c.setiareload.Fragment.RekapSaldo.responRekap;
 import com.c.setiareload.Fragment.RiwayatTransaksi.ResponTransaksi;
 import com.c.setiareload.KomisiSales.ResponSales;
 import com.c.setiareload.MarkUP.ResponMarkup;
+import com.c.setiareload.MarkUP.markupSpesifik.ResponProdukDHM;
+import com.c.setiareload.MarkUP.markupSpesifik.ResponProdukListM;
+import com.c.setiareload.MarkUP.markupSpesifik.ResponSubProdukDHM;
 import com.c.setiareload.MarkUP.sendMarkUP;
 import com.c.setiareload.Model.MResestPIN;
 import com.c.setiareload.Model.mResetPassword;
@@ -60,6 +64,11 @@ import com.c.setiareload.Transaksi.ResponInquiry;
 import com.c.setiareload.Transfer.ModelKonter;
 import com.c.setiareload.Transfer.Mtransfer;
 import com.c.setiareload.TagihanKonterSales.ResponTagihanKonterSales;
+import com.c.setiareload.TransferBank.MTransfer;
+import com.c.setiareload.TransferBank.MinquiryBank;
+import com.c.setiareload.TransferBank.ModelNamaBank;
+import com.c.setiareload.TransferBank.ResponInquiryBank;
+import com.c.setiareload.TransferBank.ResponTransfer;
 import com.c.setiareload.konter.Mkonter;
 import com.c.setiareload.menuUtama.PaketData.AngsuranKredit.ResponAngsuran;
 import com.c.setiareload.menuUtama.PaketData.AngsuranKredit.ResponProdukAngsuran;
@@ -94,6 +103,8 @@ import com.c.setiareload.menuUtama.PaketData.VoucherGame.ResponProdukVoucher;
 import com.c.setiareload.menuUtama.PaketData.VoucherGame.ResponVoucherGame;
 import com.c.setiareload.menuUtama.PaketData.air.ResponAir;
 import com.c.setiareload.menuUtama.PaketData.air.ResponProdukAir;
+import com.c.setiareload.reseller.ResponSaldoReseller;
+import com.c.setiareload.reseller.mSetujuSaldo;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -135,6 +146,10 @@ public interface Api {
     @Multipart
     @POST("ekyc-selfie")
     Call<Responphoto> uploadImageDiri(@Part MultipartBody.Part image, @Part("id") RequestBody id);
+
+    @POST("transaction")
+    Call<ResponTransfer> TransferBank(@Header("X-Signature") String token,
+                                      @Body MTransfer mTransfer);
 
     @GET("product-us/sub-category/{id}")
     Call<ResponGetCodePasca> getCodePLNPasca(@Header("X-Signature") String token, @Path("id") String id);
@@ -220,7 +235,7 @@ public interface Api {
     @GET("postal-code/sub-districts/{id}")
     Call<ResponPost> getAllPost(@Path("id") long id);
 
-    @GET("all-product-category?$limit=9&$order=urutan&status=1")
+    @GET("all-product-category?$limit=&$order=urutan&status=1")
     Call<ResponMenuUtama> getAllMenu(@Header("X-Signature") String token);
 
     @GET("all-product-category?$limit=&$order=urutan&status=1")
@@ -325,8 +340,8 @@ public interface Api {
     @GET("product-subcategory/category/{id}")
     Call<ResponBPJS> getProdukBpjs(@Header("X-Signature") String token, @Path("id") String id);
 
-    @GET("product/sub-category/{id}")
-    Call<ResponProdukBPJS> getProdukBpjsSub(@Header("X-Signature") String token, @Path("id") String id);
+    @GET("product-us/sub-category/{id}")
+    Call<ResponBPJS> getProdukBpjsSub(@Header("X-Signature") String token, @Path("id") String id);
 
     @GET("product-subcategory/category/{id}")
     Call<ResponAngsuran> getProdukAngsuran(@Header("X-Signature") String token, @Path("id") String id);
@@ -348,12 +363,26 @@ public interface Api {
 
     @GET("all-product-category?$limit=0&$order=urutan&status=1")
     Call<ResponProdukDH> getProdukDH(@Header("X-Signature") String token);
+    @GET("all-product-category?$limit=0&$order=urutan&status=1")
+    Call<ResponProdukDHM> getProdukDHM(@Header("X-Signature") String token);
 
     @GET("product-subcategory/category/{id}")
     Call<ResponSubProdukDH> getProdukDHsub(@Header("X-Signature") String token, @Path("id") String id);
 
+    @GET("product-subcategory/category/{id}")
+    Call<ResponSubProdukDHM> getProdukDHsubM(@Header("X-Signature") String token, @Path("id") String id);
+
     @GET("product-us/sub-category/{id}")
     Call<ResponProdukList> getProdukDHList(@Header("X-Signature") String token, @Path("id") String id);
+
+    @GET("product-us/sub-category/{id}")
+    Call<ResponProdukListM> getProdukDHListM(@Header("X-Signature") String token, @Path("id") String id);
+
+    @GET("product-us-sm/sub-category/{id}")
+    Call<ResponProdukListM> getProdukDHListMM(@Header("X-Signature") String token, @Path("id") String id);
+
+    @POST("inquiry")
+    Call<ResponInquiryBank> getInquiryBank(@Header("X-Signature") String token, @Body MinquiryBank minquiryBank);
 
     @POST("reset-password")
     Call<ResponResetPassword> resetPassword(@Body mResetPassword mResest);
@@ -389,6 +418,22 @@ public interface Api {
 
     @GET("user-paylater/sales")
     Call<ResponTagihanKonterSales> getTagihanSalesKonter(@Header("X-Signature") String token);
+    @GET("all-bank")
+    Call<ModelNamaBank> getNamaBank(@Header("X-Signature") String token);
 
+    @GET("history/saldo")
+    Call<responRekap> getSaldoRekap(@Header("X-Signature") String token,
+                                    @Query("start") String start,@Query("end") String end,
+                                    @Query("type") String type);
+    @Multipart
+    @PUT("product-us-sm/{id}")
+    Call<ResponMarkup> markupSpesifik(@Header("X-Signature") String token,@Path("id")String id,@Part("user_id") RequestBody user_id,@Part("server_code") RequestBody server_code
+                                      ,@Part("sales_code") RequestBody sales_code,@Part("product_id") RequestBody product_id,
+                                      @Part("markup_price") RequestBody markup_price,@Part("status") RequestBody status);
 
+    @GET("approve-saldoku-reseller")
+    Call<ResponSaldoReseller> getSaldoReseller(@Header("X-Signature") String token);
+
+    @POST("approve-paylater-payment")
+    Call<ResponApprove> ApproveSaldokuReselesser(@Header("X-Signature") String token, @Body mSetujuSaldo setuju);
 }

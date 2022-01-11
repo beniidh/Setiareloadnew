@@ -34,7 +34,7 @@ public class DetailTransaksiTruk extends AppCompatActivity {
 
     TextView title;
 
-    TextView idNomorStruk, idProdukStruk, hargastruk, idSaldokuStruk, idTanggalStruk, idWaktuStruk, idNomorSNStruk, idNomorTransaksiStruk, idTotalPembelianStruk;
+    TextView idNomorStruk,namaTPC, idProdukStruk, hargastruk, idSaldokuStruk, idTanggalStruk, idWaktuStruk, idNomorSNStruk, idNomorTransaksiStruk, idTotalPembelianStruk;
 
 
     Button setHargaJual;
@@ -51,6 +51,7 @@ public class DetailTransaksiTruk extends AppCompatActivity {
         StrictMode.setVmPolicy(builder.build());
 
         setHargaJual = findViewById(R.id.setHargaJual);
+        namaTPC = findViewById(R.id.namaTPC);
         idNomorStruk = findViewById(R.id.idNomorStruk);
         idProdukStruk = findViewById(R.id.idProdukStruk);
         idSaldokuStruk = findViewById(R.id.idSaldokuStruk);
@@ -65,6 +66,7 @@ public class DetailTransaksiTruk extends AppCompatActivity {
         idProdukStruk.setText(getIntent().getStringExtra("produk"));
         idSaldokuStruk.setText(utils.ConvertRP(getIntent().getStringExtra("harga")));
         idTanggalStruk.setText(getIntent().getStringExtra("tanggal"));
+        namaTPC.setText(getIntent().getStringExtra("nama"));
         idWaktuStruk.setText(getIntent().getStringExtra("waktu"));
         idNomorSNStruk.setText(getIntent().getStringExtra("sn"));
         idNomorTransaksiStruk.setText(getIntent().getStringExtra("transaksid"));
@@ -91,6 +93,7 @@ public class DetailTransaksiTruk extends AppCompatActivity {
                 intent.putExtra("produk", idProdukStruk.getText().toString());
                 intent.putExtra("hargajual", idTotalPembelianStruk.getText().toString());
                 intent.putExtra("tanggal", idTanggalStruk.getText().toString());
+                intent.putExtra("nama", namaTPC.getText().toString());
                 intent.putExtra("waktu", idWaktuStruk.getText().toString());
                 intent.putExtra("sn", idNomorSNStruk.getText().toString());
                 intent.putExtra("title", title.getText().toString());

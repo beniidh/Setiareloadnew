@@ -70,10 +70,17 @@ public class ModalProvinsi extends BottomSheetDialogFragment {
                 String namee = nameid[0][0];
                 String id = nameid[0][1];
 
-                bottomSheetListener.onButtonClick(namee, id);
-                Preference.setName(getContext(), "");
+                if(namee==null || id == null){
+                    dismiss();
+                }else {
+                    bottomSheetListener.onButtonClick(namee, id);
+                    Preference.setName(getContext(), "");
+                    dismiss();
+                }
 
-                dismiss();
+
+
+
             }
         });
 

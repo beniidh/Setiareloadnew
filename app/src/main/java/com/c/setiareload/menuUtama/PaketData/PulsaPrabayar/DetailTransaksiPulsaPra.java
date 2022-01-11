@@ -30,8 +30,6 @@ public class DetailTransaksiPulsaPra extends BottomSheetDialogFragment {
         View v = inflater.inflate(R.layout.activity_detail_transaksi_pulsa_pra, container, false);
 
         Button konfirasidetail = v.findViewById(R.id.konfirmasidetail);
-
-
         namapelanggann = v.findViewById(R.id.namapelanggann);
         TextView namaPelanggan = v.findViewById(R.id.namaPelanggan);
 

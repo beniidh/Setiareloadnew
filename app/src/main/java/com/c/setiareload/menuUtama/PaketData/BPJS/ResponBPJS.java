@@ -25,10 +25,14 @@ public class ResponBPJS {
 
     public class mData{
 
-        String id,name,description,product_category_id;
+        String id,name,description,product_category_id,code;
 
         public String getId() {
             return id;
+        }
+
+        public String getCode() {
+            return code;
         }
 
         public String getName() {

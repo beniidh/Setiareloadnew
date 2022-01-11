@@ -3,11 +3,13 @@ package com.c.setiareload.Transaksi;
 import java.util.ArrayList;
 
 public class ModelInquiry {
-
-    String buyer_sku_code,customer_no,customer_name,inquiry_type,ref_id,basic_price,markup_price,selling_price,status,description,user_id,sales_id,server_id,mac_address,ip_address,user_agent,created_at;
+    String buyer_sku_code,admin_fee,customer_no,customer_name,inquiry_type,ref_id,basic_price,markup_price,selling_price,status,description,user_id,sales_id,server_id,mac_address,ip_address,user_agent,created_at;
     double longitude,latitude;
 
     detaill detail_product;
+    public String getAdmin_fee() {
+        return admin_fee;
+    }
 
     public detaill getDetail_product() {
         return detail_product;

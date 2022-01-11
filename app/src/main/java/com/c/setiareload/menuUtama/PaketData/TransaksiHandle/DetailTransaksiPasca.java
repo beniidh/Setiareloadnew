@@ -65,7 +65,6 @@ public class DetailTransaksiPasca extends BottomSheetDialogFragment {
         String tagihann = getArguments().getString("tagihan");
 
         if(statuss.equals("Gagal")){
-
             konfirasidetail.setEnabled(false);
         }
 
@@ -76,7 +75,6 @@ public class DetailTransaksiPasca extends BottomSheetDialogFragment {
         status.setText(statuss);
         deskripsi.setText(deskripsii);
         AdminP.setText(admin);
-
 
         return v;
     }

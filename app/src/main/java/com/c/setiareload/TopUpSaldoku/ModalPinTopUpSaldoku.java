@@ -2,6 +2,8 @@ package com.c.setiareload.TopUpSaldoku;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +38,6 @@ public class ModalPinTopUpSaldoku extends BottomSheetDialogFragment {
     GpsTracker gpsTracker;
     PinEditText pinpengajuan;
     TextView idCancelPengajuan;
-    Button idPinPengajuanButton;
     private BottomSheetListeneridUpload bottomSheetListeneridUpload;
 
     @Nullable
@@ -47,33 +48,44 @@ public class ModalPinTopUpSaldoku extends BottomSheetDialogFragment {
 
         pinpengajuan = v.findViewById(R.id.pinpengajuan);
         idCancelPengajuan = v.findViewById(R.id.idCancelPengajuan);
-        idPinPengajuanButton = v.findViewById(R.id.idPinPengajuanButton);
         idCancelPengajuan.setOnClickListener(v12 -> dismiss());
-        idPinPengajuanButton.setOnClickListener(v1 -> {
 
-            if (pinpengajuan.length() < 6) {
-                StyleableToast.makeText(getContext(), "Lengkapi PIN", Toast.LENGTH_SHORT, R.style.mytoast2).show();
+        pinpengajuan.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-            } else {
+            }
 
-                String pinn = utils.hmacSha(Objects.requireNonNull(pinpengajuan.getText()).toString());
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                String jumlahpengajuan = Preference.getSaldoku(getContext());
-                double pengajuan = Double.parseDouble(jumlahpengajuan);
-                ajukanlimitt(pinn, Value.getMacAddress(getContext()), getIPaddress(), getUserAgent(), gpsTracker.getLatitude(), gpsTracker.getLongitude(), pengajuan);
+                if(pinpengajuan.length() == 6){
+                    String pinn = utils.hmacSha(Objects.requireNonNull(pinpengajuan.getText()).toString());
+                    String jumlahpengajuan = Preference.getSaldoku(getContext());
+                    double pengajuan = Double.parseDouble(jumlahpengajuan);
+                    ajukanlimitt(pinn, getIPaddress(), getUserAgent(), gpsTracker.getLatitude(), gpsTracker.getLongitude(), pengajuan);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
             }
         });
+
+
 
         return v;
 
     }
 
-    private void ajukanlimitt(String pin, String mac_address, String ip_address, String user_agent, double latitude, double longitude, double amount) {
+    private void ajukanlimitt(String pin, String ip_address, String user_agent, double latitude, double longitude, double amount) {
 
         Api api = RetroClient.getApiServices();
         String token = "Bearer " + Preference.getToken(getContext());
 
-        ReqSaldoku reqSaldoku = new ReqSaldoku(pin, mac_address, ip_address, user_agent, latitude, longitude, amount);
+        ReqSaldoku reqSaldoku = new ReqSaldoku(pin,Value.getMacAddress(getContext()), ip_address, user_agent, latitude, longitude, amount);
 
         Call<ReqSaldoku> call = api.AddRequestSaldoku(token, reqSaldoku);
         call.enqueue(new Callback<ReqSaldoku>() {

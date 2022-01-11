@@ -68,12 +68,12 @@
 
         <LinearLayout
             android:id="@+id/LinearPasca"
-            android:visibility="invisible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_putih"
             android:orientation="vertical"
-            android:padding="8dp">
+            android:padding="8dp"
+            android:visibility="visible">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -268,6 +268,7 @@
 
                     />
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -291,6 +292,7 @@
 
                     />
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -2,6 +2,7 @@ package com.c.setiareload.menuUtama.PaketData.BPJS;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
@@ -25,13 +26,18 @@ import com.c.setiareload.menuUtama.PaketData.PulsaPrabayar.KonfirmasiPembayaran;
 import com.c.setiareload.sharePreference.Preference;
 import com.muddzdev.styleabletoast.StyleableToast;
 
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
-public class produkBPJS extends AppCompatActivity {
+public class produkBPJS extends AppCompatActivity implements ModalBpjs.BottomSheetListenerProduksms {
 
-    EditText nomorinputBpjs;
+    EditText nomorinputBpjs,pilihProdukBPJS;
     TextView PPnomorBp,PPnamaBp,PPtarifBp,PPdayaBp,PPjumlahTagihanBp,PPTanggalBp,PPTransaksiBp,PPStatusBp;
     Button periksaBpjs;
     LinearLayout LineraBPJS;
@@ -58,15 +64,25 @@ public class produkBPJS extends AppCompatActivity {
         PPStatusBp = findViewById(R.id.PPStatusBp);
         periksaBpjs = findViewById(R.id.periksaBpjs);
         LineraBPJS = findViewById(R.id.LineraBPJS);
+        pilihProdukBPJS = findViewById(R.id.pilihProdukBPJS);
         String id = getIntent().getStringExtra("id");
-        getProduk(id);
 
 
-        periksaBpjs.setOnClickListener(new View.OnClickListener() {
+        pilihProdukBPJS.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
+                ModalBpjs modalBpjs = new ModalBpjs();
+                Bundle bundle = new Bundle();
+                bundle.putString("id",id);
+                modalBpjs.setArguments(bundle);
+                modalBpjs.show(getSupportFragmentManager(),"modal");
+            }
+        });
 
-                if (periksaBpjs.getText().toString().equals("Periksa")) {
+
+        periksaBpjs.setOnClickListener(v -> {
+
+            if (periksaBpjs.getText().toString().equals("Periksa")) {
 
                 if (!nomorinputBpjs.getText().toString().isEmpty()) {
 
@@ -75,24 +91,38 @@ public class produkBPJS extends AppCompatActivity {
 
                     GpsTracker gpsTracker = new GpsTracker(getApplicationContext());
 
-                    Api api = RetroClient.getApiServices();
-                    MInquiry mInquiry = new MInquiry(getCode(), nomorinputBpjs.getText().toString(), "PASCABAYAR", Value.getMacAddress(getApplicationContext()), Value.getIPaddress(), Value.getUserAgent(getApplicationContext()), gpsTracker.getLatitude(), gpsTracker.getLongitude());
+                    final OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                            .readTimeout(60, TimeUnit.SECONDS)
+                            .connectTimeout(60, TimeUnit.SECONDS)
+                            .writeTimeout(60, TimeUnit.SECONDS)
+                            .build();
+
+                    Retrofit retrofit = new Retrofit.Builder()
+                            .baseUrl(Value.BASE_URL)
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .client(okHttpClient)
+                            .build();
+
+                    Api api = retrofit.create(Api.class);
+                    MInquiry mInquiry = new MInquiry(getCode(), nomorinputBpjs.getText().toString(), "PASCABAYAR", Value.getMacAddress(getApplicationContext()), Value.getIPaddress(), Value.getUserAgent(getApplicationContext()),
+                            gpsTracker.getLatitude(), gpsTracker.getLongitude());
                     String token = "Bearer " + Preference.getToken(getApplicationContext());
 
                     Call<ResponInquiry> call = api.CekInquiry(token, mInquiry);
                     call.enqueue(new Callback<ResponInquiry>() {
+                        @SuppressLint("SetTextI18n")
                         @Override
                         public void onResponse(Call<ResponInquiry> call, Response<ResponInquiry> response) {
 
                             String code = response.body().getCode();
                             if (code.equals("200")) {
-
+//
                                 if(response.body().getData().getStatus().equals("Sukses")){
 
                                     PPnamaBp.setText(response.body().getData().getCustomer_name());
                                     PPnomorBp.setText(response.body().getData().getCustomer_no());
                                     PPStatusBp.setText(response.body().getData().getStatus());
-                                    PPdayaBp.setText(utils.ConvertRP(response.body().getData().getDetail_product().getDetail().get(0).getAdmin()));
+                                    PPdayaBp.setText(utils.ConvertRP(response.body().getData().getAdmin_fee()));
                                     String tanggal = response.body().getData().getCreated_at();
                                     String tahun = tanggal.substring(0, 4);
                                     String bulan = utils.convertBulan(tanggal.substring(5, 7));
@@ -101,7 +131,8 @@ public class produkBPJS extends AppCompatActivity {
                                     setSkucode(response.body().getData().getBuyer_sku_code());
                                     PPTanggalBp.setText(hari + " " + bulan + " " + tahun);
                                     PPTransaksiBp.setText(response.body().getData().getRef_id());
-                                    PPtarifBp.setText(utils.ConvertRP(response.body().getData().getDetail_product().getDetail().get(0).getNilai_tagihan()));
+                                    setHargaa(utils.ConvertRP(response.body().getData().getSelling_price()));
+                                    PPtarifBp.setText(utils.ConvertRP(response.body().getData().getSelling_price()));
                                     loadingPrimer.dismissDialog();
                                     LineraBPJS.setVisibility(View.VISIBLE);
                                     periksaBpjs.setText("Bayar");
@@ -125,6 +156,7 @@ public class produkBPJS extends AppCompatActivity {
                         @Override
                         public void onFailure(Call<ResponInquiry> call, Throwable t) {
                             Toast.makeText(getApplicationContext(),t.toString(),Toast.LENGTH_SHORT).show();
+                            loadingPrimer.dismissDialog();
 
                         }
                     });
@@ -134,19 +166,18 @@ public class produkBPJS extends AppCompatActivity {
 
                 }
 
-                } else {
-                    Intent intent = new Intent(getApplicationContext(), KonfirmasiPembayaran.class);
-                    intent.putExtra("hargatotal", getHargaa());
-                    intent.putExtra("RefID", PPTransaksiBp.getText().toString());
-                    intent.putExtra("sku_code",getSkucode());
-                    intent.putExtra("inquiry",getInquiry());
-                    intent.putExtra("nomorr",nomorinputBpjs.getText().toString());
-                    startActivity(intent);
+            } else {
+                Intent intent = new Intent(getApplicationContext(), KonfirmasiPembayaran.class);
+                intent.putExtra("hargatotal", getHargaa());
+                intent.putExtra("RefID", PPTransaksiBp.getText().toString());
+                intent.putExtra("sku_code",getSkucode());
+                intent.putExtra("inquiry",getInquiry());
+                intent.putExtra("nomorr",nomorinputBpjs.getText().toString());
+                startActivity(intent);
 
-
-                }
 
             }
+
         });
 
 
@@ -164,54 +195,31 @@ public class produkBPJS extends AppCompatActivity {
         super.onBackPressed();
     }
 
-    public void getProduk(String id){
-
-        String token = "Bearer "+ Preference.getToken(getApplicationContext());
-        Api api = RetroClient.getApiServices();
-        Call<ResponBPJS> call = api.getProdukBpjs(token,id);
-        call.enqueue(new Callback<ResponBPJS>() {
-            @Override
-            public void onResponse(Call<ResponBPJS> call, Response<ResponBPJS> response) {
-                if (response.body().getCode().equals("200")){
-
-                    String id = response.body().getData().get(0).getId();
-                    getProdukSub(id);
-
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<ResponBPJS> call, Throwable t) {
-
-            }
-        });
-    }
-
-    public void getProdukSub(String id){
-        String token = "Bearer "+ Preference.getToken(getApplicationContext());
-        Api api = RetroClient.getApiServices();
-        Call<ResponProdukBPJS> call =api.getProdukBpjsSub(token,id);
-        call.enqueue(new Callback<ResponProdukBPJS>() {
-            @Override
-            public void onResponse(Call<ResponProdukBPJS> call, Response<ResponProdukBPJS> response) {
-
-                if(response.body().getCode().equals("200")){
-
-                    String code = response.body().getData().get(0).getCode();
-                    setCode(code);
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponProdukBPJS> call, Throwable t) {
-
-            }
-        });
+//    public void getProduk(String id){
+//
+//        String token = "Bearer "+ Preference.getToken(getApplicationContext());
+//        Api api = RetroClient.getApiServices();
+//        Call<ResponBPJS> call = api.getProdukBpjs(token,id);
+//        call.enqueue(new Callback<ResponBPJS>() {
+//            @Override
+//            public void onResponse(Call<ResponBPJS> call, Response<ResponBPJS> response) {
+//                if (response.body().getCode().equals("200")){
+//
+//                    String id = response.body().getData().get(0).getId();
+////                    getProdukSub(id);
+//
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ResponBPJS> call, Throwable t) {
+//
+//            }
+//        });
+//    }
 
 
-    }
 
     public String getCode() {
         return code;
@@ -243,5 +251,12 @@ public class produkBPJS extends AppCompatActivity {
 
     public void setHargaa(String hargaa) {
         this.hargaa = hargaa;
+    }
+
+    @Override
+    public void onButtonClick(String name, String id) {
+        setCode(id);
+        pilihProdukBPJS.setText(name);
+
     }
 }

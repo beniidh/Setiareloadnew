@@ -1,14 +1,27 @@
 package com.c.setiareload.menuUtama.PaketData.air;
 
+import static android.content.ContentValues.TAG;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
+import android.util.Log;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +39,7 @@ import retrofit2.Response;
 
 public class produkair extends AppCompatActivity implements ModalAir.BottomSheetListenerProduksms{
 
+    private static final String MIMETYPE_TEXT_PLAIN ="TEXT" ;
     EditText inputprodukair, inputnomorair;
     TextView tujukarakterair;
     AdapterProdukAir adapterProdukAir;
@@ -33,6 +47,7 @@ public class produkair extends AppCompatActivity implements ModalAir.BottomSheet
     RecyclerView recyclerView;
     String type ="PASCABAYAR";
     String idd;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +63,19 @@ public class produkair extends AppCompatActivity implements ModalAir.BottomSheet
         tujukarakterair = findViewById(R.id.tujukarakterair);
         recyclerView = findViewById(R.id.ReyProdukAAir);
 
+
+
+        registerForContextMenu(inputnomorair);
+//        Toast.makeText(getApplicationContext(),String.valueOf(item),Toast.LENGTH_SHORT).show();
+
+//        inputnomorair.setOnLongClickListener(new View.OnLongClickListener() {
+//            @Override
+//            public boolean onLongClick(View view) {
+//
+//                inputnomorair.setText(item.getText());
+//                return true;
+//            }
+//        });
         adapterProdukAir = new AdapterProdukAir(getApplicationContext(), mAir, inputnomorair.getText().toString(), type);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
@@ -86,6 +114,38 @@ public class produkair extends AppCompatActivity implements ModalAir.BottomSheet
             modalAir.show(getSupportFragmentManager(), "Modal Air");
         });
 
+    }
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v,
+                                    ContextMenu.ContextMenuInfo menuInfo) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        String teks ="";
+        ClipData clip = clipboard.getPrimaryClip();
+        ClipData.Item itema = clip.getItemAt(0);
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
+        switch (item.getItemId()) {
+            case R.id.paste:
+                String nomor = itema.getText().toString();
+                if(nomor.substring(0,3).equals("+62")){
+                    String nom = "0"+ nomor.substring(3,nomor.length());
+                    inputnomorair.setText(nom);
+
+                }else {
+                    inputnomorair.setText(nomor);
+                }
+
+
+                break;
+        }
+        return true;
     }
 
     @Override
@@ -143,4 +203,7 @@ public class produkair extends AppCompatActivity implements ModalAir.BottomSheet
     public void setIdd(String idd) {
         this.idd = idd;
     }
+
+
+
 }

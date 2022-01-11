@@ -27,6 +27,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
+            android:text=" Produk"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/pilihProdukBPJS"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="15sp"
+            android:background="@drawable/bg_edittextlogin"
+            android:focusable="false"
+            android:hint="Pilih Produk"
+            android:inputType="number"
+            android:paddingStart="7dp"
+            android:paddingEnd="8sp"
+            android:textSize="17dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="10dp"
             android:text=" Nomor Pelanggan"
             android:textColor="@color/black"
             android:textSize="12sp"
@@ -68,12 +91,12 @@
 
         <LinearLayout
             android:id="@+id/LineraBPJS"
-            android:visibility="invisible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_putih"
             android:orientation="vertical"
-            android:padding="8dp">
+            android:padding="8dp"
+            android:visibility="invisible">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -174,8 +197,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:layout_marginTop="10sp">
+                android:layout_marginTop="10sp"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -271,8 +294,6 @@
             </RelativeLayout>
 
 
-
-
         </LinearLayout>
     </ScrollView>
 
@@ -283,12 +304,14 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="19dp"
         android:background="@drawable/bg_button_login2"
         android:text="Periksa"
+
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="20sp"
-
-        />
+        android:textSize="20sp" />
 
 </RelativeLayout>

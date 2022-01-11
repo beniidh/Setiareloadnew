@@ -192,13 +192,10 @@ public class HomeFragment extends Fragment {
                 if (code.equals("200")) {
 
                     menuUtamas = (ArrayList<ModelMenuUtama>) response.body().getData();
-                    ModelMenuUtama menuUtama = new ModelMenuUtama("lainnya", "https://res.cloudinary.com/diagsydjq/image/upload/v1624616125/c-software/icon_homemenu/iconlainnya_ybvupx.png", "lainnya");
-
-                    menuUtamas.add(menuUtama);
+//                    ModelMenuUtama menuUtama = new ModelMenuUtama("lainnya", "https://res.cloudinary.com/diagsydjq/image/upload/v1624616125/c-software/icon_homemenu/iconlainnya_ybvupx.png", "lainnya");
+//                    menuUtamas.add(menuUtama);
                     adapterMenuUtama = new AdapterMenuUtama(getContext(), menuUtamas);
                     reymenu.setAdapter(adapterMenuUtama);
-
-
                 }
 
             }

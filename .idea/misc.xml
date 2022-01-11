@@ -10,53 +10,106 @@
         <entry key="..\:/AndroidP/DompetAbata/app/src/main/res/layout/nav_header.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/DompetAbata/app/src/main/res/layout/nav_header_main.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/DompetAbata/app/src/main/res/layout/navbottom_bar.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/drawable-v24/filled_circle_default.xml" value="0.2064814814814815" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/drawable/bg_pilihbank.xml" value="0.21574074074074073" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/drawable/bg_shape.xml" value="0.21203703703703702" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/drawable/bgsaldorerseller.xml" value="0.2375" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/drawable/example.xml" value="0.2375" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/drawable/filled_circle_error.xml" value="0.2064814814814815" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/drawable/hollow_circle.xml" value="0.2064814814814815" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/drawable/ic_backspace_darkgrey_24dp.xml" value="0.2064814814814815" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout-v26/list_saldoku_reseller.xml" value="0.25" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout-v26/list_saldoku_server.xml" value="0.25" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_add_konter.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_bayar_sales.xml" value="0.25" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_bayar_sales_server.xml" value="0.25" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_bayar_via_bank.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_cetak.xml" value="0.1" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_cetakstruk.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_daftar_harga_activity.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_detail_notifikasi.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_detail_transaksi_pasca.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_detail_transaksi_pulsa_pra.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_detail_transaksi_truk.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_drawer_activity.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_ganti_pin.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_history_transaksi.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_homelainnya.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_insert_p_i_n_activity.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_komisi_sales.xml" value="0.25" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_konfirmasi_pembayaran.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_konter.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_login_.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_mark_up_spesifik.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_markup.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_markup_spesifik.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_metodebayar_bank.xml" value="0.20729166666666668" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_notifikasi_.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_o_t_pinsert.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_o_t_psend.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_persetujuan_saldoku_reseller.xml" value="0.20572916666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_pin_activity.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_pin_transaksi.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_pinnew.xml" value="0.165" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_pln_produk_pasca.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_point.xml" value="0.25" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_produk_angsuran_kredit.xml" value="0.25" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_produk_b_p_j_s.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_produk_user_pay_later.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_produkair.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_profil.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_register_activity.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_register_foto_activity.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_rekap_saldo.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_splash_activity.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_syaratdanketentuan_activity.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_topup_saldo_server.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_topup_saldoku_activity.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_transaksi_pending.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_transfer_bank.xml" value="0.165" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_trasfer_bank.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/activity_trasfer_bank_server.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/approve.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/dots_indicator.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/fragment_fragmen_spesifik.xml" value="0.25" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/fragment_global.xml" value="0.20729166666666668" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/fragment_rekap_saldo.xml" value="0.25" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/fragment_transaksi_primer.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/home_fragment.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/input_spesifik_mu.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/list.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/list_UPP.xml" value="0.25" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/list_daftarharga.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/list_daftarhargamarkup.xml" value="0.25" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/list_konter.xml" value="0.25" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/list_konter_tagihan.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/list_notifikasi_transaksi.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/list_pengajuandompet.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/list_persetujuandompet.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/list_produk_air.xml" value="0.165" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/list_saldoku_reseller.xml" value="0.335" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/list_saldoku_server.xml" value="0.20572916666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/listmenu_sidebar.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/listrekapsaldo.xml" value="0.1" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/loadingprimer.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/modal_layout_angsuran.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/modal_layout_pilihbank.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/modal_pinpengajuan.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/modal_pinpengajuan_server.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/modal_pinpengajuanserver.xml" value="0.22135416666666666" />
-        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/nav_header.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/modal_pintransfer.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/modal_pintransferbank.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/nav_header.xml" value="0.335" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/nav_header_main.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/nav_menu.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/navbottom_bar.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/num_pad_layout.xml" value="0.25" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/num_pad_layout2.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/pilihanmarkup.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/popup_pengajuan_saldoserver.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/layout/transaksi_fragment.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/menu/menu.xml" value="0.1015625" />
+        <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/menu/menu_xml.xml" value="0.1015625" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2375" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2375" />
       </map>
@@ -67,5 +120,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.165" />
+      </ProjectState>
+    </option>
   </component>
 </project>

@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,6 +21,7 @@ import com.c.setiareload.Fragment.TransaksiFragment;
 import com.c.setiareload.KodeProduk.Kodeprodukact;
 import com.c.setiareload.KomisiSales.Komisi_sales;
 import com.c.setiareload.MarkUP.markup;
+import com.c.setiareload.MarkUP.popUpPilihanMarkUp;
 import com.c.setiareload.Model.MSubMenu;
 import com.c.setiareload.Notifikasi.Notifikasi_Activity;
 import com.c.setiareload.PengajuanLimit.PengajuanDompet;
@@ -31,6 +33,8 @@ import com.c.setiareload.TagihanKonterSales.TagihanKonterbySales;
 import com.c.setiareload.TambahKonter.addKonter;
 import com.c.setiareload.drawer_activity;
 import com.c.setiareload.konter.konter_activity;
+import com.c.setiareload.menuUtama.PaketData.PulsaPrabayar.DetailTransaksiPulsaPra;
+import com.c.setiareload.reseller.PersetujuanSaldokuReseller;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -149,9 +153,10 @@ public class AdapterSubMenuSide extends RecyclerView.Adapter<AdapterSubMenuSide.
                     break;
                 }
                 case "mark_up": {
-                    Intent intent = new Intent(context, markup.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(intent);
+
+                    popUpPilihanMarkUp fragment = new popUpPilihanMarkUp(); // you fragment
+                    FragmentManager fragmentManager = ((FragmentActivity) v.getContext()).getSupportFragmentManager();
+                    fragment.show(fragmentManager, "markup");
                     drawer_activity.LinDaftarHarga();
                     break;
                 }
@@ -178,6 +183,13 @@ public class AdapterSubMenuSide extends RecyclerView.Adapter<AdapterSubMenuSide.
                 }
                 case "konter_tagihan": {
                     Intent intent = new Intent(context, TagihanKonterbySales.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                    drawer_activity.LinDaftarHarga();
+                    break;
+                }
+                case "persetujuan_saldoku_reseller": {
+                    Intent intent = new Intent(context, PersetujuanSaldokuReseller.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                     drawer_activity.LinDaftarHarga();

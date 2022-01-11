@@ -4,12 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,7 +59,7 @@ public class Pln_Produk extends AppCompatActivity {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerPLN.setLayoutManager(mLayoutManager);
         recyclerPLN.setAdapter(adapterProdukPLN);
-
+        registerForContextMenu(nomorinputpln);
         keterangan = findViewById(R.id.tujukarakterpln);
 
         nomorinputpln.addTextChangedListener(new TextWatcher() {
@@ -80,11 +87,13 @@ public class Pln_Produk extends AppCompatActivity {
         });
 
     }
+
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
     }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -116,7 +125,6 @@ public class Pln_Produk extends AppCompatActivity {
 
 
     }
-
     private void getProdukPln(String id){
         String token = "Bearer " + Preference.getToken(getApplicationContext());
         Api api = RetroClient.getApiServices();
@@ -139,5 +147,38 @@ public class Pln_Produk extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v,
+                                    ContextMenu.ContextMenuInfo menuInfo) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+    }
+
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        String teks = "";
+        ClipData clip = clipboard.getPrimaryClip();
+        ClipData.Item itema = clip.getItemAt(0);
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        switch (item.getItemId()) {
+            case R.id.paste:
+                String nomor = itema.getText().toString();
+                if (nomor.substring(0, 3).equals("+62")) {
+                    String nom = "0" + nomor.substring(3, nomor.length());
+                    nomorinputpln.setText(nom);
+
+                } else {
+                    nomorinputpln.setText(nomor);
+                }
+
+
+                break;
+        }
+        return true;
     }
 }

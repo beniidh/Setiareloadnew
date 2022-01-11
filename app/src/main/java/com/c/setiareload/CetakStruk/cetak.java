@@ -62,7 +62,7 @@ import retrofit2.Response;
 
 public class cetak extends AppCompatActivity {
 
-    TextView idNomorStruk, idProdukStruk, hargastruk, titlestrukC, idTanggalStruk, idWaktuStruk, idNomorSNStruk, idNomorTransaksiStruk, idTotalPembelianStruk;
+    TextView idNomorStruk,namaTPCC, idProdukStruk, hargastruk, titlestrukC, idTanggalStruk, idWaktuStruk, idNomorSNStruk, idNomorTransaksiStruk, idTotalPembelianStruk;
     Button buttondownloadPDF, cetakStrukPDF;
     int PERMISSION_ALL = 1;
     BluetoothAdapter mBluetoothAdapter;
@@ -111,6 +111,7 @@ public class cetak extends AppCompatActivity {
         buttondownloadPDF = findViewById(R.id.buttondownloadPDF);
         pilihPerangkat = findViewById(R.id.pilihPerangkat);
         cetakStrukPDF = findViewById(R.id.cetakStrukPDF);
+        namaTPCC = findViewById(R.id.namaTPCC);
 
         idNomorStruk = findViewById(R.id.idNomorStrukC);
         idProdukStruk = findViewById(R.id.idProdukStrukC);
@@ -122,6 +123,7 @@ public class cetak extends AppCompatActivity {
         titlestrukC = findViewById(R.id.titlestrukC);
 
         idNomorStruk.setText(getIntent().getStringExtra("nomor"));
+        namaTPCC.setText(getIntent().getStringExtra("nama"));
         idProdukStruk.setText(getIntent().getStringExtra("produk"));
         idTanggalStruk.setText(getIntent().getStringExtra("tanggal"));
         idWaktuStruk.setText(getIntent().getStringExtra("waktu"));
@@ -531,6 +533,8 @@ public class cetak extends AppCompatActivity {
                         "[L]\n" +
                         "[L]<b>Nomor</b>[R]" + idNomorStruk.getText().toString() + "\n" +
 //                        "[L]\n" +
+                        "[L]<b>Nama</b>[R]" + namaTPCC.getText().toString() + "\n" +
+                        //"[L]\n" +
                         "[L]<b>Produk</b>[R]" + idProdukStruk.getText().toString() + "\n" +
 //                        "[L]\n" +
                         "[L]<b>Transaksi</b>[R]" + idNomorTransaksiStruk.getText().toString() + "\n" +

@@ -1,49 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="18dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="right"
-        android:orientation="horizontal">
-
-        <TextView
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/RekapSaldo"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10sp"
-            android:fontFamily="@font/mukta"
-            android:text="Pilih Tanggal"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:layout_height="35dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="0dp"
+            android:background="@drawable/bg_button_login2"
+            android:elevation="4dp"
+            android:text="Rekap Saldo"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
 
         <EditText
             android:id="@+id/idTransaksiTanggalEditText"
             android:layout_width="120sp"
             android:layout_height="34sp"
-            android:gravity="center"
-            android:focusable="false"
+            android:layout_alignParentEnd="true"
             android:background="@drawable/bg_button_homesaldo"
-            android:paddingStart="8sp" />
+            android:focusable="false"
+            android:gravity="center"
+            android:hint="tanggal" />
 
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_marginRight="15sp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20sp"
+            android:layout_marginRight="15sp"
+            android:layout_weight="1"
             android:background="@drawable/bg_button_homesaldo"
             android:orientation="vertical"
             android:padding="10sp">
@@ -51,29 +52,25 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Total Transaksi"
                 android:gravity="center"
+                android:text="Total Transaksi"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
-
             <TextView
                 android:id="@+id/idTotalTransaksiTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/mukta"
                 android:text="0"
                 android:textAlignment="center"
-                android:textSize="20sp"
-                android:fontFamily="@font/mukta"
-                 />
-
+                android:textSize="20sp" />
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_marginTop="20sp"
+            android:layout_weight="1"
             android:background="@drawable/bg_button_homesaldo"
             android:orientation="vertical"
             android:padding="10sp">
@@ -90,11 +87,10 @@
                 android:id="@+id/idTransaksiSuksesTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="0"
                 android:fontFamily="@font/mukta"
+                android:text="0"
                 android:textAlignment="center"
-                android:textSize="20sp"
-               />
+                android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -120,27 +116,24 @@
             android:id="@+id/idTotalPengeluaranTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Rp.0"
             android:fontFamily="@font/mukta"
+            android:text="Rp.0"
             android:textAlignment="center"
-            android:textSize="20sp"
-         />
+            android:textSize="20sp" />
 
     </LinearLayout>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tablayoutransaksi"
         android:layout_width="match_parent"
-        android:layout_marginTop="10sp"
-        android:layout_height="wrap_content">
-
-
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10sp">
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/ViewPagerlayoutTransaksi"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 
 </LinearLayout>

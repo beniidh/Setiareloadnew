@@ -13,7 +13,7 @@ import com.google.android.material.tabs.TabLayout;
 
 public class Notifikasi_Activity extends AppCompatActivity {
 
-    FrameLayout framelayoutnotifikasi;
+
     TabLayout tablayoutnotifikasi;
     ViewPager viewPagerNotifikasi;
     TabAdapter tabAdapter;

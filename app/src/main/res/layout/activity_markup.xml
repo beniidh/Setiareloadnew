@@ -7,23 +7,8 @@
     android:padding="18sp"
     android:orientation="vertical"
     tools:context=".MarkUP.markup">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tipe"
-        android:visibility="invisible"
-        android:textSize="18sp"
-        android:textColor="@color/black"
-        />
-    <EditText
-        android:visibility="gone"
-        android:focusable="false"
-        android:id="@+id/markupEditText"
-        android:layout_marginTop="5dp"
-        android:layout_width="match_parent"
-        android:hint="Pilih Tipe"
-        android:textSize="17sp"
-        android:layout_height="47dp"/>
+
+
 
     <EditText
         android:id="@+id/markupNilai"

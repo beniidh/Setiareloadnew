@@ -20,6 +20,7 @@ import com.c.setiareload.Api.Api;
 import com.c.setiareload.Helper.GpsTracker;
 import com.c.setiareload.Helper.RetroClient;
 import com.c.setiareload.Model.Mphone;
+import com.c.setiareload.pinNew.pinnew;
 import com.c.setiareload.sharePreference.Preference;
 import com.muddzdev.styleabletoast.StyleableToast;
 
@@ -105,7 +106,7 @@ public class Login_Activity extends AppCompatActivity {
                 public void onResponse(Call<Mphone> call, Response<Mphone> response) {
                     String code = response.body().getCode();
                     if (code.equals("200")){
-                        Intent intent = new Intent(Login_Activity.this,pin_activity.class);
+                        Intent intent = new Intent(Login_Activity.this, pinnew.class);
                         intent.putExtra("number",number);
                         Preference.getSharedPreference(getApplicationContext());
                         Preference.setkredentials(getApplicationContext(),numberphone.getText().toString());

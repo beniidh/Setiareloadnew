@@ -1,5 +1,6 @@
 package com.c.setiareload.menuUtama.PaketData.AngsuranKredit;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,7 +48,7 @@ public class AdapterAngsuran extends RecyclerView.Adapter<AdapterAngsuran.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         ModelAngsuran modelAngsuran = modelAngsurans.get(position);
         holder.name.setText(modelAngsuran.getName());

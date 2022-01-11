@@ -7,11 +7,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.c.setiareload.Api.Api;
 import com.c.setiareload.Helper.RetroClient;
 import com.c.setiareload.Model.Mlogin;
+import com.c.setiareload.pinNew.pin_transaksi;
+import com.c.setiareload.pinNew.pinnew;
 import com.c.setiareload.sharePreference.Preference;
 import com.muddzdev.styleabletoast.StyleableToast;
 
@@ -21,6 +24,7 @@ import retrofit2.Response;
 
 public class splash_activity extends AppCompatActivity {
     ImageView logo;
+    TextView versionCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +35,12 @@ public class splash_activity extends AppCompatActivity {
         logo = findViewById(R.id.logosplash);
         getSupportActionBar().hide();
         int delay = 2000;
+        versionCode = findViewById(R.id.versionCode);
 
+        int versionCodein = BuildConfig.VERSION_CODE;
+        String versionName = BuildConfig.VERSION_NAME;
+
+        versionCode.setText(new StringBuilder().append("versi ").append(versionCodein).toString());
         String coder = Preference.getTrackRegister(getApplicationContext());
 
         Handler handler = new Handler();
@@ -56,7 +65,7 @@ public class splash_activity extends AppCompatActivity {
 
                             } else {
 
-                                Intent login = new Intent(splash_activity.this, pin_activity.class);
+                                Intent login = new Intent(splash_activity.this, pinnew.class);
                                 startActivity(login);
                                 finish();
                                 StyleableToast.makeText(getApplicationContext(), "Token sudah berakhir,Silahkan Masukan PIN", Toast.LENGTH_LONG, R.style.mytoast2).show();

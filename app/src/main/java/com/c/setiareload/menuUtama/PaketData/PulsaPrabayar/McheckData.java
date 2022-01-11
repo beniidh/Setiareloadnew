@@ -2,10 +2,13 @@ package com.c.setiareload.menuUtama.PaketData.PulsaPrabayar;
 
 public class McheckData {
 
-String id,customer_no,product_code,product_name,basic_price,markup_price,sales_markup,user_markup,sub_total,total_price,status,type,wallet_type,sn,user_id,sales_id,server_id,mac_address,ip_address,user_agent,longitude,created_at,updated_at;
+String id,customer_no,customer_name,product_code,product_name,basic_price,markup_price,sales_markup,user_markup,sub_total,total_price,status,type,wallet_type,sn,user_id,sales_id,server_id,mac_address,ip_address,user_agent,longitude,created_at,updated_at;
 
     public String getId() {
         return id;
+    }
+    public String getCustomer_name() {
+        return customer_name;
     }
 
     public String getCustomer_no() {

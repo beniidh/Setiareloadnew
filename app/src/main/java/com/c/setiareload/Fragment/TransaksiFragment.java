@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,11 +15,13 @@ import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.c.setiareload.Api.Api;
+import com.c.setiareload.Fragment.RekapSaldo.RekapSaldoActivity;
 import com.c.setiareload.Fragment.RiwayatTransaksi.FragmentSaldoServer;
 import com.c.setiareload.Fragment.RiwayatTransaksi.FragmentSaldoku;
 import com.c.setiareload.Fragment.RiwayatTransaksi.ResponTransaksi;
@@ -46,12 +49,14 @@ public class TransaksiFragment extends Fragment {
     TabLayout tablayoutnotifikasi;
     private ViewPager viewPager;
     TabAdapter tabAdapter;
+    Button RekapSaldo;
     EditText idtransaksiTanggalEditText;
     ArrayList<ResponTransaksi.DataTransaksi> datahistory = new ArrayList<>();
     ArrayList<ResponTransaksi.DataTransaksi> datasaldoserver = new ArrayList<>();
     ArrayList<ResponTransaksi.DataTransaksi> datasaldoku = new ArrayList<>();
     TextView idTotalTransaksiTextView, idTransaksiSuksesTextView, idTotalPengeluaranTextView;
     private int mYear, mMonth, mDay, mHour, mMinute;
+
 
 
     @Override
@@ -67,16 +72,18 @@ public class TransaksiFragment extends Fragment {
         idTotalTransaksiTextView = v.findViewById(R.id.idTotalTransaksiTextView);
         idTransaksiSuksesTextView = v.findViewById(R.id.idTransaksiSuksesTextView);
         idTotalPengeluaranTextView = v.findViewById(R.id.idTotalPengeluaranTextView);
-
-
-
+        RekapSaldo = v.findViewById(R.id.RekapSaldo);
+        RekapSaldo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), RekapSaldoActivity.class);
+                startActivity(intent);
+            }
+        });
 
         idtransaksiTanggalEditText.setOnClickListener(v1 -> {
             showDateDialog();
-
         });
-
-
         return v;
     }
 

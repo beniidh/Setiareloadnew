@@ -1,19 +1,17 @@
 plugins {
     id 'com.android.application'
     id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
 }
-
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
     buildToolsVersion "29.0.3"
-
     defaultConfig {
         applicationId "com.c.setiareload"
         minSdkVersion 23
-        targetSdkVersion 30
-        versionCode 7
-        versionName "1.6"
-
+        targetSdkVersion 31
+        versionCode 15
+        versionName "22.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -58,7 +56,6 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.12.0'
     implementation 'com.github.DantSu:ESCPOS-ThermalPrinter-Android:3.0.0'
     implementation 'com.google.firebase:firebase-messaging:22.0.0'
-    implementation 'io.sentry:sentry-android:5.1.2'
     def lottieVersion = "4.2.0"
     implementation "com.airbnb.android:lottie:$lottieVersion"
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
@@ -66,4 +63,13 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    // Import the BoM for the Firebase platform
+    implementation platform('com.google.firebase:firebase-bom:29.0.3')
+
+    // Declare the dependencies for the Crashlytics and Analytics libraries
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-crashlytics'
+    implementation 'com.google.firebase:firebase-analytics'
+
 }

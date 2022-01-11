@@ -141,92 +141,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:text="Detail Pembayaran"
-        android:textColor="@color/green"
-        android:textSize="20sp" />
+        android:textAlignment="center"
+        android:layout_marginTop="20dp"
+        android:text="Terimakasih telah melakukan transaksi"
+        android:textSize="15sp"
+        />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10sp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:fontFamily="@font/mukta"
-            android:text="Nominal"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/nominalND"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:fontFamily="@font/mukta"
-            android:text="-Rp.0"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-
-            />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:fontFamily="@font/mukta"
-            android:text="Biaya"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/BiayaND"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:fontFamily="@font/mukta"
-            android:text="Rp.0"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-
-            />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:fontFamily="@font/mukta"
-            android:text="Total"
-            android:textColor="@color/black"
-            android:textSize="19sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/TotalND"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:fontFamily="@font/mukta"
-            android:text="Rp.0"
-            android:textColor="@color/black"
-            android:textSize="19sp"
-            android:textStyle="bold"
-
-            />
-    </RelativeLayout>
 
 
 </LinearLayout>

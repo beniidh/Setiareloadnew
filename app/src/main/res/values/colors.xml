@@ -19,4 +19,7 @@
     <color name="gray3">#A59F9F</color>
     <color name="gray4">#535151</color>
     <color name="Transparant">#00535151</color>
+    <color name="colorLightGrey">#a9a9a9</color>
+    <color name="gray1">#DFDEDE</color>
+    <color name="colorDarkGrey">#535353</color>
 </resources>

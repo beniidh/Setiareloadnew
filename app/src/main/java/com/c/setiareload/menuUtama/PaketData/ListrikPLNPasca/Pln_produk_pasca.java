@@ -104,7 +104,7 @@ public class Pln_produk_pasca extends AppCompatActivity {
                                     PPdayaP.setText(response.body().getData().getDetail_product().getDaya());
                                     tagihan.setText(utils.ConvertRP(response.body().getData().getBasic_price()));
                                     transaksi.setText(response.body().getData().getRef_id());
-                                    PPAdminP.setText(utils.ConvertRP(response.body().getData().getDetail_product().getDetail().get(0).getAdmin()));
+                                    PPAdminP.setText(utils.ConvertRP(response.body().getData().getAdmin_fee()));
                                     PPtarifP.setText(response.body().getData().getDetail_product().getTarif());
                                     PPStatusP.setText(response.body().getData().getStatus());
                                     setHargaa(response.body().getData().getDetail_product().getDetail().get(0).getNilai_tagihan());

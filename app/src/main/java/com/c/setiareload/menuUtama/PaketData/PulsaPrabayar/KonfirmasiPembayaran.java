@@ -2,6 +2,7 @@ package com.c.setiareload.menuUtama.PaketData.PulsaPrabayar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import com.c.setiareload.Helper.RetroClient;
 import com.c.setiareload.Helper.utils;
 import com.c.setiareload.R;
 import com.c.setiareload.Respon.ResponProfil;
+import com.c.setiareload.pinNew.pin_transaksi;
 import com.c.setiareload.sharePreference.Preference;
 import com.muddzdev.styleabletoast.StyleableToast;
 import com.squareup.picasso.Picasso;
@@ -34,7 +36,8 @@ public class KonfirmasiPembayaran extends AppCompatActivity {
     int konfirmasi = 0;
     RelativeLayout server, saldoku;
     TextView saldokuket1, saldokuket2, saldoserverket1, saldoserverket2;
-     static Activity konifirmpembayaran;
+    @SuppressLint("StaticFieldLeak")
+ public static Activity konifirmpembayaran;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,8 +102,7 @@ public class KonfirmasiPembayaran extends AppCompatActivity {
             if (konfirmasi == 0) {
                 StyleableToast.makeText(getApplicationContext(), "Pilih Metode Pembayaran", Toast.LENGTH_SHORT, R.style.mytoast2).show();
             } else {
-
-                ModalPinTransaksiPra modalPinTransaksiPra = new ModalPinTransaksiPra();
+                Intent intent1 = new Intent(KonfirmasiPembayaran.this,pin_transaksi.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("RefID", getIntent().getStringExtra("RefID"));
                 bundle.putString("sku_code", getIntent().getStringExtra("sku_code"));
@@ -108,8 +110,10 @@ public class KonfirmasiPembayaran extends AppCompatActivity {
                 bundle.putString("iconn", getIntent().getStringExtra(iconn));
                 bundle.putString("nomorr", getIntent().getStringExtra("nomorr"));
                 bundle.putString("wallettype", saldo);
-                modalPinTransaksiPra.setArguments(bundle);
-                modalPinTransaksiPra.show(getSupportFragmentManager(), "Transaksi");
+                intent1.putExtras(bundle);
+                startActivity(intent1);
+//
+//                modalPinTransaksiPra.show(getSupportFragmentManager(), "Transaksi");
             }
 
 

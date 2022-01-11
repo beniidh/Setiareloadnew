@@ -26,10 +26,6 @@ public class DetailNotifikasi extends AppCompatActivity {
         waktuND = findViewById(R.id.waktuND);
         transaksiND = findViewById(R.id.transaksiND);
         SaldoND = findViewById(R.id.SaldoND);
-        nominalND = findViewById(R.id.nominalND);
-        BiayaND = findViewById(R.id.BiayaND);
-        TotalND = findViewById(R.id.TotalND);
-
         statusND = findViewById(R.id.StatusND);
         iconND = findViewById(R.id.iconND);
 

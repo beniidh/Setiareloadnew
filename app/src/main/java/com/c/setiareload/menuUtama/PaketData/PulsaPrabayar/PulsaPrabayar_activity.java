@@ -6,11 +6,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -57,8 +65,8 @@ public class PulsaPrabayar_activity extends AppCompatActivity {
         type = intent.getStringExtra("type");
 
         pulsapra = this;
-
         nomorbelipulsa = findViewById(R.id.nomorbelipulsa);
+        registerForContextMenu(nomorbelipulsa);
         adapterPulsaPrabayar = new AdapterPulsaPrabayar(getApplicationContext(), mPulsaPras, nomorbelipulsa.getText().toString(), getUrl(), type);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         reyPulsaPra.setLayoutManager(mLayoutManager);
@@ -67,9 +75,7 @@ public class PulsaPrabayar_activity extends AppCompatActivity {
         nomorbelipulsa.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
@@ -85,7 +91,6 @@ public class PulsaPrabayar_activity extends AppCompatActivity {
                     adapterPulsaPrabayar = new AdapterPulsaPrabayar(getApplicationContext(), mPulsaPras, nomorbelipulsa.getText().toString(), url, type);
                     reyPulsaPra.setAdapter(adapterPulsaPrabayar);
                     setUrl("http//");
-
                 }
 
             }
@@ -105,6 +110,40 @@ public class PulsaPrabayar_activity extends AppCompatActivity {
 
 
     }
+
+//    registerForContextMenu(nomorbelipulsa);
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v,
+                                    ContextMenu.ContextMenuInfo menuInfo) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+    }
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        String teks ="";
+        ClipData clip = clipboard.getPrimaryClip();
+        ClipData.Item itema = clip.getItemAt(0);
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
+        switch (item.getItemId()) {
+            case R.id.paste:
+                String nomor = itema.getText().toString();
+                if(nomor.substring(0,3).equals("+62")){
+                    String nom = "0"+ nomor.substring(3,nomor.length());
+                    nomorbelipulsa.setText(nom);
+
+                }else {
+                    nomorbelipulsa.setText(nomor);
+                }
+
+
+                break;
+        }
+        return true;
+    }
+
+
 
     @Override
     public boolean onSupportNavigateUp() {

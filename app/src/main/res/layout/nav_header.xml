@@ -25,7 +25,7 @@
             android:layout_height="35dp"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
-            android:background="@drawable/setiareload"
+            android:background="@drawable/logobarusetia"
 
             />
 

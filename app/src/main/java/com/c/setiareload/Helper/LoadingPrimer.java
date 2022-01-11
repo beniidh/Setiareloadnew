@@ -17,7 +17,6 @@ public class LoadingPrimer {
 
   public   void startDialogLoading(){
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-
         LayoutInflater inflater = activity.getLayoutInflater();
         builder.setView(inflater.inflate(R.layout.loadingprimer,null));
         builder.setCancelable(true);

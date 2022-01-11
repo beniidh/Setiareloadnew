@@ -33,7 +33,7 @@ import retrofit2.Response;
 public class TransaksiPending extends AppCompatActivity {
     ImageView expand,copySNTransaksi,copyTransaksi;
     LinearLayout linearExpand;
-    TextView KeteranganTP,produkTransaksi, noSN, hargaprodukTP, nomorTP, nominalTP, saldokuterpakai, tanggalDetail, waktuDetail, NomorTransaksiDetail, hargatotalDetail;
+    TextView KeteranganTP,namaTP,produkTransaksi, noSN, hargaprodukTP, nomorTP, nominalTP, saldokuterpakai, tanggalDetail, waktuDetail, NomorTransaksiDetail, hargatotalDetail;
     Button tutuppending, cetakStruk;
     ImageView iconTP, iconTPP;
     LoadingPrimer loadingPrimer;
@@ -52,6 +52,7 @@ public class TransaksiPending extends AppCompatActivity {
         KeteranganTP = findViewById(R.id.KeteranganTP);
         hargaprodukTP = findViewById(R.id.hargaprodukTP);
         nomorTP = findViewById(R.id.nomorTP);
+        namaTP = findViewById(R.id.namaTP);
         nominalTP = findViewById(R.id.nominalTP);
         tutuppending = findViewById(R.id.tutuppending);
         iconTP = findViewById(R.id.iconTP);
@@ -77,6 +78,7 @@ public class TransaksiPending extends AppCompatActivity {
             intent.putExtra("nomor", nomorTP.getText().toString());
             intent.putExtra("produk", produkTransaksi.getText().toString());
             intent.putExtra("harga", getHarga());
+            intent.putExtra("nama", namaTP.getText().toString());
             intent.putExtra("tanggal", tanggalDetail.getText().toString());
             intent.putExtra("waktu", waktuDetail.getText().toString());
             intent.putExtra("sn", noSN.getText().toString());
@@ -108,7 +110,7 @@ public class TransaksiPending extends AppCompatActivity {
         hargatotalDetail = findViewById(R.id.hargatotalDetail);
 
         if (Preference.getIconUrl(getApplicationContext()).isEmpty()) {
-            iconTP.setBackground(getDrawable(R.drawable.setiareload));
+            iconTP.setBackground(getDrawable(R.drawable.logobarusetia));
         } else {
 
             Picasso.get().load(Preference.getIconUrl(getApplicationContext())).into(iconTP);
@@ -150,28 +152,28 @@ public class TransaksiPending extends AppCompatActivity {
 
         });
 
-        new CountDownTimer(3000, 1000) {
-
-            @Override
-            public void onTick(long millisUntilFinished) {
-
-            }
-
-            @Override
-            public void onFinish() {
-                String code = getIntent().getStringExtra("code");
-                if (code == null) {
-                    ChekTransaksi(transaksiid);
-                } else {
-
-                    if (code.equals("saldo")) {
-
-                    }
-
-                }
-
-            }
-        }.start();
+//        new CountDownTimer(3000, 1000) {
+//
+//            @Override
+//            public void onTick(long millisUntilFinished) {
+//
+//            }
+//
+//            @Override
+//            public void onFinish() {
+//                String code = getIntent().getStringExtra("code");
+//                if (code == null) {
+//                    ChekTransaksi(transaksiid);
+//                } else {
+//
+//                    if (code.equals("saldo")) {
+//
+//                    }
+//
+//                }
+//
+//            }
+//        }.start();
 
     }
 
@@ -213,6 +215,7 @@ public class TransaksiPending extends AppCompatActivity {
                     nomorTP.setText(response.body().getData().getCustomer_no());
                     nominalTP.setText(utils.ConvertRP(response.body().getData().getTotal_price()));
                     String create = response.body().getData().getUpdated_at();
+                    namaTP.setText(response.body().getData().getCustomer_name());
                     String tahun = create.substring(0, 4);
                     String bulan = utils.convertBulan(create.substring(5, 7));
                     String hari = create.substring(8, 10);

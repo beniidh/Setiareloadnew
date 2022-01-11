@@ -4,11 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -79,7 +86,7 @@ public class produksmstelpon extends AppCompatActivity implements ModalProdukSms
 
             }
         });
-
+            registerForContextMenu(inputnomorsmspulsa);
 
     }
 
@@ -148,5 +155,38 @@ public class produksmstelpon extends AppCompatActivity implements ModalProdukSms
 
     public void setIdd(String idd) {
         this.idd = idd;
+    }
+
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v,
+                                    ContextMenu.ContextMenuInfo menuInfo) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        String teks = "";
+        ClipData clip = clipboard.getPrimaryClip();
+        ClipData.Item itema = clip.getItemAt(0);
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        switch (item.getItemId()) {
+            case R.id.paste:
+                String nomor = itema.getText().toString();
+                if (nomor.substring(0, 3).equals("+62")) {
+                    String nom = "0" + nomor.substring(3, nomor.length());
+                    inputnomorsmspulsa.setText(nom);
+
+                } else {
+                    inputnomorsmspulsa.setText(nomor);
+                }
+
+
+                break;
+        }
+        return true;
     }
 }

@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.c.setiareload.Model.ModelMenuUtama;
+import com.c.setiareload.TransferBank.transferBank;
 import com.c.setiareload.menuUtama.PaketData.AngsuranKredit.ProdukAngsuranKredit;
 import com.c.setiareload.menuUtama.PaketData.BPJS.produkBPJS;
 import com.c.setiareload.menuUtama.PaketData.GasNegara.produkGasnegara;
@@ -196,6 +197,13 @@ public class AdapterMenuUtamaLain extends RecyclerView.Adapter<AdapterMenuUtamaL
                         break;
                     } case "https://shopee": {
                         Intent intent = new Intent(context, produkWarungAbata.class);
+                        intent.putExtra("id", modelMenuUtama.getId());
+                        intent.putExtra("type", modelMenuUtama.getType());
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        context.startActivity(intent);
+                        break;
+                    }  case "transfer": {
+                        Intent intent = new Intent(context, transferBank.class);
                         intent.putExtra("id", modelMenuUtama.getId());
                         intent.putExtra("type", modelMenuUtama.getType());
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
