@@ -35,7 +35,7 @@ public class ModalProvinsi extends BottomSheetDialogFragment {
     ArrayList<ModelProvinsi> modelProvinsis = new ArrayList<>();
     Button tutup, pilih;
     SearchView searchprovinsi;
-    private BottomSheetListener bottomSheetListener;
+    public BottomSheetListener bottomSheetListener;
 
     @Nullable
     @Override
@@ -43,7 +43,7 @@ public class ModalProvinsi extends BottomSheetDialogFragment {
         View v = inflater.inflate(R.layout.modal_layout_provinsi, container, false);
         recyclerViewP = v.findViewById(R.id.ReyProvinsi);
 
-        adapterProvinsi = new AdapterProvinsi(getContext(), modelProvinsis);
+        adapterProvinsi = new AdapterProvinsi(ModalProvinsi.this,getContext(), modelProvinsis);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerViewP.setLayoutManager(mLayoutManager);
         recyclerViewP.setAdapter(adapterProvinsi);
@@ -122,7 +122,7 @@ public class ModalProvinsi extends BottomSheetDialogFragment {
                 String code = response.body().getCode();
 
                 modelProvinsis = (ArrayList<ModelProvinsi>) response.body().getData();
-                adapterProvinsi = new AdapterProvinsi(getContext(), modelProvinsis);
+                adapterProvinsi = new AdapterProvinsi(ModalProvinsi.this,getContext(), modelProvinsis);
                 recyclerViewP.setAdapter(adapterProvinsi);
             }
 

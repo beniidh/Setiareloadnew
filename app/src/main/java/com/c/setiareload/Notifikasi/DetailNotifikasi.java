@@ -33,9 +33,6 @@ public class DetailNotifikasi extends AppCompatActivity {
         waktuND.setText(getIntent().getStringExtra("waktu"));
         transaksiND.setText(getIntent().getStringExtra("transaksid"));
         SaldoND.setText(utils.ConvertRP(getIntent().getStringExtra("saldo")));
-        nominalND.setText(utils.ConvertRP(getIntent().getStringExtra("nominal")));
-        BiayaND.setText(utils.ConvertRP(getIntent().getStringExtra("biaya")));
-        TotalND.setText(utils.ConvertRP(getIntent().getStringExtra("saldo")));
         statusND.setText(getIntent().getStringExtra("status"));
 
         if (getIntent().getStringExtra("status").equals("PENDING")) {

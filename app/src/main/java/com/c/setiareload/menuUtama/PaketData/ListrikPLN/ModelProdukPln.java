@@ -3,9 +3,13 @@ package com.c.setiareload.menuUtama.PaketData.ListrikPLN;
 public class ModelProdukPln {
 
     String id,code,name,brand,basic_price,markup_price,status,seller_product_status,multi,description,product_subcategory_id,start_cut_off,end_cut_off,total_price;
-
+boolean gangguan;
     public String getId() {
         return id;
+    }
+
+    public boolean isGangguan() {
+        return gangguan;
     }
 
     public String getCode() {

@@ -9,7 +9,6 @@
     android:layout_height="match_parent"
     tools:context=".menuUtama.PaketData.Voucher.produkVoucher">
 
-
     <LinearLayout
         android:id="@+id/linearLayout6"
         android:layout_width="match_parent"
@@ -61,7 +60,7 @@
         android:layout_height="45dp"
         android:layout_marginTop="15sp"
         android:background="@drawable/bg_edittextlogin"
-        android:hint="@string/masukan_nomors"
+        android:hint="Nomor Tujuan"
         android:inputType="number"
         android:paddingEnd="8sp"
         android:paddingStart="7dp"
@@ -78,6 +77,7 @@
         android:textColor="@color/green"
         android:textSize="12sp"
         android:textStyle="bold" />
+
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

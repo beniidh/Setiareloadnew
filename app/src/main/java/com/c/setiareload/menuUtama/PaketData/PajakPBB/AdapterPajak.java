@@ -23,15 +23,16 @@ public class AdapterPajak extends RecyclerView.Adapter<AdapterPajak.ViewHolder> 
     Context context;
     ArrayList<ModelPajak> modelPajaks;
     ArrayList<ModelPajak> modelPajaksfull;
+    ModalPajak modalPajak;
     private int selectedPosition = 0;
-    public static   String nameid[][] = new String[1][2];
+    public static String nameid[][] = new String[1][2];
     private ArrayList<Integer> selectCheck = new ArrayList<>();
 
-    public AdapterPajak(Context context, ArrayList<ModelPajak> modelPajaks) {
+    public AdapterPajak(ModalPajak modalPajak, Context context, ArrayList<ModelPajak> modelPajaks) {
         this.context = context;
         this.modelPajaks = modelPajaks;
         modelPajaksfull = new ArrayList<>(modelPajaks);
-
+        this.modalPajak = modalPajak;
         for (int i = 0; i < modelPajaks.size(); i++) {
             selectCheck.add(0);
         }
@@ -53,29 +54,13 @@ public class AdapterPajak extends RecyclerView.Adapter<AdapterPajak.ViewHolder> 
         holder.name.setText(modelPajak.getName());
 
 
-        if (selectCheck.get(position) == 1) {
-            holder.chekP.setChecked(true);
-        } else {
-            holder.chekP.setChecked(false);
-        }
-
-        holder.chekP.setOnClickListener(new View.OnClickListener() {
+        holder.linklik.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
-                for(int k=0; k<selectCheck.size(); k++) {
-                    if(k==position) {
-                        selectCheck.set(k,1);
-                    } else {
-                        selectCheck.set(k,0);
-                    }
-                }
-                notifyDataSetChanged();
-                nameid[0][0] = modelPajak.getName();
-                nameid[0][1] = modelPajak.getId();
-
-
+                holder.chekP.setChecked(true);
+                modalPajak.dismiss();
+                modalPajak.bottomSheetListenerProduksms.onButtonClick(modelPajak.getName(),modelPajak.getId());
             }
         });
 
@@ -145,7 +130,7 @@ public class AdapterPajak extends RecyclerView.Adapter<AdapterPajak.ViewHolder> 
             super(itemView);
             name = itemView.findViewById(R.id.nameList);
             chekP = itemView.findViewById(R.id.chekProvinsi);
-//            linklik = itemView.findViewById(R.id.linklik);
+            linklik = itemView.findViewById(R.id.linearKlikk);
 
         }
     }

@@ -35,7 +35,7 @@ public class ModalKecamatan extends BottomSheetDialogFragment {
     AdapterKecamatan adapterKecamatan;
     ArrayList<ModelKecamatan> modelKecamatans = new ArrayList<>();
     Button tutup, pilih;
-    private BottomSheetListenerKecamatan bottomSheetListenerKecamatan;
+    public BottomSheetListenerKecamatan bottomSheetListenerKecamatan;
     SearchView searchViewKe;
 
     @Nullable
@@ -47,7 +47,7 @@ public class ModalKecamatan extends BottomSheetDialogFragment {
         tutup = v.findViewById(R.id.tutupKe);
         pilih = v.findViewById(R.id.pilihKe);
 
-        adapterKecamatan = new AdapterKecamatan(getContext(), modelKecamatans);
+        adapterKecamatan = new AdapterKecamatan(ModalKecamatan.this,getContext(), modelKecamatans);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerViewKe.setLayoutManager(mLayoutManager);
         recyclerViewKe.setAdapter(adapterKecamatan);
@@ -120,7 +120,7 @@ public class ModalKecamatan extends BottomSheetDialogFragment {
             public void onResponse(Call<ResponKe> call, Response<ResponKe> response) {
 
                 modelKecamatans = (ArrayList<ModelKecamatan>) response.body().getData();
-                adapterKecamatan = new AdapterKecamatan(getContext(), modelKecamatans);
+                adapterKecamatan = new AdapterKecamatan(ModalKecamatan.this,getContext(), modelKecamatans);
                 recyclerViewKe.setAdapter(adapterKecamatan);
 
             }

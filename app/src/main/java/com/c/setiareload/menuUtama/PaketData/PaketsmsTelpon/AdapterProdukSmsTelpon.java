@@ -24,11 +24,12 @@ public class AdapterProdukSmsTelpon extends RecyclerView.Adapter<AdapterProdukSm
     private int selectedPosition = 0;
     public static   String nameid[][] = new String[1][3];
     ModalVoucherGame voucher;
+    ModalProdukSmsTelpon modalProdukSmsTelpon;
     private ArrayList<Integer> selectCheck = new ArrayList<>();
-    public AdapterProdukSmsTelpon(Context context, ArrayList<MProdukPaketSmsT> msmsTelpons) {
+    public AdapterProdukSmsTelpon(ModalProdukSmsTelpon modalProdukSmsTelpon,Context context, ArrayList<MProdukPaketSmsT> msmsTelpons) {
         this.context = context;
         this.msmsTelpons = msmsTelpons;
-
+        this.modalProdukSmsTelpon = modalProdukSmsTelpon;
         for (int i = 0; i < msmsTelpons.size(); i++) {
             selectCheck.add(0);
         }
@@ -49,31 +50,13 @@ public class AdapterProdukSmsTelpon extends RecyclerView.Adapter<AdapterProdukSm
         MProdukPaketSmsT msmsTelpon = msmsTelpons.get(position);
         holder.name.setText(msmsTelpon.getName());
 
-
-        if (selectCheck.get(position) == 1) {
-            holder.chekP.setChecked(true);
-        } else {
-            holder.chekP.setChecked(false);
-        }
-
         holder.klik.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
-                for(int k=0; k<selectCheck.size(); k++) {
-                    if(k==position) {
-                        selectCheck.set(k,1);
-                    } else {
-                        selectCheck.set(k,0);
-                    }
-                }
-                notifyDataSetChanged();
-                nameid[0][0] = msmsTelpon.getName();
-                nameid[0][1] = msmsTelpon.getId();
-                nameid[0][2] = msmsTelpon.getIcon();
-
-
+                holder.chekP.setChecked(true);
+                modalProdukSmsTelpon.dismiss();
+                modalProdukSmsTelpon.bottomSheetListenerProduksms.onButtonClick(msmsTelpon.getName(),msmsTelpon.getId(),msmsTelpon.getIcon());
             }
         });
 

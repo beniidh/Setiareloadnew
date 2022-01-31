@@ -32,7 +32,7 @@ public class ModalVoucherGame extends BottomSheetDialogFragment {
     ArrayList<MVoucherGame> mVoucherGames = new ArrayList<>();
     String id;
     Button pilih,tutup;
-    private BottomSheetListenerVoucherGame bottomSheetListenerVoucherGame;
+    protected BottomSheetListenerVoucherGame bottomSheetListenerVoucherGame;
 
     public ModalVoucherGame(String id) {
         this.id = id;

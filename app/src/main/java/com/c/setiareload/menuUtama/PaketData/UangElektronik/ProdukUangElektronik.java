@@ -72,6 +72,9 @@ public class ProdukUangElektronik extends AppCompatActivity implements ModalUang
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (inputnomoruangelektronik.length() >= 7) {
                     tujukarakteruangelektronik.setVisibility(View.INVISIBLE);
+                    Preference.setNo(getApplicationContext(),inputnomoruangelektronik.getText().toString());
+
+
                 } else {
 
                     tujukarakteruangelektronik.setVisibility(View.VISIBLE);

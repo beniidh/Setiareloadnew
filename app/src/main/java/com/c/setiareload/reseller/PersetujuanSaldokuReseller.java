@@ -20,7 +20,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PersetujuanSaldokuReseller extends AppCompatActivity {
+public class PersetujuanSaldokuReseller extends AppCompatActivity implements ModalApprove.BottomSheetListener{
 
     RecyclerView recyclerView;
     AdapterSaldoReseller adapterSaldoReseller;
@@ -64,8 +64,15 @@ public class PersetujuanSaldokuReseller extends AppCompatActivity {
             public void onResponse(Call<ResponSaldoReseller> call, Response<ResponSaldoReseller> response) {
                 if (response.body().getCode().equals("200")) {
                     data = response.body().getData();
-                    adapterSaldoReseller = new AdapterSaldoReseller(getApplicationContext(), data);
-                    recyclerView.setAdapter(adapterSaldoReseller);
+                    if (!data.isEmpty()){
+                        adapterSaldoReseller = new AdapterSaldoReseller(getApplicationContext(), data);
+                        recyclerView.setAdapter(adapterSaldoReseller);
+
+                    }else {
+                        Toast.makeText(getApplicationContext(), "No data", Toast.LENGTH_SHORT).show();
+                    }
+
+
 
                 } else {
                     Toast.makeText(getApplicationContext(), response.body().getError(), Toast.LENGTH_SHORT).show();
@@ -80,5 +87,17 @@ public class PersetujuanSaldokuReseller extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        getData();
+    }
+
+    @Override
+    public void onButtonClick() {
+        getData();
     }
 }

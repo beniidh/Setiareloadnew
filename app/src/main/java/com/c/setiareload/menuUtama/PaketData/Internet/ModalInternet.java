@@ -34,16 +34,15 @@ public class ModalInternet extends BottomSheetDialogFragment {
     Button pilih,tutup;
     SearchView search;
 
-    private BottomSheetListenerProduksms bottomSheetListenerProduksms;
+    protected BottomSheetListenerProduksms bottomSheetListenerProduksms;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.modal_layout_internet, container, false);
 
-
         recyclerView = v.findViewById(R.id.ReyInternet);
-        adapterInternet = new AdapterInternet(getContext(), modelInternets);
+        adapterInternet = new AdapterInternet(ModalInternet.this,getContext(), modelInternets);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(adapterInternet);
@@ -126,7 +125,7 @@ public class ModalInternet extends BottomSheetDialogFragment {
             public void onResponse(Call<ResponIntenet> call, Response<ResponIntenet> response) {
 
                 modelInternets = response.body().getData();
-                adapterInternet = new AdapterInternet(getContext(), modelInternets);
+                adapterInternet = new AdapterInternet(ModalInternet.this,getContext(), modelInternets);
                 recyclerView.setAdapter(adapterInternet);
 
             }

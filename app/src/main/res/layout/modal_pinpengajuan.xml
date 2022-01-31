@@ -56,8 +56,19 @@
             app:pinNormalStateDrawable="@drawable/bg_search_otp"
             app:pinHighlightStateDrawable="@drawable/bg_search_otppin"/>
 
-
+        <Button
+            android:layout_width="match_parent"
+            android:id="@+id/idPinPengajuanButton"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_button_login2"
+            android:text="Ajukan"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="19sp"
+            android:layout_marginTop="60sp"
+            />
 
     </LinearLayout>
+
 
 </LinearLayout>

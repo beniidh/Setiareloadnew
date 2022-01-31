@@ -40,7 +40,7 @@ public class splash_activity extends AppCompatActivity {
         int versionCodein = BuildConfig.VERSION_CODE;
         String versionName = BuildConfig.VERSION_NAME;
 
-        versionCode.setText(new StringBuilder().append("versi ").append(versionCodein).toString());
+        versionCode.setText(new StringBuilder().append("versi ").append(versionCodein).append(".").append(versionName).toString());
         String coder = Preference.getTrackRegister(getApplicationContext());
 
         Handler handler = new Handler();

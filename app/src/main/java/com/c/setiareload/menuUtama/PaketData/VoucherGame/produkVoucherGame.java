@@ -74,6 +74,7 @@ public class produkVoucherGame extends AppCompatActivity implements ModalVoucher
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (inputnomorvouchergame.length() >= 7) {
                     tujukaraktervouchergame.setVisibility(View.INVISIBLE);
+                    Preference.setNo(getApplicationContext(),inputnomorvouchergame.getText().toString());
                 } else {
                     tujukaraktervouchergame.setVisibility(View.VISIBLE);
                 }

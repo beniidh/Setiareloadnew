@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.c.setiareload.Helper.utils;
+import com.c.setiareload.Modal.ModalKabupaten;
 import com.c.setiareload.Model.ModelKabupaten;
 import com.c.setiareload.R;
 import com.c.setiareload.sharePreference.Preference;
@@ -29,13 +30,14 @@ public class AdapterKabupaten extends RecyclerView.Adapter<AdapterKabupaten.View
     private List<ModelKabupaten> modelKabupatens;
     private List<ModelKabupaten> modelKabupatensFull;
     private int selectedPosition = 0;
+    ModalKabupaten modalKabupaten;
     private ArrayList<Integer> selectCheck = new ArrayList<>();
 
-    public AdapterKabupaten(Context context, List<ModelKabupaten> modelKabupatens) {
+    public AdapterKabupaten(ModalKabupaten modalKabupaten,Context context, List<ModelKabupaten> modelKabupatens) {
         this.context = context;
         this.modelKabupatens = modelKabupatens;
         modelKabupatensFull = new ArrayList<>(modelKabupatens);
-
+        this.modalKabupaten = modalKabupaten;
         for (int i = 0; i < modelKabupatens.size(); i++) {
             selectCheck.add(0);
         }
@@ -58,28 +60,21 @@ public class AdapterKabupaten extends RecyclerView.Adapter<AdapterKabupaten.View
         holder.name.setText(utils.capitalizeFirstLetter(modelKabupaten.getName().toLowerCase()));
 
 
-        if (selectCheck.get(position) == 1) {
-            holder.chekP.setChecked(true);
-        } else {
-            holder.chekP.setChecked(false);
-        }
-
         holder.klik.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                for(int k=0; k<selectCheck.size(); k++) {
-                    if(k==position) {
-                        selectCheck.set(k,1);
-                    } else {
-                        selectCheck.set(k,0);
-                    }
-                }
-                notifyDataSetChanged();
                 Preference.getSharedPreference(context);
                 Preference.setName(context,modelKabupaten.getName());
                 Preference.setID(context,modelKabupaten.getId());
                 Preference.setIDKabupaten(context,modelKabupaten.getId());
+
+
+                String id = Preference.getID(v.getContext());
+                String name = Preference.getName(v.getContext());
+                Preference.setName(v.getContext(),"");
+                modalKabupaten.bottomSheetListenerKabupaten.onButtonClickKabupaten(name, id);
+                modalKabupaten.dismiss();
             }
         });
         holder.chekP.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

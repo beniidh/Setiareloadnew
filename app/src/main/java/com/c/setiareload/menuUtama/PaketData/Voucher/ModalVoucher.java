@@ -34,7 +34,7 @@ public class ModalVoucher extends BottomSheetDialogFragment {
     Button pilih, tutup;
     SearchView search;
 
-    private BottomSheetListenerProduksms bottomSheetListenerProduksms;
+    protected BottomSheetListenerProduksms bottomSheetListenerProduksms;
 
     @Nullable
     @Override
@@ -43,7 +43,7 @@ public class ModalVoucher extends BottomSheetDialogFragment {
 
 
         recyclerView = v.findViewById(R.id.ReyVoucher);
-        adapterVoucher = new AdapterVoucher(getContext(), modelVouchers);
+        adapterVoucher = new AdapterVoucher(ModalVoucher.this,getContext(), modelVouchers);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(adapterVoucher);
@@ -125,7 +125,7 @@ public class ModalVoucher extends BottomSheetDialogFragment {
                 String code = response.body().getCode();
                 if (code.equals("200")) {
                     modelVouchers = response.body().getData();
-                    adapterVoucher = new AdapterVoucher(getContext(), modelVouchers);
+                    adapterVoucher = new AdapterVoucher(ModalVoucher.this,getContext(), modelVouchers);
                     recyclerView.setAdapter(adapterVoucher);
                 } else {
 

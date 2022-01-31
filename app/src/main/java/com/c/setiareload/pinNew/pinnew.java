@@ -64,9 +64,7 @@ public class pinnew extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pinnew);
-        getSupportActionBar().setTitle(Html.fromHtml("<font color='#4AB84E'><b>PIN<b></font>"));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
+        getSupportActionBar().hide();
 
         noOfDigits = 0;
         actualPassword = getResources().getString(R.string.password_actual);
@@ -384,11 +382,6 @@ public class pinnew extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
-    }
 
     @Override
     public void onBackPressed() {

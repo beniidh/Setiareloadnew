@@ -60,6 +60,14 @@ public class AdapterProdukVoucher extends RecyclerView.Adapter<AdapterProdukVouc
         holder.deskripsi.setText(mVoucherData.getDescription());
         holder.harga.setText(utils.ConvertRP(mVoucherData.getTotal_price()));
 
+        if (mVoucherData.isGangguan()) {
+            holder.gangguan.setVisibility(View.VISIBLE);
+            holder.linearklik.setEnabled(false);
+        }else {
+            holder.gangguan.setVisibility(View.GONE);
+            holder.linearklik.setEnabled(true);
+        }
+
         holder.linearklik.setOnClickListener(v -> {
 
             GpsTracker gpsTracker = new GpsTracker(context);
@@ -77,7 +85,7 @@ public class AdapterProdukVoucher extends RecyclerView.Adapter<AdapterProdukVouc
 
                         Bundle bundle = new Bundle();
                         bundle.putString("deskripsi", mVoucherData.getDescription());
-                        bundle.putString("nomorr", nomor);
+                        bundle.putString("nomorr", Preference.getNo(context));
                         bundle.putString("namecustomer", response.body().getData().getCustomer_name());
                         bundle.putString("RefID", response.body().getData().getRef_id());
                         bundle.putString("sku_code", response.body().getData().getBuyer_sku_code());
@@ -105,6 +113,7 @@ public class AdapterProdukVoucher extends RecyclerView.Adapter<AdapterProdukVouc
         });
 
 
+
     }
 
     @Override
@@ -113,7 +122,7 @@ public class AdapterProdukVoucher extends RecyclerView.Adapter<AdapterProdukVouc
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name, deskripsi, harga;
+        TextView name, deskripsi, harga,gangguan;
         LinearLayout linearklik;
 
         public ViewHolder(@NonNull View itemView) {
@@ -122,7 +131,7 @@ public class AdapterProdukVoucher extends RecyclerView.Adapter<AdapterProdukVouc
             deskripsi = itemView.findViewById(R.id.deskripsiplnprabayar);
             harga = itemView.findViewById(R.id.hargaplnprabayar);
             linearklik = itemView.findViewById(R.id.linearklikpln);
-
+            gangguan = itemView.findViewById(R.id.gangguan);
 
         }
     }

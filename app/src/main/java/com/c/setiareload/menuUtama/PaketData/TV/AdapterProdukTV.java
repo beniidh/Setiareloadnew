@@ -59,6 +59,14 @@ public class AdapterProdukTV extends RecyclerView.Adapter<AdapterProdukTV.ViewHo
         holder.name.setText(mVoucherData.getName());
         holder.deskripsi.setText(mVoucherData.getDescription());
 
+        if (mVoucherData.isGangguan()) {
+            holder.gangguan.setVisibility(View.VISIBLE);
+            holder.linearklik.setEnabled(false);
+        }else {
+            holder.gangguan.setVisibility(View.GONE);
+            holder.linearklik.setEnabled(true);
+        }
+
 
         holder.linearklik.setOnClickListener(v -> {
 
@@ -115,6 +123,7 @@ public class AdapterProdukTV extends RecyclerView.Adapter<AdapterProdukTV.ViewHo
         });
 
 
+
     }
 
     @Override
@@ -123,7 +132,7 @@ public class AdapterProdukTV extends RecyclerView.Adapter<AdapterProdukTV.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name, deskripsi;
+        TextView name, deskripsi,gangguan;
         LinearLayout linearklik;
 
         public ViewHolder(@NonNull View itemView) {
@@ -131,7 +140,7 @@ public class AdapterProdukTV extends RecyclerView.Adapter<AdapterProdukTV.ViewHo
             name = itemView.findViewById(R.id.nameair);
             deskripsi = itemView.findViewById(R.id.deskriair);
             linearklik = itemView.findViewById(R.id.linearklikair);
-
+            gangguan = itemView.findViewById(R.id.gangguan);
         }
     }
 }

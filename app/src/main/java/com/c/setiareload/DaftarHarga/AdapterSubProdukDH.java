@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,14 +24,15 @@ public class AdapterSubProdukDH extends RecyclerView.Adapter<AdapterSubProdukDH.
     private List<ResponSubProdukDH.mData> mProduk;
     private List<ResponSubProdukDH.mData> mProdukFull;
     private int selectedPosition = 0;
+    ModalSubProdukDH modalSubProdukDH;
     public static   String nameid[][] = new String[1][2];
     private ArrayList<Integer> selectCheck = new ArrayList<>();
 
-    public AdapterSubProdukDH(Context context, List<ResponSubProdukDH.mData> mProduk) {
+    public AdapterSubProdukDH(ModalSubProdukDH modalSubProdukDH,Context context, List<ResponSubProdukDH.mData> mProduk) {
         this.context = context;
         this.mProduk = mProduk;
         mProdukFull = new ArrayList<>(mProduk);
-
+        this.modalSubProdukDH = modalSubProdukDH;
         for (int i = 0; i < mProduk.size(); i++) {
             selectCheck.add(0);
         }
@@ -53,26 +55,12 @@ public class AdapterSubProdukDH extends RecyclerView.Adapter<AdapterSubProdukDH.
         holder.name.setText(mproduk.getName());
 
 
-        if (selectCheck.get(position) == 1) {
-            holder.chekP.setChecked(true);
-        } else {
-            holder.chekP.setChecked(false);
-        }
-
-        holder.chekP.setOnClickListener(new View.OnClickListener() {
+        holder.klik.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                for(int k=0; k<selectCheck.size(); k++) {
-                    if(k==position) {
-                        selectCheck.set(k,1);
-                    } else {
-                        selectCheck.set(k,0);
-                    }
-                }
-                notifyDataSetChanged();
-                nameid[0][0] = mproduk.getName();
-                nameid[0][1] = mproduk.getId();
+              modalSubProdukDH.bottomSheetListenerProduksub.onButtonClicksub(mproduk.getName(),mproduk.getId());
+              modalSubProdukDH.dismiss();
             }
         });
 
@@ -127,11 +115,13 @@ public class AdapterSubProdukDH extends RecyclerView.Adapter<AdapterSubProdukDH.
     public class ViewHolder extends RecyclerView.ViewHolder{
      TextView name;
      CheckBox chekP;
+     LinearLayout klik;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.nameList);
             chekP = itemView.findViewById(R.id.chekProvinsi);
+            klik = itemView.findViewById(R.id.linearKlikk);
 
         }
     }

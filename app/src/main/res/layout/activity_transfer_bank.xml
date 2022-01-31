@@ -41,6 +41,7 @@
             android:id="@+id/BNomorRekening"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:paddingVertical="3dp"
             android:layout_marginTop="20dp"
             android:hint="Nomor Rekening"
             android:inputType="number" />
@@ -50,6 +51,7 @@
             android:id="@+id/Bnominal"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:paddingVertical="3dp"
             android:layout_marginTop="20dp"
             android:hint="Nominal"
             android:inputType="number" />

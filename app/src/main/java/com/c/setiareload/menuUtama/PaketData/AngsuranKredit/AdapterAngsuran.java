@@ -25,17 +25,16 @@ public class AdapterAngsuran extends RecyclerView.Adapter<AdapterAngsuran.ViewHo
     ArrayList<ModelAngsuran> modelAngsurans;
     ArrayList<ModelAngsuran> modelAngsuransfull;
     private int selectedPosition = 0;
+    ModalAngsuran modalAngsuran;
     public static   String nameid[][] = new String[1][2];
     private ArrayList<Integer> selectCheck = new ArrayList<>();
 
-    public AdapterAngsuran(Context context, ArrayList<ModelAngsuran> modelAngsurans) {
+    public AdapterAngsuran(ModalAngsuran modalAngsuran,Context context, ArrayList<ModelAngsuran> modelAngsurans) {
         this.context = context;
         this.modelAngsurans = modelAngsurans;
         modelAngsuransfull = new ArrayList<>(modelAngsurans);
+        this.modalAngsuran = modalAngsuran;
 
-        for (int i = 0; i < modelAngsurans.size(); i++) {
-            selectCheck.add(0);
-        }
     }
 
 
@@ -53,28 +52,13 @@ public class AdapterAngsuran extends RecyclerView.Adapter<AdapterAngsuran.ViewHo
         ModelAngsuran modelAngsuran = modelAngsurans.get(position);
         holder.name.setText(modelAngsuran.getName());
 
-
-        if (selectCheck.get(position) == 1) {
-            holder.chekP.setChecked(true);
-        } else {
-            holder.chekP.setChecked(false);
-        }
-
-        holder.chekP.setOnClickListener(new View.OnClickListener() {
+        holder.linklik.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
-                for(int k=0; k<selectCheck.size(); k++) {
-                    if(k==position) {
-                        selectCheck.set(k,1);
-                    } else {
-                        selectCheck.set(k,0);
-                    }
-                }
-                notifyDataSetChanged();
-                nameid[0][0] = modelAngsuran.getName();
-                nameid[0][1] = modelAngsuran.getId();
+                modalAngsuran.dismiss();
+                holder.chekP.setChecked(true);
+                modalAngsuran.bottomSheetListenerProduksms.onButtonClick(modelAngsuran.getName(),modelAngsuran.getId());
 
 
             }
@@ -146,7 +130,7 @@ public class AdapterAngsuran extends RecyclerView.Adapter<AdapterAngsuran.ViewHo
             super(itemView);
             name = itemView.findViewById(R.id.nameList);
             chekP = itemView.findViewById(R.id.chekProvinsi);
-//            linklik = itemView.findViewById(R.id.linklik);
+            linklik = itemView.findViewById(R.id.linearKlikk);
 
         }
     }

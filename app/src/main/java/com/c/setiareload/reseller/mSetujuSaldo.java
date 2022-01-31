@@ -5,12 +5,11 @@ public class mSetujuSaldo {
     String id,pin,status,type_wallet,mac_address,ip_address,user_agent;
     double longitude,latitude;
 
-    public mSetujuSaldo(String id, String pin, String status, String type_wallet,
+    public mSetujuSaldo(String id, String status, String type_wallet,
                         String mac_address, String ip_address, String user_agent,
                         double longitude, double latitude) {
 
         this.id = id;
-        this.pin = pin;
         this.status = status;
         this.type_wallet = type_wallet;
         this.mac_address = mac_address;

@@ -34,7 +34,7 @@ public class ModalPinPengajuan extends BottomSheetDialogFragment {
     PengajuanDompet pengajuanDompet;
     PinEditText pinpengajuan;
     TextView idCancelPengajuan;
-    Button idPinPengajuanButton;
+    Button idPinPengajuanButtonn;
 
     public ModalPinPengajuan(PengajuanDompet pengajuanDompet) {
         this.pengajuanDompet = pengajuanDompet;
@@ -48,14 +48,11 @@ public class ModalPinPengajuan extends BottomSheetDialogFragment {
 
         pinpengajuan = v.findViewById(R.id.pinpengajuan);
         idCancelPengajuan = v.findViewById(R.id.idCancelPengajuan);
-        idPinPengajuanButton = v.findViewById(R.id.idPinPengajuanButton);
-        idCancelPengajuan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-            }
-        });
-        idPinPengajuanButton.setOnClickListener(v1 -> {
+        idPinPengajuanButtonn = v.findViewById(R.id.idPinPengajuanButton);
+        idCancelPengajuan.setOnClickListener(v1 -> dismiss());
+
+
+        idPinPengajuanButtonn.setOnClickListener(v1 -> {
 
             if (pinpengajuan.length() < 6) {
                 StyleableToast.makeText(getContext(), "Lengkapi PIN", Toast.LENGTH_SHORT, R.style.mytoast2).show();

@@ -22,6 +22,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginBottom="20dp"
         />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ReyPost"
         android:layout_width="match_parent"
@@ -32,6 +33,7 @@
     <LinearLayout
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 

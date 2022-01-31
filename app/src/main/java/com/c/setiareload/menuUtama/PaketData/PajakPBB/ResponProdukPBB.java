@@ -27,6 +27,12 @@ public class ResponProdukPBB {
 
         String id,code,name,brand,basic_price,description,product_subcategory_id,updated_at;
 
+        boolean gangguan;
+
+        public boolean isGangguan() {
+            return gangguan;
+        }
+
         public String getId() {
             return id;
         }

@@ -37,6 +37,7 @@ public class AdapterProdukAngsuran extends RecyclerView.Adapter<AdapterProdukAng
     ArrayList<ResponProdukAngsuran.VoucherData> mVoucherProduk;
     String nomor, type;
 
+
     public AdapterProdukAngsuran(Context context, ArrayList<ResponProdukAngsuran.VoucherData> mVoucherProduk, String nomor, String type) {
         this.context = context;
         this.mVoucherProduk = mVoucherProduk;
@@ -59,6 +60,15 @@ public class AdapterProdukAngsuran extends RecyclerView.Adapter<AdapterProdukAng
         holder.name.setText(mVoucherData.getName());
         holder.deskripsi.setText(mVoucherData.getDescription());
         holder.brand.setText(mVoucherData.getBrand());
+
+        if (mVoucherData.getGangguan()) {
+            holder.gangguan.setVisibility(View.VISIBLE);
+            holder.linearklik.setEnabled(false);
+        }else {
+            holder.gangguan.setVisibility(View.GONE);
+            holder.linearklik.setEnabled(true);
+        }
+
 
 
         holder.linearklik.setOnClickListener(v -> {
@@ -124,7 +134,7 @@ public class AdapterProdukAngsuran extends RecyclerView.Adapter<AdapterProdukAng
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name, deskripsi, brand;
+        TextView name, deskripsi, brand,gangguan;
         LinearLayout linearklik;
 
         public ViewHolder(@NonNull View itemView) {
@@ -133,7 +143,7 @@ public class AdapterProdukAngsuran extends RecyclerView.Adapter<AdapterProdukAng
             deskripsi = itemView.findViewById(R.id.deskriair);
             linearklik = itemView.findViewById(R.id.linearklikair);
             brand =itemView.findViewById(R.id.brandair);
-
+            gangguan = itemView.findViewById(R.id.gangguan);
 
         }
     }

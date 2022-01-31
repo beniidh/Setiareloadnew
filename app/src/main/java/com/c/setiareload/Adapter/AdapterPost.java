@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.c.setiareload.Modal.ModalKodePos;
 import com.c.setiareload.Model.ModelPost;
 import com.c.setiareload.R;
 import com.c.setiareload.sharePreference.Preference;
@@ -24,11 +25,13 @@ public class AdapterPost extends RecyclerView.Adapter<AdapterPost.ViewHolder>  {
     private Context context;
     private List<ModelPost> modelPosts;
     private int selectedPosition = 0;
+    ModalKodePos modalKodePos;
+
     private ArrayList<Integer> selectCheck = new ArrayList<>();
-    public AdapterPost(Context context, List<ModelPost> modelPosts) {
+    public AdapterPost(ModalKodePos modalKodePos,Context context, List<ModelPost> modelPosts) {
         this.context = context;
         this.modelPosts = modelPosts;
-
+        this.modalKodePos = modalKodePos;
 
         for (int i = 0; i < modelPosts.size(); i++) {
             selectCheck.add(0);
@@ -63,17 +66,15 @@ public class AdapterPost extends RecyclerView.Adapter<AdapterPost.ViewHolder>  {
             @Override
             public void onClick(View v) {
 
-                for(int k=0; k<selectCheck.size(); k++) {
-                    if(k==position) {
-                        selectCheck.set(k,1);
-                    } else {
-                        selectCheck.set(k,0);
-                    }
-                }
-                notifyDataSetChanged();
                 Preference.getSharedPreference(context);
                 Preference.setName(context,modelPost.getPostal_code());
                 Preference.setID(context,modelPost.getId());
+
+                String id = Preference.getID(v.getContext());
+                String name = Preference.getName(v.getContext());
+
+                modalKodePos.bottomSheetListenerPost.onButtonClickPost(name, id);
+                modalKodePos.dismiss();
 
 
             }

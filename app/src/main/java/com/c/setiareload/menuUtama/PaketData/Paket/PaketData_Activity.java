@@ -80,6 +80,7 @@ public class PaketData_Activity extends AppCompatActivity {
                 if (nomorbelidata.length() >= 4) {
                     String provider = nomorbelidata.getText().toString().substring(0,4);
                     Intent intent = getIntent();
+                    Preference.setNo(getApplicationContext(),nomorbelidata.getText().toString());
                     String id = intent.getStringExtra("id");
                     getSubCategory(provider,id);
 

@@ -38,10 +38,10 @@ public abstract class AsyncEscPosPrint extends AsyncTask<AsyncEscPosPrinter, Int
 
     protected Integer doInBackground(AsyncEscPosPrinter... printersData) {
         if (printersData.length == 0) {
-            return com.c.setiareload.CetakStruk.Epos.AsyncEscPosPrint.FINISH_NO_PRINTER;
+            return AsyncEscPosPrint.FINISH_NO_PRINTER;
         }
 
-        this.publishProgress(com.c.setiareload.CetakStruk.Epos.AsyncEscPosPrint.PROGRESS_CONNECTING);
+        this.publishProgress(AsyncEscPosPrint.PROGRESS_CONNECTING);
 
         AsyncEscPosPrinter printerData = printersData[0];
 
@@ -49,7 +49,7 @@ public abstract class AsyncEscPosPrint extends AsyncTask<AsyncEscPosPrinter, Int
             DeviceConnection deviceConnection = printerData.getPrinterConnection();
 
             if(deviceConnection == null) {
-                return com.c.setiareload.CetakStruk.Epos.AsyncEscPosPrint.FINISH_NO_PRINTER;
+                return AsyncEscPosPrint.FINISH_NO_PRINTER;
             }
 
             EscPosPrinter printer = new EscPosPrinter(
@@ -60,27 +60,27 @@ public abstract class AsyncEscPosPrint extends AsyncTask<AsyncEscPosPrinter, Int
                     new EscPosCharsetEncoding("windows-1252", 16)
             );
 
-            this.publishProgress(com.c.setiareload.CetakStruk.Epos.AsyncEscPosPrint.PROGRESS_PRINTING);
+            this.publishProgress(AsyncEscPosPrint.PROGRESS_PRINTING);
 
             printer.printFormattedTextAndCut(printerData.getTextToPrint());
 
-            this.publishProgress(com.c.setiareload.CetakStruk.Epos.AsyncEscPosPrint.PROGRESS_PRINTED);
+            this.publishProgress(PROGRESS_PRINTED);
 
         } catch (EscPosConnectionException e) {
             e.printStackTrace();
-            return com.c.setiareload.CetakStruk.Epos.AsyncEscPosPrint.FINISH_PRINTER_DISCONNECTED;
+            return AsyncEscPosPrint.FINISH_PRINTER_DISCONNECTED;
         } catch (EscPosParserException e) {
             e.printStackTrace();
-            return com.c.setiareload.CetakStruk.Epos.AsyncEscPosPrint.FINISH_PARSER_ERROR;
+            return AsyncEscPosPrint.FINISH_PARSER_ERROR;
         } catch (EscPosEncodingException e) {
             e.printStackTrace();
-            return com.c.setiareload.CetakStruk.Epos.AsyncEscPosPrint.FINISH_ENCODING_ERROR;
+            return AsyncEscPosPrint.FINISH_ENCODING_ERROR;
         } catch (EscPosBarcodeException e) {
             e.printStackTrace();
-            return com.c.setiareload.CetakStruk.Epos.AsyncEscPosPrint.FINISH_BARCODE_ERROR;
+            return AsyncEscPosPrint.FINISH_BARCODE_ERROR;
         }
 
-        return com.c.setiareload.CetakStruk.Epos.AsyncEscPosPrint.FINISH_SUCCESS;
+        return AsyncEscPosPrint.FINISH_SUCCESS;
     }
 
     protected void onPreExecute() {
@@ -104,16 +104,16 @@ public abstract class AsyncEscPosPrint extends AsyncTask<AsyncEscPosPrinter, Int
 
     protected void onProgressUpdate(Integer... progress) {
         switch (progress[0]) {
-            case com.c.setiareload.CetakStruk.Epos.AsyncEscPosPrint.PROGRESS_CONNECTING:
+            case AsyncEscPosPrint.PROGRESS_CONNECTING:
                 this.dialog.setMessage("Menghubungkan printer...");
                 break;
-            case com.c.setiareload.CetakStruk.Epos.AsyncEscPosPrint.PROGRESS_CONNECTED:
+            case AsyncEscPosPrint.PROGRESS_CONNECTED:
                 this.dialog.setMessage("Printer Terhubung...");
                 break;
-            case com.c.setiareload.CetakStruk.Epos.AsyncEscPosPrint.PROGRESS_PRINTING:
+            case AsyncEscPosPrint.PROGRESS_PRINTING:
                 this.dialog.setMessage("printing...");
                 break;
-            case com.c.setiareload.CetakStruk.Epos.AsyncEscPosPrint.PROGRESS_PRINTED:
+            case AsyncEscPosPrint.PROGRESS_PRINTED:
                 this.dialog.setMessage("Print Selesai...");
                 break;
         }
@@ -132,37 +132,37 @@ public abstract class AsyncEscPosPrint extends AsyncTask<AsyncEscPosPrinter, Int
         }
 
         switch (result) {
-            case com.c.setiareload.CetakStruk.Epos.AsyncEscPosPrint.FINISH_SUCCESS:
+            case  AsyncEscPosPrint.FINISH_SUCCESS:
                 new AlertDialog.Builder(context)
                         .setTitle("Success")
                         .setMessage("Print Berhasil !")
                         .show();
                 break;
-            case com.c.setiareload.CetakStruk.Epos.AsyncEscPosPrint.FINISH_NO_PRINTER:
+            case AsyncEscPosPrint.FINISH_NO_PRINTER:
                 new AlertDialog.Builder(context)
                         .setTitle("No printer")
                         .setMessage("Aplikasi tidak menemukan printer terhubung.")
                         .show();
                 break;
-            case com.c.setiareload.CetakStruk.Epos.AsyncEscPosPrint.FINISH_PRINTER_DISCONNECTED:
+            case AsyncEscPosPrint.FINISH_PRINTER_DISCONNECTED:
                 new AlertDialog.Builder(context)
                     .setTitle("Broken connection")
                     .setMessage("Tidak bisa terhubung ke printer.")
                     .show();
                 break;
-            case com.c.setiareload.CetakStruk.Epos.AsyncEscPosPrint.FINISH_PARSER_ERROR:
+            case AsyncEscPosPrint.FINISH_PARSER_ERROR:
                 new AlertDialog.Builder(context)
                     .setTitle("Invalid formatted text")
                     .setMessage("It seems to be an invalid syntax problem.")
                     .show();
                 break;
-            case com.c.setiareload.CetakStruk.Epos.AsyncEscPosPrint.FINISH_ENCODING_ERROR:
+            case AsyncEscPosPrint.FINISH_ENCODING_ERROR:
                 new AlertDialog.Builder(context)
                     .setTitle("Bad selected encoding")
                     .setMessage("The selected encoding character returning an error.")
                     .show();
                 break;
-            case com.c.setiareload.CetakStruk.Epos.AsyncEscPosPrint.FINISH_BARCODE_ERROR:
+            case AsyncEscPosPrint.FINISH_BARCODE_ERROR:
                 new AlertDialog.Builder(context)
                     .setTitle("Invalid barcode")
                     .setMessage("Data send to be converted to barcode or QR code seems to be invalid.")

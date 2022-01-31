@@ -1,11 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="3dp"
+    android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".Fragment.ChatFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textAlignment="center"
+        android:text="Customer Service"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+      android:gravity="center"
+        android:layout_marginBottom="30dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginRight="20sp"
+            android:elevation="2dp"
+            app:cardCornerRadius="5dp">
+
+            <ImageView
+                android:id="@+id/WaCenter"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10sp"
+                android:src="@drawable/whatsapp"
+                />
+        </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+
+        <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:elevation="2dp"
+            app:cardCornerRadius="5dp">
+
+            <ImageView
+                android:id="@+id/teleGramCenter"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10sp"
+                android:src="@drawable/telegram"
+                />
+        </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+    </LinearLayout>
+
+
 
     <!--    <androidx.recyclerview.widget.RecyclerView-->
     <!--        android:id="@+id/messagesList"-->
@@ -16,69 +66,71 @@
     <!--        android:layout_alignParentLeft="true"-->
     <!--        android:layout_alignParentTop="true" />-->
 
-    <ImageView
-        android:id="@+id/pengembangan"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_above="@+id/deskrip"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:padding="90dp"
-        android:src="@drawable/developeimage" />
+<!--    <ImageView-->
+<!--        android:id="@+id/pengembangan"-->
+<!--        android:layout_width="200dp"-->
+<!--        android:layout_height="200dp"-->
+<!--        android:layout_above="@+id/deskrip"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:padding="90dp"-->
+<!--        android:src="@drawable/developeimage" />-->
 
-    <TextView
-        android:id="@+id/deskrip"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/footer"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="56dp"
-        android:gravity="center"
-        android:text="Fitur dalam Pengembangan " />
+<!--    <TextView-->
+<!--        android:id="@+id/deskrip"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_above="@+id/footer"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:layout_marginBottom="56dp"-->
+<!--        android:gravity="center"-->
+<!--        android:text="Fitur dalam Pengembangan " />-->
 
-    <LinearLayout
-        android:id="@+id/footer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        android:padding="10dp">
+<!--    <LinearLayout-->
+<!--        android:id="@+id/footer"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_alignParentLeft="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:background="@color/white"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:padding="10dp">-->
 
-        <EditText
-            android:id="@+id/messageEdit"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30sp"
-            android:layout_weight="1"
-            android:background="@drawable/bg_chat"
-            android:hint="Tulis pesan disini.."
-            android:padding="10dp" />
+<!--        <EditText-->
+<!--            android:id="@+id/messageEdit"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="30sp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@drawable/bg_chat"-->
+<!--            android:hint="Tulis pesan disini.."-->
+<!--            android:padding="10dp" />-->
 
-        <ImageButton
-            android:id="@+id/sendButton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="bottom|right"
-            android:layout_marginHorizontal="5dp"
-            android:layout_marginBottom="54sp"
-            android:background="@drawable/bg_send"
-            android:src="@drawable/ic_baseline_send_24" />
+<!--        <ImageButton-->
+<!--            android:id="@+id/sendButton"-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_gravity="bottom|right"-->
+<!--            android:layout_marginHorizontal="5dp"-->
+<!--            android:layout_marginBottom="54sp"-->
+<!--            android:background="@drawable/bg_send"-->
+<!--            android:src="@drawable/ic_baseline_send_24" />-->
 
-        <ImageButton
-            android:id="@+id/sendButtonn"
+<!--        <ImageButton-->
+<!--            android:id="@+id/sendButtonn"-->
 
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="bottom|right"
-            android:layout_marginBottom="54sp"
-            android:background="@drawable/bg_send"
-            android:src="@drawable/ic_baseline_add_24" />
-    </LinearLayout>
-</RelativeLayout>
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_gravity="bottom|right"-->
+<!--            android:layout_marginBottom="54sp"-->
+<!--            android:background="@drawable/bg_send"-->
+<!--            android:src="@drawable/ic_baseline_add_24" />-->
+<!--    </LinearLayout>-->
+
+
+</LinearLayout>

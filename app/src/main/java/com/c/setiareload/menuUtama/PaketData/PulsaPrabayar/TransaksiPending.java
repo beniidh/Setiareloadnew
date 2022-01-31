@@ -18,7 +18,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.c.setiareload.Api.Api;
+import com.c.setiareload.Api.Value;
 import com.c.setiareload.CetakStruk.DetailTransaksiTruk;
+import com.c.setiareload.CetakStruk.ResponCodeSubPS;
+import com.c.setiareload.CetakStruk.StrukPLNPasca.CetakPlnPasca;
+import com.c.setiareload.CetakStruk.StrukPLNPra.CetakPlnPra;
 import com.c.setiareload.Helper.LoadingPrimer;
 import com.c.setiareload.Helper.RetroClient;
 import com.c.setiareload.Helper.utils;
@@ -31,14 +35,15 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TransaksiPending extends AppCompatActivity {
-    ImageView expand,copySNTransaksi,copyTransaksi;
+    ImageView expand, copySNTransaksi, copyTransaksi;
     LinearLayout linearExpand;
-    TextView KeteranganTP,namaTP,produkTransaksi, noSN, hargaprodukTP, nomorTP, nominalTP, saldokuterpakai, tanggalDetail, waktuDetail, NomorTransaksiDetail, hargatotalDetail;
+    TextView KeteranganTP, namaTP, produkTransaksi, noSN, hargaprodukTP, nomorTP, nominalTP, saldokuterpakai, tanggalDetail, waktuDetail, NomorTransaksiDetail, hargatotalDetail;
     Button tutuppending, cetakStruk;
     ImageView iconTP, iconTPP;
     LoadingPrimer loadingPrimer;
     SwipeRefreshLayout swipeTransaksi;
-    String harga;
+    String productcode;
+    String harga, tanggaldet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,17 +78,72 @@ public class TransaksiPending extends AppCompatActivity {
 
         ChekTransaksi(transaksiid);
         cetakStruk.setOnClickListener(v -> {
+            LoadingPrimer loadingPrimer = new LoadingPrimer(TransaksiPending.this);
+            loadingPrimer.startDialogLoading();
+            String token = "Bearer " + Preference.getToken(getApplicationContext());
+            Api api = RetroClient.getApiServices();
+            Call<ResponCodeSubPS> call = api.getSubCodePS(token, getProductcode());
+            call.enqueue(new Callback<ResponCodeSubPS>() {
+                @Override
+                public void onResponse(Call<ResponCodeSubPS> call, Response<ResponCodeSubPS> response) {
 
-            Intent intent = new Intent(TransaksiPending.this, DetailTransaksiTruk.class);
-            intent.putExtra("nomor", nomorTP.getText().toString());
-            intent.putExtra("produk", produkTransaksi.getText().toString());
-            intent.putExtra("harga", getHarga());
-            intent.putExtra("nama", namaTP.getText().toString());
-            intent.putExtra("tanggal", tanggalDetail.getText().toString());
-            intent.putExtra("waktu", waktuDetail.getText().toString());
-            intent.putExtra("sn", noSN.getText().toString());
-            intent.putExtra("transaksid", NomorTransaksiDetail.getText().toString());
-            startActivity(intent);
+                    if (response.body().getCode().equals("200")) {
+                        String productSub = response.body().getData().getProduct_subcategory().getId();
+                        if (productSub.equals("SUBCATID062802100000024")) {
+
+                            Intent intent = new Intent(TransaksiPending.this, CetakPlnPasca.class);
+                            intent.putExtra("nomor", nomorTP.getText().toString());
+                            intent.putExtra("produk", produkTransaksi.getText().toString());
+                            intent.putExtra("harga", getHarga());
+                            intent.putExtra("nama", namaTP.getText().toString());
+                            intent.putExtra("tanggal", tanggalDetail.getText().toString());
+                            intent.putExtra("waktu", waktuDetail.getText().toString());
+                            intent.putExtra("waktu2", getTanggaldet());
+                            intent.putExtra("sn", noSN.getText().toString());
+                            intent.putExtra("transaksid", NomorTransaksiDetail.getText().toString());
+                            startActivity(intent);
+
+                        } else if (productSub.equals("SUBCATID062802100000023")) {
+
+                            Intent intent = new Intent(TransaksiPending.this, CetakPlnPra.class);
+                            intent.putExtra("nomor", nomorTP.getText().toString());
+                            intent.putExtra("produk", produkTransaksi.getText().toString());
+                            intent.putExtra("harga", getHarga());
+                            intent.putExtra("nama", namaTP.getText().toString());
+                            intent.putExtra("tanggal", tanggalDetail.getText().toString());
+                            intent.putExtra("waktu", waktuDetail.getText().toString());
+                            intent.putExtra("waktu2", getTanggaldet());
+                            intent.putExtra("sn", noSN.getText().toString());
+                            intent.putExtra("transaksid", NomorTransaksiDetail.getText().toString());
+                            startActivity(intent);
+
+                        } else {
+
+                            Intent intent = new Intent(TransaksiPending.this, DetailTransaksiTruk.class);
+                            intent.putExtra("nomor", nomorTP.getText().toString());
+                            intent.putExtra("produk", produkTransaksi.getText().toString());
+                            intent.putExtra("harga", getHarga());
+                            intent.putExtra("nama", namaTP.getText().toString());
+                            intent.putExtra("tanggal", tanggalDetail.getText().toString());
+                            intent.putExtra("waktu", waktuDetail.getText().toString());
+                            intent.putExtra("waktu2", getTanggaldet());
+                            intent.putExtra("sn", noSN.getText().toString());
+                            intent.putExtra("transaksid", NomorTransaksiDetail.getText().toString());
+                            startActivity(intent);
+                        }
+                    } else {
+
+                        Toast.makeText(getApplicationContext(), response.body().getError(), Toast.LENGTH_SHORT).show();
+                    }
+                    loadingPrimer.dismissDialog();
+                }
+
+                @Override
+                public void onFailure(Call<ResponCodeSubPS> call, Throwable t) {
+
+                }
+            });
+
 
         });
 
@@ -92,7 +152,7 @@ public class TransaksiPending extends AppCompatActivity {
             android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getApplicationContext().getSystemService(Context.CLIPBOARD_SERVICE);
             android.content.ClipData clip = android.content.ClipData.newPlainText("Copied Text", noSN.getText().toString());
             clipboard.setPrimaryClip(clip);
-            Toast.makeText(getApplicationContext(),"Copied",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Copied", Toast.LENGTH_SHORT).show();
         });
 
         copyTransaksi.setOnClickListener(v -> {
@@ -100,7 +160,7 @@ public class TransaksiPending extends AppCompatActivity {
             android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getApplicationContext().getSystemService(Context.CLIPBOARD_SERVICE);
             android.content.ClipData clip = android.content.ClipData.newPlainText("Copied Text", NomorTransaksiDetail.getText().toString());
             clipboard.setPrimaryClip(clip);
-            Toast.makeText(getApplicationContext(),"Copied",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Copied", Toast.LENGTH_SHORT).show();
         });
 
         saldokuterpakai = findViewById(R.id.saldokuterpakai);
@@ -152,28 +212,6 @@ public class TransaksiPending extends AppCompatActivity {
 
         });
 
-//        new CountDownTimer(3000, 1000) {
-//
-//            @Override
-//            public void onTick(long millisUntilFinished) {
-//
-//            }
-//
-//            @Override
-//            public void onFinish() {
-//                String code = getIntent().getStringExtra("code");
-//                if (code == null) {
-//                    ChekTransaksi(transaksiid);
-//                } else {
-//
-//                    if (code.equals("saldo")) {
-//
-//                    }
-//
-//                }
-//
-//            }
-//        }.start();
 
     }
 
@@ -218,8 +256,10 @@ public class TransaksiPending extends AppCompatActivity {
                     namaTP.setText(response.body().getData().getCustomer_name());
                     String tahun = create.substring(0, 4);
                     String bulan = utils.convertBulan(create.substring(5, 7));
+                    setProductcode(response.body().getData().getProduct_code());
                     String hari = create.substring(8, 10);
                     String jam = create.substring(11, 16);
+                    setTanggaldet(create.substring(0, 10) + " " + jam);
                     tanggalDetail.setText(hari + " " + bulan + " " + tahun);
                     waktuDetail.setText(jam);
                     produkTransaksi.setText(response.body().getData().getProduct_name());
@@ -230,11 +270,11 @@ public class TransaksiPending extends AppCompatActivity {
                     loadingPrimer.dismissDialog();
 
 
-                } else if(response.body().getCode().equals("401")){
-                    Toast.makeText(getApplicationContext(),"Token telah berakhir,silahkan login ulang",Toast.LENGTH_LONG).show();
+                } else if (response.body().getCode().equals("401")) {
+                    Toast.makeText(getApplicationContext(), "Token telah berakhir,silahkan login ulang", Toast.LENGTH_LONG).show();
 
                     loadingPrimer.dismissDialog();
-                }else {
+                } else {
                     loadingPrimer.dismissDialog();
 
                 }
@@ -255,7 +295,23 @@ public class TransaksiPending extends AppCompatActivity {
         return harga;
     }
 
+    public String getProductcode() {
+        return productcode;
+    }
+
+    public void setProductcode(String productcode) {
+        this.productcode = productcode;
+    }
+
     public void setHarga(String harga) {
         this.harga = harga;
+    }
+
+    public String getTanggaldet() {
+        return tanggaldet;
+    }
+
+    public void setTanggaldet(String tanggaldet) {
+        this.tanggaldet = tanggaldet;
     }
 }

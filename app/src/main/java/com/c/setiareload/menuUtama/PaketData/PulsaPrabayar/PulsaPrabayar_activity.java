@@ -82,6 +82,7 @@ public class PulsaPrabayar_activity extends AppCompatActivity {
                 if (nomorbelipulsa.length() >= 4) {
                     String provider = nomorbelipulsa.getText().toString().substring(0, 4);
                     Intent intent = getIntent();
+                    Preference.setNo(getApplicationContext(),nomorbelipulsa.getText().toString());
                     String id = intent.getStringExtra("id");
                     getSubCategory(provider, id);
 

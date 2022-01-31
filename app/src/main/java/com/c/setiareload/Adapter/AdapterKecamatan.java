@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.c.setiareload.Helper.utils;
+import com.c.setiareload.Modal.ModalKecamatan;
 import com.c.setiareload.Model.ModelKecamatan;
 import com.c.setiareload.R;
 import com.c.setiareload.sharePreference.Preference;
@@ -29,12 +30,14 @@ public class AdapterKecamatan extends RecyclerView.Adapter<AdapterKecamatan.View
     private List<ModelKecamatan> modelKecamatanList;
     private List<ModelKecamatan> modelKecamatanListFull;
     private int selectedPosition = 0;
+    ModalKecamatan modalKecamatan;
     private ArrayList<Integer> selectCheck = new ArrayList<>();
 
-    public AdapterKecamatan(Context context, List<ModelKecamatan> modelKecamatanList) {
+    public AdapterKecamatan(ModalKecamatan modalKecamatan,Context context, List<ModelKecamatan> modelKecamatanList) {
         this.context = context;
         this.modelKecamatanList = modelKecamatanList;
         modelKecamatanListFull = new ArrayList<>(modelKecamatanList);
+        this.modalKecamatan = modalKecamatan;
 
         for (int i = 0; i < modelKecamatanList.size(); i++) {
             selectCheck.add(0);
@@ -54,31 +57,26 @@ public class AdapterKecamatan extends RecyclerView.Adapter<AdapterKecamatan.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
-        ModelKecamatan modalKecamatan = modelKecamatanList.get(position);
-        holder.name.setText(utils.capitalizeFirstLetter(modalKecamatan.getName().toLowerCase()));
+        ModelKecamatan modelKecamatan = modelKecamatanList.get(position);
+        holder.name.setText(utils.capitalizeFirstLetter(modelKecamatan.getName().toLowerCase()));
 
-        if (selectCheck.get(position) == 1) {
-            holder.chekP.setChecked(true);
-        } else {
-            holder.chekP.setChecked(false);
-        }
 
         holder.klik.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for(int k=0; k<selectCheck.size(); k++) {
-                    if(k==position) {
-                        selectCheck.set(k,1);
-                    } else {
-                        selectCheck.set(k,0);
-                    }
-                }
-                notifyDataSetChanged();
+
 
                 Preference.getSharedPreference(context);
-                Preference.setName(context,modalKecamatan.getName());
-                Preference.setID(context,modalKecamatan.getId());
-                Preference.setIDKecamatan(context,modalKecamatan.getId());
+                Preference.setName(context,modelKecamatan.getName());
+                Preference.setID(context,modelKecamatan.getId());
+                Preference.setIDKecamatan(context,modelKecamatan.getId());
+
+                String id =  Preference.getID(v.getContext());
+                String name = Preference.getName(v.getContext());
+
+                modalKecamatan.bottomSheetListenerKecamatan.onButtonClickKecamatan(name,id);
+                Preference.setName(v.getContext(),"");
+                modalKecamatan.dismiss();
 
             }
         });

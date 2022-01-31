@@ -34,7 +34,7 @@ public class ModalGasnegara extends BottomSheetDialogFragment {
     Button pilih,tutup;
     SearchView search;
 
-    private BottomSheetListenerProduksms bottomSheetListenerProduksms;
+    protected BottomSheetListenerProduksms bottomSheetListenerProduksms;
 
     @Nullable
     @Override
@@ -42,7 +42,7 @@ public class ModalGasnegara extends BottomSheetDialogFragment {
         View v = inflater.inflate(R.layout.modal_layout_pajak, container, false);
 
         recyclerView = v.findViewById(R.id.ReyPajak);
-        adapterPajak = new AdapterGas(getContext(), modelPajaks);
+        adapterPajak = new AdapterGas(ModalGasnegara.this,getContext(), modelPajaks);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(adapterPajak);
@@ -55,9 +55,7 @@ public class ModalGasnegara extends BottomSheetDialogFragment {
 
         pilih.setOnClickListener(v1 -> {
 
-
             String nameid[][] = adapterPajak.getNameid();
-
             String namee = nameid[0][0];
             String id = nameid[0][1];
 
@@ -125,7 +123,7 @@ public class ModalGasnegara extends BottomSheetDialogFragment {
             public void onResponse(Call<ResponGasnegara> call, Response<ResponGasnegara> response) {
 
                 modelPajaks = response.body().getData();
-                adapterPajak = new AdapterGas(getContext(), modelPajaks);
+                adapterPajak = new AdapterGas(ModalGasnegara.this,getContext(), modelPajaks);
                 recyclerView.setAdapter(adapterPajak);
 
             }

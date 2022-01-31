@@ -31,16 +31,15 @@
         android:hint="Cari Produk"
         android:background="@drawable/bg_search_modal"
         />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ReyAngsuran"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         tools:listitem="@layout/list"
         android:layout_marginTop="16dp"/>
-
     <LinearLayout
         android:layout_marginTop="10dp"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">

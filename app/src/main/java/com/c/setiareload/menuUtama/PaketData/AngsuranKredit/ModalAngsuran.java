@@ -34,7 +34,7 @@ public class ModalAngsuran extends BottomSheetDialogFragment {
     Button pilih,tutup;
     SearchView search;
 
-    private BottomSheetListenerProduksms bottomSheetListenerProduksms;
+    protected BottomSheetListenerProduksms bottomSheetListenerProduksms;
 
     @Nullable
     @Override
@@ -44,7 +44,7 @@ public class ModalAngsuran extends BottomSheetDialogFragment {
 
 
         recyclerView = v.findViewById(R.id.ReyAngsuran);
-        adapterAngsuran = new AdapterAngsuran(getContext(), modelAngsurans);
+        adapterAngsuran = new AdapterAngsuran(ModalAngsuran.this,getContext(), modelAngsurans);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(adapterAngsuran);
@@ -115,7 +115,7 @@ public class ModalAngsuran extends BottomSheetDialogFragment {
             public void onResponse(Call<ResponAngsuran> call, Response<ResponAngsuran> response) {
 
                 modelAngsurans = response.body().getData();
-                adapterAngsuran = new AdapterAngsuran(getContext(), modelAngsurans);
+                adapterAngsuran = new AdapterAngsuran(ModalAngsuran.this,getContext(), modelAngsurans);
                 recyclerView.setAdapter(adapterAngsuran);
             }
 

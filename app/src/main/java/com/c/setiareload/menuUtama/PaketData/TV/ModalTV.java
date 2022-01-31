@@ -34,7 +34,7 @@ public class ModalTV extends BottomSheetDialogFragment {
     Button pilih, tutup;
     SearchView search;
 
-    private BottomSheetListenerProduksms bottomSheetListenerProduksms;
+    protected BottomSheetListenerProduksms bottomSheetListenerProduksms;
 
     @Nullable
     @Override
@@ -42,7 +42,7 @@ public class ModalTV extends BottomSheetDialogFragment {
         View v = inflater.inflate(R.layout.modal_layout_tv, container, false);
 
         recyclerView = v.findViewById(R.id.ReyTV);
-        adapterTV = new AdapterTV(getContext(), modelTVS);
+        adapterTV = new AdapterTV(ModalTV.this,getContext(), modelTVS);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(adapterTV);
@@ -123,7 +123,7 @@ public class ModalTV extends BottomSheetDialogFragment {
             public void onResponse(Call<ResponTV> call, Response<ResponTV> response) {
 
                 modelTVS = response.body().getData();
-                adapterTV = new AdapterTV(getContext(), modelTVS);
+                adapterTV = new AdapterTV(ModalTV.this,getContext(), modelTVS);
                 recyclerView.setAdapter(adapterTV);
 
             }

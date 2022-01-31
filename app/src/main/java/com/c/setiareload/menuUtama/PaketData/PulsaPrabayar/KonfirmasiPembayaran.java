@@ -37,7 +37,7 @@ public class KonfirmasiPembayaran extends AppCompatActivity {
     RelativeLayout server, saldoku;
     TextView saldokuket1, saldokuket2, saldoserverket1, saldoserverket2;
     @SuppressLint("StaticFieldLeak")
- public static Activity konifirmpembayaran;
+    public static Activity konifirmpembayaran;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

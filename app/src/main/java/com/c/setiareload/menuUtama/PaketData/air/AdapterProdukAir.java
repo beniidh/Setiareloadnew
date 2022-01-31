@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.c.setiareload.Api.Api;
 import com.c.setiareload.Api.Value;
 import com.c.setiareload.Helper.GpsTracker;
+import com.c.setiareload.Helper.LoadingPrimer;
 import com.c.setiareload.Helper.RetroClient;
 import com.c.setiareload.Helper.utils;
 import com.c.setiareload.R;
@@ -36,12 +37,14 @@ public class AdapterProdukAir extends RecyclerView.Adapter<AdapterProdukAir.View
     Context context;
     ArrayList<ResponProdukAir.VoucherData> mVoucherProduk;
     String nomor, type;
+    produkair Produkair;
 
-    public AdapterProdukAir(Context context, ArrayList<ResponProdukAir.VoucherData> mVoucherProduk, String nomor, String type) {
+    public AdapterProdukAir(produkair Produkair,Context context, ArrayList<ResponProdukAir.VoucherData> mVoucherProduk, String nomor, String type) {
         this.context = context;
         this.mVoucherProduk = mVoucherProduk;
         this.nomor = nomor;
         this.type = type;
+        this.Produkair = Produkair;
     }
 
     @NonNull
@@ -60,8 +63,16 @@ public class AdapterProdukAir extends RecyclerView.Adapter<AdapterProdukAir.View
         holder.deskripsi.setText(mVoucherData.getDescription());
         holder.brand.setText(mVoucherData.getBrand());
 
-
+        if (mVoucherData.isGangguan()) {
+            holder.gangguan.setVisibility(View.VISIBLE);
+            holder.linearklik.setEnabled(false);
+        }else {
+            holder.gangguan.setVisibility(View.GONE);
+            holder.linearklik.setEnabled(true);
+        }
         holder.linearklik.setOnClickListener(v -> {
+            LoadingPrimer loadingPrimer = new LoadingPrimer(Produkair);
+            loadingPrimer.startDialogLoading();
 
             GpsTracker gpsTracker = new GpsTracker(context);
 
@@ -95,12 +106,14 @@ public class AdapterProdukAir extends RecyclerView.Adapter<AdapterProdukAir.View
                             DetailTransaksiPasca fragment = new DetailTransaksiPasca(); // you fragment
                             FragmentManager fragmentManager = ((FragmentActivity) v.getContext()).getSupportFragmentManager();
                             fragment.setArguments(bundle);
+                            loadingPrimer.dismissDialog();
                             fragment.show(fragmentManager, "detail");
                         } else {
-
+                            loadingPrimer.dismissDialog();
                             Toast.makeText(context, response.body().getData().getStatus() + " " + response.body().getData().getDescription(), Toast.LENGTH_LONG).show();
                         }
                     } else {
+                        loadingPrimer.dismissDialog();
                         Toast.makeText(context, response.body().getError(), Toast.LENGTH_LONG).show();
                     }
 
@@ -108,11 +121,10 @@ public class AdapterProdukAir extends RecyclerView.Adapter<AdapterProdukAir.View
 
                 @Override
                 public void onFailure(Call<ResponInquiry> call, Throwable t) {
-                    Toast.makeText(context,t.toString(),Toast.LENGTH_SHORT).show();
-
+                    Toast.makeText(context,"Koneksi Tidak stabil,silahkan ulangi",Toast.LENGTH_SHORT).show();
+                    loadingPrimer.dismissDialog();
                 }
             });
-
         });
 
 
@@ -124,7 +136,7 @@ public class AdapterProdukAir extends RecyclerView.Adapter<AdapterProdukAir.View
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name, deskripsi, brand;
+        TextView name, deskripsi, brand,gangguan;
         LinearLayout linearklik;
 
         public ViewHolder(@NonNull View itemView) {
@@ -133,7 +145,7 @@ public class AdapterProdukAir extends RecyclerView.Adapter<AdapterProdukAir.View
             deskripsi = itemView.findViewById(R.id.deskriair);
             linearklik = itemView.findViewById(R.id.linearklikair);
             brand = itemView.findViewById(R.id.brandair);
-
+            gangguan = itemView.findViewById(R.id.gangguan);
 
         }
     }

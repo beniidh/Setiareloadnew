@@ -37,15 +37,12 @@ public class AdapterPulsaPrabayar extends RecyclerView.Adapter<AdapterPulsaPraba
     String nomor;
     String urlicon;
     String type;
-
-
     public AdapterPulsaPrabayar(Context context, ArrayList<MPulsaPra> mPulsaPras, String nomor, String urlicon, String type) {
         this.context = context;
         this.mPulsaPras = mPulsaPras;
         this.nomor = nomor;
         this.urlicon = urlicon;
         this.type = type;
-
     }
 
     @NonNull
@@ -63,11 +60,21 @@ public class AdapterPulsaPrabayar extends RecyclerView.Adapter<AdapterPulsaPraba
         holder.deskripsi.setText(mPulsaPra.getDescription());
         holder.harga.setText(utils.ConvertRP(mPulsaPra.getTotal_price()));
 
+        if (mPulsaPra.isGangguan()) {
+            holder.gangguan.setVisibility(View.VISIBLE);
+            holder.linearklik.setEnabled(false);
+        }else {
+            holder.gangguan.setVisibility(View.GONE);
+            holder.linearklik.setEnabled(true);
+        }
+
         holder.linearklik.setOnClickListener(v -> {
 
             GpsTracker gpsTracker = new GpsTracker(context);
             Api api = RetroClient.getApiServices();
-            MInquiry mInquiry = new MInquiry(mPulsaPra.getCode(), nomor, type, Value.getMacAddress(context), getIPaddress(), getUserAgent(), gpsTracker.getLatitude(), gpsTracker.getLongitude());
+            MInquiry mInquiry = new MInquiry(mPulsaPra.getCode(), nomor, type, Value.getMacAddress(context),
+                    getIPaddress(), getUserAgent(), gpsTracker.getLatitude(),
+                    gpsTracker.getLongitude());
             String token = "Bearer " + Preference.getToken(context);
             Call<ResponInquiry> call = api.CekInquiry(token, mInquiry);
             call.enqueue(new Callback<ResponInquiry>() {
@@ -80,7 +87,7 @@ public class AdapterPulsaPrabayar extends RecyclerView.Adapter<AdapterPulsaPraba
 
                         Bundle bundle = new Bundle();
                         bundle.putString("deskripsi", response.body().getData().getDescription());
-                        bundle.putString("nomorr", nomor);
+                        bundle.putString("nomorr", Preference.getNo(context));
                         bundle.putString("urlicon", urlicon);
                         bundle.putString("kodeproduk", "pulsapra");
                         //transaksi
@@ -108,6 +115,7 @@ public class AdapterPulsaPrabayar extends RecyclerView.Adapter<AdapterPulsaPraba
 
 
         });
+
     }
 
     @Override
@@ -116,7 +124,7 @@ public class AdapterPulsaPrabayar extends RecyclerView.Adapter<AdapterPulsaPraba
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name, deskripsi, harga;
+        TextView name, deskripsi, harga,gangguan;
         LinearLayout linearklik;
 
         public ViewHolder(@NonNull View itemView) {
@@ -125,7 +133,7 @@ public class AdapterPulsaPrabayar extends RecyclerView.Adapter<AdapterPulsaPraba
             deskripsi = itemView.findViewById(R.id.deskripsiprabayar);
             harga = itemView.findViewById(R.id.hargapulsaprabayar);
             linearklik = itemView.findViewById(R.id.linearklik);
-
+            gangguan = itemView.findViewById(R.id.gangguan);
         }
     }
 

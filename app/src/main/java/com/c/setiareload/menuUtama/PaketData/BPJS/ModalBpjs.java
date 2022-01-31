@@ -29,12 +29,12 @@ import retrofit2.Response;
 public class ModalBpjs extends BottomSheetDialogFragment {
 
     RecyclerView recyclerView;
-    com.c.setiareload.menuUtama.PaketData.BPJS.AdapterProdukBPJS adapterProdukBPJS;
+    AdapterProdukBPJS adapterProdukBPJS;
     ArrayList<ResponBPJS.mData> mBpjs = new ArrayList<>();
     Button pilih, tutup;
-    SearchView search;
+    androidx.appcompat.widget.SearchView search;
 
-    private BottomSheetListenerProduksms bottomSheetListenerProduksms;
+    protected BottomSheetListenerProduksms bottomSheetListenerProduksms;
 
     @Nullable
     @Override
@@ -42,7 +42,7 @@ public class ModalBpjs extends BottomSheetDialogFragment {
         View v = inflater.inflate(R.layout.modal_layout_air, container, false);
 
         recyclerView = v.findViewById(R.id.ReyProdukAir);
-        adapterProdukBPJS = new com.c.setiareload.menuUtama.PaketData.BPJS.AdapterProdukBPJS(getContext(), mBpjs);
+        adapterProdukBPJS = new AdapterProdukBPJS(ModalBpjs.this,getContext(), mBpjs);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(adapterProdukBPJS);
@@ -55,7 +55,7 @@ public class ModalBpjs extends BottomSheetDialogFragment {
 
         pilih.setOnClickListener(v1 -> {
 
-            String nameid[][] = com.c.setiareload.menuUtama.PaketData.BPJS.AdapterProdukBPJS.getNameid();
+            String nameid[][] = AdapterProdukBPJS.getNameid();
             String namee = nameid[0][0];
             String id = nameid[0][1];
             bottomSheetListenerProduksms.onButtonClick(namee, id);
@@ -79,7 +79,7 @@ public class ModalBpjs extends BottomSheetDialogFragment {
             }
         });
 
-        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        search.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 return false;
@@ -87,7 +87,6 @@ public class ModalBpjs extends BottomSheetDialogFragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-
                 adapterProdukBPJS.getFilter().filter(newText);
                 return false;
             }
@@ -136,7 +135,7 @@ public class ModalBpjs extends BottomSheetDialogFragment {
                 if (response.body().getCode().equals("200")) {
 
                     mBpjs = response.body().getData();
-                    adapterProdukBPJS = new com.c.setiareload.menuUtama.PaketData.BPJS.AdapterProdukBPJS(getContext(), mBpjs);
+                    adapterProdukBPJS = new AdapterProdukBPJS(ModalBpjs.this,getContext(), mBpjs);
                     recyclerView.setAdapter(adapterProdukBPJS);
 
                 }else {

@@ -40,7 +40,7 @@
             android:layout_height="45dp"
             android:layout_marginTop="15sp"
             android:background="@drawable/bg_edittextlogin"
-            android:hint="Masukan nomor"
+            android:hint="Nomor Tujuan"
             android:inputType="number"
             android:paddingStart="7dp"
             android:paddingEnd="8sp"

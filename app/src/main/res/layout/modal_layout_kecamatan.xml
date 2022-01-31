@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:padding="17dp">
 
@@ -10,40 +10,39 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Pilih Kecamatan"
-        android:textSize="20dp"
-        android:textColor="@color/green"
         android:textAlignment="center"
-        />
+        android:textColor="@color/green"
+        android:textSize="20dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/gray2"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="20dp"
-        />
+        android:background="@color/gray2" />
+
     <SearchView
+        android:id="@+id/search_kecamatan"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:id="@+id/search_kecamatan"
-        android:elevation="1dp"
-        android:paddingStart="5dp"
-        android:hint="Cari Kecamatan"
         android:background="@drawable/bg_search_modal"
-        />
+        android:elevation="1dp"
+        android:hint="Cari Kecamatan"
+        android:paddingStart="5dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ReyKecamatan"
         android:layout_width="match_parent"
-        tools:listitem="@layout/list"
         android:layout_height="250dp"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        tools:listitem="@layout/list" />
 
     <LinearLayout
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:visibility="gone">
 
         <Button
             android:id="@+id/tutupKe"
@@ -52,8 +51,7 @@
             android:layout_weight="1"
             android:background="@drawable/bg_button_login"
             android:text="Tutup"
-            android:textColor="@color/green"
-            />
+            android:textColor="@color/green" />
 
         <Button
             android:id="@+id/pilihKe"
@@ -63,8 +61,7 @@
             android:layout_weight="1"
             android:background="@drawable/bg_button_login2"
             android:text="Pilih"
-            android:textColor="@color/white"
-            />
+            android:textColor="@color/white" />
     </LinearLayout>
 
 

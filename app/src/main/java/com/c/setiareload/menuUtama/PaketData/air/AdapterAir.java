@@ -1,5 +1,6 @@
 package com.c.setiareload.menuUtama.PaketData.air;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,13 +27,15 @@ public class AdapterAir extends RecyclerView.Adapter<AdapterAir.ViewHolder> impl
     ArrayList<MAir> mAirsFulls;
     private int selectedPosition = 0;
     public static   String nameid[][] = new String[1][2];
-    ModalVoucherGame voucher;
+    ModalAir modalAir;
+
     private ArrayList<Integer> selectCheck = new ArrayList<>();
-    public AdapterAir(Context context, ArrayList<MAir> mAirs) {
+
+    public AdapterAir(ModalAir modalAir,Context context, ArrayList<MAir> mAirs) {
         this.context = context;
         this.mAirs = mAirs;
+        this.modalAir = modalAir;
         mAirsFulls = new ArrayList<>(mAirs);
-
         for (int i = 0; i < mAirs.size(); i++) {
             selectCheck.add(0);
         }
@@ -47,35 +51,18 @@ public class AdapterAir extends RecyclerView.Adapter<AdapterAir.ViewHolder> impl
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         MAir mAir = mAirs.get(position);
         holder.name.setText(mAir.getName());
 
-
-        if (selectCheck.get(position) == 1) {
-            holder.chekP.setChecked(true);
-        } else {
-            holder.chekP.setChecked(false);
-        }
-
-        holder.chekP.setOnClickListener(new View.OnClickListener() {
+        holder.linklik.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
-                for(int k=0; k<selectCheck.size(); k++) {
-                    if(k==position) {
-                        selectCheck.set(k,1);
-                    } else {
-                        selectCheck.set(k,0);
-                    }
-                }
-                notifyDataSetChanged();
-                nameid[0][0] = mAir.getName();
-                nameid[0][1] = mAir.getId();
-
-
+                holder.chekP.setChecked(true);
+                modalAir.dismiss();
+                modalAir.bottomSheetListenerProduksms.onButtonClick(mAir.getName(),mAir.getId());
             }
         });
 
@@ -139,13 +126,14 @@ public class AdapterAir extends RecyclerView.Adapter<AdapterAir.ViewHolder> impl
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView name;
         CheckBox chekP;
+        LinearLayout linklik;
 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.nameList);
             chekP = itemView.findViewById(R.id.chekProvinsi);
-//            linklik = itemView.findViewById(R.id.linklik);
+            linklik = itemView.findViewById(R.id.linearKlikk);
 
         }
     }

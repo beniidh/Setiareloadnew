@@ -46,10 +46,7 @@ public class AdapterProdukST extends RecyclerView.Adapter<AdapterProdukST.ViewHo
         this.msmsTelpons = msmsTelpons;
         this.nomor = nomor;
         this.urll = urll;
-
-
     }
-
 
     @NonNull
     @Override
@@ -66,6 +63,15 @@ public class AdapterProdukST extends RecyclerView.Adapter<AdapterProdukST.ViewHo
         holder.name.setText(msmsTelpon.getName());
         holder.deskripsi.setText(msmsTelpon.getDescription());
         holder.harga.setText(utils.ConvertRP(msmsTelpon.getTotal_price()));
+
+        if (msmsTelpon.isGangguan()) {
+            holder.gangguan.setVisibility(View.VISIBLE);
+            holder.linearklik.setEnabled(false);
+        }else {
+            holder.gangguan.setVisibility(View.GONE);
+            holder.linearklik.setEnabled(true);
+        }
+
         holder.linearklik.setOnClickListener(v -> {
 
             GpsTracker gpsTracker = new GpsTracker(context);
@@ -85,7 +91,7 @@ public class AdapterProdukST extends RecyclerView.Adapter<AdapterProdukST.ViewHo
 
                         Bundle bundle = new Bundle();
                         bundle.putString("deskripsi", response.body().getData().getDescription());
-                        bundle.putString("nomorr", nomor);
+                        bundle.putString("nomorr", Preference.getNo(context));
                         bundle.putString("urlicon", urll);
                         bundle.putString("kodeproduk", "pulsapra");
                         //transaksi
@@ -109,8 +115,6 @@ public class AdapterProdukST extends RecyclerView.Adapter<AdapterProdukST.ViewHo
 
                 }
             });
-
-
         });
 
 
@@ -123,7 +127,7 @@ public class AdapterProdukST extends RecyclerView.Adapter<AdapterProdukST.ViewHo
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name, deskripsi, harga;
+        TextView name, deskripsi, harga,gangguan;
         LinearLayout linearklik;
 
         public ViewHolder(@NonNull View itemView) {
@@ -132,6 +136,7 @@ public class AdapterProdukST extends RecyclerView.Adapter<AdapterProdukST.ViewHo
             deskripsi = itemView.findViewById(R.id.deskripsiprabayar);
             harga = itemView.findViewById(R.id.hargapulsaprabayar);
             linearklik = itemView.findViewById(R.id.linearklik);
+            gangguan = itemView.findViewById(R.id.gangguan);
 
         }
     }

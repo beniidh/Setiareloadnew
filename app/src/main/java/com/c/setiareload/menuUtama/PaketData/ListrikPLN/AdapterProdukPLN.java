@@ -59,6 +59,16 @@ public class AdapterProdukPLN extends RecyclerView.Adapter<AdapterProdukPLN.View
         holder.name.setText(modelProdukPln.getName());
         holder.deskripsi.setText(modelProdukPln.getDescription());
         holder.harga.setText(utils.ConvertRP(modelProdukPln.getTotal_price()));
+
+        if (modelProdukPln.isGangguan()) {
+            holder.gangguan.setVisibility(View.VISIBLE);
+            holder.linearklik.setEnabled(false);
+        }else {
+            holder.gangguan.setVisibility(View.GONE);
+            holder.linearklik.setEnabled(true);
+        }
+
+
         holder.linearklik.setOnClickListener(v -> {
 
             GpsTracker gpsTracker = new GpsTracker(context);
@@ -106,6 +116,7 @@ public class AdapterProdukPLN extends RecyclerView.Adapter<AdapterProdukPLN.View
 
 
 
+
     }
 
     @Override
@@ -114,7 +125,7 @@ public class AdapterProdukPLN extends RecyclerView.Adapter<AdapterProdukPLN.View
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name,deskripsi,harga;
+        TextView name,deskripsi,harga,gangguan;
         LinearLayout linearklik;
 
         public ViewHolder(@NonNull View itemView) {
@@ -123,7 +134,7 @@ public class AdapterProdukPLN extends RecyclerView.Adapter<AdapterProdukPLN.View
             deskripsi = itemView.findViewById(R.id.deskripsiplnprabayar);
             harga = itemView.findViewById(R.id.hargaplnprabayar);
             linearklik = itemView.findViewById(R.id.linearklikpln);
-
+            gangguan = itemView.findViewById(R.id.gangguan);
 
 
         }

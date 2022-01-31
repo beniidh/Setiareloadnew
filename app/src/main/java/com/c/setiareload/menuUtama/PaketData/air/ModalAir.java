@@ -32,9 +32,9 @@ public class ModalAir extends BottomSheetDialogFragment {
     AdapterAir adapterAir;
     ArrayList<MAir> mAirs = new ArrayList<>();
     Button pilih,tutup;
-    SearchView search;
+    androidx.appcompat.widget.SearchView search;
 
-    private BottomSheetListenerProduksms bottomSheetListenerProduksms;
+    protected BottomSheetListenerProduksms bottomSheetListenerProduksms;
 
     @Nullable
     @Override
@@ -43,7 +43,7 @@ public class ModalAir extends BottomSheetDialogFragment {
 
 
         recyclerView = v.findViewById(R.id.ReyProdukAir);
-        adapterAir = new AdapterAir(getContext(), mAirs);
+        adapterAir = new AdapterAir(ModalAir.this,getContext(), mAirs);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(adapterAir);
@@ -82,7 +82,7 @@ public class ModalAir extends BottomSheetDialogFragment {
             }
         });
 
-        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        search.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 return false;
@@ -90,13 +90,10 @@ public class ModalAir extends BottomSheetDialogFragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-
                 adapterAir.getFilter().filter(newText);
                 return false;
             }
         });
-
-
 
 
         return v;
@@ -114,22 +111,17 @@ public class ModalAir extends BottomSheetDialogFragment {
         call.enqueue(new Callback<ResponAir>() {
             @Override
             public void onResponse(Call<ResponAir> call, Response<ResponAir> response) {
-
                 mAirs = response.body().getData();
-                adapterAir = new AdapterAir(getContext(), mAirs);
+                adapterAir = new AdapterAir(ModalAir.this,getContext(), mAirs);
                 recyclerView.setAdapter(adapterAir);
-
             }
-
             @Override
             public void onFailure(Call<ResponAir> call, Throwable t) {
                 Toast.makeText(getContext(),"Gagal",Toast.LENGTH_SHORT).show();
-
             }
         });
 
     }
-
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);

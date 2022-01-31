@@ -20,6 +20,7 @@ import com.c.setiareload.Helper.GpsTracker;
 import com.c.setiareload.Helper.LoadingPrimer;
 import com.c.setiareload.Helper.RetroClient;
 import com.c.setiareload.Helper.utils;
+import com.c.setiareload.MarkUP.markupSpesifik.ResponSubProdukDHM;
 import com.c.setiareload.R;
 import com.c.setiareload.sharePreference.Preference;
 
@@ -34,6 +35,7 @@ public class transferBank extends AppCompatActivity implements ModalNamaBank.Bot
     TextView BnamaCustomer, Bhargadasar, Bhargaadmin, BhargaTotal, BhargaTotal2, BkodeBank, Brefid, Nominal2, KeteranganBank;
     LinearLayout LinearTransferBank;
     View lottieAnimasiBank;
+    String codesub;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,9 @@ public class transferBank extends AppCompatActivity implements ModalNamaBank.Bot
         KeteranganBank = findViewById(R.id.KeteranganBank);
         LinearTransferBank = findViewById(R.id.LinearTransferBank);
         lottieAnimasiBank = findViewById(R.id.lottieAnimasiBank);
+
+//        String id = getIntent().getStringExtra("id");
+//        Toast.makeText(getApplicationContext(), id, Toast.LENGTH_SHORT).show();
 
         Norekening = findViewById(R.id.BNomorRekening);
         Nominal = findViewById(R.id.Bnominal);
@@ -94,13 +99,14 @@ public class transferBank extends AppCompatActivity implements ModalNamaBank.Bot
 
             }
         });
-
         pilihBank = findViewById(R.id.pilihBank);
         pilihBank.setOnClickListener(view -> {
+            String idd = getIntent().getStringExtra("id");
 
-//            Bundle bundle = new Bundle();
+            Bundle bundle = new Bundle();
             ModalNamaBank modalNamaBank = new ModalNamaBank();
-//            modalTV.setArguments(bundle);
+            bundle.putString("id", idd);
+            modalNamaBank.setArguments(bundle);
             modalNamaBank.show(getSupportFragmentManager(), "modal nama bank");
 
         });
@@ -179,9 +185,18 @@ public class transferBank extends AppCompatActivity implements ModalNamaBank.Bot
 
     }
 
+
     @Override
     public void onButtonClick(String name, String id) {
         pilihBank.setText(name);
         BkodeBank.setText(id);
+    }
+
+    public String getCodesub() {
+        return codesub;
+    }
+
+    public void setCodesub(String codesub) {
+        this.codesub = codesub;
     }
 }

@@ -27,8 +27,9 @@ public class AdapterBPJS extends RecyclerView.Adapter<AdapterBPJS.ViewHolder> im
     ArrayList<MAir> mAirs;
     ArrayList<MAir> mAirsFulls;
     private int selectedPosition = 0;
+    ModalBpjs modalBpjs;
     public static   String nameid[][] = new String[1][2];
-    ModalVoucherGame voucher;
+
     private ArrayList<Integer> selectCheck = new ArrayList<>();
     public AdapterBPJS(Context context, ArrayList<MAir> mAirs) {
         this.context = context;

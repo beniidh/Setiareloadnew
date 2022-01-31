@@ -34,7 +34,7 @@ public class ModalUangElektronik extends BottomSheetDialogFragment {
     Button pilih,tutup;
     SearchView search;
 
-    private BottomSheetListenerProduksms bottomSheetListenerProduksms;
+    protected BottomSheetListenerProduksms bottomSheetListenerProduksms;
 
     @Nullable
     @Override
@@ -43,7 +43,7 @@ public class ModalUangElektronik extends BottomSheetDialogFragment {
 
 
         recyclerView = v.findViewById(R.id.ReyUangElektronik);
-        adapterUangElektronik = new AdapterUangElektronik(getContext(), mUangElektroniks);
+        adapterUangElektronik = new AdapterUangElektronik(ModalUangElektronik.this,getContext(), mUangElektroniks);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(adapterUangElektronik);
@@ -127,7 +127,7 @@ public class ModalUangElektronik extends BottomSheetDialogFragment {
                 String code = response.body().getCode();
                 if(code.equals("200")){
                     mUangElektroniks = response.body().getData();
-                    adapterUangElektronik = new AdapterUangElektronik(getContext(), mUangElektroniks);
+                    adapterUangElektronik = new AdapterUangElektronik(ModalUangElektronik.this,getContext(), mUangElektroniks);
                     recyclerView.setAdapter(adapterUangElektronik);
                 }else {
 

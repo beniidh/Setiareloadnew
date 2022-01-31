@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.c.setiareload.R;
+import com.c.setiareload.menuUtama.PaketData.TV.ModalTV;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,14 +24,16 @@ public class AdapterUangElektronik extends RecyclerView.Adapter<AdapterUangElekt
     Context context;
     ArrayList<MUangElektronik> mUangElektroniks;
     ArrayList<MUangElektronik> mUangElektronikfulls;
+    ModalUangElektronik modalUangElektronik;
     private int selectedPosition = 0;
     public static   String nameid[][] = new String[1][2];
     private ArrayList<Integer> selectCheck = new ArrayList<>();
 
-    public AdapterUangElektronik(Context context, ArrayList<MUangElektronik> mUangElektroniks) {
+    public AdapterUangElektronik( ModalUangElektronik modalUangElektronik,Context context, ArrayList<MUangElektronik> mUangElektroniks) {
         this.context = context;
         this.mUangElektroniks = mUangElektroniks;
         mUangElektronikfulls = new ArrayList<>(mUangElektroniks);
+        this.modalUangElektronik = modalUangElektronik;
 
         for (int i = 0; i < mUangElektroniks.size(); i++) {
             selectCheck.add(0);
@@ -59,35 +62,17 @@ public class AdapterUangElektronik extends RecyclerView.Adapter<AdapterUangElekt
             holder.chekP.setChecked(false);
         }
 
-        holder.chekP.setOnClickListener(new View.OnClickListener() {
+        holder.linklik.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
-                for(int k=0; k<selectCheck.size(); k++) {
-                    if(k==position) {
-                        selectCheck.set(k,1);
-                    } else {
-                        selectCheck.set(k,0);
-                    }
-                }
-                notifyDataSetChanged();
-                nameid[0][0] = mUangElektronik.getName();
-                nameid[0][1] = mUangElektronik.getId();
+                modalUangElektronik.dismiss();
+                modalUangElektronik.bottomSheetListenerProduksms.onButtonClick(mUangElektronik.getName(),mUangElektronik.getId());
 
 
             }
         });
 
-//        holder.chekP.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//
-//                if(isChecked==true){
-//                    modelKabupatens.get(holder.getAdapterPosition()).setPilihan(true);
-//                }
-//            }
-//        });
 
     }
 
@@ -145,7 +130,7 @@ public class AdapterUangElektronik extends RecyclerView.Adapter<AdapterUangElekt
             super(itemView);
             name = itemView.findViewById(R.id.nameList);
             chekP = itemView.findViewById(R.id.chekProvinsi);
-//            linklik = itemView.findViewById(R.id.linklik);
+            linklik = itemView.findViewById(R.id.linearKlikk);
 
         }
     }

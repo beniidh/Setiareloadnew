@@ -23,7 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class OTPsend extends AppCompatActivity {
 
-    Button sendEmail;
+    Button sendEmail,SendWaOtp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,8 @@ public class OTPsend extends AppCompatActivity {
 
         sendEmail = findViewById(R.id.sendEmailOtp);
         sendEmail.setOnClickListener(v -> intentOTP());
+        SendWaOtp = findViewById(R.id.SendWaOtp);
+        SendWaOtp.setOnClickListener(v -> intentOTPWA());
     }
 
     public void intentOTP() {
@@ -53,6 +55,51 @@ public class OTPsend extends AppCompatActivity {
         Api api = retrofit.create(Api.class);
         MRegisData mRegisData = new MRegisData(user_id, user_code, phone, otp_id);
         Call<MRegisData> call = api.SendOTP(mRegisData);
+        call.enqueue(new Callback<MRegisData>() {
+            @Override
+            public void onResponse(Call<MRegisData> call, Response<MRegisData> response) {
+                String code = response.body().getCode();
+                if (code.equals("200")) {
+                    StyleableToast.makeText(getApplicationContext(), "OTP Telah dikirim", Toast.LENGTH_SHORT, R.style.mytoast).show();
+                    Intent otpInsert = new Intent(OTPsend.this, OTPinsert.class);
+                    otpInsert.putExtra("user_id", user_id);
+                    otpInsert.putExtra("otp_id", otp_id);
+                    Preference.setTrackRegister(getApplicationContext(), "2");
+                    startActivity(otpInsert);
+
+                } else {
+
+                    StyleableToast.makeText(getApplicationContext(), response.body().getError(), Toast.LENGTH_SHORT, R.style.mytoast).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<MRegisData> call, Throwable t) {
+                StyleableToast.makeText(getApplicationContext(), "Periksa Sambungan internet", Toast.LENGTH_SHORT, R.style.mytoast2).show();
+
+            }
+        });
+
+
+    }
+
+    public void intentOTPWA() {
+
+        Preference.getSharedPreference(getBaseContext());
+        String user_id = Preference.getKeyUserId(getBaseContext());
+        String user_code = Preference.getKeyUserCode(getBaseContext());
+        String phone = Preference.getKeyPhone(getBaseContext());
+        String otp_id = Preference.getKeyOtpId(getBaseContext());
+
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Value.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        Api api = retrofit.create(Api.class);
+        MRegisData mRegisData = new MRegisData(user_id, user_code, phone, otp_id);
+        Call<MRegisData> call = api.SendOTPWA(mRegisData);
         call.enqueue(new Callback<MRegisData>() {
             @Override
             public void onResponse(Call<MRegisData> call, Response<MRegisData> response) {

@@ -2,10 +2,15 @@ package com.c.setiareload.menuUtama.PaketData.Paket;
 
 public class MProdukPaketData {
 
-    String id,code,brand,basic_price,name,description,icon,product_category_id,created_at,updated_at,total_price;
+    String id, code, brand, basic_price, name, description, icon, product_category_id, created_at, updated_at, total_price;
+    boolean gangguan;
 
     public String getId() {
         return id;
+    }
+
+    public boolean isGangguan() {
+        return gangguan;
     }
 
     public String getTotal_price() {

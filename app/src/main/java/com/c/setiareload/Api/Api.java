@@ -1,5 +1,6 @@
 package com.c.setiareload.Api;
 
+import com.c.setiareload.CetakStruk.ResponCodeSubPS;
 import com.c.setiareload.CetakStruk.ResponStruk;
 import com.c.setiareload.DaftarHarga.ResponProdukDH;
 import com.c.setiareload.DaftarHarga.ResponProdukList;
@@ -67,6 +68,7 @@ import com.c.setiareload.TagihanKonterSales.ResponTagihanKonterSales;
 import com.c.setiareload.TransferBank.MTransfer;
 import com.c.setiareload.TransferBank.MinquiryBank;
 import com.c.setiareload.TransferBank.ModelNamaBank;
+import com.c.setiareload.TransferBank.ResponBankSub;
 import com.c.setiareload.TransferBank.ResponInquiryBank;
 import com.c.setiareload.TransferBank.ResponTransfer;
 import com.c.setiareload.konter.Mkonter;
@@ -103,6 +105,7 @@ import com.c.setiareload.menuUtama.PaketData.VoucherGame.ResponProdukVoucher;
 import com.c.setiareload.menuUtama.PaketData.VoucherGame.ResponVoucherGame;
 import com.c.setiareload.menuUtama.PaketData.air.ResponAir;
 import com.c.setiareload.menuUtama.PaketData.air.ResponProdukAir;
+import com.c.setiareload.reseller.ResponApproveSaldoR;
 import com.c.setiareload.reseller.ResponSaldoReseller;
 import com.c.setiareload.reseller.mSetujuSaldo;
 
@@ -134,6 +137,10 @@ public interface Api {
     @Headers("Content-Type: application/json")
     @POST("otp-email")
     Call<MRegisData> SendOTP(@Body MRegisData mRegisData);
+
+    @Headers("Content-Type: application/json")
+    @POST("otp-whatsapp")
+    Call<MRegisData> SendOTPWA(@Body MRegisData mRegisData);
 
     @Headers("Content-Type: application/json")
     @POST("otp-verify")
@@ -418,8 +425,9 @@ public interface Api {
 
     @GET("user-paylater/sales")
     Call<ResponTagihanKonterSales> getTagihanSalesKonter(@Header("X-Signature") String token);
-    @GET("all-bank")
-    Call<ModelNamaBank> getNamaBank(@Header("X-Signature") String token);
+
+    @GET("product-us/sub-category/{id}")
+    Call<ModelNamaBank> getNamaBank(@Header("X-Signature") String token,@Path("id")String id);
 
     @GET("history/saldo")
     Call<responRekap> getSaldoRekap(@Header("X-Signature") String token,
@@ -434,6 +442,13 @@ public interface Api {
     @GET("approve-saldoku-reseller")
     Call<ResponSaldoReseller> getSaldoReseller(@Header("X-Signature") String token);
 
-    @POST("approve-paylater-payment")
-    Call<ResponApprove> ApproveSaldokuReselesser(@Header("X-Signature") String token, @Body mSetujuSaldo setuju);
+    @POST("approve-saldoku-reseller")
+    Call<ResponApproveSaldoR> ApproveSaldokuReselesser(@Header("X-Signature") String token, @Body mSetujuSaldo setuju);
+
+    @GET("product/code/{id}")
+    Call<ResponCodeSubPS> getSubCodePS(@Header("X-Signature") String token,@Path("id")String id);
+
+    @GET("product-subcategory/category/{id}")
+    Call<ResponBankSub> getSubCategoryBank(@Header("X-Signature") String token, @Path("id") String id);
+
 }

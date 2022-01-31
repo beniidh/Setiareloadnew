@@ -24,14 +24,15 @@ public class AdapterGas extends RecyclerView.Adapter<AdapterGas.ViewHolder> impl
     ArrayList<ResponGasnegara.mData> modelPajaks;
     ArrayList<ResponGasnegara.mData> modelPajaksfull;
     private int selectedPosition = 0;
+    ModalGasnegara modalGasnegara;
     public static   String nameid[][] = new String[1][2];
     private ArrayList<Integer> selectCheck = new ArrayList<>();
 
-    public AdapterGas(Context context, ArrayList<ResponGasnegara.mData> modelPajaks) {
+    public AdapterGas(ModalGasnegara modalGasnegara,Context context, ArrayList<ResponGasnegara.mData> modelPajaks) {
         this.context = context;
         this.modelPajaks = modelPajaks;
         modelPajaksfull = new ArrayList<>(modelPajaks);
-
+        this.modalGasnegara = modalGasnegara;
         for (int i = 0; i < modelPajaks.size(); i++) {
             selectCheck.add(0);
         }
@@ -52,29 +53,13 @@ public class AdapterGas extends RecyclerView.Adapter<AdapterGas.ViewHolder> impl
         ResponGasnegara.mData modelPajak = modelPajaks.get(position);
         holder.name.setText(modelPajak.getName());
 
-
-        if (selectCheck.get(position) == 1) {
-            holder.chekP.setChecked(true);
-        } else {
-            holder.chekP.setChecked(false);
-        }
-
-        holder.chekP.setOnClickListener(new View.OnClickListener() {
+        holder.linklik.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
-                for(int k=0; k<selectCheck.size(); k++) {
-                    if(k==position) {
-                        selectCheck.set(k,1);
-                    } else {
-                        selectCheck.set(k,0);
-                    }
-                }
-                notifyDataSetChanged();
-                nameid[0][0] = modelPajak.getName();
-                nameid[0][1] = modelPajak.getId();
-
+                holder.chekP.setChecked(true);
+                modalGasnegara.dismiss();
+                modalGasnegara.bottomSheetListenerProduksms.onButtonClick(modelPajak.getName(),modelPajak.getId());
 
             }
         });
@@ -145,7 +130,7 @@ public class AdapterGas extends RecyclerView.Adapter<AdapterGas.ViewHolder> impl
             super(itemView);
             name = itemView.findViewById(R.id.nameList);
             chekP = itemView.findViewById(R.id.chekProvinsi);
-//            linklik = itemView.findViewById(R.id.linklik);
+            linklik = itemView.findViewById(R.id.linearKlikk);
 
         }
     }

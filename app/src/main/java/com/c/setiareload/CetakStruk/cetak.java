@@ -29,6 +29,8 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.StrictMode;
 import android.text.Html;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,9 +44,11 @@ import com.c.setiareload.Helper.RetroClient;
 import com.c.setiareload.R;
 import com.c.setiareload.Respon.ResponProfil;
 import com.c.setiareload.sharePreference.Preference;
+import com.dantsu.escposprinter.EscPosPrinter;
 import com.dantsu.escposprinter.connection.DeviceConnection;
 import com.dantsu.escposprinter.connection.bluetooth.BluetoothConnection;
 import com.dantsu.escposprinter.connection.bluetooth.BluetoothPrintersConnections;
+import com.dantsu.escposprinter.textparser.PrinterTextParserImg;
 import com.muddzdev.styleabletoast.StyleableToast;
 
 import java.io.File;
@@ -52,8 +56,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.DateFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.UUID;
 
 import retrofit2.Call;
@@ -70,6 +77,10 @@ public class cetak extends AppCompatActivity {
     BluetoothDevice mmDevice;
     TextView myLabel;
     String alamat;
+
+    private final Locale locale = new Locale("id", "ID");
+    private final DateFormat df = new SimpleDateFormat("dd-MMM-yyyy hh:mm:ss a", locale);
+    private final NumberFormat nf = NumberFormat.getCurrencyInstance(locale);
 
     // needed for communication to bluetooth device / network
     OutputStream mmOutputStream;
@@ -146,63 +157,12 @@ public class cetak extends AppCompatActivity {
             public void onClick(View v) {
 
                 printBluetooth();
-//                try {
-//                    openBT();
-//                    sendData();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
 
             }
         });
 
         pilihPerangkat.setOnClickListener(v -> {
             browseBluetoothDevice();
-//            ArrayList<String> Serverid = new ArrayList<>();
-//            mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-//            Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
-//
-//            if (pairedDevices.size() > 0) {
-//
-//                for (BluetoothDevice device : pairedDevices) {
-//                    Serverid.add(device.getName());
-//
-//                }
-//            }
-//
-//            if (Serverid.isEmpty()) {
-//                Serverid.add("Tidak ada perangkat");
-//            }
-//
-//
-//            serverpopup = new ListPopupWindow(cetak.this);
-//            ArrayAdapter adapter = new ArrayAdapter<>(cetak.this, R.layout.list_serverid, R.id.tv_serverid, Serverid);
-//            serverpopup.setAnchorView(pilihPerangkat); //this let as set the popup below the EditText
-//            serverpopup.setAdapter(adapter);
-//            serverpopup.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                @Override
-//                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                    pilihPerangkat.setText(Serverid.get(position));//we set the selected element in the EditText
-//
-//                    for (BluetoothDevice device : pairedDevices) {
-//
-//                        if (device.getName().equals(Serverid.get(position))) {
-//                            mmDevice = device;
-//                            break;
-//                        }
-//                    }
-//                    try {
-//                        openBT();
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//
-//
-//                    serverpopup.dismiss();
-//                }
-//            });
-//            serverpopup.show();
-
 
         });
     }
@@ -216,25 +176,6 @@ public class cetak extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-    }
-
-    void openBT() throws IOException {
-        try {
-
-            // Standard SerialPortService ID
-            UUID uuid = UUID.fromString("00001101-0000-1000-8000-00805f9b34fb");
-            mmSocket = mmDevice.createRfcommSocketToServiceRecord(uuid);
-            mmSocket.connect();
-            mmOutputStream = mmSocket.getOutputStream();
-            mmInputStream = mmSocket.getInputStream();
-
-            beginListenForData();
-
-            myLabel.setText("Bluetooth Opened");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     private void beginListenForData() {
@@ -306,41 +247,6 @@ public class cetak extends AppCompatActivity {
         }
     }
 
-    void sendData() throws IOException {
-        try {
-
-            // the text typed by the user
-
-
-            String telepon = idNomorStruk.getText().toString();
-            String produk = idProdukStruk.getText().toString();
-            String saldo = idTotalPembelianStruk.getText().toString();
-            String tanggal = idTanggalStruk.getText().toString();
-            String waktu = idWaktuStruk.getText().toString();
-            String SN = idNomorSNStruk.getText().toString();
-            String nomorTransaksi = idNomorTransaksiStruk.getText().toString();
-
-
-            String pesanstruk = "[C]<u type='double'>" + titlestrukC.getText().toString().toUpperCase() + "</u>\n"
-                    + "----------------------------" + "\n"
-                    + "Telepon " + "---- " + telepon + "\n"
-                    + "Produk " + "---- " + produk + "\n"
-                    + "Harga " + "---- " + saldo + "\n"
-                    + "Tanggal " + "---- " + tanggal + "\n"
-                    + "waktu " + "---- " + waktu + "\n"
-                    + "SN " + "---- " + SN + "\n"
-                    + "Transaksi " + "-- " + nomorTransaksi + "\n"
-                    + "-----------------------------" + "\n" + "\n";
-
-            mmOutputStream.write(pesanstruk.getBytes());
-
-            // tell the user data were sent
-            myLabel.setText("Data sent.");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     public void savepdf() {
 
@@ -555,4 +461,47 @@ public class cetak extends AppCompatActivity {
     public void setAlamat(String alamat) {
         this.alamat = alamat;
     }
+
+    public void doPrint(View view) {
+        SimpleDateFormat format = new SimpleDateFormat("'' yyyy-MM-dd ':' HH:mm:ss");
+        try {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.BLUETOOTH}, cetak.PERMISSION_BLUETOOTH);
+            } else {
+                BluetoothConnection connection = BluetoothPrintersConnections.selectFirstPaired();
+                if (connection != null) {
+                    EscPosPrinter printer = new EscPosPrinter(connection, 203, 48f, 32);
+                    final String text =
+                            "[C]<u><font size='big'>" + titlestrukC.getText().toString() + "</font></u>\n" +
+                                    "[C]\n" +
+                                    "[C]"+"JL "+getAlamat()+"\n"+
+                                    "[C]<u type='double'>" + format.format(new Date()) + "</u>\n" +
+                                    "[C]\n" +
+                                    "[C]<b>STRUK PEMBELIAN<b>\n"+
+                                    "[C]================================\n" +
+                                    "[L]\n" +
+                                    "[L]<b>Nomor</b>[R]" + idNomorStruk.getText().toString() + "\n" +
+//                        "[L]\n" +
+                                    "[L]<b>Nama</b>[R]" + namaTPCC.getText().toString() + "\n" +
+                                    //"[L]\n" +
+                                    "[L]<b>Produk</b>[R]" + idProdukStruk.getText().toString() + "\n" +
+//                        "[L]\n" +
+                                    "[L]<b>Transaksi</b>[R]" + idNomorTransaksiStruk.getText().toString() + "\n" +
+                                    "[C]--------------------------------\n" +
+//                        "[L]\n" +
+                                    "[L]<b>Total Bayar</b>[R]" + idTotalPembelianStruk.getText().toString() + "\n" +
+                                    "[L]\n" +
+                                    "[C]"+"SN "+idNomorSNStruk.getText().toString()+"\n"+
+                                    "[L]\n";
+
+                    printer.printFormattedText(text);
+                } else {
+                    Toast.makeText(this, "No printer was connected!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        } catch (Exception e) {
+            Log.e("APP", "Can't print", e);
+        }
+    }
+
 }

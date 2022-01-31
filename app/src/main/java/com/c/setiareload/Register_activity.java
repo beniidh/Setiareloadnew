@@ -65,6 +65,8 @@ public class Register_activity extends AppCompatActivity implements ModalProvins
             e.printStackTrace();
         }
 
+
+
         getLocation();
         namapemilik = findViewById(R.id.namapemilik);
         email = findViewById(R.id.emailRegis);

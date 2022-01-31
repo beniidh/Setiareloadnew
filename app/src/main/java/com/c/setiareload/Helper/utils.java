@@ -169,11 +169,9 @@ public class utils {
         final byte[] mac_data = sha256_HMAC.doFinal(asciiCs.encode(kata).array());
         String result = "";
         for (final byte element : mac_data) {
-
             result += Integer.toString((element & 0xff) + 0x100, 16).substring(1);
         }
         System.out.println("Result:[" + result + "]");
-
         Toast.makeText(context, "Result:[" + result + "]", Toast.LENGTH_LONG).show();
 
     }

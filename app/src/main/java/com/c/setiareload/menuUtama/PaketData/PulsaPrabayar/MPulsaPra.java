@@ -3,10 +3,15 @@ package com.c.setiareload.menuUtama.PaketData.PulsaPrabayar;
 public class MPulsaPra {
 
     String id,code,name,brand,basic_price,markup_price,status,description,product_subcategory_id,total_price;
-    boolean seller_product_status,multi;
+    Boolean seller_product_status,multi;
+    boolean gangguan;
 
     public String getId() {
         return id;
+    }
+
+    public boolean isGangguan() {
+        return gangguan;
     }
 
     public String getCode() {

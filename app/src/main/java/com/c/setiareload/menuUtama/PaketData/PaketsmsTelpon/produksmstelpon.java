@@ -75,6 +75,7 @@ public class produksmstelpon extends AppCompatActivity implements ModalProdukSms
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (inputnomorsmspulsa.length() >= 7) {
                     tujukaraktersmspulsa.setVisibility(View.INVISIBLE);
+                    Preference.setNo(getApplicationContext(),inputnomorsmspulsa.getText().toString());
                 } else {
                     tujukaraktersmspulsa.setVisibility(View.VISIBLE);
                 }

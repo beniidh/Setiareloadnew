@@ -34,6 +34,7 @@ public class TopupSaldoServer extends AppCompatActivity {
     TextView tagihanSaldoServer,tanggalTagihan,TotalSS,PengembalianSS,limitsaldoserverr;
     RelativeLayout LinearBayartagihan;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,11 +119,16 @@ public class TopupSaldoServer extends AppCompatActivity {
         call.enqueue(new Callback<ResponProfil>() {
             @Override
             public void onResponse(Call<ResponProfil> call, Response<ResponProfil> response) {
-                limitsaldoserverr.setText(utils.ConvertRP(response.body().getData().getWallet().getPaylater_limit()));
+                String limit = response.body().getData().getWallet().getPaylater_limit();
+                if(limit == null){
+                    limitsaldoserverr.setText(utils.ConvertRP("0"));
+                }else {
+                    limitsaldoserverr.setText(utils.ConvertRP(response.body().getData().getWallet().getPaylater_limit()));
+                }
+
 
 
             }
-
             @Override
             public void onFailure(Call<ResponProfil> call, Throwable t) {
                 StyleableToast.makeText(getApplicationContext(), "Periksa Sambungan internet", Toast.LENGTH_SHORT, R.style.mytoast2).show();

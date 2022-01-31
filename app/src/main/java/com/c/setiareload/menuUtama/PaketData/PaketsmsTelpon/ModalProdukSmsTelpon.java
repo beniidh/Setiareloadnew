@@ -30,7 +30,7 @@ public class ModalProdukSmsTelpon extends BottomSheetDialogFragment {
     AdapterProdukSmsTelpon adapterProdukSmsTelpon;
     ArrayList<MProdukPaketSmsT> msmsTelpons = new ArrayList<>();
     Button pilih, tutup;
-    private BottomSheetListenerProduksms bottomSheetListenerProduksms;
+    protected BottomSheetListenerProduksms bottomSheetListenerProduksms;
 
     @Nullable
     @Override
@@ -39,7 +39,7 @@ public class ModalProdukSmsTelpon extends BottomSheetDialogFragment {
 
         getProdukSmsTelpon();
         recyclerView = v.findViewById(R.id.RecycleProduksmsTelpon);
-        adapterProdukSmsTelpon = new AdapterProdukSmsTelpon(getContext(), msmsTelpons);
+        adapterProdukSmsTelpon = new AdapterProdukSmsTelpon(ModalProdukSmsTelpon.this,getContext(), msmsTelpons);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(adapterProdukSmsTelpon);
@@ -93,12 +93,10 @@ public class ModalProdukSmsTelpon extends BottomSheetDialogFragment {
 
                 if (code.equals("200")) {
                     msmsTelpons = response.body().getData();
-                    adapterProdukSmsTelpon = new AdapterProdukSmsTelpon(getContext(), msmsTelpons);
+                    adapterProdukSmsTelpon = new AdapterProdukSmsTelpon(ModalProdukSmsTelpon.this,getContext(), msmsTelpons);
                     recyclerView.setAdapter(adapterProdukSmsTelpon);
                 }
-
             }
-
             @Override
             public void onFailure(Call<ResponProdukSmsTelp> call, Throwable t) {
 

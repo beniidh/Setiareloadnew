@@ -8,9 +8,8 @@ import android.os.Bundle;
 import android.text.Html;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import com.c.setiareload.Api.Value;
+import com.c.setiareload.CetakStruk.StrukPLNPasca.CetakPlnPasca;
 import com.c.setiareload.R;
 
 public class Kodeprodukact extends AppCompatActivity {
@@ -34,8 +33,6 @@ public class Kodeprodukact extends AppCompatActivity {
 
         linkProduk.setOnClickListener(v -> {
 
-            Toast.makeText(getApplicationContext(), Value.getMacAddress(getApplicationContext()),Toast.LENGTH_LONG).show();
-            localBroadcastManager.sendBroadcast(new Intent("kirim"));
 
         });
     }

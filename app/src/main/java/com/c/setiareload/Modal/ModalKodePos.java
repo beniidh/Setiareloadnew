@@ -36,7 +36,7 @@ public class ModalKodePos extends BottomSheetDialogFragment {
     AdapterPost adapterPost;
     ArrayList<ModelPost> modelPosts = new ArrayList<>();
     Button tutup, pilih;
-    private BottomSheetListenerPost bottomSheetListenerPost;
+    public BottomSheetListenerPost bottomSheetListenerPost;
     SearchView searchView;
 
     @Nullable
@@ -44,14 +44,12 @@ public class ModalKodePos extends BottomSheetDialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.modal_layout_post, container, false);
 
-
         recyclerViewPost = v.findViewById(R.id.ReyPost);
         tutup = v.findViewById(R.id.tutupPost);
         pilih = v.findViewById(R.id.pilihPost);
         searchView = v.findViewById(R.id.search_kelurahan);
 
-
-        adapterPost = new AdapterPost(getContext(), modelPosts);
+        adapterPost = new AdapterPost(ModalKodePos.this,getContext(), modelPosts);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerViewPost.setLayoutManager(mLayoutManager);
         recyclerViewPost.setAdapter(adapterPost);
@@ -96,7 +94,7 @@ public class ModalKodePos extends BottomSheetDialogFragment {
             public void onResponse(Call<ResponPost> call, Response<ResponPost> response) {
 
                 modelPosts = (ArrayList<ModelPost>) response.body().getData();
-                adapterPost = new AdapterPost(getContext(), modelPosts);
+                adapterPost = new AdapterPost(ModalKodePos.this,getContext(), modelPosts);
                 recyclerViewPost.setAdapter(adapterPost);
             }
 

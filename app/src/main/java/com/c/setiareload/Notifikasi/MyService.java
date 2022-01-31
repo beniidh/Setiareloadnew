@@ -60,9 +60,7 @@ public class MyService extends FirebaseMessagingService  {
         taskStackBuilder.addNextIntent(intent);
         notificationManager.notify(NotificationID++,MBuilder.build());
 
-
     }
-
 
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
@@ -74,6 +72,7 @@ public class MyService extends FirebaseMessagingService  {
 //        localBroadcastManager.sendBroadcast( new Intent("kirim"));
         Preference.setNilaiNotif(getApplicationContext(),1+ Preference.getNilaiNotif(getApplicationContext()));
         createNotification(judul,isi,getApplicationContext(),new Intent(),trx);
+//        "NOTIF"
 
     }
 

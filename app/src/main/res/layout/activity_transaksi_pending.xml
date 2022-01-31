@@ -379,6 +379,7 @@
                         android:id="@+id/noSN"
                         android:layout_width="0dp"
                         android:layout_weight="0.8"
+                        android:paddingVertical="2dp"
                         android:textAlignment="textEnd"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="7dp"

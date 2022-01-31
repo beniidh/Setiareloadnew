@@ -60,6 +60,15 @@ public class AdapterPaketData extends RecyclerView.Adapter<AdapterPaketData.View
         holder.deskripsi.setText(mPaketDatas.getDescription());
         holder.harga.setText(utils.ConvertRP(mPaketDatas.getTotal_price()));
 
+        if (mPaketDatas.isGangguan()) {
+            holder.gangguan.setVisibility(View.VISIBLE);
+            holder.linearklik.setEnabled(false);
+        }else {
+            holder.gangguan.setVisibility(View.GONE);
+            holder.linearklik.setEnabled(true);
+        }
+
+
         holder.linearklik.setOnClickListener(v -> {
 
             GpsTracker gpsTracker = new GpsTracker(context);
@@ -79,7 +88,7 @@ public class AdapterPaketData extends RecyclerView.Adapter<AdapterPaketData.View
 
                         Bundle bundle = new Bundle();
                         bundle.putString("deskripsi", response.body().getData().getDescription());
-                        bundle.putString("nomorr", nomor);
+                        bundle.putString("nomorr", Preference.getNo(context));
                         bundle.putString("urlicon", url);
                         bundle.putString("kodeproduk", "pulsapra");
                         //transaksi
@@ -114,7 +123,7 @@ public class AdapterPaketData extends RecyclerView.Adapter<AdapterPaketData.View
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name, deskripsi, harga;
+        TextView name, deskripsi, harga,gangguan;
         LinearLayout linearklik;
 
         public ViewHolder(@NonNull View itemView) {
@@ -123,7 +132,7 @@ public class AdapterPaketData extends RecyclerView.Adapter<AdapterPaketData.View
             deskripsi = itemView.findViewById(R.id.deskripsiprabayar);
             harga = itemView.findViewById(R.id.hargapulsaprabayar);
             linearklik = itemView.findViewById(R.id.linearklik);
-
+            gangguan = itemView.findViewById(R.id.gangguan);
         }
     }
 }

@@ -24,19 +24,17 @@ public class AdapterInternet extends RecyclerView.Adapter<AdapterInternet.ViewHo
     ArrayList<ModelInternet> modelInternets;
     ArrayList<ModelInternet> modelInternetsfull;
     private int selectedPosition = 0;
+    ModalInternet modalInternet;
     public static   String nameid[][] = new String[1][2];
     private ArrayList<Integer> selectCheck = new ArrayList<>();
 
-    public AdapterInternet(Context context, ArrayList<ModelInternet> modelInternets) {
+    public AdapterInternet(ModalInternet modalInternet,Context context, ArrayList<ModelInternet> modelInternets) {
         this.context = context;
         this.modelInternets = modelInternets;
         modelInternetsfull = new ArrayList<>(modelInternets);
+        this.modalInternet = modalInternet;
 
-        for (int i = 0; i < modelInternets.size(); i++) {
-            selectCheck.add(0);
-        }
     }
-
 
     @NonNull
     @Override
@@ -53,28 +51,13 @@ public class AdapterInternet extends RecyclerView.Adapter<AdapterInternet.ViewHo
         holder.name.setText(modelInternet.getName());
 
 
-        if (selectCheck.get(position) == 1) {
-            holder.chekP.setChecked(true);
-        } else {
-            holder.chekP.setChecked(false);
-        }
-
-        holder.chekP.setOnClickListener(new View.OnClickListener() {
+        holder.linklik.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
-                for(int k=0; k<selectCheck.size(); k++) {
-                    if(k==position) {
-                        selectCheck.set(k,1);
-                    } else {
-                        selectCheck.set(k,0);
-                    }
-                }
-                notifyDataSetChanged();
-                nameid[0][0] = modelInternet.getName();
-                nameid[0][1] = modelInternet.getId();
-
+                holder.chekP.setChecked(true);
+                modalInternet.dismiss();
+                modalInternet.bottomSheetListenerProduksms.onButtonClick(modelInternet.getName(),modelInternet.getId());
 
             }
         });
@@ -145,7 +128,7 @@ public class AdapterInternet extends RecyclerView.Adapter<AdapterInternet.ViewHo
             super(itemView);
             name = itemView.findViewById(R.id.nameList);
             chekP = itemView.findViewById(R.id.chekProvinsi);
-//            linklik = itemView.findViewById(R.id.linklik);
+            linklik = itemView.findViewById(R.id.linearKlikk);
 
         }
     }

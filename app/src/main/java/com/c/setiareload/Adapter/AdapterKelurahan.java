@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.c.setiareload.Helper.utils;
+import com.c.setiareload.Modal.ModalKelurahan;
 import com.c.setiareload.Model.ModelKelurahan;
 import com.c.setiareload.R;
 import com.c.setiareload.sharePreference.Preference;
@@ -28,14 +29,13 @@ public class AdapterKelurahan extends RecyclerView.Adapter<AdapterKelurahan.View
     private List<ModelKelurahan> modelKelurahansfull;
     private int selectedPosition = 0;
     private ArrayList<Integer> selectCheck = new ArrayList<>();
+    ModalKelurahan modalKelurahan;
 
-
-
-    public AdapterKelurahan(Context context, List<ModelKelurahan> modelKelurahans) {
+    public AdapterKelurahan(ModalKelurahan modalKelurahan,Context context, List<ModelKelurahan> modelKelurahans) {
         this.context = context;
         this.modelKelurahans = modelKelurahans;
         modelKelurahansfull = new ArrayList<>(modelKelurahans);
-
+        this.modalKelurahan = modalKelurahan;
         for (int i = 0; i < modelKelurahans.size(); i++) {
             selectCheck.add(0);
         }
@@ -48,34 +48,26 @@ public class AdapterKelurahan extends RecyclerView.Adapter<AdapterKelurahan.View
         ViewHolder holder = new ViewHolder(v);
         return holder;
     }
+
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         ModelKelurahan modelKelurahan = modelKelurahans.get(position);
         holder.name.setText(utils.capitalizeFirstLetter(modelKelurahan.getName().toLowerCase()));
 
-        if (selectCheck.get(position) == 1) {
-            holder.chekP.setChecked(true);
-        } else {
-            holder.chekP.setChecked(false);
-        }
 
         holder.klik.setOnClickListener(v -> {
 
-            for(int k=0; k<selectCheck.size(); k++) {
-                if(k==position) {
-                    selectCheck.set(k,1);
-                } else {
-                    selectCheck.set(k,0);
-                }
-            }
-            notifyDataSetChanged();
-
             Preference.getSharedPreference(context);
-            Preference.setName(context,modelKelurahan.getName());
-            Preference.setID(context,modelKelurahan.getId());
-            Preference.setIDKelurahan(context,modelKelurahan.getId());
+            Preference.setName(context, modelKelurahan.getName());
+            Preference.setID(context, modelKelurahan.getId());
+            Preference.setIDKelurahan(context, modelKelurahan.getId());
 
+            String id =  Preference.getID(v.getContext());
+            String name = Preference.getName(v.getContext());
+            modalKelurahan.bottomSheetListenerKelurahan.onButtonClickKelurahan(name, id);
+            Preference.setName(v.getContext(),"");
+            modalKelurahan.dismiss();
         });
     }
 

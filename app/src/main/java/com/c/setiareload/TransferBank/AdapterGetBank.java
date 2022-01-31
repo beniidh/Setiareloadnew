@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.c.setiareload.R;
+import com.c.setiareload.sharePreference.Preference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,60 +26,50 @@ public class AdapterGetBank extends RecyclerView.Adapter<AdapterGetBank.ViewHold
     private List<ModelNamaBank.mNama> modelNamaBanks;
     public static String nameid[][] = new String[1][2];
     private List<ModelNamaBank.mNama> modelNamaBanksfull;
-    private int selectedPosition = 0;
+    ModalNamaBank modalNamaBank;
     private ArrayList<Integer> selectCheck = new ArrayList<>();
 
-    public AdapterGetBank(Context context, List<ModelNamaBank.mNama> modelNamaBanks) {
+    public AdapterGetBank(ModalNamaBank modalNamaBank,Context context, List<ModelNamaBank.mNama> modelNamaBanks) {
         this.context = context;
         this.modelNamaBanks = modelNamaBanks;
+        this.modalNamaBank = modalNamaBank;
         modelNamaBanksfull = new ArrayList<>(modelNamaBanks);
-
         for (int i = 0; i < modelNamaBanks.size(); i++) {
             selectCheck.add(0);
         }
-    }
 
-    public AdapterGetBank(Context context) {
-        this.context = context;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.listbank, parent, false);
         ViewHolder holder = new ViewHolder(v);
         return holder;
+
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        if (selectCheck.get(position) == 1) {
-            holder.chekP.setChecked(true);
-        } else {
-            holder.chekP.setChecked(false);
-        }
 
         ModelNamaBank.mNama modelnamabank = modelNamaBanks.get(position);
         holder.name.setText(modelnamabank.getName());
+        if(modelnamabank.isGangguan()){
+            holder.gangguan.setVisibility(View.VISIBLE);
+            holder.klik.setEnabled(false);
+        }else {
+            holder.gangguan.setVisibility(View.GONE);
+            holder.klik.setEnabled(true);
+        }
+
         holder.klik.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
-                for (int k = 0; k < selectCheck.size(); k++) {
-                    if (k == position) {
-                        selectCheck.set(k, 1);
-                    } else {
-                        selectCheck.set(k, 0);
-                    }
-                }
-                notifyDataSetChanged();
-
-                nameid[0][0] = modelnamabank.getName();
-                nameid[0][1] = modelnamabank.getCode();
-
-
+                modalNamaBank.bottomSheetListener.onButtonClick(modelnamabank.getName(),modelnamabank.getCode());
+                Preference.setName(v.getContext(), "");
+                modalNamaBank.dismiss();
             }
 
         });
@@ -99,10 +90,9 @@ public class AdapterGetBank extends RecyclerView.Adapter<AdapterGetBank.ViewHold
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
             List<ModelNamaBank.mNama> filterList = new ArrayList<>();
-
             if (constraint == null || constraint.length() == 0) {
-                filterList.addAll(modelNamaBanksfull);
 
+                filterList.addAll(modelNamaBanksfull);
             } else {
                 String filterPattern = constraint.toString().toLowerCase().trim();
                 for (ModelNamaBank.mNama item : modelNamaBanksfull) {
@@ -131,17 +121,14 @@ public class AdapterGetBank extends RecyclerView.Adapter<AdapterGetBank.ViewHold
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name;
-        CheckBox chekP;
+        TextView name,gangguan;
         LinearLayout klik;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.nameList);
-            chekP = itemView.findViewById(R.id.chekProvinsi);
+            gangguan = itemView.findViewById(R.id.gangguanBank);
             klik = itemView.findViewById(R.id.linearKlikk);
-
-
         }
     }
 

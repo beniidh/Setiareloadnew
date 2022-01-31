@@ -27,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.c.setiareload.Api.Api;
+import com.c.setiareload.Helper.LoadingPrimer;
 import com.c.setiareload.Helper.RetroClient;
 import com.c.setiareload.R;
 import com.c.setiareload.sharePreference.Preference;
@@ -39,7 +40,6 @@ import retrofit2.Response;
 
 public class produkair extends AppCompatActivity implements ModalAir.BottomSheetListenerProduksms{
 
-    private static final String MIMETYPE_TEXT_PLAIN ="TEXT" ;
     EditText inputprodukair, inputnomorair;
     TextView tujukarakterair;
     AdapterProdukAir adapterProdukAir;
@@ -64,7 +64,6 @@ public class produkair extends AppCompatActivity implements ModalAir.BottomSheet
         recyclerView = findViewById(R.id.ReyProdukAAir);
 
 
-
         registerForContextMenu(inputnomorair);
 //        Toast.makeText(getApplicationContext(),String.valueOf(item),Toast.LENGTH_SHORT).show();
 
@@ -76,7 +75,7 @@ public class produkair extends AppCompatActivity implements ModalAir.BottomSheet
 //                return true;
 //            }
 //        });
-        adapterProdukAir = new AdapterProdukAir(getApplicationContext(), mAir, inputnomorair.getText().toString(), type);
+        adapterProdukAir = new AdapterProdukAir(produkair.this,getApplicationContext(), mAir, inputnomorair.getText().toString(), type);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(adapterProdukAir);
@@ -92,27 +91,28 @@ public class produkair extends AppCompatActivity implements ModalAir.BottomSheet
 
                 if (inputnomorair.length() >= 7) {
                     tujukarakterair.setVisibility(View.INVISIBLE);
+
                 } else {
                     tujukarakterair.setVisibility(View.VISIBLE);
                 }
-
+                getProdukAir(getIntent().getStringExtra("id"));
             }
-
             @Override
             public void afterTextChanged(Editable s) {
-                getProdukk(getIdd(),inputnomorair.getText().toString());
+
+
             }
         });
 
-        inputprodukair.setOnClickListener(v -> {
-
-            String id = getIntent().getStringExtra("id");
-            ModalAir modalAir = new ModalAir();
-            Bundle bundle = new Bundle();
-            bundle.putString("id",id);
-            modalAir.setArguments(bundle);
-            modalAir.show(getSupportFragmentManager(), "Modal Air");
-        });
+//        inputprodukair.setOnClickListener(v -> {
+//
+//            String id = getIntent().getStringExtra("id");
+//            ModalAir modalAir = new ModalAir();
+//            Bundle bundle = new Bundle();
+//            bundle.putString("id",id);
+//            modalAir.setArguments(bundle);
+//            modalAir.show(getSupportFragmentManager(), "Modal Air");
+//        });
 
     }
     @Override
@@ -121,7 +121,6 @@ public class produkair extends AppCompatActivity implements ModalAir.BottomSheet
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
-
     }
 
     @Override
@@ -141,8 +140,6 @@ public class produkair extends AppCompatActivity implements ModalAir.BottomSheet
                 }else {
                     inputnomorair.setText(nomor);
                 }
-
-
                 break;
         }
         return true;
@@ -161,13 +158,12 @@ public class produkair extends AppCompatActivity implements ModalAir.BottomSheet
 
     @Override
     public void onButtonClick(String name, String id) {
-        inputprodukair.setText(name);
-        getProdukk(id,inputnomorair.getText().toString());
-        setIdd(id);
+
 
     }
 
-    public void getProdukk(String id,String nomor){
+    public void getProdukk(String id){
+
         String token = "Bearer " + Preference.getToken(getApplicationContext());
         Api api = RetroClient.getApiServices();
         Call<ResponProdukAir> call = api.getProdukAir(token,id);
@@ -178,17 +174,20 @@ public class produkair extends AppCompatActivity implements ModalAir.BottomSheet
                 if (code.equals("200")){
 
                     mAir = response.body().getData();
-                    adapterProdukAir = new AdapterProdukAir(produkair.this, mAir, nomor, type);
+                    adapterProdukAir = new AdapterProdukAir(produkair.this,produkair.this, mAir, inputnomorair.getText().toString(), type);
                     recyclerView.setAdapter(adapterProdukAir);
+
 
                 }else {
 
                     Toast.makeText(getApplicationContext(),response.body().getError(),Toast.LENGTH_LONG).show();
                 }
+
             }
 
             @Override
             public void onFailure(Call<ResponProdukAir> call, Throwable t) {
+                Toast.makeText(getApplicationContext(),t.toString(),Toast.LENGTH_LONG).show();
 
             }
         });
@@ -202,6 +201,26 @@ public class produkair extends AppCompatActivity implements ModalAir.BottomSheet
 
     public void setIdd(String idd) {
         this.idd = idd;
+    }
+
+    private void getProdukAir(String id){
+
+        String token = "Bearer "+ Preference.getToken(getApplicationContext());
+        Api api = RetroClient.getApiServices();
+        Call<ResponAir> call = api.getProdukCategoryAir(token,id);
+        call.enqueue(new Callback<ResponAir>() {
+            @Override
+            public void onResponse(Call<ResponAir> call, Response<ResponAir> response) {
+                String id1 = response.body().getData().get(0).getId();
+                getProdukk(id1);
+
+            }
+            @Override
+            public void onFailure(Call<ResponAir> call, Throwable t) {
+                Toast.makeText(getApplicationContext(),"Gagal",Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
 

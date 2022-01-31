@@ -38,7 +38,7 @@ public class ModalKabupaten extends BottomSheetDialogFragment {
     ArrayList<ModelKabupaten> modelKabupatens = new ArrayList<>();
     Button tutup, pilih;
     AdapterProvinsi adapterProvinsi;
-    private BottomSheetListenerKabupaten bottomSheetListenerKabupaten;
+    public BottomSheetListenerKabupaten bottomSheetListenerKabupaten;
     SearchView searchView;
 
     @Nullable
@@ -52,7 +52,7 @@ public class ModalKabupaten extends BottomSheetDialogFragment {
         searchView = v.findViewById(R.id.search_kabupaten);
 
 
-        adapterKabupaten = new AdapterKabupaten(getContext(), modelKabupatens);
+        adapterKabupaten = new AdapterKabupaten(ModalKabupaten.this,getContext(), modelKabupatens);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerViewK.setLayoutManager(mLayoutManager);
         recyclerViewK.setAdapter(adapterKabupaten);
@@ -93,7 +93,6 @@ public class ModalKabupaten extends BottomSheetDialogFragment {
 
                 String id = Preference.getID(getContext());
                 String name = Preference.getName(getContext());
-
                 bottomSheetListenerKabupaten.onButtonClickKabupaten(name, id);
                 Preference.setName(getContext(),"");
                 dismiss();
@@ -127,7 +126,7 @@ public class ModalKabupaten extends BottomSheetDialogFragment {
             public void onResponse(Call<ResponK> call, Response<ResponK> response) {
 
                 modelKabupatens = (ArrayList<ModelKabupaten>) response.body().getData();
-                adapterKabupaten = new AdapterKabupaten(getContext(), modelKabupatens);
+                adapterKabupaten = new AdapterKabupaten(ModalKabupaten.this,getContext(), modelKabupatens);
                 recyclerViewK.setAdapter(adapterKabupaten);
             }
 

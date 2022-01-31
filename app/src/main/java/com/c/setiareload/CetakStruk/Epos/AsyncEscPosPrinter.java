@@ -16,7 +16,7 @@ public class AsyncEscPosPrinter extends EscPosPrinterSize {
         return this.printerConnection;
     }
 
-    public com.c.setiareload.CetakStruk.Epos.AsyncEscPosPrinter setTextToPrint(String textToPrint) {
+    public  AsyncEscPosPrinter setTextToPrint(String textToPrint) {
         this.textToPrint = textToPrint;
         return this;
     }

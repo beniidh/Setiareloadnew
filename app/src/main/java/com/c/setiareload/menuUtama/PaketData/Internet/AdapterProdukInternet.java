@@ -60,6 +60,15 @@ public class AdapterProdukInternet extends RecyclerView.Adapter<AdapterProdukInt
         holder.deskripsi.setText(mVoucherData.getDescription());
         holder.brand.setText(mVoucherData.getBrand());
 
+        if (mVoucherData.isGangguan()) {
+            holder.gangguan.setVisibility(View.VISIBLE);
+            holder.linearklik.setEnabled(false);
+        }else {
+            holder.gangguan.setVisibility(View.GONE);
+            holder.linearklik.setEnabled(true);
+        }
+
+
 
         holder.linearklik.setOnClickListener(v -> {
 
@@ -124,7 +133,7 @@ public class AdapterProdukInternet extends RecyclerView.Adapter<AdapterProdukInt
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name, deskripsi,brand;
+        TextView name, deskripsi,brand,gangguan;
         LinearLayout linearklik;
 
         public ViewHolder(@NonNull View itemView) {
@@ -133,7 +142,7 @@ public class AdapterProdukInternet extends RecyclerView.Adapter<AdapterProdukInt
             deskripsi = itemView.findViewById(R.id.deskriair);
             linearklik = itemView.findViewById(R.id.linearklikair);
             brand =itemView.findViewById(R.id.brandair);
-
+            gangguan = itemView.findViewById(R.id.gangguan);
 
         }
     }

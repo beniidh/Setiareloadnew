@@ -6,7 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.SearchView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,7 +35,8 @@ public class ModalNamaBank extends BottomSheetDialogFragment {
     ArrayList<ModelNamaBank.mNama> modelnamabank = new ArrayList<>();
     Button tutup, pilih;
     SearchView searchbank;
-    private BottomSheetListener bottomSheetListener;
+    protected BottomSheetListener bottomSheetListener;
+    String codesub;
 
     @Nullable
     @Override
@@ -40,13 +44,12 @@ public class ModalNamaBank extends BottomSheetDialogFragment {
         View v = inflater.inflate(R.layout.modal_layout_pilihbank, container, false);
         recyclerViewP = v.findViewById(R.id.ReyBank);
 
-        adapterGetBank = new AdapterGetBank(getContext(), modelnamabank);
+        adapterGetBank = new AdapterGetBank(ModalNamaBank.this,getContext(), modelnamabank);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerViewP.setLayoutManager(mLayoutManager);
         recyclerViewP.setAdapter(adapterGetBank);
 
-        getNamaBank();
-
+        getBankSub(getArguments().getString("id"));
         tutup = v.findViewById(R.id.tutupP);
         pilih = v.findViewById(R.id.pilihP);
 
@@ -61,9 +64,7 @@ public class ModalNamaBank extends BottomSheetDialogFragment {
             @Override
             public void onClick(View v) {
 
-
                 String nameid[][] = adapterGetBank.getNameid();
-
                 String namee = nameid[0][0];
                 String id = nameid[0][1];
 
@@ -96,33 +97,31 @@ public class ModalNamaBank extends BottomSheetDialogFragment {
             }
         });
 
-
         return v;
-
-
     }
 
-    private void getNamaBank() {
+    private void getNamaBank(String id) {
 
         Api api = RetroClient.getApiServices();
-        Call<ModelNamaBank> call = api.getNamaBank("Bearer "+Preference.getToken(getContext()));
+        Call<ModelNamaBank> call = api.getNamaBank("Bearer " + Preference.getToken(getContext()),id);
         call.enqueue(new Callback<ModelNamaBank>() {
             @Override
             public void onResponse(Call<ModelNamaBank> call, Response<ModelNamaBank> response) {
                 String code = response.body().getCode();
-
-                modelnamabank = response.body().getData();
-                adapterGetBank = new AdapterGetBank(getContext(), modelnamabank);
-                recyclerViewP.setAdapter(adapterGetBank);
+                if (code.equals("200")) {
+                    modelnamabank = response.body().getData();
+                    adapterGetBank = new AdapterGetBank(ModalNamaBank.this,getContext(), modelnamabank);
+                    recyclerViewP.setAdapter(adapterGetBank);
+                } else {
+                    Toast.makeText(getContext(), response.body().getError(), Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
             public void onFailure(Call<ModelNamaBank> call, Throwable t) {
-
+                Toast.makeText(getContext(), t.toString(), Toast.LENGTH_SHORT).show();
             }
         });
-
-
     }
 
     public interface BottomSheetListener {
@@ -137,5 +136,38 @@ public class ModalNamaBank extends BottomSheetDialogFragment {
         } catch (ClassCastException e) {
             throw new ClassCastException(context.toString() + "must implement bottomsheet Listener");
         }
+    }
+
+    private void getBankSub(String id) {
+        String token = "Bearer " + Preference.getToken(getContext());
+        Api api = RetroClient.getApiServices();
+        Call<ResponBankSub> call = api.getSubCategoryBank(token, id);
+        call.enqueue(new Callback<ResponBankSub>() {
+            @Override
+            public void onResponse(Call<ResponBankSub> call, Response<ResponBankSub> response) {
+                String code = response.body().getCode();
+
+                if (code.equals("200")) {
+//                    Preference.setSubBank(getContext(),);
+                    getNamaBank(response.body().getData().get(0).getId());
+                } else {
+                    Toast.makeText(getContext(), response.body().getError(), Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponBankSub> call, Throwable t) {
+                Toast.makeText(getContext(), t.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public String getCodesub() {
+        return codesub;
+    }
+
+    public void setCodesub(String codesub) {
+        this.codesub = codesub;
     }
 }

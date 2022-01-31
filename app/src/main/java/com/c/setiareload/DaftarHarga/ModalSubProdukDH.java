@@ -32,7 +32,7 @@ public class ModalSubProdukDH extends BottomSheetDialogFragment {
     AdapterSubProdukDH adapterSubProdukDH;
     ArrayList<ResponSubProdukDH.mData> mData = new ArrayList<>();
     Button tutup, pilih;
-    private BottomSheetListenerProdukSub bottomSheetListenerProduksub;
+    protected BottomSheetListenerProdukSub bottomSheetListenerProduksub;
     SearchView searchView;
 
     @Nullable
@@ -46,7 +46,7 @@ public class ModalSubProdukDH extends BottomSheetDialogFragment {
         searchView = v.findViewById(R.id.search_DH);
 
 
-        adapterSubProdukDH = new AdapterSubProdukDH(getContext(), mData);
+        adapterSubProdukDH = new AdapterSubProdukDH(ModalSubProdukDH.this,getContext(), mData);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerViewK.setLayoutManager(mLayoutManager);
         recyclerViewK.setAdapter(adapterSubProdukDH);
@@ -109,12 +109,10 @@ public class ModalSubProdukDH extends BottomSheetDialogFragment {
         call.enqueue(new Callback<ResponSubProdukDH>() {
             @Override
             public void onResponse(Call<ResponSubProdukDH> call, Response<ResponSubProdukDH> response) {
-
                 mData = response.body().getData();
-                adapterSubProdukDH = new AdapterSubProdukDH(getContext(), mData);
+                adapterSubProdukDH = new AdapterSubProdukDH(ModalSubProdukDH.this,getContext(), mData);
                 recyclerViewK.setAdapter(adapterSubProdukDH);
             }
-
             @Override
             public void onFailure(Call<ResponSubProdukDH> call, Throwable t) {
 

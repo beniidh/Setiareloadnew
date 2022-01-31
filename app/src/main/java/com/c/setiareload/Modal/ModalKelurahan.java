@@ -35,7 +35,7 @@ public class ModalKelurahan extends BottomSheetDialogFragment {
     AdapterKelurahan adapterKelurahan;
     ArrayList<ModelKelurahan> modelKelurahans = new ArrayList<>();
     Button tutup, pilih;
-    private BottomSheetListenerKelurahan bottomSheetListenerKelurahan;
+    public BottomSheetListenerKelurahan bottomSheetListenerKelurahan;
     SearchView searchView;
 
     @Nullable
@@ -49,7 +49,7 @@ public class ModalKelurahan extends BottomSheetDialogFragment {
         searchView = v.findViewById(R.id.search_kelurahan);
 
 
-        adapterKelurahan = new AdapterKelurahan(getContext(), modelKelurahans);
+        adapterKelurahan = new AdapterKelurahan(ModalKelurahan.this,getContext(), modelKelurahans);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerViewKel.setLayoutManager(mLayoutManager);
         recyclerViewKel.setAdapter(adapterKelurahan);
@@ -117,7 +117,7 @@ public class ModalKelurahan extends BottomSheetDialogFragment {
             public void onResponse(Call<Responkel> call, Response<Responkel> response) {
 
                 modelKelurahans = (ArrayList<ModelKelurahan>) response.body().getData();
-                adapterKelurahan = new AdapterKelurahan(getContext(), modelKelurahans);
+                adapterKelurahan = new AdapterKelurahan(ModalKelurahan.this,getContext(), modelKelurahans);
                 recyclerViewKel.setAdapter(adapterKelurahan);
             }
 

@@ -8,7 +8,6 @@
     android:orientation="vertical"
     tools:context=".menuUtama.PaketData.Internet.InternetProduk">
 
-
     <LinearLayout
         android:id="@+id/linearLayout6"
         android:layout_width="match_parent"
@@ -42,7 +41,6 @@
             android:paddingStart="7dp"
             android:textSize="17dp" />
 
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -59,7 +57,7 @@
             android:layout_height="45dp"
             android:layout_marginTop="15sp"
             android:background="@drawable/bg_edittextlogin"
-            android:hint="Masukan nomor"
+            android:hint="Nomor Tujuan"
             android:inputType="number"
             android:paddingEnd="8sp"
             android:paddingStart="7dp"
@@ -75,7 +73,6 @@
             android:textColor="@color/green"
             android:textSize="12sp"
             android:textStyle="bold" />
-
 
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView

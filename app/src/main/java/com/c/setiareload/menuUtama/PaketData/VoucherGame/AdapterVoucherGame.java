@@ -47,36 +47,13 @@ public class AdapterVoucherGame extends RecyclerView.Adapter<AdapterVoucherGame.
         MVoucherGame modalVoucherGame = mVoucherGames.get(position);
         holder.name.setText(modalVoucherGame.getName());
 
-//        holder.linklik.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                voucher.dismiss();
-//            }
-//        });
-
-
-        if (selectCheck.get(position) == 1) {
-            holder.chekP.setChecked(true);
-        } else {
-            holder.chekP.setChecked(false);
-        }
-
-        holder.chekP.setOnClickListener(new View.OnClickListener() {
+        holder.linklik.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-                for(int k=0; k<selectCheck.size(); k++) {
-                    if(k==position) {
-                        selectCheck.set(k,1);
-                    } else {
-                        selectCheck.set(k,0);
-                    }
-                }
-                notifyDataSetChanged();
-                nameid[0][0] = modalVoucherGame.getName();
-                nameid[0][1] = modalVoucherGame.getId();
-
+             voucher.dismiss();
+             voucher.bottomSheetListenerVoucherGame.onButtonClickKabupaten(modalVoucherGame.getName(),modalVoucherGame.getId());
 
             }
         });
@@ -108,7 +85,7 @@ public class AdapterVoucherGame extends RecyclerView.Adapter<AdapterVoucherGame.
             super(itemView);
             name = itemView.findViewById(R.id.nameList);
             chekP = itemView.findViewById(R.id.chekProvinsi);
-//            linklik = itemView.findViewById(R.id.linklik);
+            linklik = itemView.findViewById(R.id.LinearKlikk);
 
         }
     }

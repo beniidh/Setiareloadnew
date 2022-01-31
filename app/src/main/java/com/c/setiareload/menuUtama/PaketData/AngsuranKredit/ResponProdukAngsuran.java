@@ -27,6 +27,12 @@ public class ResponProdukAngsuran {
 
         String id,code,name,brand,basic_price,description,product_subcategory_id,updated_at;
 
+        Boolean gangguan;
+
+        public Boolean getGangguan() {
+            return gangguan;
+        }
+
         public String getId() {
             return id;
         }

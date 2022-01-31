@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.c.setiareload.Helper.utils;
+import com.c.setiareload.Modal.ModalProvinsi;
 import com.c.setiareload.Model.ModelProvinsi;
 import com.c.setiareload.R;
 
@@ -28,21 +29,19 @@ public class AdapterProvinsi extends RecyclerView.Adapter<AdapterProvinsi.ViewHo
     public static String nameid[][] = new String[1][2];
     private List<ModelProvinsi> modelProvinsisfull;
     private int selectedPosition = 0;
+    ModalProvinsi modalProvinsi;
     private ArrayList<Integer> selectCheck = new ArrayList<>();
 
-    public AdapterProvinsi(Context context, List<ModelProvinsi> modelProvinsiList) {
+    public AdapterProvinsi(ModalProvinsi modalProvinsi,Context context, List<ModelProvinsi> modelProvinsiList) {
         this.context = context;
         this.modelProvinsiList = modelProvinsiList;
         modelProvinsisfull = new ArrayList<>(modelProvinsiList);
-
+        this.modalProvinsi = modalProvinsi;
         for (int i = 0; i < modelProvinsiList.size(); i++) {
             selectCheck.add(0);
         }
     }
 
-    public AdapterProvinsi(Context context) {
-        this.context = context;
-    }
 
     @NonNull
     @Override
@@ -64,18 +63,10 @@ public class AdapterProvinsi extends RecyclerView.Adapter<AdapterProvinsi.ViewHo
         ModelProvinsi modelProvinsi = modelProvinsiList.get(position);
         holder.name.setText(utils.capitalizeFirstLetter(modelProvinsi.getName().toLowerCase()));
         holder.klik.setOnClickListener(v -> {
-            for (int k = 0; k < selectCheck.size(); k++) {
-                if (k == position) {
-                    selectCheck.set(k, 1);
-                } else {
-                    selectCheck.set(k, 0);
-                }
-            }
-            notifyDataSetChanged();
-//                obj[0].setData("hallo","h");
-            nameid[0][0] = modelProvinsi.getName();
-            nameid[0][1] = modelProvinsi.getId();
 
+
+            modalProvinsi.dismiss();
+            modalProvinsi.bottomSheetListener.onButtonClick( modelProvinsi.getName(),modelProvinsi.getId());
 
         });
 

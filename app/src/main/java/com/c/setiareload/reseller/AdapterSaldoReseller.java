@@ -1,6 +1,8 @@
 package com.c.setiareload.reseller;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +19,7 @@ import com.c.setiareload.TagihanKonterSales.ResponTagihanKonterSales;
 
 import java.util.ArrayList;
 
-public class AdapterSaldoReseller extends RecyclerView.Adapter<AdapterSaldoReseller.ViewHolder>{
+public class AdapterSaldoReseller extends RecyclerView.Adapter<AdapterSaldoReseller.ViewHolder> {
 
     Context context;
     ArrayList<ResponSaldoReseller.Data> mData;
@@ -27,7 +29,6 @@ public class AdapterSaldoReseller extends RecyclerView.Adapter<AdapterSaldoResel
         this.mData = mData;
     }
 
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -35,19 +36,30 @@ public class AdapterSaldoReseller extends RecyclerView.Adapter<AdapterSaldoResel
         AdapterSaldoReseller.ViewHolder holder = new AdapterSaldoReseller.ViewHolder(v);
         return holder;
     }
+
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ResponSaldoReseller.Data mData1 = mData.get(position);
         holder.nominal.setText(utils.ConvertRP(mData1.getAmount()));
         holder.nama.setText(mData1.getUser().getStore_name());
-        holder.tanggal.setText(mData1.getUpdated_at().substring(0,10));
+        holder.tanggal.setText(mData1.getUpdated_at().substring(0, 10));
         holder.status.setText(mData1.getStatus());
+        if (mData1.getStatus().equals("PENDING")) {
+            holder.status.setBackgroundColor(Color.rgb(168, 168, 50));
+        } else if (mData1.getStatus().equals("REJECT")) {
+            holder.status.setBackgroundColor(Color.rgb(168, 50, 50));
+        } else {
+            holder.status.setBackgroundColor(Color.rgb(48, 230, 148));
+        }
 
         holder.itemView.setOnClickListener(view -> {
+            Bundle bundle = new Bundle();
             ModalApprove modalApprove = new ModalApprove();
+            bundle.putString("ID", mData1.getId());
+            bundle.putString("Harga", mData1.getAmount());
             FragmentManager fragmentManager = ((FragmentActivity) view.getContext()).getSupportFragmentManager();
+            modalApprove.setArguments(bundle);
             modalApprove.show(fragmentManager, "detail");
-
 
         });
 
@@ -58,9 +70,9 @@ public class AdapterSaldoReseller extends RecyclerView.Adapter<AdapterSaldoResel
         return mData.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView nominal,tanggal,nama,status;
+        TextView nominal, tanggal, nama, status;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

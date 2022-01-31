@@ -65,11 +65,7 @@ public class pin_transaksi extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pin_transaksi);
-        getSupportActionBar().setTitle(Html.fromHtml("<font color='#4AB84E'><b>PIN<b></font>"));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
-
-
+        getSupportActionBar().hide();
         noOfDigits = 0;
         actualPassword = getResources().getString(R.string.password_actual);
         handler = new Handler();
@@ -378,16 +374,7 @@ public class pin_transaksi extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
-    }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
 
     public void TransaksiPulsaPra(String pin) {
 

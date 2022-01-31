@@ -111,6 +111,7 @@ public class Login_Activity extends AppCompatActivity {
                         Preference.getSharedPreference(getApplicationContext());
                         Preference.setkredentials(getApplicationContext(),numberphone.getText().toString());
                         startActivity(intent);
+                        finish();
                         numberphone.setText("");
                     }else {
                         StyleableToast.makeText(getApplicationContext(), "Nomor belum terdaftar", Toast.LENGTH_SHORT, R.style.mytoast2).show();

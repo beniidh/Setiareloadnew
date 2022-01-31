@@ -25,17 +25,19 @@ public class AdapterProdukBPJS extends RecyclerView.Adapter<AdapterProdukBPJS.Vi
     ArrayList<ResponBPJS.mData> mBpjs;
     ArrayList<ResponBPJS.mData> mBpjsFulls;
     private int selectedPosition = 0;
+    ModalBpjs modalBpjs;
     public static   String nameid[][] = new String[1][2];
     private ArrayList<Integer> selectCheck = new ArrayList<>();
-    public AdapterProdukBPJS(Context context, ArrayList<ResponBPJS.mData> mBpjs) {
+
+    public AdapterProdukBPJS( ModalBpjs modalBpjs,Context context, ArrayList<ResponBPJS.mData> mBpjs) {
         this.context = context;
         this.mBpjs = mBpjs;
+        this.modalBpjs = modalBpjs;
         mBpjsFulls = new ArrayList<>(mBpjs);
         for (int i = 0; i < mBpjs.size(); i++) {
             selectCheck.add(0);
         }
     }
-
 
     @NonNull
     @Override
@@ -52,42 +54,13 @@ public class AdapterProdukBPJS extends RecyclerView.Adapter<AdapterProdukBPJS.Vi
         holder.name.setText(mbpjs.getName());
 
 
-        if (selectCheck.get(position) == 1) {
-            holder.chekP.setChecked(true);
-        } else {
-            holder.chekP.setChecked(false);
-        }
-
         holder.klik.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-                for(int k=0; k<selectCheck.size(); k++) {
-                    if(k==position) {
-                        selectCheck.set(k,1);
-                    } else {
-                        selectCheck.set(k,0);
-                    }
-                }
-                notifyDataSetChanged();
-                nameid[0][0] = mbpjs.getName();
-                nameid[0][1] = mbpjs.getCode();
-
-
+              modalBpjs.bottomSheetListenerProduksms.onButtonClick(mbpjs.getName(),mbpjs.getCode());
+              modalBpjs.dismiss();
             }
         });
-
-//        holder.chekP.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//
-//                if(isChecked==true){
-//                    modelKabupatens.get(holder.getAdapterPosition()).setPilihan(true);
-//                }
-//            }
-//        });
-
     }
 
     @Override
@@ -130,17 +103,13 @@ public class AdapterProdukBPJS extends RecyclerView.Adapter<AdapterProdukBPJS.Vi
             mBpjs.clear();
             mBpjs.addAll((List) results.values);
             notifyDataSetChanged();
-
         }
     };
-
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView name;
         CheckBox chekP;
         LinearLayout klik;
-
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.nameList);

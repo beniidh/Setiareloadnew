@@ -23,6 +23,27 @@ public class Preference {
         editor.apply();
     }
 
+    public static void setNo(Context context, String no){
+        SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.putString("no", no);
+        editor.apply();
+    }
+    public static String getNo(Context context){
+        return getSharedPreference(context).getString("no","");
+    }
+
+    public static void setSubBank(Context context, String id){
+        SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.putString("sbk", id);
+        editor.apply();
+    }
+
+    public static String getSubBank(Context context){
+        return getSharedPreference(context).getString("sbk","");
+    }
+
+
+
     public static void setName(Context context, String name){
         SharedPreferences.Editor editor = getSharedPreference(context).edit();
         editor.putString("nameM", name);
@@ -218,7 +239,5 @@ public class Preference {
     public static String getTrackRegister(Context context){
         return getSharedPreference(context).getString("track","");
     }
-
-
 
 }

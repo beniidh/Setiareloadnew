@@ -3,7 +3,7 @@ package com.c.setiareload.menuUtama.PaketData.VoucherGame;
 import java.util.ArrayList;
 
 public class ResponProdukVoucher {
-    String code,error,message;
+    String code, error, message;
 
     ArrayList<VoucherData> data;
 
@@ -23,12 +23,17 @@ public class ResponProdukVoucher {
         return message;
     }
 
-    public class VoucherData{
+    public class VoucherData {
 
-        String id,code,name,brand,basic_price,description,product_subcategory_id,updated_at,total_price;
+        String id, code, name, brand, basic_price, description, product_subcategory_id, updated_at, total_price;
+        boolean gangguan;
 
         public String getId() {
             return id;
+        }
+
+        public boolean isGangguan() {
+            return gangguan;
         }
 
         public String getTotal_price() {

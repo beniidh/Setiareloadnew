@@ -123,6 +123,7 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
 
             Intent intent = new Intent(drawer_activity.this, Notifikasi_Activity.class);
             startActivity(intent);
+            Preference.setNilaiNotif(getApplicationContext(),0);
             notifikasi.setBadgeValue(0);
 
         });
@@ -221,19 +222,6 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
         });
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        LocalBroadcastManager.getInstance(this).registerReceiver((broadcastReceiver),
-                new IntentFilter("kirim"));
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(broadcastReceiver);
-    }
 
 
     @Override
@@ -242,15 +230,6 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-
-    private final BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-
-            notifikasi.setBadgeValue(1);
-
-        }
-    };
 
 
     @Override

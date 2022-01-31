@@ -26,17 +26,19 @@ public class ModelNamaBank {
     public class mNama{
 
         String id,code,name;
+        boolean gangguan;
 
         public String getId() {
             return id;
         }
-
         public String getCode() {
             return code;
         }
-
         public String getName() {
             return name;
+        }
+        public boolean isGangguan() {
+            return gangguan;
         }
     }
 }

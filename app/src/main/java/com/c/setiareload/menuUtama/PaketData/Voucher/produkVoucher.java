@@ -68,6 +68,8 @@ public class produkVoucher extends AppCompatActivity implements ModalVoucher.Bot
 
                 if(inputnomorvoucher.length() >= 7){
                     tujukaraktervoucher.setVisibility(View.INVISIBLE);
+                    Preference.setNo(getApplicationContext(),inputnomorvoucher.getText().toString());
+
                 } else {
 
                     tujukaraktervoucher.setVisibility(View.VISIBLE);

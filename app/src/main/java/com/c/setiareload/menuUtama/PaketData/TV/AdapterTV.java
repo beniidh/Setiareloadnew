@@ -26,11 +26,13 @@ public class AdapterTV extends RecyclerView.Adapter<AdapterTV.ViewHolder> implem
     private int selectedPosition = 0;
     public static   String nameid[][] = new String[1][2];
     private ArrayList<Integer> selectCheck = new ArrayList<>();
+    ModalTV modalTV;
 
-    public AdapterTV(Context context, ArrayList<ModelTV> modelTVS) {
+    public AdapterTV(ModalTV modalTV,Context context, ArrayList<ModelTV> modelTVS) {
         this.context = context;
         this.modelTVS = modelTVS;
         modelTVSfull = new ArrayList<>(modelTVS);
+        this.modalTV = modalTV;
 
         for (int i = 0; i < modelTVS.size(); i++) {
             selectCheck.add(0);
@@ -59,22 +61,13 @@ public class AdapterTV extends RecyclerView.Adapter<AdapterTV.ViewHolder> implem
             holder.chekP.setChecked(false);
         }
 
-        holder.chekP.setOnClickListener(new View.OnClickListener() {
+        holder.linklik.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
-                for(int k=0; k<selectCheck.size(); k++) {
-                    if(k==position) {
-                        selectCheck.set(k,1);
-                    } else {
-                        selectCheck.set(k,0);
-                    }
-                }
-                notifyDataSetChanged();
-                nameid[0][0] = modelTV.getName();
-                nameid[0][1] = modelTV.getId();
-
+                holder.chekP.setChecked(true);
+                modalTV.dismiss();
+                modalTV.bottomSheetListenerProduksms.onButtonClick(modelTV.getName(),modelTV.getId());
 
             }
         });
@@ -145,7 +138,7 @@ public class AdapterTV extends RecyclerView.Adapter<AdapterTV.ViewHolder> implem
             super(itemView);
             name = itemView.findViewById(R.id.nameList);
             chekP = itemView.findViewById(R.id.chekProvinsi);
-//            linklik = itemView.findViewById(R.id.linklik);
+            linklik = itemView.findViewById(R.id.linearKlikk);
 
         }
     }

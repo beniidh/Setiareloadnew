@@ -26,7 +26,11 @@ public class ResponProdukVoucherv {
     public class VoucherData{
 
         String id,code,name,brand,basic_price,markup_price,status,description,product_subcategory_id,total_price;
-        boolean seller_product_status,multi;
+        boolean seller_product_status,multi,gangguan;
+
+        public boolean isGangguan() {
+            return gangguan;
+        }
 
         public String getId() {
             return id;

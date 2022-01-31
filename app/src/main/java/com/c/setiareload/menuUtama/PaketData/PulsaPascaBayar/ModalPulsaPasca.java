@@ -42,7 +42,7 @@ public class ModalPulsaPasca extends BottomSheetDialogFragment {
 
 
         recyclerView = v.findViewById(R.id.ReyProdukAir);
-        adapterAir = new AdapterAir(getContext(), mAirs);
+//        adapterAir = new AdapterAir(getContext(), mAirs);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(adapterAir);
