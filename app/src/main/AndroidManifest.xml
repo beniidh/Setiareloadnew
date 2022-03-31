@@ -1,30 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.c.setiareload">
+    package="com.c.latansa">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission. ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="29" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <queries>
+        <package android:name="com.whatsapp" />
+        <package android:name="org.telegram.messenger" />
+    </queries>
+
     <application
         android:allowBackup="true"
-        android:icon="@drawable/logobarusetiadua"
+        android:icon="@drawable/logobarusetianobg"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DompetAbata">
+        <activity
+            android:name=".TarikKomisi.TarikKomisiSales_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".menuUtama.HolderPulsa.groupHolder_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".konter.MarkupKonter.MarkupKonter"
+            android:exported="false" />
+        <activity
+            android:name=".konter.KirimSaldo.TransferSaldo"
+            android:exported="false" />
+        <activity
+            android:name=".konter.tambahKonter"
+            android:exported="false" />
         <activity
             android:name=".CetakStruk.StrukPLNPra.CetakPlnPra"
             android:exported="true" />
@@ -70,11 +91,17 @@
             android:name=".konter.konter_activity"
             android:exported="true"
             android:screenOrientation="portrait" />
-
-        <meta-data
-            android:name="io.sentry.dsn"
-            android:value="https://c7552e566d0148ef9d067b45fc46742b@o505958.ingest.sentry.io/5965814" />
-
+        <activity
+            android:name=".menuUtama.HolderPulsa.produkholderPasca"
+            android:exported="false" />
+        <activity
+            android:name=".menuUtama.HolderPulsa.produkholder"
+            android:exported="false" />
+        <activity
+            android:name=".menuUtama.HolderPulsa.holder_pulsa_activity"
+            android:exported="false" /> <!-- <meta-data -->
+        <!-- android:name="io.sentry.dsn" -->
+        <!-- android:value="https://c7552e566d0148ef9d067b45fc46742b@o505958.ingest.sentry.io/5965814" /> -->
         <activity android:name=".Transfer.transferKonter" />
         <activity
             android:name=".Pending_Activity"
@@ -105,6 +132,17 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.c.latansa.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
 
         <activity
             android:name=".ResetPIN"
@@ -146,64 +184,64 @@
             android:name=".PengajuanLimit.PengajuanDompet"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.PaketData.WarungAbata.produkWarungAbata"
+            android:name=".menuUtama.WarungAbata.produkWarungAbata"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.PaketData.PajakPBB.produkPajakPBB"
+            android:name=".menuUtama.PajakPBB.produkPajakPBB"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.PaketData.GasNegara.produkGasnegara"
+            android:name=".menuUtama.GasNegara.produkGasnegara"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.PaketData.AngsuranKredit.ProdukAngsuranKredit"
+            android:name=".menuUtama.AngsuranKredit.ProdukAngsuranKredit"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.PaketData.BPJS.produkBPJS"
+            android:name=".menuUtama.BPJS.produkBPJS"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.PaketData.Voucher.produkVoucher"
+            android:name=".menuUtama.Voucher.produkVoucher"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.PaketData.TV.tv_produk"
+            android:name=".menuUtama.TV.tv_produk"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.PaketData.Internet.InternetProduk"
+            android:name=".menuUtama.Internet.InternetProduk"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.PaketData.VoucherGame.produkVoucherGame"
+            android:name=".menuUtama.VoucherGame.produkVoucherGame"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.PaketData.air.produkair"
+            android:name=".menuUtama.air.produkair"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.PaketData.UangElektronik.ProdukUangElektronik"
+            android:name=".menuUtama.UangElektronik.ProdukUangElektronik"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.PaketData.PaketsmsTelpon.produksmstelpon"
+            android:name=".menuUtama.PaketsmsTelpon.produksmstelpon"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.PaketData.ListrikPLNPasca.Pln_produk_pasca"
+            android:name=".menuUtama.ListrikPLNPasca.Pln_produk_pasca"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.PaketData.ListrikPLN.Pln_Produk"
+            android:name=".menuUtama.ListrikPLN.Pln_Produk"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.PaketData.Paket.PaketData_Activity"
+            android:name=".menuUtama.Paket.PaketData_Activity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Notifikasi.Notifikasi_Activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.PaketData.PulsaPrabayar.TransaksiPending"
+            android:name=".menuUtama.PulsaPrabayar.TransaksiPending"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.PaketData.PulsaPrabayar.KonfirmasiPembayaran"
+            android:name=".menuUtama.PulsaPrabayar.KonfirmasiPembayaran"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.PaketData.PulsaPrabayar.PulsaPrabayar_activity"
+            android:name=".menuUtama.PulsaPrabayar.PulsaPrabayar_activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.PaketData.PulsaPascaBayar.PulsaPascaBayar_activity"
+            android:name=".menuUtama.PulsaPascaBayar.PulsaPascaBayar_activity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Kodeproduk"

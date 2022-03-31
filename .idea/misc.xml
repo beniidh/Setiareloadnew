@@ -10,6 +10,138 @@
         <entry key="..\:/AndroidP/DompetAbata/app/src/main/res/layout/nav_header.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/DompetAbata/app/src/main/res/layout/nav_header_main.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidP/DompetAbata/app/src/main/res/layout/navbottom_bar.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/drawable/bg_blue.xml" value="0.1455" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/drawable/bg_blueround.xml" value="0.1455" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/drawable/bg_overlay.xml" value="0.1455" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/drawable/bg_pilihbank.xml" value="0.1455" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/drawable/bg_pink.xml" value="0.1455" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/drawable/bg_produk.xml" value="0.1455" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/drawable/bg_putih.xml" value="0.1455" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/drawable/bg_round.xml" value="0.1455" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/drawable/bg_shape.xml" value="0.1455" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/drawable/bg_splash.xml" value="0.1455" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/drawable/bg_ubahpin.xml" value="0.1455" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/drawable/bgpembayaran.xml" value="0.1455" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/drawable/bgpembayaran2.xml" value="0.1455" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/drawable/bgsaldorerseller.xml" value="0.1455" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/drawable/bgsalessaldoku.xml" value="0.1455" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/drawable/bgsetuju_pengajuan.xml" value="0.1455" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/drawable/bgsetuju_pengajuanset.xml" value="0.1455" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/drawable/bgtolak_pengajuan.xml" value="0.1455" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/drawable/ic_baseline_person_add_24.xml" value="0.143" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_add_konter.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_bayar_sales.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_bayar_sales_server.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_bayar_via_bank.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_cetak.xml" value="0.25" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_cetak_pln_pasca.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_cetak_pln_pra.xml" value="0.25" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_cetakstruk.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_daftar_harga_activity.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_detail_transaksi_truk.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_drawer_activity.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_group_holder.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_konter.xml" value="0.25" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_login_.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_mark_up_spesifik.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_markup_konter.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_metodebayar_bank.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_o_t_pinsert.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_o_t_psend.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_persetujuan_saldo_sales.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_produkholder.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_profil.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_register_activity.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_rekap_saldo.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_splash_activity.xml" value="0.165" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_syaratdanketentuan_activity.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_tambah_konter.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_tarik_komisi_sales.xml" value="0.25" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_topup_saldoku_activity.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_transaksi_pending.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_transfer_bank.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_transfer_konter.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_transfer_saldo.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_trasfer_bank.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/activity_trasfer_bank_server.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/chat_fragment.xml" value="0.125" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/fragment_debit.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/fragment_kredit.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/fragment_rekap.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/fragment_semua.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/holder_pulsa_activity.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/home_fragment.xml" value="0.165" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/list.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/list_daftarharga.xml" value="0.25" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/list_groupkategori.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/list_konter.xml" value="0.25" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/list_pengajuandompet.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/list_subcategory.xml" value="0.25" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/listmenu_sidebar.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/listrekapsaldo.xml" value="0.25" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/listtransferkonter.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/loadingprimer.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/modal_filter_rekap.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/modal_layout_kelurahan.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/modal_layout_transfer.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/modal_pinpengajuan.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/modal_pinpersetujuan.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/modal_pintransfer.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/nav_header.xml" value="0.25" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/nav_header_main.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/nav_menu.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/navbottom_bar.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/layout/transaksi_fragment.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/menu/menu.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/menu/menukonter.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1585" />
+        <entry key="..\:/AndroidP/LatansaReload/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1585" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/drawable/bgpembayaran2.xml" value="0.1585" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.148" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/drawable/ic_baseline_assignment_ind_24.xml" value="0.148" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.148" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/drawable/ic_baseline_notifications_green.xml" value="0.148" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/activity_bayar_via_bank.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/activity_detail_transaksi_pulsa_pra.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/activity_drawer_activity.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/activity_internet_produk.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/activity_login_.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/activity_metodebayar_bank.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/activity_o_t_psend.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/activity_paket_data_.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/activity_pln__produk.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/activity_pln_produk_pasca.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/activity_produk_angsuran_kredit.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/activity_produk_b_p_j_s.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/activity_produk_gasnegara.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/activity_produk_pajak_p_b_b.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/activity_produk_uang_elektronik.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/activity_produk_voucher.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/activity_produk_voucher_game.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/activity_produkair.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/activity_produkholder.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/activity_produkholder_pasca.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/activity_produksmstelpon.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/activity_pulsa_prabayar_activity.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/activity_register_activity.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/activity_splash_activity.xml" value="0.1" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/activity_sub_category_activity.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/activity_syaratdanketentuan_activity.xml" value="0.165" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/activity_topup_saldoku_activity.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/activity_transfer_bank.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/activity_trasfer_bank.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/activity_trasfer_bank_server.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/activity_tv_produk.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/holder_pulsa_activity.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/home_fragment.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/list_subcategory.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/list_transaksi.xml" value="0.25" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/list_transaksiku.xml" value="0.25" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/loadingprimer.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/layout/nav_header.xml" value="0.165" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/menu/menu.xml" value="0.18640350877192982" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.158" />
+        <entry key="..\:/AndroidP/LoketPulsa/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.158" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/drawable-v24/bg_round.xml" value="0.2375" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/drawable-v24/filled_circle_default.xml" value="0.2064814814814815" />
         <entry key="..\:/AndroidP/SetiaReloadDua/app/src/main/res/drawable/bg_pilihbank.xml" value="0.21574074074074073" />
@@ -162,7 +294,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

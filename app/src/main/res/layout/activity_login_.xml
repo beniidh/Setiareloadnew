@@ -10,11 +10,13 @@
         android:id="@+id/logologin"
         android:layout_width="140dp"
         android:layout_height="150dp"
+        android:src="@drawable/logobarusetianobg"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/logobarusetia"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.514" />
 
     <LinearLayout
         android:id="@+id/linearLayout"

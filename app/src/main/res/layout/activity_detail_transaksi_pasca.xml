@@ -7,7 +7,7 @@
     android:background="@drawable/bg_ubahpin"
     android:orientation="vertical"
     android:padding="25dp"
-    tools:context=".menuUtama.PaketData.PulsaPrabayar.DetailTransaksiPulsaPra">
+    tools:context=".menuUtama.PulsaPrabayar.DetailTransaksiPulsaPra">
 
     <TextView
         android:layout_width="wrap_content"

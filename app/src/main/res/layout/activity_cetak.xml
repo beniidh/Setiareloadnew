@@ -259,7 +259,7 @@
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/bg_button_login3"
-                android:text="Download PDF"
+                android:text="Bagikan"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
 

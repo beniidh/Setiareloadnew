@@ -33,7 +33,7 @@
             android:fontFamily="sans-serif-medium"
             android:textAlignment="textStart"
             android:text="Daftar Harga"
-            android:textColor="@color/green"
+            android:textColor="@color/black"
             android:textSize="16sp" />
 
     </LinearLayout>

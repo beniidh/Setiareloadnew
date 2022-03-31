@@ -21,6 +21,8 @@
             android:background="@drawable/bg_pilihbank"
             android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
             android:focusable="false"
+            android:paddingVertical="3dp"
+            android:fontFamily="@font/exobold"
             android:hint="Pilih Bank"
             android:paddingStart="10dp" />
 
@@ -44,6 +46,8 @@
             android:paddingVertical="3dp"
             android:layout_marginTop="20dp"
             android:hint="Nomor Rekening"
+            android:textStyle="bold"
+            android:fontFamily="@font/notoregular"
             android:inputType="number" />
 
 
@@ -52,7 +56,9 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:paddingVertical="3dp"
+            android:fontFamily="@font/poppins"
             android:layout_marginTop="20dp"
+            android:textStyle="bold"
             android:hint="Nominal"
             android:inputType="number" />
 
@@ -76,8 +82,9 @@
         android:layout_below="@id/wrapdata"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_url="https://assets9.lottiefiles.com/packages/lf20_0vKKEb.json"
+        app:lottie_url="https://assets8.lottiefiles.com/private_files/lf30_24lawrru.json"
         android:layout_height="wrap_content"/>
+
 
     <LinearLayout
         android:layout_width="match_parent"

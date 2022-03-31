@@ -20,14 +20,25 @@
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
-        <ImageView
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/logobarusetia"
+<!--        <ImageView-->
+<!--            android:layout_width="35dp"-->
+<!--            android:layout_height="35dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            android:background="@drawable/logobarusetianobg"-->
 
-            />
+<!--            />-->
+        <TextView
+            android:id="@+id/nameheadernav"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Hera cell"
+            android:gravity="center"
+            android:layout_marginLeft="5dp"
+            android:fontFamily="@font/exobold"
+            android:textColor="@color/green"
+            android:textSize="17sp"
+            android:textStyle="bold"/>
 
     </LinearLayout>
     <ru.nikartm.support.ImageBadgeView

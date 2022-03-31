@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/swipeTransaksi"
     android:padding="18dp"
-    tools:context=".menuUtama.PaketData.PulsaPrabayar.TransaksiPending">
+    tools:context=".menuUtama.PulsaPrabayar.TransaksiPending">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -47,7 +47,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10sp"
-            android:fontFamily="@font/notoregular"
+            android:fontFamily="@font/poppins"
             android:text="Rp.0"
             android:textColor="@color/black"
             android:textSize="30dp"
@@ -283,7 +283,7 @@
                         android:fontFamily="@font/mukta"
                         android:text="Tanggal"
                         android:textSize="16sp"
-                        android:textStyle="bold" />
+                        />
 
                     <TextView
                         android:id="@+id/tanggalDetail"
@@ -291,7 +291,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:text=""
-                        android:textStyle="bold"
+
 
                         />
                 </RelativeLayout>
@@ -307,8 +307,7 @@
                         android:layout_alignParentLeft="true"
                         android:fontFamily="@font/mukta"
                         android:text="Waktu"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/waktuDetail"
@@ -316,7 +315,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:text=""
-                        android:textStyle="bold"
+
 
                         />
                 </RelativeLayout>
@@ -379,7 +378,7 @@
                         android:id="@+id/noSN"
                         android:layout_width="0dp"
                         android:layout_weight="0.8"
-                        android:paddingVertical="2dp"
+                        android:paddingVertical="3dp"
                         android:textAlignment="textEnd"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="7dp"

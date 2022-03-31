@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sisa SaldoKu saat ini"
+        android:text="Sisa Saldoku"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="18dp" />
@@ -21,16 +21,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins"
         android:text="RP 35.000"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="28dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textSize="25dp"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/bg_saldo"
         android:orientation="vertical"
         android:padding="10dp">
@@ -64,6 +66,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:visibility="gone"
         android:text="Kirim"
         android:layout_marginRight="10sp"
         android:textAlignment="textEnd"

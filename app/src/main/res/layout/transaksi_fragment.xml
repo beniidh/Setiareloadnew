@@ -2,16 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="18dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <Button
             android:id="@+id/RekapSaldo"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
+            android:visibility="gone"
             android:layout_alignParentStart="true"
             android:layout_marginStart="0dp"
             android:background="@drawable/bg_button_login2"
@@ -23,14 +26,15 @@
 
         <EditText
             android:id="@+id/idTransaksiTanggalEditText"
-            android:layout_width="120sp"
+            android:layout_width="140sp"
             android:layout_height="34sp"
             android:layout_alignParentEnd="true"
-            android:background="@drawable/bg_button_homesaldo"
+            android:background="@drawable/bg_saldo"
+            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
             android:focusable="false"
+            android:textSize="15sp"
             android:gravity="center"
             android:hint="tanggal" />
-
 
     </RelativeLayout>
 
@@ -45,9 +49,10 @@
             android:layout_marginTop="20sp"
             android:layout_marginRight="15sp"
             android:layout_weight="1"
+            android:paddingVertical="5dp"
             android:background="@drawable/bg_button_homesaldo"
             android:orientation="vertical"
-            android:padding="10sp">
+         >
 
             <TextView
                 android:layout_width="match_parent"
@@ -71,9 +76,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20sp"
             android:layout_weight="1"
+            android:paddingVertical="5dp"
             android:background="@drawable/bg_button_homesaldo"
             android:orientation="vertical"
-            android:padding="10sp">
+            >
 
             <TextView
                 android:layout_width="match_parent"
@@ -127,7 +133,8 @@
         android:id="@+id/tablayoutransaksi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10sp">
+        app:tabIndicatorColor="@color/green"
+        app:tabSelectedTextColor="@color/green">
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager

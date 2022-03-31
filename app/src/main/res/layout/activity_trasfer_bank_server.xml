@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/mukta"
-            android:text="Transfer Bank BRI"
+            android:text="Transfer Bank BCA"
             android:textColor="@color/green"
             android:textSize="20sp" />
 
@@ -78,7 +78,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/mukta"
-            android:text="337201026878538"
+            android:text="0952877036"
             android:textColor="@color/black"
             android:textSize="22sp"
             android:textStyle="bold" />
@@ -87,7 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/mukta"
-            android:text="a.n PT Budi Setiawan"
+            android:text="A.n M. Lukman Hakim"
             android:textColor="@color/gray3"
             android:textSize="18dp"
 
