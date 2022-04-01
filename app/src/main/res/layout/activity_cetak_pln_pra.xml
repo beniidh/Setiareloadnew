@@ -1,209 +1,228 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:padding="18sp"
     android:layout_height="match_parent"
     tools:context=".CetakStruk.StrukPLNPasca.CetakPlnPasca">
 
-    <TextView
-        android:id="@+id/KonterPR"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Gita Cell BRI LINK"
-        android:textAlignment="center"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        />
-
-    <TextView
-        android:id="@+id/AlamatPR"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Jl. Ir Sutami KM 18"
-        android:textAlignment="center"
-        android:textSize="14sp"
-        android:textColor="@color/black"
-        />
-    <TextView
-        android:id="@+id/WaktuPR"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="-- -- --"
-        android:textAlignment="center"
-        android:textSize="14sp"
-        android:textColor="@color/black"
-        />
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:layout_marginTop="15dp"
-        android:src="@drawable/dashline"
-        />
-    <TextView
-        android:id="@+id/nomorPR"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Nomor:"
-        android:layout_marginTop="10sp"
-        android:textSize="15sp"
-        android:textColor="@color/gray4"
-        />
-
-    <TextView
-        android:id="@+id/namaPR"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="NAMA:"
-        android:layout_marginTop="10sp"
-        android:textSize="15sp"
-        android:textColor="@color/gray4"
-        />
-    <TextView
-        android:id="@+id/tarifPR"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tarif/Daya:"
-        android:layout_marginTop="5sp"
-        android:textSize="15sp"
-        android:textColor="@color/gray4"
-        />
-
-    <TextView
-        android:id="@+id/DayaPR"
-        android:visibility="gone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Daya:"
-        android:layout_marginTop="5sp"
-        android:textSize="15sp"
-        android:textColor="@color/gray4"
-        />
-
-    <TextView
-        android:id="@+id/KWHPR"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="KWH:"
-        android:visibility="visible"
-        android:layout_marginTop="5sp"
-        android:textSize="15sp"
-        android:textColor="@color/gray4"
-        />
-    <TextView
-        android:id="@+id/NominalPR"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Nominal:"
-        android:layout_marginTop="5sp"
-        android:textSize="15sp"
-        android:textColor="@color/gray4"
-        />
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content">
+        android:orientation="vertical"
+        android:layout_height="match_parent">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/KonterPR"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Admin : "
+            android:text="Gita Cell BRI LINK"
+            android:textAlignment="center"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            />
+
+        <TextView
+            android:id="@+id/AlamatPR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Jl. Ir Sutami KM 18"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/WaktuPR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="-- -- --"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/dashline"
+            />
+
+
+
+        <TextView
+            android:id="@+id/nomorPR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nomor:"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            android:textColor="@color/gray4"
+            />
+
+        <TextView
+            android:id="@+id/namaPR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NAMA:"
+            android:layout_marginTop="10sp"
+            android:textSize="15sp"
+            android:textColor="@color/gray4"
+            />
+        <TextView
+            android:id="@+id/tarifPR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tarif/Daya:"
+            android:layout_marginTop="5sp"
+            android:textSize="15sp"
+            android:textColor="@color/gray4"
+            />
+
+        <TextView
+            android:id="@+id/DayaPR"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Daya:"
+            android:layout_marginTop="5sp"
+            android:textSize="15sp"
+            android:textColor="@color/gray4"
+            />
+
+        <TextView
+            android:id="@+id/KWHPR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="KWH:"
+            android:visibility="visible"
             android:layout_marginTop="5sp"
             android:textSize="15sp"
             android:textColor="@color/gray4"
             />
         <TextView
-            android:id="@+id/adminPR"
-            android:layout_width="wrap_content"
+            android:id="@+id/NominalPR"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="0"
+            android:text="Nominal:"
             android:layout_marginTop="5sp"
             android:textSize="15sp"
             android:textColor="@color/gray4"
             />
-    </LinearLayout>
 
-    <TextView
-        android:id="@+id/totaltagihanPR"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TTAG:0"
-        android:layout_marginTop="5sp"
-        android:textSize="15sp"
-        android:textColor="@color/gray4"
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/SNPR"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="SN:"
-        android:layout_marginTop="5sp"
-        android:textSize="15sp"
-        android:textColor="@color/gray4"
-        />
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:layout_marginTop="25dp"
-        android:src="@drawable/dashline"
-        />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Admin : "
+                android:layout_marginTop="5sp"
+                android:textSize="15sp"
+                android:textColor="@color/gray4"
+                />
+            <TextView
+                android:id="@+id/adminPR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:layout_marginTop="5sp"
+                android:textSize="15sp"
+                android:textColor="@color/gray4"
+                />
+        </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Struk ini merupakan bukti pembayaran yang SAH, dan harap disimpan TERIMAKASIH"
-        android:textAlignment="center"
-        android:textSize="14sp"
-        android:layout_marginTop="20sp"
-        android:textColor="@color/black"
-        />
+        <TextView
+            android:id="@+id/totaltagihanPR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TTAG:0"
+            android:layout_marginTop="5sp"
+            android:textSize="15sp"
+            android:textColor="@color/gray4"
+            />
 
-    <EditText
-        android:id="@+id/pilihPerangkat"
-        android:layout_width="match_parent"
-        android:layout_height="43sp"
-        android:layout_marginTop="10sp"
-        android:background="@drawable/bg_putih"
-        android:focusable="false"
-        android:hint="Pilih Perangkat"
-        android:paddingStart="20sp" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"
-        android:layout_marginBottom="30dp"
-        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/SNPR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SN:"
+            android:layout_marginTop="5sp"
+            android:textSize="15sp"
+            android:textColor="@color/gray4"
+            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_marginTop="25dp"
+            android:src="@drawable/dashline"
+            />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Struk ini merupakan bukti pembayaran yang SAH, dan harap disimpan TERIMAKASIH"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:layout_marginTop="20sp"
+            android:textColor="@color/black"
+            />
         <Button
             android:id="@+id/setAdmin"
-            android:layout_width="0dp"
-            android:layout_height="36dp"
-            android:layout_margin="6dp"
-            android:layout_weight="1"
-            android:background="@drawable/bg_button_login3"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="15dp"
             android:text="Set Admin"
+            android:layout_marginBottom="10dp"
+            android:textSize="10dp"
             android:textAllCaps="false"
-            android:textColor="@color/white" />
-
-        <Button
-            android:id="@+id/CetakPra"
-            android:layout_width="0dp"
-
-            android:layout_height="36dp"
-            android:layout_margin="6dp"
-            android:layout_weight="1"
-            android:background="@drawable/bg_button_login2"
-            android:text="Cetak"
-            android:textAllCaps="false"
-            android:textColor="@color/white" />
+            android:background="@drawable/bg_chat"
+            />
 
 
+        <EditText
+            android:id="@+id/pilihPerangkat"
+            android:layout_width="match_parent"
+            android:layout_height="43sp"
+            android:layout_marginTop="10sp"
+            android:background="@drawable/bg_putih"
+            android:focusable="false"
+            android:hint="Pilih Perangkat"
+            android:paddingStart="20sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:layout_marginBottom="30dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/shareStruk"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_margin="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_button_login3"
+                android:text="Share"
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/CetakPra"
+                android:layout_width="0dp"
+
+                android:layout_height="36dp"
+                android:layout_margin="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_button_login2"
+                android:text="Cetak"
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
+
+
+        </LinearLayout>
     </LinearLayout>
-
-</LinearLayout>
+</ScrollView>

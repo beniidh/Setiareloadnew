@@ -223,7 +223,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textSize="16dp"
-                android:text="SRVID00000014"
+                android:text="SRVID00000004"
                 android:focusable="false"
                 android:fontFamily="@font/poppins"
                 android:hint="Pilih Server "

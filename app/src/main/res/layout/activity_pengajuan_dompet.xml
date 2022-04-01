@@ -20,24 +20,24 @@
             android:text="Limit Saldo Server Saat ini"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="17dp" />
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/saldoServerSaatini"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppinsbold"
             android:text="RP 100.000"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="28sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:background="@drawable/bg_saldo"
             android:orientation="vertical"
             android:padding="10dp">
 
@@ -51,7 +51,8 @@
             <EditText
                 android:id="@+id/idPengajuanLimitEditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
+             android:hint="Rp. 23XXX"
                 android:inputType="number" />
 
             <TextView
@@ -59,7 +60,6 @@
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:text="@string/nominal_diatas_adalah_nominal_untuk_pengajuan_limit_baru"
-                android:textAlignment="center"
                 android:textSize="13sp" />
 
         </LinearLayout>
@@ -67,10 +67,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:fontFamily="@font/exobold"
             android:text="Pengajuan Limit Dompet"
             android:textColor="@color/black"
-            android:textSize="17sp"
+            android:textSize="15sp"
             android:textStyle="bold" />
 
         <View

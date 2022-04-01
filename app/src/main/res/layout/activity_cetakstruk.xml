@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@drawable/bg_saldo"
+        android:background="@drawable/bg_button_homesaldo"
         android:orientation="vertical"
         android:padding="10dp">
 
@@ -28,6 +28,7 @@
             android:id="@+id/idSearchStruk"
             android:layout_width="match_parent"
             android:background="@color/white"
+            android:layout_marginTop="5dp"
             android:layout_height="37dp"
             android:elevation="1dp"
              />

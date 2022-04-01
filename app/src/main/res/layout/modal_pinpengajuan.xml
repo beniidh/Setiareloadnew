@@ -60,6 +60,7 @@
             android:layout_width="match_parent"
             android:id="@+id/idPinPengajuanButton"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:background="@drawable/bg_button_login2"
             android:text="Ajukan"
             android:textAllCaps="false"

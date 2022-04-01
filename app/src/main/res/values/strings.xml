@@ -1,17 +1,17 @@
 <resources>
-    <string name="app_name">Latansa Reload</string>
+    <string name="app_name">Setia Reload</string>
     <string name="keteranganOTP">Untuk mendapatkan Kode OTP silahkan pilih salah satu metode dibawah ini :</string>
     <string name="otp">Kode telah dikirim ke Email, silahkan cek Email Anda</string>
     <string name="syaratketentuan">Terima kasih Anda telah mengakses situs atau mengunduh,
-        menggunakan layanan, produk dan/atau aplikasi (“Aplikasi”) LATANSA RELOAD. Pada saat Anda
-        mengakses, mengunduh atau menggunakan Aplikasi LATANSA RELOAD maka Syarat dan Ketentuan ini
+        menggunakan layanan, produk dan/atau aplikasi (“Aplikasi”) SETIA RELOAD. Pada saat Anda
+        mengakses, mengunduh atau menggunakan Aplikasi SETIA RELOAD maka Syarat dan Ketentuan ini
         berlaku terhadap Anda. Dengan melanjutkan mengakses, mengunduh atau menggunakan Aplikasi
-       LATANSA RELOAD, Anda mengakui dan menyetujui bahwa Anda telah membaca dengan teliti, memahami,
+       SETIA RELOAD, Anda mengakui dan menyetujui bahwa Anda telah membaca dengan teliti, memahami,
         menerima dan menyetujui seluruh Syarat dan Ketentuan ini yang akan berlaku sebagai
         perjanjian antara Anda dengan Kami. Syarat dan Ketentuan ini juga berlaku setiap kali
-        Anda melakukan transaksi menggunakan Aplikasi LATANSA RELOAD melalui mitra penyedia
+        Anda melakukan transaksi menggunakan Aplikasi SETIA RELOAD melalui mitra penyedia
         platform lain yang menandatangani perjanjian kerjasama dengan Kami dan menggunakan
-        Aplikasi LATANSA RELOAD sebagai salah satu metode pembayaran (“Partner LATANSA RELOAD”)</string>
+        Aplikasi SETIA RELOAD sebagai salah satu metode pembayaran (“Partner SETIA RELOAD”)</string>
 
     <string name="Open">buka</string>
     <string name="Close">tutup</string>
@@ -45,7 +45,7 @@
     <string name="car4">4. Masukan nomor rekening Tujuan</string>
     <string name="car6">6. Ikuti instruksi untuk menyelesaikan transaksi</string>
     <string name="car5">5. Masukan nominal Tagihan</string>
-    <string name="selamat_datang_di_dompet_abata">Selamat Datang di Latansa Reload !</string>
+    <string name="selamat_datang_di_dompet_abata">Selamat Datang di Setia Reload !</string>
     <string name="saya_menerima_dan_menyetujui_syarat_dan_ketentuan_aplikasi">Saya menerima dan menyetujui Syarat dan Ketentuan Aplikasi</string>
     <string name="silahkan_hubungi_cs_jika_dalam_1x24_jam_pembelian_belum_diterima">Silahkan Hubungi CS jika dalam 1x24 jam pembelian belum diterima</string>
     <string name="produk">Produk</string>

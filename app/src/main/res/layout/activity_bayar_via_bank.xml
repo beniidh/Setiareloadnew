@@ -30,19 +30,19 @@
             android:id="@+id/LinearBankBCA"
             android:layout_width="match_parent"
             android:layout_height="78dp"
-
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
             android:layout_marginTop="20dp"
             android:background="@drawable/bgpembayaran"
-            android:foreground="?android:attr/selectableItemBackground"
             android:orientation="horizontal"
             android:padding="10dp">
 
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_gravity="center"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
+                android:layout_gravity="center"
                 android:src="@drawable/logobca" />
 
             <TextView
@@ -51,7 +51,7 @@
                 android:layout_weight="4"
                 android:fontFamily="@font/mukta"
                 android:gravity="center_vertical"
-                android:text="Transfer Bank BCA"
+                android:text="Virtual Account BCA"
                 android:textColor="@color/black"
                 android:textSize="18dp"
 
@@ -73,7 +73,6 @@
             android:foreground="?android:attr/selectableItemBackground"
             android:layout_width="match_parent"
             android:layout_height="78dp"
-            android:visibility="gone"
             android:layout_marginTop="20dp"
             android:background="@drawable/bgpembayaran"
             android:orientation="horizontal"
@@ -94,47 +93,6 @@
                 android:fontFamily="@font/mukta"
                 android:gravity="center_vertical"
                 android:text="Transfer Bank BRI"
-                android:textColor="@color/black"
-                android:textSize="18dp"
-
-                />
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:src="@drawable/ic_baseline_navigate_next_24" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/LinearBankMandiri"
-            android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:layout_width="match_parent"
-            android:layout_height="78dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/bgpembayaran"
-            android:orientation="horizontal"
-            android:padding="10dp">
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:src="@drawable/mandiribank" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="4"
-                android:fontFamily="@font/mukta"
-                android:gravity="center_vertical"
-                android:text="Transfer Bank Mandiri"
                 android:textColor="@color/black"
                 android:textSize="18dp"
 

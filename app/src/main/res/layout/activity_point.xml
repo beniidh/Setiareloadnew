@@ -30,7 +30,8 @@
             android:elevation="1dp"
             android:layout_height="34sp"
             android:gravity="center"
-            android:background="@drawable/bg_edittextlogin"
+            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+            android:background="@drawable/bg_saldo"
             android:paddingStart="8sp"
             tools:ignore="RtlSymmetry" />
 
@@ -83,7 +84,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10sp"
-        android:background="@drawable/bg_saldo"
+        android:background="@drawable/bg_button_homesaldo"
         android:orientation="vertical"
         android:padding="5dp">
 

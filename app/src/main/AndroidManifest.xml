@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.c.latansa">
+    package="com.c.setiareload">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
@@ -32,101 +32,101 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DompetAbata">
         <activity
-            android:name=".TarikKomisi.TarikKomisiSales_Activity"
+            android:name="com.c.setiareload.TarikKomisi.TarikKomisiSales_Activity"
             android:exported="false" />
         <activity
-            android:name=".menuUtama.HolderPulsa.groupHolder_Activity"
+            android:name="com.c.setiareload.menuUtama.HolderPulsa.groupHolder_Activity"
             android:exported="false" />
         <activity
-            android:name=".konter.MarkupKonter.MarkupKonter"
+            android:name="com.c.setiareload.konter.MarkupKonter.MarkupKonter"
             android:exported="false" />
         <activity
-            android:name=".konter.KirimSaldo.TransferSaldo"
+            android:name="com.c.setiareload.konter.KirimSaldo.TransferSaldo"
             android:exported="false" />
         <activity
-            android:name=".konter.tambahKonter"
+            android:name="com.c.setiareload.konter.tambahKonter"
             android:exported="false" />
         <activity
-            android:name=".CetakStruk.StrukPLNPra.CetakPlnPra"
+            android:name="com.c.setiareload.CetakStruk.StrukPLNPra.CetakPlnPra"
             android:exported="true" />
         <activity
-            android:name=".CetakStruk.StrukPLNPasca.CetakPlnPasca"
+            android:name="com.c.setiareload.CetakStruk.StrukPLNPasca.CetakPlnPasca"
             android:exported="true" />
         <activity
-            android:name=".reseller.PilihMetodeBayar"
+            android:name="com.c.setiareload.reseller.PilihMetodeBayar"
             android:exported="true" />
         <activity
-            android:name=".reseller.PersetujuanSaldokuReseller"
+            android:name="com.c.setiareload.reseller.PersetujuanSaldokuReseller"
             android:exported="true" />
         <activity
-            android:name=".pinNew.pin_transaksi"
+            android:name="com.c.setiareload.pinNew.pin_transaksi"
             android:exported="true" />
         <activity
-            android:name=".pinNew.pinnew"
+            android:name="com.c.setiareload.pinNew.pinnew"
             android:exported="true" />
         <activity
-            android:name=".MarkUP.markupSpesifik.MarkUpSpesifikActi"
+            android:name="com.c.setiareload.MarkUP.markupSpesifik.MarkUpSpesifikActi"
             android:exported="true" />
         <activity
-            android:name=".Fragment.RekapSaldo.RekapSaldoActivity"
+            android:name="com.c.setiareload.Fragment.RekapSaldo.RekapSaldoActivity"
             android:exported="true" />
         <activity
-            android:name=".MarkUP.markupSpesifik.markupSpesifikActivity"
+            android:name="com.c.setiareload.MarkUP.markupSpesifik.markupSpesifikActivity"
             android:exported="true" />
         <activity
-            android:name=".TransferBank.metodebayarBank"
+            android:name="com.c.setiareload.TransferBank.metodebayarBank"
             android:exported="true" />
         <activity
-            android:name=".TransferBank.transferBank"
+            android:name="com.c.setiareload.TransferBank.transferBank"
             android:exported="true" />
         <activity
-            android:name=".TagihanKonterSales.TagihanKonterbySales"
+            android:name="com.c.setiareload.TagihanKonterSales.TagihanKonterbySales"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".KomisiSales.Komisi_sales"
+            android:name="com.c.setiareload.KomisiSales.Komisi_sales"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".konter.konter_activity"
+            android:name="com.c.setiareload.konter.konter_activity"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.HolderPulsa.produkholderPasca"
+            android:name="com.c.setiareload.menuUtama.HolderPulsa.produkholderPasca"
             android:exported="false" />
         <activity
-            android:name=".menuUtama.HolderPulsa.produkholder"
+            android:name="com.c.setiareload.menuUtama.HolderPulsa.produkholder"
             android:exported="false" />
         <activity
-            android:name=".menuUtama.HolderPulsa.holder_pulsa_activity"
+            android:name="com.c.setiareload.menuUtama.HolderPulsa.holder_pulsa_activity"
             android:exported="false" /> <!-- <meta-data -->
         <!-- android:name="io.sentry.dsn" -->
         <!-- android:value="https://c7552e566d0148ef9d067b45fc46742b@o505958.ingest.sentry.io/5965814" /> -->
-        <activity android:name=".Transfer.transferKonter" />
+        <activity android:name="com.c.setiareload.Transfer.transferKonter" />
         <activity
-            android:name=".Pending_Activity"
+            android:name="com.c.setiareload.Pending_Activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TagihanKonter.DetailTagihanKonter"
+            android:name="com.c.setiareload.TagihanKonter.DetailTagihanKonter"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TagihanKonter.TagihanKonter"
+            android:name="com.c.setiareload.TagihanKonter.TagihanKonter"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MarkUP.markup"
+            android:name="com.c.setiareload.MarkUP.markup"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CetakStruk.cetak"
+            android:name="com.c.setiareload.CetakStruk.cetak"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Inquiry.InquiryPasca"
+            android:name="com.c.setiareload.Inquiry.InquiryPasca"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".GantiPin"
+            android:name="com.c.setiareload.GantiPin"
             android:screenOrientation="portrait" />
 
         <service
-            android:name=".Notifikasi.MyService"
+            android:name="com.c.setiareload.Notifikasi.MyService"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -135,7 +135,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.c.latansa.fileprovider"
+            android:authorities="com.c.setiareload.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -145,179 +145,179 @@
 
 
         <activity
-            android:name=".ResetPIN"
+            android:name="com.c.setiareload.ResetPIN"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".PersetujuanSaldoSales.DetailPersetujuan"
+            android:name="com.c.setiareload.PersetujuanSaldoSales.DetailPersetujuan"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TambahKonter.addKonter"
+            android:name="com.c.setiareload.TambahKonter.addKonter"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".PersetujuanSaldoSales.PersetujuanSaldoSales"
+            android:name="com.c.setiareload.PersetujuanSaldoSales.PersetujuanSaldoSales"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SaldoServer.AjukanLimit"
+            android:name="com.c.setiareload.SaldoServer.AjukanLimit"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Fragment.RiwayatTransaksi.HistoryTransaksi"
+            android:name="com.c.setiareload.Fragment.RiwayatTransaksi.HistoryTransaksi"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Notifikasi.DetailNotifikasi"
+            android:name="com.c.setiareload.Notifikasi.DetailNotifikasi"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TentangKami.TentangKamiAct"
+            android:name="com.c.setiareload.TentangKami.TentangKamiAct"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".KodeProduk.Kodeprodukact"
+            android:name="com.c.setiareload.KodeProduk.Kodeprodukact"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CetakStruk.DetailTransaksiTruk"
+            android:name="com.c.setiareload.CetakStruk.DetailTransaksiTruk"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CetakStruk.Cetakstruk"
+            android:name="com.c.setiareload.CetakStruk.Cetakstruk"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".DaftarHarga.DaftarHarga_activity"
+            android:name="com.c.setiareload.DaftarHarga.DaftarHarga_activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".PengajuanLimit.PengajuanDompet"
+            android:name="com.c.setiareload.PengajuanLimit.PengajuanDompet"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.WarungAbata.produkWarungAbata"
+            android:name="com.c.setiareload.menuUtama.WarungAbata.produkWarungAbata"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.PajakPBB.produkPajakPBB"
+            android:name="com.c.setiareload.menuUtama.PajakPBB.produkPajakPBB"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.GasNegara.produkGasnegara"
+            android:name="com.c.setiareload.menuUtama.GasNegara.produkGasnegara"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.AngsuranKredit.ProdukAngsuranKredit"
+            android:name="com.c.setiareload.menuUtama.AngsuranKredit.ProdukAngsuranKredit"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.BPJS.produkBPJS"
+            android:name="com.c.setiareload.menuUtama.BPJS.produkBPJS"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.Voucher.produkVoucher"
+            android:name="com.c.setiareload.menuUtama.Voucher.produkVoucher"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.TV.tv_produk"
+            android:name="com.c.setiareload.menuUtama.TV.tv_produk"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.Internet.InternetProduk"
+            android:name="com.c.setiareload.menuUtama.Internet.InternetProduk"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.VoucherGame.produkVoucherGame"
+            android:name="com.c.setiareload.menuUtama.VoucherGame.produkVoucherGame"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.air.produkair"
+            android:name="com.c.setiareload.menuUtama.air.produkair"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.UangElektronik.ProdukUangElektronik"
+            android:name="com.c.setiareload.menuUtama.UangElektronik.ProdukUangElektronik"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.PaketsmsTelpon.produksmstelpon"
+            android:name="com.c.setiareload.menuUtama.PaketsmsTelpon.produksmstelpon"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.ListrikPLNPasca.Pln_produk_pasca"
+            android:name="com.c.setiareload.menuUtama.ListrikPLNPasca.Pln_produk_pasca"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.ListrikPLN.Pln_Produk"
+            android:name="com.c.setiareload.menuUtama.ListrikPLN.Pln_Produk"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.Paket.PaketData_Activity"
+            android:name="com.c.setiareload.menuUtama.Paket.PaketData_Activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Notifikasi.Notifikasi_Activity"
+            android:name="com.c.setiareload.Notifikasi.Notifikasi_Activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.PulsaPrabayar.TransaksiPending"
+            android:name="com.c.setiareload.menuUtama.PulsaPrabayar.TransaksiPending"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.PulsaPrabayar.KonfirmasiPembayaran"
+            android:name="com.c.setiareload.menuUtama.PulsaPrabayar.KonfirmasiPembayaran"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.PulsaPrabayar.PulsaPrabayar_activity"
+            android:name="com.c.setiareload.menuUtama.PulsaPrabayar.PulsaPrabayar_activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menuUtama.PulsaPascaBayar.PulsaPascaBayar_activity"
+            android:name="com.c.setiareload.menuUtama.PulsaPascaBayar.PulsaPascaBayar_activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Kodeproduk"
+            android:name="com.c.setiareload.Kodeproduk"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SaldoServer.BayarSalesServer"
+            android:name="com.c.setiareload.SaldoServer.BayarSalesServer"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Profil.Device"
+            android:name="com.c.setiareload.Profil.Device"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Profil.Point"
+            android:name="com.c.setiareload.Profil.Point"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Profil.ubah_pin"
+            android:name="com.c.setiareload.Profil.ubah_pin"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Profil.ubah_profil"
+            android:name="com.c.setiareload.Profil.ubah_profil"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Profil.Profil"
+            android:name="com.c.setiareload.Profil.Profil"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SaldoServer.RincianTagihan"
+            android:name="com.c.setiareload.SaldoServer.RincianTagihan"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SaldoServer.RiwayatTagihan"
+            android:name="com.c.setiareload.SaldoServer.RiwayatTagihan"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SaldoServer.TopupSaldoServer"
+            android:name="com.c.setiareload.SaldoServer.TopupSaldoServer"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TopUpSaldoku.TrasferBank"
+            android:name="com.c.setiareload.TopUpSaldoku.TrasferBank"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SaldoServer.TrasferBankServer"
+            android:name="com.c.setiareload.SaldoServer.TrasferBankServer"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Transaksi.BayarViaBank"
+            android:name="com.c.setiareload.Transaksi.BayarViaBank"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TopUpSaldoku.BayarSales"
+            android:name="com.c.setiareload.TopUpSaldoku.BayarSales"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".InsertPIN_activity"
+            android:name="com.c.setiareload.InsertPIN_activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TopUpSaldoku.topup_saldoku_activity"
+            android:name="com.c.setiareload.TopUpSaldoku.topup_saldoku_activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".homelainnya"
+            android:name="com.c.setiareload.homelainnya"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.c.setiareload.MainActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
-        <activity android:name=".pin_activity" />
-        <activity android:name=".syaratdanketentuan_activity" />
-        <activity android:name=".RegisterFoto_activity" />
-        <activity android:name=".Modal.OTPinsert" />
-        <activity android:name=".OTPsend" />
-        <activity android:name=".Register_activity" />
+        <activity android:name="com.c.setiareload.pin_activity" />
+        <activity android:name="com.c.setiareload.syaratdanketentuan_activity" />
+        <activity android:name="com.c.setiareload.RegisterFoto_activity" />
+        <activity android:name="com.c.setiareload.Modal.OTPinsert" />
+        <activity android:name="com.c.setiareload.OTPsend" />
+        <activity android:name="com.c.setiareload.Register_activity" />
         <activity
-            android:name=".Login_Activity"
+            android:name="com.c.setiareload.Login_Activity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".drawer_activity"
+            android:name="com.c.setiareload.drawer_activity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.DompetAbata2"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".splash_activity"
+            android:name="com.c.setiareload.splash_activity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
